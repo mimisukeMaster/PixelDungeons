@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private ControlActions controls;
     private Vector2 moveInput;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -33,6 +34,12 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + move);
 
     }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 何かしらに接触中は接地フラグを立てる
+        isGrounded = true;
+    }
 
     private void OnEnable()
     {
@@ -47,7 +54,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext controls) {
-        rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        if (isGrounded) {
+            rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context) {
