@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // 入力に合わせた移動
-        Vector3 move = new Vector3(moveInput.x , 0, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
+        Vector3 move = new Vector3(moveInput.x , 0f, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
 
     }
@@ -53,19 +51,22 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
-    private void OnJumpPerformed(InputAction.CallbackContext controls) {
+    private void OnJumpPerformed(InputAction.CallbackContext controls)
+    {
         if (isGrounded) {
             rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
     }
 
-    private void OnMovePerformed(InputAction.CallbackContext context) {
+    private void OnMovePerformed(InputAction.CallbackContext context)
+    {
         // 入力されたアクションの値を読み取る
         moveInput = context.ReadValue<Vector2>();
     }
 
-    private void OnMoveCanceled(InputAction.CallbackContext context) {
+    private void OnMoveCanceled(InputAction.CallbackContext context)
+    {
         // 移動入力が無くなったら止まる
         moveInput = Vector2.zero;
     }
