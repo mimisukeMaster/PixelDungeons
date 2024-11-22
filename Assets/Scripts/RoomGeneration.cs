@@ -1,30 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-//5x5‚ÌƒOƒŠƒbƒh‚ğì‚èA’†SˆÈŠO‚Ìƒ}ƒX‚ÉƒXƒ^[ƒg‚ğ’u‚­B(goalDistance)ƒ}ƒXˆÈãˆÚ“®‚µ‚½‚Æ‚±‚ë‚ÉƒS[ƒ‹‚ğ’u‚­
-//ƒXƒ^[ƒg‚ÌˆÊ’u‚©‚ç
+//5x5ã®ã‚°ãƒªãƒƒãƒ‰ã‚’ä½œã‚Šã€ä¸­å¿ƒä»¥å¤–ã®ãƒã‚¹ã«ã‚¹ã‚¿ãƒ¼ãƒˆã‚’ç½®ãã€‚(goalDistance)ãƒã‚¹ä»¥ä¸Šç§»å‹•ã—ãŸã¨ã“ã‚ã«ã‚´ãƒ¼ãƒ«ã‚’ç½®ã
+//ã‚¹ã‚¿ãƒ¼ãƒˆã®ä½ç½®ã‹ã‚‰
 public class RoomGeneration : MonoBehaviour
 {
-    public Material roomMaterial;//í“¬•”‰®‚Ìƒ}ƒeƒŠƒAƒ‹
-    public Material startMaterial;//ƒXƒ^[ƒg•”‰®‚Ìƒ}ƒeƒŠƒAƒ‹
-    public Material goalMaterial;//ƒS[ƒ‹•”‰®‚Ìƒ}ƒeƒŠƒAƒ‹
-    public Material potentialGoalMaterial;//ƒS[ƒ‹•”‰®Œó•â‚Ìƒ}ƒeƒŠƒAƒ‹
-    public int x;//•”‰®‚Ì”i‰¡j
-    public int y;//•”‰®‚Ì”icj
-    public int goalMinDistance = 5;//ƒS[ƒ‹‚Ü‚Å‚ÌÅ’Z‹——£
-    public int maxRooms;//í“¬•”‰®‚ÌÅ‘å”
-    public bool generateOnStart = false;//OnStart()‚Å•”‰®‚ğ¶¬‚·‚é
+    public Material roomMaterial;//æˆ¦é—˜éƒ¨å±‹ã®ãƒãƒ†ãƒªã‚¢ãƒ«
+    public Material startMaterial;//ã‚¹ã‚¿ãƒ¼ãƒˆéƒ¨å±‹ã®ãƒãƒ†ãƒªã‚¢ãƒ«
+    public Material goalMaterial;//ã‚´ãƒ¼ãƒ«éƒ¨å±‹ã®ãƒãƒ†ãƒªã‚¢ãƒ«
+    public Material potentialGoalMaterial;//ã‚´ãƒ¼ãƒ«éƒ¨å±‹å€™è£œã®ãƒãƒ†ãƒªã‚¢ãƒ«
+    public int x;//éƒ¨å±‹ã®æ•°ï¼ˆæ¨ªï¼‰
+    public int y;//éƒ¨å±‹ã®æ•°ï¼ˆç¸¦ï¼‰
+    public int goalMinDistance = 5;//ã‚´ãƒ¼ãƒ«ã¾ã§ã®æœ€çŸ­è·é›¢
+    public int maxRooms;//æˆ¦é—˜éƒ¨å±‹ã®æœ€å¤§æ•°
+    public bool generateOnStart = false;//OnStart()ã§éƒ¨å±‹ã‚’ç”Ÿæˆã™ã‚‹
 
-    private List<GameObject> cubes = new List<GameObject>();//•”‰®‚Ì‹æ‰æ
+    private List<GameObject> cubes = new List<GameObject>();//éƒ¨å±‹ã®åŒºç”»
 
-    public GameObject playerPrefab;//ƒvƒŒƒCƒ„[‚ÌƒvƒŒƒnƒu
-    private GameObject playerInstance;//ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½ƒvƒŒƒCƒ„[
+    public GameObject playerPrefab;//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ—ãƒ¬ãƒãƒ–
+    private GameObject playerInstance;//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 
-    public GameObject[] room;//í“¬•”‰®‚ÌŒó•â
-    public GameObject wall;//¶¬‚·‚é•Ç‚ÌƒvƒŒƒnƒu
-    public GameObject door;//¶¬‚·‚éƒhƒA‚ÌƒvƒŒƒnƒu
-    private List<GameObject> walls = new List<GameObject>();//¶¬‚³‚ê‚½•Ç‰»ƒhƒA
-    public Transform roomParent;//•”‰®‚ğ¶¬‚·‚é‚Æ‚«‚ÌeƒIƒuƒWƒFƒNƒg
+    public GameObject[] room;//æˆ¦é—˜éƒ¨å±‹ã®å€™è£œ
+    public GameObject wall;//ç”Ÿæˆã™ã‚‹å£ã®ãƒ—ãƒ¬ãƒãƒ–
+    public GameObject door;//ç”Ÿæˆã™ã‚‹ãƒ‰ã‚¢ã®ãƒ—ãƒ¬ãƒãƒ–
+    private List<GameObject> walls = new List<GameObject>();//ç”Ÿæˆã•ã‚ŒãŸå£åŒ–ãƒ‰ã‚¢
+    public Transform roomParent;//éƒ¨å±‹ã‚’ç”Ÿæˆã™ã‚‹ã¨ãã®è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
     private void Start()
     {
@@ -42,62 +42,62 @@ public class RoomGeneration : MonoBehaviour
         }
     }
 
-    //•”‰®‚ğ¶¬‚·‚é
+    //éƒ¨å±‹ã‚’ç”Ÿæˆã™ã‚‹
     public void Generate()
     {
-        //‘O¶¬‚³‚ê‚½‚à‚Ì‚ğÁ‚·
+        //å‰ç”Ÿæˆã•ã‚ŒãŸã‚‚ã®ã‚’æ¶ˆã™
         if (cubes.Count != 0)
         {
-            foreach (GameObject cube in cubes)
+            foreach (GameObject cube_ in cubes)
             {
-                Destroy(cube);
+                Destroy(cube_);
             }
             cubes.Clear();
         }
-        if (walls.Count != 0)
+        if(walls.Count != 0)
         {
-            foreach (GameObject wall in walls)
+            foreach(GameObject wall_ in walls)
             {
-                Destroy(wall);
+                Destroy(wall_);
             }
             walls.Clear();
         }
 
-        //–À˜H‚ğ¶¬‚·‚é
-        MapCoordinate mapCoordinate = new MapCoordinate(x, y, goalMinDistance, maxRooms);
+        //è¿·è·¯ã‚’ç”Ÿæˆã™ã‚‹
+        MapCoordinate mapCoordinate_ = new MapCoordinate(x, y, goalMinDistance, maxRooms);
         for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < y; j++)
             {
-                //ì‚ç‚ê‚½–À˜H‚Ì’Ê‚è‚É•”‰®‚ğ¶¬‚·‚é
-                GameObject room_ = Instantiate(room[Random.Range(0, room.Length)], roomParent);
+                //ä½œã‚‰ã‚ŒãŸè¿·è·¯ã®é€šã‚Šã«éƒ¨å±‹ã‚’ç”Ÿæˆã™ã‚‹
+                GameObject room_ = Instantiate(room[Random.Range(0,room.Length)],roomParent);
                 room_.transform.position = new Vector3(i * 50, 0, j * 50);
-                switch (mapCoordinate.coordinate[i, j])
+                switch (mapCoordinate_.coordinate[i, j])
                 {
-                    case 0://‰½‚à‚È‚¢ê‡
+                    case 0://ä½•ã‚‚ãªã„å ´åˆ
                         Destroy(room_);
                         break;
-                    case 1://í“¬•”‰®‚Ìê‡
+                    case 1://æˆ¦é—˜éƒ¨å±‹ã®å ´åˆ
                         cubes.Add(room_);
                         room_.GetComponent<MeshRenderer>().material = roomMaterial;
-                        SetWall(i, j, mapCoordinate);
+                        SetWall(i, j, mapCoordinate_);
                         break;
-                    case 2://ƒXƒ^[ƒg•”‰®‚Ìê‡
+                    case 2://ã‚¹ã‚¿ãƒ¼ãƒˆéƒ¨å±‹ã®å ´åˆ
                         cubes.Add(room_);
                         room_.GetComponent<MeshRenderer>().material = startMaterial;
-                        SetWall(i, j, mapCoordinate);
+                        SetWall(i, j, mapCoordinate_);
                         if (playerInstance != null)
                         {
                             Destroy(playerInstance);
                         }
                         playerInstance = Instantiate(playerPrefab, room_.transform.position, Quaternion.identity);
                         break;
-                    case 3://ƒS[ƒ‹•”‰®‚Ìê‡
+                    case 3://ã‚´ãƒ¼ãƒ«éƒ¨å±‹ã®å ´åˆ
                         cubes.Add(room_);
                         room_.GetComponent<MeshRenderer>().material = goalMaterial;
-                        SetWall(i, j, mapCoordinate);
+                        SetWall(i, j, mapCoordinate_);
                         break;
-                    case 4://ƒS[ƒ‹Œó•â‚Ìê‡
+                    case 4://ã‚´ãƒ¼ãƒ«å€™è£œã®å ´åˆ
                         Destroy(room_);
                         break;
                 }
@@ -105,15 +105,15 @@ public class RoomGeneration : MonoBehaviour
         }
     }
 
-    public void SetWall(int x, int y, MapCoordinate mapCoordinate)
+    public void SetWall(int x, int y, MapCoordinate mapCoordinate_)
     {
-        //‰E
-        if (x != this.x - 1)//coordinate‚ª”ÍˆÍ‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+        //å³
+        if (x != this.x - 1)//coordinateãŒç¯„å›²ã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
         {
-            //—×‚É‰½‚à‚È‚¢‚©ƒS[ƒ‹Œó•â‚¾‚Á‚½‚ç•Ç‚ğ’u‚«A‚»‚êˆÈŠO‚¾‚Á‚½‚ç•Ç‚ğ’u‚­
-            if (mapCoordinate.coordinate[x + 1, y] != 0 && mapCoordinate.coordinate[x + 1, y] != 4)
+            //éš£ã«ä½•ã‚‚ãªã„ã‹ã‚´ãƒ¼ãƒ«å€™è£œã ã£ãŸã‚‰å£ã‚’ç½®ãã€ãã‚Œä»¥å¤–ã ã£ãŸã‚‰å£ã‚’ç½®ã
+            if (mapCoordinate_.coordinate[x + 1, y] != 0 && mapCoordinate_.coordinate[x + 1, y] != 4)
             {
-                GameObject wall_ = Instantiate(door, new Vector3(x * 50 + 25, 0, y * 50), Quaternion.Euler(0, 90, 0), roomParent);
+                GameObject wall_ = Instantiate(door, new Vector3(x * 50 + 25, 0, y * 50), Quaternion.Euler(0, 90, 0),roomParent);
                 wall_.name = $"door_{x}_{y}_Rignt";
                 walls.Add(wall_);
             }
@@ -124,17 +124,17 @@ public class RoomGeneration : MonoBehaviour
                 walls.Add(wall_);
             }
         }
-        else//’[‚¾‚Á‚½‚ç•Ç‚ğ’u‚­
+        else//ç«¯ã ã£ãŸã‚‰å£ã‚’ç½®ã
         {
             GameObject wall_ = Instantiate(wall, new Vector3(x * 50 + 25, 0, y * 50), Quaternion.Euler(0, 90, 0), roomParent);
             wall_.name = $"wall_{x}_{y}_Rignt";
             walls.Add(wall_);
         }
-        //ˆÈ‰º‚Ù‚Ú“¯‚¶
-        //¶
+        //ä»¥ä¸‹ã»ã¼åŒã˜
+        //å·¦
         if (x != 0)
         {
-            if (mapCoordinate.coordinate[x - 1, y] != 0 && mapCoordinate.coordinate[x - 1, y] != 4)
+            if (mapCoordinate_.coordinate[x - 1, y] != 0 && mapCoordinate_.coordinate[x - 1, y] != 4)
             {
                 GameObject wall_ = Instantiate(door, new Vector3(x * 50 - 25, 0, y * 50), Quaternion.Euler(0, -90, 0), roomParent);
                 wall_.name = $"door_{x}_{y}_Left";
@@ -153,10 +153,10 @@ public class RoomGeneration : MonoBehaviour
             wall_.name = $"wall_{x}_{y}_Left";
             walls.Add(wall_);
         }
-        //‘O
+        //å‰
         if (y != this.y - 1)
         {
-            if (mapCoordinate.coordinate[x, y + 1] != 0 && mapCoordinate.coordinate[x, y + 1] != 4)
+            if (mapCoordinate_.coordinate[x, y + 1] != 0 && mapCoordinate_.coordinate[x, y + 1] != 4)
             {
                 GameObject wall_ = Instantiate(door, new Vector3(x * 50, 0, y * 50 + 25), Quaternion.Euler(0, 0, 0), roomParent);
                 wall_.name = $"door_{x}_{y}_Foward";
@@ -175,10 +175,10 @@ public class RoomGeneration : MonoBehaviour
             wall_.name = $"wall_{x}_{y}_Foward";
             walls.Add(wall_);
         }
-        //Œã
+        //å¾Œ
         if (y != 0)
         {
-            if (mapCoordinate.coordinate[x, y - 1] != 0 && mapCoordinate.coordinate[x, y - 1] != 4)
+            if (mapCoordinate_.coordinate[x, y - 1] != 0 && mapCoordinate_.coordinate[x, y - 1] != 4)
             {
                 GameObject wall_ = Instantiate(door, new Vector3(x * 50, 0, y * 50 - 25), Quaternion.Euler(0, 180, 0), roomParent);
                 wall_.name = $"door_{x}_{y}_Back";
@@ -202,42 +202,42 @@ public class RoomGeneration : MonoBehaviour
 
 public struct MapCoordinate
 {
-    public int[,] coordinate;//0:‰½‚à‚È‚µA1:í“¬•”‰®A2:ƒXƒ^[ƒgA3:ƒS[ƒ‹A4:ƒS[ƒ‹Œó•â
-    private Vector2 startCoordinate;//ƒXƒ^[ƒgˆÊ’u
-    private List<Vector2> potentialGoals;//ƒS[ƒ‹Œó•â‚ÌƒŠƒXƒg
+    public int[,] coordinate;//0:ä½•ã‚‚ãªã—ã€1:æˆ¦é—˜éƒ¨å±‹ã€2:ã‚¹ã‚¿ãƒ¼ãƒˆã€3:ã‚´ãƒ¼ãƒ«ã€4:ã‚´ãƒ¼ãƒ«å€™è£œ
+    private Vector2 startCoordinate;//ã‚¹ã‚¿ãƒ¼ãƒˆä½ç½®
+    private List<Vector2> potentialGoals;//ã‚´ãƒ¼ãƒ«å€™è£œã®ãƒªã‚¹ãƒˆ
 
-    public MapCoordinate(int x, int y, int goalMinDistance, int maxRoom)
+    public MapCoordinate(int x,int y,int goalMinDistance_,int maxRoom_)
     {
         coordinate = new int[x, y];
         potentialGoals = new List<Vector2>();
         startCoordinate = Vector2.zero;
-        SetRoom(x, y, goalMinDistance, maxRoom);
+        SetRoom(x, y, goalMinDistance_, maxRoom_);
     }
 
-    private void SetRoom(int x, int y, int goalMinDistance, int maxRoom)
+    private void SetRoom(int x, int y, int goalMinDistance_, int maxRoom_)
     {
-        if (x + y - 3 < goalMinDistance)
+        if (x + y - 3 < goalMinDistance_)
         {
-            Debug.Log("Å¬‹——£‚ª‘«‚è‚Ü‚¹‚ñ");
+            Debug.Log("æœ€å°è·é›¢ãŒè¶³ã‚Šã¾ã›ã‚“");
             return;
         }
         while (true)
         {
 
-            startCoordinate = new Vector2(Random.Range(0, x), Random.Range(0, y));//ƒXƒ^[ƒgˆÊ’u‚ÌÀ•W
+            startCoordinate = new Vector2(Random.Range(0, x), Random.Range(0, y));//ã‚¹ã‚¿ãƒ¼ãƒˆä½ç½®ã®åº§æ¨™
 
             for (int i = 0; i < x * y; i++)
             {
-                int cx = i % x;//xÀ•W
-                int cy = i / x;//yÀ•W
+                int cx_ = i % x;//xåº§æ¨™
+                int cy_ = i / x;//yåº§æ¨™
 
-                if ((Mathf.Abs(cx - startCoordinate.x) + Mathf.Abs(cy - startCoordinate.y)) >= goalMinDistance)
+                if ((Mathf.Abs(cx_ - startCoordinate.x) + Mathf.Abs(cy_ - startCoordinate.y)) >= goalMinDistance_)
                 {
-                    potentialGoals.Add(new Vector3(cx, cy));
-                    coordinate[cx, cy] = 4;
+                    potentialGoals.Add(new Vector3(cx_, cy_));
+                    coordinate[cx_, cy_] = 4;
                 }
             }
-            //ƒS[ƒ‹‚ª‚È‚¢‚Æ‚«‚É‚à‚¤ˆê‰ñƒXƒ^[ƒg‚ğ’T‚·
+            //ã‚´ãƒ¼ãƒ«ãŒãªã„ã¨ãã«ã‚‚ã†ä¸€å›ã‚¹ã‚¿ãƒ¼ãƒˆã‚’æ¢ã™
             if (potentialGoals.Count > 0)
             {
                 coordinate[(int)startCoordinate.x, (int)startCoordinate.y] = 2;
@@ -246,44 +246,44 @@ public struct MapCoordinate
             Debug.Log("Repeat");
             potentialGoals.Clear();
         }
-        //ƒ‰ƒ“ƒ_ƒ€‚ÅƒS[ƒ‹‚ğŒˆ‚ß‚é
-        Vector2 goalCoordinate = potentialGoals[Random.Range(0, potentialGoals.Count)];
-        coordinate[(int)goalCoordinate.x, (int)goalCoordinate.y] = 3;
+        //ãƒ©ãƒ³ãƒ€ãƒ ã§ã‚´ãƒ¼ãƒ«ã‚’æ±ºã‚ã‚‹
+        Vector2 goalCoordinate_ = potentialGoals[Random.Range(0, potentialGoals.Count)];
+        coordinate[(int)goalCoordinate_.x, (int)goalCoordinate_.y] = 3;
 
-        Vector2 placeCoordinate = startCoordinate;//
+        Vector2 placeCoordinate_ = startCoordinate;//
 
-        int count = 0;//–³ŒÀƒ‹[ƒv‚ğ”ğ‚¯‚é
+        int count_ = 0;//ç„¡é™ãƒ«ãƒ¼ãƒ—ã‚’é¿ã‘ã‚‹
 
-        //í“¬•”‰®‚ğ”z’u
-        while (maxRoom > 0)
+        //æˆ¦é—˜éƒ¨å±‹ã‚’é…ç½®
+        while (maxRoom_ > 0)
         {
-            Vector2 direction = Vector2.zero;//Ÿ‚Ì•”‰®‚ÌÀ•W
-            bool moveX = false;//x•ûŒü‚Ö‚ÌˆÚ“®
-            bool moveY = false;//y•ûŒü‚Ö‚ÌˆÚ“®
+            Vector2 direction = Vector2.zero;//æ¬¡ã®éƒ¨å±‹ã®åº§æ¨™
+            bool moveX = false;//xæ–¹å‘ã¸ã®ç§»å‹•
+            bool moveY = false;//yæ–¹å‘ã¸ã®ç§»å‹•
 
-            if (placeCoordinate.x > goalCoordinate.x)
+            if (placeCoordinate_.x > goalCoordinate_.x)
             {
                 direction.x = -1;
                 moveX = true;
             }
-            else if (placeCoordinate.x < goalCoordinate.x)
+            else if (placeCoordinate_.x < goalCoordinate_.x)
             {
                 direction.x = 1;
                 moveX = true;
             }
 
-            if (placeCoordinate.y > goalCoordinate.y)
+            if (placeCoordinate_.y > goalCoordinate_.y)
             {
                 direction.y = -1;
                 moveY = true;
             }
-            else if (placeCoordinate.y < goalCoordinate.y)
+            else if (placeCoordinate_.y < goalCoordinate_.y)
             {
                 direction.y = 1;
                 moveY = true;
             }
 
-            if (moveX && moveY)//Î‚ß‚ÉˆÚ“®‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+            if (moveX && moveY)//æ–œã‚ã«ç§»å‹•ã—ãªã„ã‚ˆã†ã«ã™ã‚‹
             {
                 if (Mathf.RoundToInt(Random.value) == 1)
                 {
@@ -295,12 +295,12 @@ public struct MapCoordinate
                 }
             }
 
-            placeCoordinate += direction;
-            if (placeCoordinate == goalCoordinate)//ƒS[ƒ‹‚É‚Â‚¢‚½‚ç‚à‚¤ˆê‰ñƒXƒ^[ƒg‚©‚ç•”‰®‚ğì‚é
+            placeCoordinate_ += direction;
+            if (placeCoordinate_ == goalCoordinate_)
             {
-                placeCoordinate = startCoordinate;
-                count++;
-                if (count > 100)
+                placeCoordinate_ = startCoordinate;
+                count_++;
+                if (count_ > 100)
                 {
                     Debug.Log("Broke Goal");
                     break;
@@ -308,21 +308,21 @@ public struct MapCoordinate
                 continue;
             }
 
-            if (coordinate[(int)placeCoordinate.x, (int)placeCoordinate.y] != 1)//•”‰®‚¶‚á‚È‚©‚Á‚½‚ç•”‰®‚É‚·‚é
+            if (coordinate[(int)placeCoordinate_.x, (int)placeCoordinate_.y] != 1)
             {
-                coordinate[(int)placeCoordinate.x, (int)placeCoordinate.y] = 1;
-                maxRoom--;
-                Debug.Log("MR:" + maxRoom);
-                /*                if(maxRoom <= 0)
-                                {
-                                    Debug.Log("Broke Max Room");
-                                    return;
-                                }*/
+                coordinate[(int)placeCoordinate_.x, (int)placeCoordinate_.y] = 1;
+                maxRoom_--;
+                Debug.Log("MR:" + maxRoom_);
+/*                if(maxRoom <= 0)
+                {
+                    Debug.Log("Broke Max Room");
+                    return;
+                }*/
             }
             //Debug.Log("PC:" + placeCoordinate + "GC:" + goalCoordinate);
 
-            count++;//–³ŒÀƒ‹[ƒv‚µ‚È‚¢‚æ‚¤‚É‚·‚é
-            if (count > 100)
+            count_++;
+            if (count_ > 100)
             {
                 Debug.Log("Broke Nothing");
                 break;
