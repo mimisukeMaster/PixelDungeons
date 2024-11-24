@@ -3,10 +3,10 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float WanderVelocity = 5.0f;
-    public float ChasingSpeed = 5.0f;
+    public float ChasingSpeed = 4.0f;
     public float WanderInterval = 1.0f;
     public float DetectionInterval = 0.5f;
-    public float DetectionDistance = 5.0f;
+    public float DetectionRadius = 5.0f;
 
     private Rigidbody rb;
     private float nextRayTime;
@@ -56,29 +56,26 @@ public class EnemyController : MonoBehaviour
 
     private void DetectPlayer()
     {
-        // 前左右にRayを飛ばす、当たったときのみTrue
-        if (Physics.BoxCast(transform.position, detectArea, transform.forward,
-                out RaycastHit hit, Quaternion.identity, DetectionDistance) ||
-            Physics.BoxCast(transform.position, detectArea, transform.right,
-                out hit, Quaternion.identity, DetectionDistance) ||
-            Physics.BoxCast(transform.position, detectArea, -transform.right,
-                out hit, Quaternion.identity, DetectionDistance))
+        // 周囲の物体を検知
+        Collider[] cols = Physics.OverlapSphere(transform.position, DetectionRadius);
+
+        foreach (var col in cols)
         {
-            if (hit.collider.CompareTag("Player"))
+            if (col.CompareTag("Player"))
             {
                 debugMat.color = Color.red;
                 
                 // 衝突相手を格納
-                chasingTarget = hit.collider.gameObject;
+                chasingTarget = col.gameObject;
                 
                 isChasing = true;
             }
-        }
-        else
-        {
-            debugMat.color = Color.white;
-            chasingTarget = null;
-            isChasing = false;
+            else
+            {
+                debugMat.color = Color.white;
+                chasingTarget = null;
+                isChasing = false;
+            }
         }
     }
 }
