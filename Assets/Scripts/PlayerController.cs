@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float JumpForce = 5.0f;
-    public float moveSpeed = 5.0f;
+    public float MoveSpeed = 5.0f;
     
     private Rigidbody rb;
     private ControlActions controls;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // 入力に合わせた移動
-        Vector3 move = new Vector3(moveInput.x , 0f, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
+        Vector3 move = new Vector3(moveInput.x , 0f, moveInput.y) * MoveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
 
     }
