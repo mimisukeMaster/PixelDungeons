@@ -8,13 +8,13 @@ public class EnemyController : MonoBehaviour
     public float DetectionInterval = 0.5f;
     public float DetectionRadius = 5.0f;
 
-    private Rigidbody rb;
-    private float nextRayTime;
-    private float nextWanderTime;
-    private bool isChasing;
-    private GameObject chasingTarget;
-    private Vector3 detectArea;
-    private Material debugMat;
+    protected Rigidbody rb;
+    protected float nextRayTime;
+    protected float nextWanderTime;
+    protected bool isChasing;
+    protected GameObject chasingTarget;
+    protected Vector3 detectArea;
+    protected Material debugMat;
 
 
     private void Start()
