@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour
         debugMat = GetComponent<MeshRenderer>().material;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // 一定時間ごとにプレイヤーを検知
         if (Time.time > nextRayTime)
