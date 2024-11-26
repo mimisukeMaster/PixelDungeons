@@ -10,23 +10,27 @@ public class FarAttackEnemy : EnemyController
     public float ShootSpeed = 10.0f;
     public float ShootInterval = 1.0f;
     public GameObject Bullet; 
+
     private float nextShootTime;
+    
+
     protected override void Update() 
     {
         // 敵のUpdate()を実行
-        base.Update ();
-        // 追跡中で一定距離以内になった場合、弾を出す処理
+        base.Update();
+
+        // 弾を出す処理
         if(Time.time > nextShootTime && isChasing)
         { 
             Vector3 distanceVec = chasingTarget.transform.position - transform.position;
             if(distanceVec.magnitude < AttackDistance)
-        {
-          GameObject bullet = Instantiate (Bullet,transform.position,Quaternion.identity); 
-          bullet.GetComponent <Rigidbody>().linearVelocity = distanceVec.normalized * ShootSpeed ;
+            {
+                GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity); 
+                bullet.GetComponent<Rigidbody>().linearVelocity = distanceVec.normalized * ShootSpeed;
 
-
+                Destroy(bullet, 5.0f);
+            }
+            nextShootTime = Time.time + ShootInterval;
         }
-        nextShootTime = Time.time + ShootInterval ;
     }
-}
 }

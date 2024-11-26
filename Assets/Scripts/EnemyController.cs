@@ -1,4 +1,3 @@
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -70,13 +69,12 @@ public class EnemyController : MonoBehaviour
                 chasingTarget = col.gameObject;
                 
                 isChasing = true;
-            }
-            else
-            {
-                debugMat.color = Color.white;
-                chasingTarget = null;
-                isChasing = false;
+                return;
             }
         }
+        debugMat.color = Color.white;
+        chasingTarget = null;
+        isChasing = false;
+        
     }
 }
