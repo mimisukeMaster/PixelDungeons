@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     protected Material debugMat;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         nextRayTime = 0f;
         nextWanderTime = 0f;
