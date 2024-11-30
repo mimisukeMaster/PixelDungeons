@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // 入力に合わせた移動
-        Vector3 move = new Vector3(moveInput.x , 0f, moveInput.y) * MoveSpeed * Time.fixedDeltaTime;
+        
+        Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y)
+                            * MoveSpeed * Time.fixedDeltaTime ;
         rb.MovePosition(rb.position + move);
 
     }
