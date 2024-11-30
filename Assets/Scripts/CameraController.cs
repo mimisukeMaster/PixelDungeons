@@ -3,29 +3,31 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public float Weight = 10.0f;
-    private float xRotation;
 
-    Camera camera;
+    private float verticalRotation;
+    private float horizontalRotation;
+
+
     void Start()
     {
-        camera = gameObject .GetComponent <Camera>();
         Cursor.lockState = CursorLockMode.Locked;
-        xRotation = 0;
+        verticalRotation = 0f;
+        horizontalRotation = 0f;
     }
     void Update()
     {
+        // 入力受付
         float mouseX = Input.GetAxis("Mouse X") * Weight;
         float mouseY = Input.GetAxis("Mouse Y") * Weight;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation,-90f,90f);
-        transform.localRotation = Quaternion.Euler(xRotation,0,0);
-        transform.parent.transform.Rotate(Vector3.up * mouseX);
 
+        // 入力値整形
+        verticalRotation -= mouseY;
+        horizontalRotation += mouseX;
 
+        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-
-
+        // 角度を反映、水平方向はプレイヤーごと回転
+        transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        transform.parent.transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
     }
-
-    
 }

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool isGrounded;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         // 入力に合わせた移動
         
         Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y)
-                            * MoveSpeed * Time.fixedDeltaTime ;
+                             * MoveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
 
     }
