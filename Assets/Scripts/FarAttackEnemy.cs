@@ -6,6 +6,7 @@ using UnityEngine;
 /// <remarks>遠距離攻撃は遠方から弾を出す</remarks>
 public class FarAttackEnemy : EnemyController
 {
+    [Space(20)]
     public float AttackDistance = 3.0f;
     public float ShootSpeed = 10.0f;
     public float ShootInterval = 1.0f;
@@ -18,6 +19,13 @@ public class FarAttackEnemy : EnemyController
     {
         // 敵のUpdate()を実行
         base.Update();
+
+        // 追跡処理
+        if (isChasing)
+        {
+            Vector3 dirVector = (chasingTarget.transform.position - transform.position).normalized;
+            rb.linearVelocity = dirVector * ChasingSpeed;
+        }
 
         // 弾を出す処理
         if(Time.time > nextShootTime && isChasing)

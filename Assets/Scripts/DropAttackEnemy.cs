@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DoropAttackEnemy : EnemyController 
 {
-    
+    [Space(20)]    
     public float Altitude = 10.0f;
     public float DropInterval = 1.0f;
     public GameObject Bullet; 
@@ -26,6 +26,13 @@ public class DoropAttackEnemy : EnemyController
     {
         // 継承元のUpdate()を実行
         base.Update();
+
+        // 追跡処理
+        if (isChasing)
+        {
+            Vector3 dirVector = (chasingTarget.transform.position - transform.position).normalized;
+            rb.linearVelocity = dirVector * ChasingSpeed;
+        }
 
         if(Time.time > nextDropTime && isChasing)
         {

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 敵の基本共通処理
+/// </summary>
+/// <remarks>プレイヤー検知フラグ<c>isChasing</c>を用い継承先で制御する</remarks>
 public class EnemyController : MonoBehaviour
 {
     [Header("ランダムな方向に動く時の初速")]
@@ -38,13 +42,6 @@ public class EnemyController : MonoBehaviour
         {
             DetectPlayer();
             nextRayTime = Time.time + DetectionInterval;
-        }
-
-        // 追跡処理
-        if (isChasing)
-        {
-            Vector3 dirVector = (chasingTarget.transform.position - transform.position).normalized;
-            rb.linearVelocity = dirVector * ChasingSpeed;
         }
 
         // ランダムに移動
