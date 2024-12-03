@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // ランダムに移動
-        else if (Time.time > nextWanderTime)
+        if (Time.time > nextWanderTime && !isChasing)
         {
             Vector3 randomDirection = new Vector3(
                 Random.Range(-1.0f, 1.0f), 0f, Random.Range(-1.0f, 1.0f)).normalized;
