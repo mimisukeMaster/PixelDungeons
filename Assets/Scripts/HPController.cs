@@ -16,7 +16,7 @@ public class HPController : MonoBehaviour
         
     }
 
-    void Damaged(int damage)
+    public void Damaged(int damage)
     {
         HP -= damage;
         if(HP < 0)
@@ -25,7 +25,7 @@ public class HPController : MonoBehaviour
         }
     }
 
-    void Healed(int heal)
+    public void Healed(int heal)
     {
         HP += heal;
         if(HP > MaxHP) HP = MaxHP;
