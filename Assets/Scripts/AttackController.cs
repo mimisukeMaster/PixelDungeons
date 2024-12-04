@@ -1,37 +1,26 @@
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class AttackController : MonoBehaviour
 {
-    private int TargetLayer;
-    private float damage;
+    private string targetTag;
+    private int damage;
     private float speed;
     private Transform myTransform;
 
-    //初期化
-    public void Init(int TargetLayer, float damage, float speed)
+    // 初期化
+    public void Init(string TargetTag, int Damage, float Speed)
     {
-        this.TargetLayer = TargetLayer;
-        this.damage = damage;
-        this.speed = speed;
+        targetTag = TargetTag;
+        damage = Damage;
+        speed = Speed;
     }
 
-    private void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        if (myTransform == null)
+        //タグで判定する
+        if (other.gameObject.CompareTag(targetTag))
         {
-            myTransform = transform;
-        }
-
-        myTransform.position += Vector3.forward * speed * Time.deltaTime;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //レイヤーで判定する
-        if (other.gameObject.layer == TargetLayer)
-        {
-            other.GetComponent<HPController>().Damaged((int)damage);
+            other.gameObject.GetComponent<HPController>().Damaged(damage);
             Destroy(gameObject);
         }
     }

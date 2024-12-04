@@ -6,15 +6,15 @@ using UnityEngine;
 /// <remarks>プレイヤー検知フラグ<c>isChasing</c>を用い継承先で制御する</remarks>
 public class EnemyController : MonoBehaviour
 {
-    [Header("ランダムな方向に動く時の初速")]
+    [Tooltip("ランダムな方向に動く時の初速")]
     public float WanderVelocity = 5.0f;
-    [Header("プレイヤーを追跡する速さ")]
+    [Tooltip("プレイヤーを追跡する速さ")]
     public float ChasingSpeed = 4.0f;
-    [Header("ランダムな方向に動く時間間隔")]
+    [Tooltip("ランダムな方向に動く時間間隔")]
     public float WanderInterval = 1.0f;
-    [Header("プレイヤーを検知する時間間隔")]
+    [Tooltip("プレイヤーを検知する時間間隔")]
     public float DetectionInterval = 0.5f;
-    [Header("プレイヤーを発見するまでの距離")]
+    [Tooltip("プレイヤーを発見するまでの距離")]
     public float DetectionRadius = 5.0f;
 
     protected Rigidbody rb;
