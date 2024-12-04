@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3821807760615774161}
   - component: {fileID: 5358514467285814841}
   - component: {fileID: 1121286843711624507}
+  - component: {fileID: 7923432054015895500}
   m_Layer: 0
   m_Name: DropEnemyBullet
   m_TagString: Untagged
@@ -136,3 +137,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7923432054015895500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581094999854356183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,15 +4,13 @@ public class AttackController : MonoBehaviour
 {
     private string targetTag;
     private int damage;
-    private float speed;
     private Transform myTransform;
 
     // 初期化
-    public void Init(string TargetTag, int Damage, float Speed)
+    public void Init(string TargetTag, int Damage)
     {
         targetTag = TargetTag;
         damage = Damage;
-        speed = Speed;
     }
 
     private void OnCollisionEnter(Collision other)

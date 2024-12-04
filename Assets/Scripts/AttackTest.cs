@@ -19,7 +19,7 @@ public class AttackTest : MonoBehaviour
         if(Input.GetKey(KeyCode.Space) && attackInterval >= AttackSpeed)
         {
             GameObject attack = Instantiate(Attack,transform.position,Quaternion.identity);
-            attack.GetComponent<AttackController>().Init(TargetTag, Damage, ProjectileSpeed);
+            attack.GetComponent<AttackController>().Init(TargetTag, Damage);
             attackInterval = 0;
         }    
     }

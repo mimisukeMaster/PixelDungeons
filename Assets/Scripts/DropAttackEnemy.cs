@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoropAttackEnemy : EnemyController 
+public class DropAttackEnemy : EnemyController 
 {
     [Space(20)]    
     public float Altitude = 10.0f;
@@ -38,6 +38,8 @@ public class DoropAttackEnemy : EnemyController
         {
             // 生成と同時に落下していく
             GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<AttackController>().Init("Player",Attack);
+
 
             Destroy(bullet, 5.0f);
 
