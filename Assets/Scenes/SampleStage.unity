@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 174695924}
   - component: {fileID: 174695919}
   m_Layer: 0
-  m_Name: LineAttackEnemy
+  m_Name: BeamAttackEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,8 +191,8 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Attack: 10
-  WaveInterval: 5
-  WaveLength: 20
+  BeamInterval: 5
+  BeamLength: 20
 --- !u!65 &174695920
 BoxCollider:
   m_ObjectHideFlags: 0
