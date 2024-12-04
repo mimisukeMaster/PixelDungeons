@@ -158,7 +158,8 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
-  WaveInterval: 0
+  WaveInterval: 5
+  WaveLength: 20
 --- !u!65 &174695920
 BoxCollider:
   m_ObjectHideFlags: 0
