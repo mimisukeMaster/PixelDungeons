@@ -27,23 +27,22 @@ public class DropAttackEnemy : EnemyController
         // 継承元のUpdate()を実行
         base.Update();
 
-        // 追跡処理
+        // 追跡
         if (isChasing)
         {
             Vector3 dirVector = (chasingTarget.transform.position - transform.position).normalized;
             rb.linearVelocity = dirVector * ChasingSpeed;
-        }
 
-        if(Time.time > nextDropTime && isChasing)
-        {
-            // 生成と同時に落下していく
-            GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
-            bullet.GetComponent<AttackController>().Init("Player",Attack);
+            // 一定時間ごとに弾を出す
+            if(Time.time > nextDropTime)
+            {
+                GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+                bullet.GetComponent<AttackController>().Init("Player", Attack);
 
+                Destroy(bullet, 5.0f);
 
-            Destroy(bullet, 5.0f);
-
-            nextDropTime = Time.time + DropInterval;
+                nextDropTime = Time.time + DropInterval;
+            }
         }
     }
 }

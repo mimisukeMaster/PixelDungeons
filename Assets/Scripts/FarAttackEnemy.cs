@@ -20,26 +20,22 @@ public class FarAttackEnemy : EnemyController
         // 敵のUpdate()を実行
         base.Update();
 
-        // 追跡処理
+        // 追跡時
         if (isChasing)
         {
-            Vector3 dirVector = (chasingTarget.transform.position - transform.position).normalized;
-            rb.linearVelocity = dirVector * ChasingSpeed;
-        }
-
-        // 弾を出す処理
-        if(Time.time > nextShootTime && isChasing)
-        { 
             Vector3 distanceVec = chasingTarget.transform.position - transform.position;
-            if(distanceVec.magnitude < AttackDistance)
+            rb.linearVelocity = distanceVec.normalized * ChasingSpeed;
+
+            // 一定時間ごとに弾を出す
+            if(Time.time > nextShootTime && distanceVec.magnitude < AttackDistance)
             {
                 GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity); 
                 bullet.GetComponent<Rigidbody>().linearVelocity = distanceVec.normalized * ShootSpeed;
-                bullet.GetComponent<AttackController>().Init("Player",Attack);
+                bullet.GetComponent<AttackController>().Init("Player", Attack);
 
                 Destroy(bullet, 5.0f);
+                nextShootTime = Time.time + ShootInterval;
             }
-            nextShootTime = Time.time + ShootInterval;
         }
     }
 }
