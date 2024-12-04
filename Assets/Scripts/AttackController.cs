@@ -4,7 +4,6 @@ public class AttackController : MonoBehaviour
 {
     private string targetTag;
     private int damage;
-    private Transform myTransform;
 
     // 初期化
     public void Init(string TargetTag, int Damage)
