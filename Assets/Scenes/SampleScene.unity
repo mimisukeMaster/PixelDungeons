@@ -158,6 +158,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
+  Attack: 10
   WaveInterval: 5
   WaveLength: 20
 --- !u!65 &174695920
@@ -243,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 174695918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 6.9}
+  m_LocalPosition: {x: -0.12, y: 0.4, z: 6.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -421,6 +422,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
+  Attack: 10
   Altitude: 10
   DropInterval: 1
   Bullet: {fileID: 4581094999854356183, guid: c028ad137dcb1324eb688393e0f86157, type: 3}
@@ -694,6 +696,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
+  Attack: 20
   AttackDistance: 5
   ShootSpeed: 10
   ShootInterval: 1
@@ -936,7 +939,7 @@ MonoBehaviour:
   AttackSpeed: 0.1
   Damage: 2
   ProjectileSpeed: 3
-  TargetLayer: 6
+  TargetTag: 
 --- !u!4 &1361376333
 Transform:
   m_ObjectHideFlags: 0

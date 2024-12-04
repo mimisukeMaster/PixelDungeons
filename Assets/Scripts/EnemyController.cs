@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
     public float DetectionInterval = 0.5f;
     [Tooltip("プレイヤーを発見するまでの距離")]
     public float DetectionRadius = 5.0f;
+    [Tooltip("攻撃力")]
+    public int Attack = 10;
+
 
     protected Rigidbody rb;
     protected float nextRayTime;
