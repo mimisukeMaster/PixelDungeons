@@ -62,4 +62,9 @@ public class BeamAttackEnemy : EnemyController
         yield return new WaitForSeconds(2.0f);
         BeamInit();
     }
+    public override void OnDied()
+    {
+        GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
+        base.OnDied();
+    }
 }
