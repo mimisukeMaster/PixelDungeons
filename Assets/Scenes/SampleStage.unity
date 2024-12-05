@@ -770,7 +770,7 @@ MonoBehaviour:
   AttackDistance: 5
   ShootSpeed: 10
   ShootInterval: 1
-  Bullet: {fileID: 2548203629150972424, guid: 9de9c0c7985e15e45b1168fab8000100, type: 3}
+  Bullet: {fileID: 4581094999854356183, guid: 0115b1ffd16866b4dae97c0c82f7742e, type: 3}
 --- !u!1 &540780624
 GameObject:
   m_ObjectHideFlags: 0
