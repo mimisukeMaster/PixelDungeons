@@ -84,10 +84,9 @@ public class EnemyController : MonoBehaviour
         isChasing = false;
         
     }
-    public virtual void OnDied(){
-
+    public virtual void OnDied()
+    {
         Destroy(gameObject);
-
     }
 
 }

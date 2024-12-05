@@ -41,6 +41,7 @@ public class FarAttackEnemy : EnemyController
     public override void OnDied()
     {
         GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
+        item.GetComponent<MeshRenderer>().material.color = Color.yellow;
         base.OnDied();
     }
 }
