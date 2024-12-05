@@ -166,9 +166,10 @@ GameObject:
   - component: {fileID: 174695925}
   - component: {fileID: 174695924}
   - component: {fileID: 174695919}
+  - component: {fileID: 174695926}
   m_Layer: 0
   m_Name: BeamAttackEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,6 +192,7 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Attack: 10
+  DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   BeamInterval: 5
   BeamLength: 20
 --- !u!65 &174695920
@@ -416,6 +418,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &174695926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174695918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01eff119a8e7c5247816ef67d61cccf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  MaxHP: 100
+  Controller: {fileID: 174695919}
 --- !u!1 &234941430
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,13 +485,14 @@ GameObject:
   - component: {fileID: 336903881}
   - component: {fileID: 336903880}
   - component: {fileID: 336903879}
+  - component: {fileID: 336903885}
   m_Layer: 0
   m_Name: DropAttackEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &336903879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +511,7 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Attack: 10
+  DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   Altitude: 10
   DropInterval: 1
   Bullet: {fileID: 4581094999854356183, guid: c028ad137dcb1324eb688393e0f86157, type: 3}
@@ -612,6 +631,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336903885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336903878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01eff119a8e7c5247816ef67d61cccf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  MaxHP: 100
+  Controller: {fileID: 336903879}
 --- !u!1 &428036621
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,9 +660,10 @@ GameObject:
   - component: {fileID: 428036623}
   - component: {fileID: 428036622}
   - component: {fileID: 428036627}
+  - component: {fileID: 428036628}
   m_Layer: 0
   m_Name: FarAttackEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -767,10 +802,26 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Attack: 10
+  DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   AttackDistance: 5
   ShootSpeed: 10
   ShootInterval: 1
   Bullet: {fileID: 4581094999854356183, guid: 0115b1ffd16866b4dae97c0c82f7742e, type: 3}
+--- !u!114 &428036628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428036621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01eff119a8e7c5247816ef67d61cccf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  MaxHP: 100
+  Controller: {fileID: 428036627}
 --- !u!1 &540780624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1497,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpForce: 5
   MoveSpeed: 5
+  AttackSpeed: 20
+  Attack: 10
+  MagicObj: {fileID: 4581094999854356183, guid: 2269fd8248272dc41a22f2cc17698d8c, type: 3}
 --- !u!54 &1738896457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1577,6 +1631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 100
+  Controller: {fileID: 0}
 --- !u!1 &1757838585
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ public class HPController : MonoBehaviour
 {   
     public int HP;
     public int MaxHP = 100;
+    public EnemyController Controller;
 
 
     void Start()
@@ -21,7 +22,16 @@ public class HPController : MonoBehaviour
         HP -= damage;
         if(HP < 0)
         {
-            //ゲームオーバー処理を呼び出す
+            if(gameObject.CompareTag("Player"))
+            {
+                
+
+            }
+            else if(gameObject.CompareTag("Enemy"))
+            {
+                Controller.OnDied();
+
+            }
         }
     }
 

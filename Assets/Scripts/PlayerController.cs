@@ -5,6 +5,10 @@ public class PlayerController : MonoBehaviour
 {
     public float JumpForce = 5.0f;
     public float MoveSpeed = 5.0f;
+    public float AttackSpeed = 5.0f;
+    public int Attack = 10;
+    
+    public GameObject MagicObj;
     
     private Rigidbody rb;
     private ControlActions controls;
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
+        controls.Player.Attack.performed += OnAttackPerformed;
     }
 
     private void FixedUpdate()
@@ -73,4 +78,14 @@ public class PlayerController : MonoBehaviour
         // 移動入力が無くなったら止まる
         moveInput = Vector2.zero;
     }
+    private void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        GameObject magic = Instantiate(MagicObj, transform.position, Quaternion.identity); 
+                magic.GetComponent<Rigidbody>().linearVelocity = transform.forward * AttackSpeed;
+                magic.GetComponent<AttackController>().Init("Enemy", Attack);
+
+                Destroy(magic, 5.0f);
+
+    }
+    
 }

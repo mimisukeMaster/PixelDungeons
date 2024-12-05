@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
     public float DetectionRadius = 5.0f;
     [Tooltip("攻撃力")]
     public int Attack = 10;
+    [Tooltip("ドロップアイテム")]
+    public GameObject DropItem;
 
 
     protected Rigidbody rb;
@@ -82,4 +84,10 @@ public class EnemyController : MonoBehaviour
         isChasing = false;
         
     }
+    public virtual void OnDied(){
+
+        Destroy(gameObject);
+
+    }
+
 }
