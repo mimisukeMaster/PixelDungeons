@@ -38,4 +38,9 @@ public class FarAttackEnemy : EnemyController
             }
         }
     }
+    public override void OnDied()
+    {
+        GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
+        base.OnDied();
+    }
 }
