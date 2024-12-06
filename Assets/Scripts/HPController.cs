@@ -24,14 +24,9 @@ public class HPController : MonoBehaviour
         {
             if(gameObject.CompareTag("Player"))
             {
-                
 
             }
-            else if(gameObject.CompareTag("Enemy"))
-            {
-                Controller.OnDied();
-
-            }
+            else if(gameObject.CompareTag("Enemy")) Controller.OnDied();
         }
     }
 

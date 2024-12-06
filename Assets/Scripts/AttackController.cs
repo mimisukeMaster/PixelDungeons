@@ -14,7 +14,7 @@ public class AttackController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //タグで判定する
+        // タグで判定する
         if (other.gameObject.CompareTag(targetTag))
         {
             other.gameObject.GetComponent<HPController>().Damaged(damage);
