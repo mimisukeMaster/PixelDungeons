@@ -20,67 +20,84 @@ public class EnemyController : MonoBehaviour
     public int Attack = 10;
     [Tooltip("ドロップアイテム")]
     public GameObject DropItem;
+    [Tooltip("アイテムドロップの確率")]
+    public float DropProbability = 1.0f;
 
 
     protected Rigidbody rb;
-    protected float nextRayTime;
+    protected float nextDetectTime;
     protected float nextWanderTime;
     protected bool isChasing;
-    protected GameObject chasingTarget;
-    protected Vector3 detectArea;
+    protected GameObject targetPlayer;
+    protected Vector3 distanceVector;
 
 
     protected virtual void Start()
     {
-        nextRayTime = 0f;
-        nextWanderTime = 0f;
-        detectArea = transform.lossyScale;
+        nextDetectTime = Time.time;
+        nextWanderTime = Time.time;
         rb = GetComponent<Rigidbody>();
     }
 
     protected virtual void Update()
     {
-        // 一定時間ごとにプレイヤーを検知
-        if (Time.time > nextRayTime)
-        {
-            DetectPlayer();
-            nextRayTime = Time.time + DetectionInterval;
-        }
+        // 一定時間ごとにプレイヤー検知
+        DetectPlayer();
 
-        // ランダムに移動
-        if (Time.time > nextWanderTime && !isChasing)
-        {
-            Vector3 randomDirection = new Vector3(
-                Random.Range(-1.0f, 1.0f), 0f, Random.Range(-1.0f, 1.0f)).normalized;
-
-            rb.linearVelocity = randomDirection * WanderVelocity;
-
-            // 向き
-            transform.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
-            
-            nextWanderTime = Time.time + WanderInterval;
-        }
+        // 平常時のランダム移動
+        RandomMove();
     }
 
+    /// <summary>
+    /// プレイヤーの検知処理
+    /// </summary>
     private void DetectPlayer()
     {
+        if (Time.time < nextDetectTime) return;
+        
         // 周囲の物体を検知
-        Collider[] cols = Physics.OverlapSphere(transform.position, DetectionRadius);
+        Collider[] detectedObjs = Physics.OverlapSphere(transform.position, DetectionRadius);
+        isChasing = false;
 
-        foreach (var col in cols)
+        foreach (var obj in detectedObjs)
         {
-            if (col.CompareTag("Player"))
+            if (obj.CompareTag("Player"))
             {                
                 // 衝突相手を格納
-                chasingTarget = col.gameObject;
+                targetPlayer = obj.gameObject;
+
+                // 距離ベクトルを計算
+                distanceVector = targetPlayer.transform.position - transform.position;
+
                 isChasing = true;
-                return;
+                break;
             }
         }
-        chasingTarget = null;
-        isChasing = false;
-        
+
+        if (!isChasing) targetPlayer = null;
+        nextDetectTime = Time.time + DetectionInterval;
     }
+
+    /// <summary>
+    /// ランダム移動処理
+    /// </summary>
+    private void RandomMove()
+    {
+        if (Time.time < nextWanderTime || isChasing) return;
+    
+        Vector3 randomDirection = new Vector3(
+                Random.Range(-1.0f, 1.0f), 0f, Random.Range(-1.0f, 1.0f)).normalized;
+        rb.linearVelocity = randomDirection * WanderVelocity;
+
+        // 向きを合わせる
+        transform.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
+
+        nextWanderTime = Time.time + WanderInterval;
+    }
+
+    /// <summary>
+    /// 死んだときの処理
+    /// </summary>
     public virtual void OnDied()
     {
         Destroy(gameObject);

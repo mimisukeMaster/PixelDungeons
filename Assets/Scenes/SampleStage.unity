@@ -195,6 +195,7 @@ MonoBehaviour:
   DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   BeamInterval: 5
   BeamLength: 20
+  DropProbability: 1
 --- !u!65 &174695920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -503,14 +504,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972dbcead7148e64a9cce1480b4bf401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WanderVelocity: 4
+  WanderVelocity: 2
   ChasingSpeed: 4
   WanderInterval: 1
   DetectionInterval: 0.5
-  DetectionRadius: 12
+  DetectionRadius: 10
   Attack: 10
   DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
-  Altitude: 10
+  Altitude: 5
   DropInterval: 1
   Bullet: {fileID: 4581094999854356183, guid: c028ad137dcb1324eb688393e0f86157, type: 3}
   animator: {fileID: 469683306}
