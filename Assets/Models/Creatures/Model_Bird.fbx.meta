@@ -3,12 +3,7 @@ guid: a9d4cb6e8a6311f47b92e29babcfdaa4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Bird_Chicken
-    second: {fileID: 2100000, guid: c4fc8c540acc84e42a7e73fd8556b123, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
