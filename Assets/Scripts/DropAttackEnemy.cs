@@ -48,12 +48,12 @@ public class DropAttackEnemy : EnemyController
         {
             distanceVector.Normalize();
             rb.linearVelocity = (distanceVector + Vector3.up) * ChasingSpeed;
+
+            // 滑らかに進行方向に向きを合わせる
+            transform.rotation = Quaternion.Slerp(
+            transform.rotation, Quaternion.LookRotation(rb.linearVelocity.normalized), Time.deltaTime * 10.0f);
         }
         else rb.linearVelocity = Vector3.zero;
-
-        // 滑らかに進行方向に向きを合わせる
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation, Quaternion.LookRotation(rb.linearVelocity.normalized), Time.deltaTime * 10.0f);
 
         // 高度制限
         if (transform.position.y > Altitude) rb.constraints |= RigidbodyConstraints.FreezePositionY;

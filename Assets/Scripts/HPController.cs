@@ -1,10 +1,14 @@
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class HPController : MonoBehaviour
 {   
+    [Tooltip("現在の体力")]
     public int HP;
+    [Tooltip("体力の最大値")]
     public int MaxHP = 100;
-    public EnemyController Controller;
+    [Tooltip("TagがEnemyでない場合は必要なし")]
+    public EnemyController EnemyController;
 
 
     void Start()
@@ -26,7 +30,7 @@ public class HPController : MonoBehaviour
             {
 
             }
-            else if(gameObject.CompareTag("Enemy")) Controller.OnDied();
+            else if(gameObject.CompareTag("Enemy")) EnemyController.OnDied();
         }
     }
 
