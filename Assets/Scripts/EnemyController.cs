@@ -28,7 +28,6 @@ public class EnemyController : MonoBehaviour
     protected bool isChasing;
     protected GameObject chasingTarget;
     protected Vector3 detectArea;
-    protected Material debugMat;
 
 
     protected virtual void Start()
@@ -37,7 +36,6 @@ public class EnemyController : MonoBehaviour
         nextWanderTime = 0f;
         detectArea = transform.lossyScale;
         rb = GetComponent<Rigidbody>();
-        debugMat = GetComponent<MeshRenderer>().material;
     }
 
     protected virtual void Update()
@@ -56,9 +54,12 @@ public class EnemyController : MonoBehaviour
                 Random.Range(-1.0f, 1.0f), 0f, Random.Range(-1.0f, 1.0f)).normalized;
 
             rb.linearVelocity = randomDirection * WanderVelocity;
+
+            // 向き
+            transform.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
+            
             nextWanderTime = Time.time + WanderInterval;
         }
-
     }
 
     private void DetectPlayer()
@@ -69,17 +70,13 @@ public class EnemyController : MonoBehaviour
         foreach (var col in cols)
         {
             if (col.CompareTag("Player"))
-            {
-                debugMat.color = Color.red;
-                
+            {                
                 // 衝突相手を格納
                 chasingTarget = col.gameObject;
-                
                 isChasing = true;
                 return;
             }
         }
-        debugMat.color = Color.white;
         chasingTarget = null;
         isChasing = false;
         
