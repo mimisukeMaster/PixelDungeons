@@ -10,7 +10,7 @@ public class FarAttackEnemy : EnemyController
     public float AttackDistance = 3.0f;
     public float ShootSpeed = 10.0f;
     public float ShootInterval = 1.0f;
-    public GameObject Bullet; 
+    public GameObject Bullet;
 
     private float nextShootTime;
     

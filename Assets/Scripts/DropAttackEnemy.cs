@@ -6,6 +6,7 @@ public class DropAttackEnemy : EnemyController
     public float Altitude = 10.0f;
     public float DropInterval = 1.0f;
     public GameObject Bullet; 
+    public Animator animator;
 
     private float nextDropTime;
 
@@ -15,11 +16,8 @@ public class DropAttackEnemy : EnemyController
         // 継承元のStart()を実行
         base.Start();
 
-        transform.position = new Vector3(transform.position.x, Altitude, transform.position.z);
-        rb.constraints = RigidbodyConstraints.FreezePositionY;
-
-        // 検知範囲を上書きする、高度の約2/√3倍
-        DetectionRadius = Altitude * 1.15f;
+        // 回転固定
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     protected override void Update() 
@@ -30,8 +28,19 @@ public class DropAttackEnemy : EnemyController
         // 追跡
         if (isChasing)
         {
+            // 飛行アニメーション開始
+            animator.SetBool("Chasing", isChasing);
+
+            // 方向ベクトル + 上昇成分 の移動
             Vector3 dirVector = (chasingTarget.transform.position - transform.position).normalized;
-            rb.linearVelocity = dirVector * ChasingSpeed;
+            rb.linearVelocity = (dirVector + Vector3.up) * ChasingSpeed;
+            transform.rotation = Quaternion.LookRotation(rb.linearVelocity.normalized);
+
+            // 一定の高さになったら浮遊
+            if (transform.position.y > Altitude) {
+                rb.constraints = RigidbodyConstraints.FreezePositionY;
+                Debug.Log("a");
+            }
 
             // 一定時間ごとに弾を出す
             if(Time.time > nextDropTime)
