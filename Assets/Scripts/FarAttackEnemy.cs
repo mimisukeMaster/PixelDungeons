@@ -50,11 +50,7 @@ public class FarAttackEnemy : EnemyController
 
     public override void OnDied()
     {
-        if (Random.Range(0f, 1.0f) < DropProbability)
-        {
-            GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
-            item.GetComponent<MeshRenderer>().material.color = Color.yellow;
-        }
+        if (Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity); 
         base.OnDied();
     }
 }
