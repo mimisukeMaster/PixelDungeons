@@ -4,7 +4,9 @@ using UnityEngine;
 public class BeamAttackEnemy : EnemyController
 {
     [Space(20)]
+    [Tooltip("ビームの攻撃間隔")]
     public float BeamInterval = 5.0f;
+    [Tooltip("ビームの長さ")]
     public float BeamLength = 20.0f;
 
     private float nextBeamTime;
@@ -14,19 +16,7 @@ public class BeamAttackEnemy : EnemyController
     protected override void Start()
     {
         base.Start();
-
-        lineRenderer = gameObject.GetComponent<LineRenderer>();
         BeamInit();
-    }
-
-    // 予測線の初期化
-    private void BeamInit() {
-        lineRenderer.startWidth = 0.5f;
-        lineRenderer.endWidth = 0.5f;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = Color.cyan;
-        lineRenderer.endColor = Color.blue;
-        lineRenderer.enabled = false;
     }
 
     protected override void Update()
@@ -36,35 +26,58 @@ public class BeamAttackEnemy : EnemyController
         // 一定時間ごとに攻撃挙動
         if(Time.time > nextBeamTime && isChasing)
         {
-            StopCoroutine(AttackProcess());
-            StartCoroutine(AttackProcess());
+            StopCoroutine(BeamAttack());
+            StartCoroutine(BeamAttack());
             nextBeamTime = Time.time + BeamInterval;
         }
     }
 
-    private IEnumerator AttackProcess() {
-
+    /// <summary>
+    /// 予測線の初期設定
+    /// </summary>
+    private void BeamInit()
+    {
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.enabled = false;
+    }
+    
+    /// <summary>
+    /// ビーム攻撃コルーチン
+    /// </summary>
+    private IEnumerator BeamAttack()
+    {
         lineRenderer.enabled = true;
         
-        // 攻撃の予測線を出す
-        Vector3 distanceVec = (chasingTarget.transform.position - transform.position).normalized;
+        // 予測線の準備
+        SetBeamAppearance(0.5f, 0.5f, Color.cyan, Color.blue);
         lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.position + distanceVec * BeamLength);
+        lineRenderer.SetPosition(1, transform.position + distanceVector.normalized * BeamLength);
 
         yield return new WaitForSeconds(2.0f);
 
-        // 実際に攻撃する動き
-        lineRenderer.startWidth = 1.0f;
-        lineRenderer.endWidth = 2.0f;
-        lineRenderer.startColor = Color.red;
-        lineRenderer.endColor = Color.yellow;
+        // 実際に攻撃
+        SetBeamAppearance(1.0f, 2.0f, Color.red, Color.yellow);
 
         yield return new WaitForSeconds(2.0f);
-        BeamInit();
+
+        lineRenderer.enabled = false;
     }
+
+    /// <summary>
+    /// ビームの外観を設定
+    /// </summary>
+    private void SetBeamAppearance(float startWidth, float endWidth, Color startColor, Color endColor)
+    {
+        lineRenderer.startWidth = startWidth;
+        lineRenderer.endWidth = endWidth;
+        lineRenderer.startColor = startColor;
+        lineRenderer.endColor = endColor;
+    }
+
     public override void OnDied()
     {
-        GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
+        if(Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity); 
         base.OnDied();
     }
 }

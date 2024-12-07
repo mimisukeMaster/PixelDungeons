@@ -7,9 +7,13 @@ using UnityEngine;
 public class FarAttackEnemy : EnemyController
 {
     [Space(20)]
+    [Tooltip("攻撃を開始する距離")]
     public float AttackDistance = 3.0f;
+    [Tooltip("弾の速さ")]
     public float ShootSpeed = 10.0f;
+    [Tooltip("弾の発射時間間隔")]
     public float ShootInterval = 1.0f;
+    [Tooltip("弾のPrefab")]
     public GameObject Bullet;
 
     private float nextShootTime;
@@ -20,28 +24,37 @@ public class FarAttackEnemy : EnemyController
         // 敵のUpdate()を実行
         base.Update();
 
-        // 追跡時
-        if (isChasing)
+        // 攻撃
+        if (isChasing) ChaseAndAttack();
+    }
+
+    /// <summary>
+    /// 攻撃処理
+    /// </summary>
+    private void ChaseAndAttack()
+    {
+        // 追跡
+        rb.linearVelocity = distanceVector.normalized * ChasingSpeed;
+
+        // 一定時間ごとに弾を出す
+        if(Time.time > nextShootTime && distanceVector.magnitude < AttackDistance)
         {
-            Vector3 distanceVec = chasingTarget.transform.position - transform.position;
-            rb.linearVelocity = distanceVec.normalized * ChasingSpeed;
+            GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity); 
+            bullet.GetComponent<Rigidbody>().linearVelocity = distanceVector.normalized * ShootSpeed;
+            bullet.GetComponent<AttackController>().Init("Player", Attack);
 
-            // 一定時間ごとに弾を出す
-            if(Time.time > nextShootTime && distanceVec.magnitude < AttackDistance)
-            {
-                GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity); 
-                bullet.GetComponent<Rigidbody>().linearVelocity = distanceVec.normalized * ShootSpeed;
-                bullet.GetComponent<AttackController>().Init("Player", Attack);
-
-                Destroy(bullet, 5.0f);
-                nextShootTime = Time.time + ShootInterval;
-            }
+            Destroy(bullet, 5.0f);
+            nextShootTime = Time.time + ShootInterval;
         }
     }
+
     public override void OnDied()
     {
-        GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
-        item.GetComponent<MeshRenderer>().material.color = Color.yellow;
+        if (Random.Range(0f, 1.0f) < DropProbability)
+        {
+            GameObject item = Instantiate(DropItem, transform.position, Quaternion.identity); 
+            item.GetComponent<MeshRenderer>().material.color = Color.yellow;
+        }
         base.OnDied();
     }
 }
