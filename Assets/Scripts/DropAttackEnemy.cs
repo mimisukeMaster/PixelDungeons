@@ -61,9 +61,9 @@ public class DropAttackEnemy : EnemyController
         if (transform.position.y > Altitude)
         {
             rb.constraints |= RigidbodyConstraints.FreezePositionY;
-            animator.SetFloat("WingSpeed",1);
+            animator.SetFloat("WingSpeed", 1);
         }
-        else animator.SetFloat("WingSpeed",FlyUpAnimationSpeed);
+        else animator.SetFloat("WingSpeed", FlyUpAnimationSpeed);
 
         // 一定時間ごとに弾を出す
         if(Time.time > nextDropTime)
