@@ -516,6 +516,7 @@ MonoBehaviour:
   DropInterval: 1
   Bullet: {fileID: 4581094999854356183, guid: c028ad137dcb1324eb688393e0f86157, type: 3}
   animator: {fileID: 469683306}
+  FlyUpAnimationSpeed: 9
 --- !u!54 &336903880
 Rigidbody:
   m_ObjectHideFlags: 0
