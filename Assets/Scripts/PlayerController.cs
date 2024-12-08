@@ -1,6 +1,7 @@
 using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class PlayerController : MonoBehaviour
     public int Attack = 10;
     [Tooltip("カメラ")]
     public Camera PlayerCam;
+    [Tooltip("遠距離攻撃用")]
     public GameObject MagicObj;
+    [Tooltip("近距離攻撃用")]
+    public Animator WeaponAnim;
     
     private Rigidbody rb;
     private ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
+    private float clickedTime;
 
 
     private void Awake()
@@ -33,7 +38,8 @@ public class PlayerController : MonoBehaviour
         controls.Player.Jump.performed += OnJumpPerformed;
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
-        controls.Player.Attack.performed += OnAttackPerformed;
+        controls.Player.Attack.started += OnTimerStart;
+        controls.Player.Attack.canceled += OnTimerStop;
     }
 
     private void FixedUpdate()
@@ -42,26 +48,13 @@ public class PlayerController : MonoBehaviour
         Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y)
                              * MoveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
-
-    }
-    
-    private void OnCollisionEnter(Collision collision)
-    {
-        // 何かしらに接触中は接地フラグを立てる
-        isGrounded = true;
     }
 
-    private void OnEnable()
-    {
-        // Input Actionsを有効化
-        controls.Enable();
-    }
+    private void OnEnable() => controls.Enable();
 
-    private void OnDisable()
-    {
-        // Input Actionsを無効化
-        controls.Disable();
-    }
+    private void OnDisable() => controls.Disable();
+
+    private void OnCollisionEnter(Collision collision) => isGrounded = true;
 
     private void OnJumpPerformed(InputAction.CallbackContext controls)
     {
@@ -71,24 +64,56 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnMovePerformed(InputAction.CallbackContext context)
-    {
-        // 入力されたアクションの値を読み取る
-        moveInput = context.ReadValue<Vector2>();
-    }
+    private void OnMovePerformed(InputAction.CallbackContext context) => moveInput = context.ReadValue<Vector2>();
 
-    private void OnMoveCanceled(InputAction.CallbackContext context)
-    {
-        // 移動入力が無くなったら止まる
-        moveInput = Vector2.zero;
-    }
+    private void OnMoveCanceled(InputAction.CallbackContext context) => moveInput = Vector2.zero;
     
-    private void OnAttackPerformed(InputAction.CallbackContext context)
+    private void OnTimerStart(InputAction.CallbackContext context) => clickedTime = Time.time;
+    
+    private void OnTimerStop(InputAction.CallbackContext context)
     {
-        GameObject magic = Instantiate(MagicObj, transform.position, Quaternion.identity); 
-                magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-        magic.GetComponent<AttackController>().Init("Enemy", Attack);
+        if (Time.time - clickedTime < 0.4f) OnAttack(context);
+        else OnSuperAttack(context);
+    }
 
-        Destroy(magic, 5.0f);
+    /// <summary>
+    /// 通常操作のプレイヤー攻撃処理
+    /// </summary>
+    /// <param name="context"></param>
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        // 遠距離攻撃
+        if (context.control == Mouse.current.rightButton)
+        {
+            GameObject magic = Instantiate(MagicObj, transform.position, Quaternion.identity); 
+                    magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
+            magic.GetComponent<AttackController>().Init("Enemy", Attack);
+
+            Destroy(magic, 5.0f);
+        }
+        // 近距離攻撃
+        else if (context.control == Mouse.current.leftButton)
+        {
+            Debug.Log("近距離攻撃");
+            WeaponAnim.SetTrigger("Attack");
+        }
+    }
+
+    /// <summary>
+    /// 溜め操作時のプレイヤー攻撃処理
+    /// </summary>
+    /// <remarks>強めの攻撃</remarks>
+    /// <param name="context"></param>
+    private void OnSuperAttack(InputAction.CallbackContext context)
+    {
+        if (context.control == Mouse.current.rightButton)
+        {
+
+        }
+        else if (context.control == Mouse.current.leftButton)
+        {
+            Debug.Log("遠距離攻撃");
+            WeaponAnim.SetTrigger("SuperAttack");
+        }
     }
 }

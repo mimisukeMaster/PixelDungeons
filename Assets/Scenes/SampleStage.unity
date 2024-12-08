@@ -2012,6 +2012,7 @@ MonoBehaviour:
   Attack: 10
   PlayerCam: {fileID: 963194227}
   MagicObj: {fileID: 2548203629150972424, guid: 9de9c0c7985e15e45b1168fab8000100, type: 3}
+  WeaponAnim: {fileID: 146982176}
 --- !u!54 &1738896457
 Rigidbody:
   m_ObjectHideFlags: 0
