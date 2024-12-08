@@ -12,6 +12,8 @@ public class DropAttackEnemy : EnemyController
     public GameObject Bullet; 
     [Tooltip("アニメーション処理用")]
     public Animator animator;
+    [Tooltip("飛び上がるときのアニメーション倍率")]
+    public float FlyUpAnimationSpeed;
 
     private float nextDropTime;
 
@@ -56,7 +58,12 @@ public class DropAttackEnemy : EnemyController
         else rb.linearVelocity = Vector3.zero;
 
         // 高度制限
-        if (transform.position.y > Altitude) rb.constraints |= RigidbodyConstraints.FreezePositionY;
+        if (transform.position.y > Altitude)
+        {
+            rb.constraints |= RigidbodyConstraints.FreezePositionY;
+            animator.SetFloat("WingSpeed",1);
+        }
+        else animator.SetFloat("WingSpeed",FlyUpAnimationSpeed);
 
         // 一定時間ごとに弾を出す
         if(Time.time > nextDropTime)
