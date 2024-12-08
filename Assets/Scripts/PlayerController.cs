@@ -90,7 +90,5 @@ public class PlayerController : MonoBehaviour
         magic.GetComponent<AttackController>().Init("Enemy", Attack);
 
         Destroy(magic, 5.0f);
-
     }
-    
 }
