@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class BeamAttackEnemy : EnemyController
@@ -8,6 +9,8 @@ public class BeamAttackEnemy : EnemyController
     public float BeamInterval = 5.0f;
     [Tooltip("ビームの長さ")]
     public float BeamLength = 20.0f;
+    [Tooltip("ビームのPrefab")]
+    public GameObject Beam;
 
     private float nextBeamTime;
     private LineRenderer lineRenderer;
@@ -47,20 +50,26 @@ public class BeamAttackEnemy : EnemyController
     /// </summary>
     private IEnumerator BeamAttack()
     {
+        rb.isKinematic = true;
         lineRenderer.enabled = true;
         
         // 予測線の準備
         SetBeamAppearance(0.5f, 0.5f, Color.cyan, Color.blue);
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.position + distanceVector.normalized * BeamLength);
+        Vector3 beamRootPos = transform.position;
+        Vector3 beamTipPos =  transform.position + distanceVector.normalized * BeamLength;
+        lineRenderer.SetPosition(0, beamRootPos);
+        lineRenderer.SetPosition(1, beamTipPos);
 
         yield return new WaitForSeconds(2.0f);
 
         // 実際に攻撃
-        SetBeamAppearance(1.0f, 2.0f, Color.red, Color.yellow);
+        GameObject beamObj = Instantiate(Beam, transform.position, Quaternion.LookRotation(beamRootPos - beamTipPos));
+        beamObj.transform.localScale = new Vector3(beamObj.transform.localScale.x, beamObj.transform.localScale.y, BeamLength);
 
         yield return new WaitForSeconds(2.0f);
 
+        Destroy(beamObj);
+        rb.isKinematic = false;
         lineRenderer.enabled = false;
     }
 
