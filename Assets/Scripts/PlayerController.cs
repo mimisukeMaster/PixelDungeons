@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public Camera PlayerCam;
     [Tooltip("遠距離攻撃用")]
     public GameObject MagicObj;
+    [Tooltip("遠距離攻撃発射位置")]
+    public Transform MagicPos;
     [Tooltip("近距離攻撃用")]
     public Animator WeaponAnim;
     
@@ -85,7 +87,7 @@ public class PlayerController : MonoBehaviour
         // 遠距離攻撃
         if (context.control == Mouse.current.rightButton)
         {
-            GameObject magic = Instantiate(MagicObj, transform.position, Quaternion.identity); 
+            GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
                     magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             magic.GetComponent<AttackController>().Init("Enemy", Attack);
 
@@ -94,7 +96,6 @@ public class PlayerController : MonoBehaviour
         // 近距離攻撃
         else if (context.control == Mouse.current.leftButton)
         {
-            Debug.Log("近距離攻撃");
             WeaponAnim.SetTrigger("Attack");
         }
     }
@@ -112,7 +113,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.control == Mouse.current.leftButton)
         {
-            Debug.Log("遠距離攻撃");
             WeaponAnim.SetTrigger("SuperAttack");
         }
     }
