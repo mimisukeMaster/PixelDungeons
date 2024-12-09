@@ -14,6 +14,7 @@ public class BeamAttackEnemy : EnemyController
 
     private float nextBeamTime;
     private LineRenderer lineRenderer;
+    private GameObject beamObj;
 
 
     protected override void Start()
@@ -63,7 +64,7 @@ public class BeamAttackEnemy : EnemyController
         yield return new WaitForSeconds(2.0f);
 
         // 実際に攻撃
-        GameObject beamObj = Instantiate(Beam, transform.position, Quaternion.LookRotation(beamRootPos - beamTipPos));
+        beamObj = Instantiate(Beam, transform.position, Quaternion.LookRotation(beamRootPos - beamTipPos));
         beamObj.transform.localScale = new Vector3(beamObj.transform.localScale.x, beamObj.transform.localScale.y, BeamLength);
 
         yield return new WaitForSeconds(2.0f);
@@ -86,6 +87,7 @@ public class BeamAttackEnemy : EnemyController
 
     public override void OnDied()
     {
+        if (beamObj != null) Destroy(beamObj);
         if(Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity); 
         base.OnDied();
     }
