@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void RandomMove()
     {
-        if (Time.time < nextWanderTime || isChasing) return;
+        if (Time.time < nextWanderTime || isChasing || rb.isKinematic) return;
     
         Vector3 randomDirection = new Vector3(
                 Random.Range(-1.0f, 1.0f), 0f, Random.Range(-1.0f, 1.0f)).normalized;

@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     private void OnAttack(InputAction.CallbackContext context)
     {
         // 遠距離攻撃
-        if (context.control == Mouse.current.rightButton)
+        if (context.control == Mouse.current.leftButton)
         {
             GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
                     magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             Destroy(magic, 5.0f);
         }
         // 近距離攻撃
-        else if (context.control == Mouse.current.leftButton)
+        else if (context.control == Mouse.current.rightButton)
         {
             WeaponAnim.SetTrigger("Attack");
         }
@@ -107,11 +107,11 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnSuperAttack(InputAction.CallbackContext context)
     {
-        if (context.control == Mouse.current.rightButton)
+        if (context.control == Mouse.current.leftButton)
         {
 
         }
-        else if (context.control == Mouse.current.leftButton)
+        else if (context.control == Mouse.current.rightButton)
         {
             WeaponAnim.SetTrigger("SuperAttack");
         }
