@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("遠距離攻撃の速さ")]
     public float AttackSpeed = 5.0f;
     [Tooltip("遠距離攻撃力")]
-    public int Attack = 10;
+    public int FarAttack = 10;
+    [Tooltip("近距離攻撃力")]
+    public int NearAttack = 20;
     [Tooltip("カメラ")]
     public Camera PlayerCam;
     [Tooltip("遠距離攻撃用")]
@@ -20,18 +22,21 @@ public class PlayerController : MonoBehaviour
     [Tooltip("遠距離攻撃発射位置")]
     public Transform MagicPos;
     [Tooltip("近距離攻撃用")]
-    public Animator WeaponAnim;
+    public GameObject WeaponSlot;
     
     private Rigidbody rb;
     private ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
     private float clickedTime;
+    private Animator weaponAnim;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        weaponAnim = WeaponSlot.GetComponent<Animator>();
+        WeaponSlot.GetComponentInChildren<AttackController>().Init("Enemy", NearAttack);
 
         // インスタンス生成
         controls = new ControlActions();
@@ -89,14 +94,14 @@ public class PlayerController : MonoBehaviour
         {
             GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
                     magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-            magic.GetComponent<AttackController>().Init("Enemy", Attack);
+            magic.GetComponent<AttackController>().Init("Enemy", FarAttack);
 
             Destroy(magic, 5.0f);
         }
         // 近距離攻撃
         else if (context.control == Mouse.current.rightButton)
         {
-            WeaponAnim.SetTrigger("Attack");
+            weaponAnim.SetTrigger("Attack");
         }
     }
 
@@ -113,7 +118,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.control == Mouse.current.rightButton)
         {
-            WeaponAnim.SetTrigger("SuperAttack");
+            weaponAnim.SetTrigger("SuperAttack");
         }
     }
 }
