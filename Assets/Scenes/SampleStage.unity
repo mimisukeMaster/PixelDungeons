@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 554318367}
   - component: {fileID: 554318366}
   - component: {fileID: 554318365}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DummyTarget
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2156,6 +2156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 207803234837417728, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2195,6 +2199,10 @@ PrefabInstance:
     - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658463757405191849, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
