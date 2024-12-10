@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2772257933265534034}
   - component: {fileID: 8561051698563640812}
+  - component: {fileID: -7988695875926765553}
   m_Layer: 0
   m_Name: Sword_Fire
   m_TagString: Untagged
@@ -54,6 +55,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.041770995, y: 0.3562442, z: 0.3703856}
   m_Center: {x: -0.0064318497, y: 0.1741857, z: 0.18474993}
+--- !u!114 &-7988695875926765553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207803234837417728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8424092196587160568
 PrefabInstance:
   m_ObjectHideFlags: 0
