@@ -9,20 +9,27 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 5.0f;
     [Tooltip("移動の速さ")]
     public float MoveSpeed = 5.0f;
-    [Tooltip("遠距離攻撃の速さ")]
-    public float AttackSpeed = 5.0f;
+
+    [Header("遠距離攻撃")]
+    [Tooltip("オブジェクト参照")]
+    public GameObject MagicObj;
     [Tooltip("遠距離攻撃力")]
     public int FarAttack = 10;
-    [Tooltip("近距離攻撃力")]
-    public int NearAttack = 20;
-    [Tooltip("カメラ")]
-    public Camera PlayerCam;
-    [Tooltip("遠距離攻撃用")]
-    public GameObject MagicObj;
     [Tooltip("遠距離攻撃発射位置")]
     public Transform MagicPos;
-    [Tooltip("近距離攻撃用")]
+    [Tooltip("遠距離攻撃発射の速さ")]
+    public float AttackSpeed = 5.0f;
+
+    [Header("近距離攻撃")]
+    [Tooltip("オブジェクト参照")]
     public GameObject WeaponSlot;
+    [Tooltip("近距離攻撃力")]
+    public int NearAttack = 20;
+    [Tooltip("近距離攻撃検知範囲")]
+    public float NearAttackRange = 1.0f;
+
+    [Tooltip("カメラ")]
+    public Camera PlayerCam;
     
     private Rigidbody rb;
     private ControlActions controls;
@@ -102,6 +109,7 @@ public class PlayerController : MonoBehaviour
         else if (context.control == Mouse.current.rightButton)
         {
             weaponAnim.SetTrigger("Attack");
+            weaponAnim.GetComponentInChildren<AttackController>().NearAttack(WeaponSlot.transform.position, NearAttackRange, NearAttack);
         }
     }
 
