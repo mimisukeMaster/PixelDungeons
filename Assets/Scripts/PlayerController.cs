@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 5.0f;
     [Tooltip("移動の速さ")]
     public float MoveSpeed = 5.0f;
+    [Tooltip("カメラ")]
+    public Camera PlayerCam;
 
     [Header("遠距離攻撃")]
     [Tooltip("オブジェクト参照")]
@@ -28,22 +30,22 @@ public class PlayerController : MonoBehaviour
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
 
-    [Tooltip("カメラ")]
-    public Camera PlayerCam;
-    
     private Rigidbody rb;
     private ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
     private float clickedTime;
-    private Animator weaponAnim;
+    private Animator animator;
+    private AttackController attackController;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        weaponAnim = WeaponSlot.GetComponent<Animator>();
-        WeaponSlot.GetComponentInChildren<AttackController>().Init("Enemy", NearAttack);
+        animator = WeaponSlot.GetComponent<Animator>();
+        attackController = WeaponSlot.GetComponentInChildren<AttackController>();
+
+        attackController.Init("Enemy", NearAttack);
 
         // インスタンス生成
         controls = new ControlActions();
@@ -108,8 +110,8 @@ public class PlayerController : MonoBehaviour
         // 近距離攻撃
         else if (context.control == Mouse.current.rightButton)
         {
-            weaponAnim.SetTrigger("Attack");
-            weaponAnim.GetComponentInChildren<AttackController>().NearAttack(WeaponSlot.transform.position, NearAttackRange, NearAttack);
+            animator.SetTrigger("Attack");
+            attackController.NearAttack(WeaponSlot.transform.position, NearAttackRange);
         }
     }
 
@@ -126,7 +128,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.control == Mouse.current.rightButton)
         {
-            weaponAnim.SetTrigger("SuperAttack");
+            animator.SetTrigger("SuperAttack");
         }
     }
 }
