@@ -19,10 +19,14 @@ public class AttackController : MonoBehaviour
     /// <param name="other"></param>
     private void OnCollisionEnter(Collision other)
     {
+        // 敵自身の衝突（近距離）はNearAttackで行う
+        if (gameObject.CompareTag("Enemy")) return;
+
         // タグで判定する
         if (other.gameObject.CompareTag(targetTag))
         {
             other.gameObject.GetComponent<HPController>().Damaged(damage);
+
             Destroy(gameObject);
         }
     }
@@ -33,14 +37,14 @@ public class AttackController : MonoBehaviour
     /// <remarks>物理演算による衝突判定が使えない場合</remarks>
     /// <param name="DetectPos"></param>
     /// <param name="DetectRange"></param>
-    public void NearAttack(Vector3 DetectPos, float DetectRange, int Damege)
+    public void NearAttack(Vector3 DetectPos, float DetectRange)
     {
         Collider[] hitObjs = Physics.OverlapSphere(DetectPos, DetectRange);
         foreach (var obj in hitObjs)
         {
-            if (obj.CompareTag("Enemy"))
+            if (obj.CompareTag(targetTag))
             {                
-                obj.GetComponent<HPController>().Damaged(Damege);
+                obj.GetComponent<HPController>().Damaged(damage);
                 return;
             }
         }

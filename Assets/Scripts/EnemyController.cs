@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
     /// <summary>
     /// プレイヤーの検知処理
     /// </summary>
-    private void DetectPlayer()
+    protected void DetectPlayer()
     {
         if (Time.time < nextDetectTime) return;
         
