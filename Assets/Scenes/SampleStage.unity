@@ -265,6 +265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1754394178}
   - {fileID: 1301310547}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: -21.634, y: 7.985, z: 0}
@@ -1376,6 +1377,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 10
+--- !u!1001 &1044878698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 146982175}
+    m_Modifications:
+    - target: {fileID: 207803234837417728, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_Name
+      value: Sword_Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 207803234837417728, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658463757405191849, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
 --- !u!1001 &1056350403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1695,7 +1761,7 @@ MonoBehaviour:
   PlayerCam: {fileID: 963194227}
   MagicObj: {fileID: 2548203629150972424, guid: 9de9c0c7985e15e45b1168fab8000100, type: 3}
   FarAttack: 10
-  MagicPos: {fileID: 146982175}
+  MagicPos: {fileID: 1958226212}
   AttackSpeed: 10
   WeaponSlot: {fileID: 146982174}
   NearAttack: 20
@@ -1832,6 +1898,11 @@ MonoBehaviour:
   HP: 0
   MaxHP: 100
   EnemyController: {fileID: 0}
+--- !u!4 &1754394178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2772257933265534034, guid: eeb2e00ea6142b446aab5458949e0d67, type: 3}
+  m_PrefabInstance: {fileID: 1044878698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1808355326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1905,6 +1976,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b14da0540dca407439111b227bf9eb01, type: 3}
   m_PrefabInstance: {fileID: 1808355326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1958226212 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7039079077006027579, guid: 5d0c73388be108b4b91e3f2e20a659a9, type: 3}
+  m_PrefabInstance: {fileID: 1301310546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1999961158
 PrefabInstance:

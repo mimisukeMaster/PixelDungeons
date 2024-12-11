@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4134286877131258571}
   - component: {fileID: 1582616113095120585}
   - component: {fileID: 162448101787558609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524250351602117255}
   - component: {fileID: 1666845518830411205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3973909118762952726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4668896208774923983}
   - component: {fileID: 3896720648617542906}
   - component: {fileID: 6562937864474451044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle_Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5130,6 +5130,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a19741530bc53564fbf27e023c261b9c, type: 3}
       propertyPath: m_Name
       value: Model_Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a19741530bc53564fbf27e023c261b9c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
