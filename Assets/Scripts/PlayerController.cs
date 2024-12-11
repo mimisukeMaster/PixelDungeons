@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("遠距離攻撃")]
     [Tooltip("オブジェクト参照")]
+    public GameObject WeaponSlotL;
+    [Tooltip("オブジェクト参照")]
     public GameObject MagicObj;
     [Tooltip("遠距離攻撃力")]
     public int FarAttack = 10;
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("近距離攻撃")]
     [Tooltip("オブジェクト参照")]
-    public GameObject WeaponSlot;
+    public GameObject WeaponSlotR;
     [Tooltip("近距離攻撃力")]
     public int NearAttack = 20;
     [Tooltip("近距離攻撃検知範囲")]
@@ -35,15 +37,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool isGrounded;
     private float clickedTime;
-    private Animator animator;
+    private Animator animatorL;
+    private Animator animatorR;
     private AttackController attackController;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        animator = WeaponSlot.GetComponent<Animator>();
-        attackController = WeaponSlot.GetComponentInChildren<AttackController>();
+        animatorL = WeaponSlotL.GetComponent<Animator>();
+        animatorR = WeaponSlotR.GetComponent<Animator>();
+        attackController = WeaponSlotR.GetComponentInChildren<AttackController>();
 
         attackController.Init("Enemy", NearAttack);
 
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour
         // 遠距離攻撃
         if (context.control == Mouse.current.leftButton)
         {
+            animatorL.SetTrigger("Attack");
             GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
                     magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             magic.GetComponent<AttackController>().Init("Enemy", FarAttack);
@@ -110,8 +115,8 @@ public class PlayerController : MonoBehaviour
         // 近距離攻撃
         else if (context.control == Mouse.current.rightButton)
         {
-            animator.SetTrigger("Attack");
-            attackController.NearAttack(WeaponSlot.transform.position, NearAttackRange);
+            animatorR.SetTrigger("Attack");
+            attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
         }
     }
 
@@ -124,11 +129,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.control == Mouse.current.leftButton)
         {
-
+            animatorL.SetTrigger("SuperAttack");
         }
         else if (context.control == Mouse.current.rightButton)
         {
-            animator.SetTrigger("SuperAttack");
+            animatorR.SetTrigger("SuperAttack");
         }
     }
 }

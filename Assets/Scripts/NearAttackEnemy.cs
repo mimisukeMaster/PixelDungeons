@@ -39,6 +39,7 @@ public class NearAttackEnemy : EnemyController
             // 攻撃
             if (Time.time > nextBlowTime && distanceVector.magnitude < AttackDistance)
             {
+                gameObject.transform.forward = distanceVector.normalized;
                 animator.SetTrigger("Attack");
 
                 attackController.NearAttack(transform.position, AttackDistance);
