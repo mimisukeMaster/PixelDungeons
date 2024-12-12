@@ -34,12 +34,16 @@ public class NearAttackEnemy : EnemyController
             
             // 追跡
             animator.SetBool("Move", true);
-            rb.linearVelocity = new Vector3(distanceVector.x, 0, distanceVector.z) * ChasingSpeed;
+            
+            Vector3 destVec = distanceVector;
+            destVec.y = 0;
+            destVec.Normalize();
+            rb.linearVelocity = destVec * ChasingSpeed;
 
             // 攻撃
             if (Time.time > nextBlowTime && distanceVector.magnitude < AttackDistance)
             {
-                gameObject.transform.forward = distanceVector.normalized;
+                gameObject.transform.forward = destVec;
                 animator.SetTrigger("Attack");
 
                 attackController.NearAttack(transform.position, AttackDistance);

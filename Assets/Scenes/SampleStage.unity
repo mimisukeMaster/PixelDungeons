@@ -947,8 +947,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1501417019}
+  m_Children: []
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560215684
@@ -1248,7 +1247,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &914941523
 PrefabInstance:
@@ -1482,6 +1481,7 @@ Transform:
   m_Children:
   - {fileID: 146982175}
   - {fileID: 514845895}
+  - {fileID: 1116857480}
   m_Father: {fileID: 1738896461}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
@@ -1656,12 +1656,6 @@ Transform:
   - {fileID: 1501417019}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1253151073 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7039079077006027579, guid: 5d0c73388be108b4b91e3f2e20a659a9, type: 3}
-  m_PrefabInstance: {fileID: 672278791}
-  m_PrefabAsset: {fileID: 0}
-
 --- !u!4 &1327113474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6463512910959406999, guid: 5d0c73388be108b4b91e3f2e20a659a9, type: 3}
@@ -1792,7 +1786,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1327113474}
-  m_Father: {fileID: 514845895}
+  m_Father: {fileID: 1116857480}
   m_LocalEulerAnglesHint: {x: -21.634, y: -7.985, z: 0}
 --- !u!95 &1501417020
 Animator:
