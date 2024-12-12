@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// 近距離攻撃の敵の処理
-/// </summary>
-/// <remarks>近距離攻撃はアニメーション＆エフェクトで演出</remarks>
 public class NearAttackEnemy : EnemyController
 {
     [Space(20)]
@@ -34,7 +30,7 @@ public class NearAttackEnemy : EnemyController
             
             // 追跡
             animator.SetBool("Move", true);
-            
+
             Vector3 destVec = distanceVector;
             destVec.y = 0;
             destVec.Normalize();

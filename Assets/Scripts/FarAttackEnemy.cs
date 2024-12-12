@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// 遠距離攻撃の敵の処理
-/// </summary>
-/// <remarks>遠距離攻撃は遠方から弾を出す</remarks>
 public class FarAttackEnemy : EnemyController
 {
     [Space(20)]
