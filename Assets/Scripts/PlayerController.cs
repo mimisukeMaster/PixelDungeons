@@ -15,10 +15,14 @@ public class PlayerController : MonoBehaviour
     [Header("遠距離攻撃")]
     [Tooltip("オブジェクト参照")]
     public GameObject WeaponSlotL;
-    [Tooltip("オブジェクト参照")]
+    [Tooltip("魔法オブジェクト参照")]
     public GameObject MagicObj;
+    [Tooltip("強い魔法オブジェクト参照")]
+    public GameObject SuperMagicObj;
     [Tooltip("遠距離攻撃力")]
     public int FarAttack = 10;
+    [Tooltip("強い遠距離攻撃")]
+    public int SuperFarAttack = 20;
     [Tooltip("遠距離攻撃発射位置")]
     public Transform MagicPos;
     [Tooltip("遠距離攻撃発射の速さ")]
@@ -27,8 +31,12 @@ public class PlayerController : MonoBehaviour
     [Header("近距離攻撃")]
     [Tooltip("オブジェクト参照")]
     public GameObject WeaponSlotR;
+    [Tooltip("強い攻撃のパーティクル")]
+    public ParticleSystem SuperNearAttackParticle;
     [Tooltip("近距離攻撃力")]
     public int NearAttack = 20;
+    [Tooltip("強い近距離攻撃")]
+    public int SuperNearAttack = 30;
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
 
@@ -49,7 +57,7 @@ public class PlayerController : MonoBehaviour
         animatorR = WeaponSlotR.GetComponent<Animator>();
         attackController = WeaponSlotR.GetComponentInChildren<AttackController>();
 
-        attackController.Init("Enemy", NearAttack);
+        
 
         // インスタンス生成
         controls = new ControlActions();
@@ -116,6 +124,8 @@ public class PlayerController : MonoBehaviour
         else if (context.control == Mouse.current.rightButton)
         {
             animatorR.SetTrigger("Attack");
+
+            attackController.Init("Enemy", NearAttack);
             attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
         }
     }
@@ -130,10 +140,19 @@ public class PlayerController : MonoBehaviour
         if (context.control == Mouse.current.leftButton)
         {
             animatorL.SetTrigger("SuperAttack");
+            GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
+                    superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
+            superMagic.GetComponent<AttackController>().Init("Enemy",SuperFarAttack );
         }
         else if (context.control == Mouse.current.rightButton)
         {
             animatorR.SetTrigger("SuperAttack");
+            attackController.Init("Enemy", SuperNearAttack);
+            //パーティクルを出す
+            if(SuperNearAttackParticle) Instantiate(SuperNearAttackParticle,WeaponSlotR.transform.position,Quaternion.identity);
+            attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
+        }
+
         }
     }
 }
