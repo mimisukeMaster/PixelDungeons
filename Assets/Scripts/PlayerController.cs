@@ -137,22 +137,24 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnSuperAttack(InputAction.CallbackContext context)
     {
+        // 強い遠距離攻撃 弾を変える
         if (context.control == Mouse.current.leftButton)
         {
             animatorL.SetTrigger("SuperAttack");
-            GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
+
+            GameObject superMagic = Instantiate(SuperMagicObj ? SuperMagicObj : MagicObj, MagicPos.position, Quaternion.identity); 
                     superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-            superMagic.GetComponent<AttackController>().Init("Enemy",SuperFarAttack );
+            superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
         }
+        // 強い近距離攻撃 攻撃時パーティクルを出す
         else if (context.control == Mouse.current.rightButton)
         {
             animatorR.SetTrigger("SuperAttack");
-            attackController.Init("Enemy", SuperNearAttack);
-            //パーティクルを出す
-            if(SuperNearAttackParticle) Instantiate(SuperNearAttackParticle,WeaponSlotR.transform.position,Quaternion.identity);
-            attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
-        }
 
+            attackController.Init("Enemy", SuperNearAttack);
+            attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
+
+            if (SuperNearAttackParticle) Instantiate(SuperNearAttackParticle, WeaponSlotR.transform.position, Quaternion.identity);
         }
     }
 }
