@@ -24,7 +24,7 @@ public class HPController : MonoBehaviour
     public void Damaged(int damage)
     {
         HP -= damage;
-        if(HP < 0)
+        if(HP <= 0)
         {
             if(gameObject.CompareTag("Player"))
             {

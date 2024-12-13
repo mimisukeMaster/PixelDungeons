@@ -36,7 +36,7 @@ public class NearAttackEnemy : EnemyController
             destVec.Normalize();
             rb.linearVelocity = destVec * ChasingSpeed;
 
-            // 攻撃モーション 中身はEventTrigger.csから呼び出す
+            // 攻撃モーション 中身はNearAttackEventHandler.csから呼び出す
             if (Time.time > nextBlowTime && distanceVector.magnitude < AttackDistance)
             {
                 gameObject.transform.forward = destVec;

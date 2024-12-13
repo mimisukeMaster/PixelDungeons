@@ -120,13 +120,12 @@ public class PlayerController : MonoBehaviour
 
             Destroy(magic, 5.0f);
         }
-        // 近距離攻撃
+        // 近距離攻撃 内部処理はWeaponEventHandler.csから呼びだす
         else if (context.control == Mouse.current.rightButton)
         {
             animatorR.SetTrigger("Attack");
 
             attackController.Init("Enemy", NearAttack);
-            attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
         }
     }
 
@@ -146,13 +145,12 @@ public class PlayerController : MonoBehaviour
                     superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
         }
-        // 強い近距離攻撃 攻撃時パーティクルを出す
+        // 強い近距離攻撃 パーティクルを出す 内部処理はWeaponEventHandler.csから呼びだす
         else if (context.control == Mouse.current.rightButton)
         {
             animatorR.SetTrigger("SuperAttack");
 
             attackController.Init("Enemy", SuperNearAttack);
-            attackController.NearAttack(WeaponSlotR.transform.position, NearAttackRange);
 
             if (SuperNearAttackParticle) Instantiate(SuperNearAttackParticle, WeaponSlotR.transform.position, Quaternion.identity);
         }
