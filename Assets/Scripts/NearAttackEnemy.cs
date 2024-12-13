@@ -8,8 +8,8 @@ public class NearAttackEnemy : EnemyController
     [Tooltip("攻撃時間間隔")]
     public float BlowInterval = 1.5f;
 
-    private Animator animator;
     private AttackController attackController;
+    private Animator animator;
     private float nextBlowTime;
 
     protected override void Start()
@@ -36,13 +36,12 @@ public class NearAttackEnemy : EnemyController
             destVec.Normalize();
             rb.linearVelocity = destVec * ChasingSpeed;
 
-            // 攻撃
+            // 攻撃モーション 中身はEventTrigger.csから呼び出す
             if (Time.time > nextBlowTime && distanceVector.magnitude < AttackDistance)
             {
                 gameObject.transform.forward = destVec;
                 animator.SetTrigger("Attack");
 
-                attackController.NearAttack(transform.position, AttackDistance);
                 nextBlowTime = Time.time + BlowInterval;
             }
         }
