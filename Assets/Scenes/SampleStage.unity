@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d87bb47a6d09749a39184d84f49397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyController: {fileID: 807522298}
 --- !u!1 &146982174
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 146982175}
   - component: {fileID: 146982176}
+  - component: {fileID: 146982177}
   m_Layer: 0
   m_Name: WeaponSlotRight
   m_TagString: Untagged
@@ -334,6 +334,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &146982177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146982174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db14a236882a34449267c5924b10341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &174695918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501417019}
   - component: {fileID: 1501417020}
+  - component: {fileID: 1501417021}
   m_Layer: 0
   m_Name: WeaponSlotLeft
   m_TagString: Untagged
@@ -1715,6 +1728,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1501417021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501417018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db14a236882a34449267c5924b10341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1622281107
 PrefabInstance:
   m_ObjectHideFlags: 0
