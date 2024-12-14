@@ -91,20 +91,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: lengthInSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: simulationSpeed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: ShapeModule.m_Scale.z
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: VelocityModule.enabled
@@ -119,12 +123,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: VelocityModule.orbitalZ.scalar
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: VelocityModule.speedModifier.scalar
@@ -140,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5288094631000541260, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: m_Name
-      value: Ball_Base Variant
+      value: Ball_Big_Fire
       objectReference: {fileID: 0}
     - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: m_LocalPosition.x

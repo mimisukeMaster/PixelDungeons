@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
         {
             animatorL.SetTrigger("SuperAttack");
 
-            GameObject superMagic = Instantiate(SuperMagicObj ? SuperMagicObj : MagicObj, MagicPos.position, Quaternion.identity); 
+            GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
                     superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
         }
