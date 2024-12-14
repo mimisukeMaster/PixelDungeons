@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &527558257095322890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4213062665910047139}
+  m_Layer: 0
+  m_Name: Sword_Grass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4213062665910047139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527558257095322890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 16690286337996256}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &554491167314366987
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4213062665910047139}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.088
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5263407
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.48999384
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.47190613
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5100746
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -85.728
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -2.385
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.415
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+      propertyPath: m_Name
+      value: Model_Sword_Grass
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+--- !u!4 &16690286337996256 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ea46e0b4443368e44bedee487b8ecefd, type: 3}
+  m_PrefabInstance: {fileID: 554491167314366987}
+  m_PrefabAsset: {fileID: 0}
