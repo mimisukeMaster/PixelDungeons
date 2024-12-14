@@ -1840,8 +1840,8 @@ MonoBehaviour:
   MoveSpeed: 5
   PlayerCam: {fileID: 963194227}
   WeaponSlotL: {fileID: 1501417018}
-  MagicObj: {fileID: 2548203629150972424, guid: 9de9c0c7985e15e45b1168fab8000100, type: 3}
-  SuperMagicObj: {fileID: 0}
+  MagicObj: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  SuperMagicObj: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
   FarAttack: 10
   SuperFarAttack: 20
   MagicPos: {fileID: 1116857480}
