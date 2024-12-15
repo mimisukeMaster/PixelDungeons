@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
             animatorL.SetTrigger("Attack");
             GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
                     magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-            magic.GetComponent<AttackController>().Init("Enemy", FarAttack);
+            magic.GetComponent<AttackController>().Init("Enemy", FarAttack,1,5.0f);
 
             Destroy(magic, 5.0f);
         }
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             animatorR.SetTrigger("Attack");
 
-            attackController.Init("Enemy", NearAttack);
+            //attackController.Init("Enemy", NearAttack,1,5.0f);
         }
     }
 
@@ -143,14 +143,14 @@ public class PlayerController : MonoBehaviour
 
             GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
                     superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-            superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
+            superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack,1,5.0f);
         }
         // 強い近距離攻撃 パーティクルを出す 内部処理はWeaponEventHandler.csから呼びだす
         else if (context.control == Mouse.current.rightButton)
         {
             animatorR.SetTrigger("SuperAttack");
 
-            attackController.Init("Enemy", SuperNearAttack);
+            attackController.Init("Enemy", SuperNearAttack,1,5.0f);
 
             if (SuperNearAttackParticle) Instantiate(SuperNearAttackParticle, WeaponSlotR.transform.position, Quaternion.identity);
         }

@@ -4,12 +4,16 @@ public class AttackController : MonoBehaviour
 {
     private string targetTag;
     private int damage;
+    private int penetration;
 
     // 初期化
-    public void Init(string TargetTag, int Damage)
+    public void Init(string TargetTag, int Damage,int Penetration,float DestroyTime)
     {
         targetTag = TargetTag;
         damage = Damage;
+        penetration = Penetration;
+        Debug.Log(gameObject.name+":"+DestroyTime.ToString());
+        Destroy(gameObject,DestroyTime);
     }
 
     /// <summary>
@@ -17,7 +21,7 @@ public class AttackController : MonoBehaviour
     /// </summary>
     /// <remarks>物理演算による衝突判定を用いる</remarks>
     /// <param name="other"></param>
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other) 
     {
         // 敵自身の衝突（近距離）はNearAttackで行う
         if (gameObject.CompareTag("Enemy")) return;
@@ -25,9 +29,15 @@ public class AttackController : MonoBehaviour
         // タグで判定する
         if (other.gameObject.CompareTag(targetTag))
         {
+            Debug.Log("Attack");
             other.gameObject.GetComponent<HPController>().Damaged(damage);
 
-            Destroy(gameObject);
+            penetration--;
+            if(penetration <=0)
+            {
+                Debug.Log("Destroy:"+gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 

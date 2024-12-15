@@ -37,7 +37,7 @@ public class FarAttackEnemy : EnemyController
         {
             GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity); 
             bullet.GetComponent<Rigidbody>().linearVelocity = distanceVector.normalized * ShootSpeed;
-            bullet.GetComponent<AttackController>().Init("Player", Attack);
+            bullet.GetComponent<AttackController>().Init("Player", Attack,1,5.0f);
 
             Destroy(bullet, 5.0f);
             nextShootTime = Time.time + ShootInterval;
