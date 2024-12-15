@@ -1011,6 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 10
+  AimFOV: 35
 --- !u!1001 &1044878698
 PrefabInstance:
   m_ObjectHideFlags: 0
