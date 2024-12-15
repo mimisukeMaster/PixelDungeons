@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             animatorL.SetTrigger("Attack");
             GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
-                    magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
+            magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             magic.GetComponent<AttackController>().Init("Enemy", FarAttack);
 
             Destroy(magic, 5.0f);
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
             animatorL.SetTrigger("SuperAttack");
 
             GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
-                    superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
+            superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
         }
         // 強い近距離攻撃 パーティクルを出す 内部処理はWeaponEventHandler.csから呼びだす
