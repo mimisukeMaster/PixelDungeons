@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public int SuperNearAttack = 30;
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
+    [Tooltip("インベントリのキャンバス")]
+    public GameObject InventoryCanvas;
 
     private Rigidbody rb;
     private ControlActions controls;
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Move.canceled += OnMoveCanceled;
         controls.Player.Attack.started += OnTimerStart;
         controls.Player.Attack.canceled += OnTimerStop;
+        controls.Player.OpenInventory.performed += SwitchInventory;
     }
 
     private void FixedUpdate()
@@ -154,5 +157,23 @@ public class PlayerController : MonoBehaviour
 
             if (SuperNearAttackParticle) Instantiate(SuperNearAttackParticle, WeaponSlotR.transform.position, Quaternion.identity);
         }
+    }
+
+    /// <summary>
+    /// インベントリを開く/閉じる
+    /// </summary>
+    /// <param name="context"></param>
+    private void SwitchInventory(InputAction.CallbackContext context)
+    {
+        InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
+        if(InventoryCanvas.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        Debug.Log(InventoryCanvas.activeSelf);
     }
 }
