@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            CameraController.movePerspective_S = false;
+            CameraController.movePerspective_S = true;
             Time.timeScale = 1;
         }
     }

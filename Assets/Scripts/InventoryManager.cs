@@ -6,18 +6,25 @@ using UnityEditor.EditorTools;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Dictionary<Item,int> itemsInInventory = new Dictionary<Item, int>(); 
+    public Dictionary<Item,InventoryItem> itemsInInventory = new Dictionary<Item, InventoryItem>();
+    [Tooltip("アイテムを表示する個別のUI")]
+    public GameObject ItemPanel;
+    [Tooltip("アイテム欄の親")]
+    public Transform ItemContent;
 
     //アイテムを追加する
     public void AddItem(Item Item)
     {
-        if(itemsInInventory.ContainsKey(Item))
+        if(itemsInInventory.ContainsKey(Item))//キーがすでにある
         {
-            itemsInInventory[Item] += 1;
+            itemsInInventory[Item].AddNumber(1);
         }
-        else
+        else//初めて
         {
-            itemsInInventory.Add(Item,1);
+            GameObject panel = Instantiate(ItemPanel,ItemContent);
+            InventoryItem inventoryItem = panel.GetComponent<InventoryItem>();
+            inventoryItem.Init(1,Item.name,Item.ItemImage);
+            itemsInInventory.Add(Item,inventoryItem);
         }
         string str = "";
         foreach (Item key in itemsInInventory.Keys)
