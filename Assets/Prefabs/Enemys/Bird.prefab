@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 1168398325041871206}
   - component: {fileID: 2554687144286108308}
   - component: {fileID: 333165918866452063}
+  - component: {fileID: 9183074675518782629}
   m_Layer: 5
   m_Name: HPBarFill
   m_TagString: Untagged
@@ -379,6 +380,18 @@ MonoBehaviour:
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9183074675518782629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492457773056861744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66621ec18decf2a40a7eb6c92047dce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7330380776099586310
 PrefabInstance:
   m_ObjectHideFlags: 0
