@@ -100,6 +100,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     public virtual void OnDied()
     {
+        if (Random.Range(0f, 1.0f) < DropProbability)
+        {
+            GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 

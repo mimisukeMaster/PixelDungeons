@@ -87,7 +87,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable() => controls.Disable();
 
-    private void OnCollisionEnter(Collision collision) => isGrounded = true;
+    private void OnCollisionEnter(Collision collision)
+    {
+        //アイテム関係
+        if(collision.gameObject.CompareTag("DropItem"))
+        {
+            GetComponent<InventoryManager>().AddItem(collision.gameObject.GetComponent<DropItem>().Item);
+            Destroy(collision.gameObject);
+        }
+        //着地
+        isGrounded = true;
+    }
 
     private void OnJumpPerformed(InputAction.CallbackContext controls)
     {
@@ -180,12 +190,10 @@ public class PlayerController : MonoBehaviour
             CameraController.movePerspective_S = false;
             Time.timeScale = 1;
         }
-        Debug.Log(InventoryCanvas.activeSelf);
     }
 
     public void OnDied()
     {
-        Debug.Log("Plater Dead");
         GameOverCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         CameraController.movePerspective_S = false;
