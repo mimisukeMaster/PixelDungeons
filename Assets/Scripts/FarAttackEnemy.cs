@@ -46,7 +46,7 @@ public class FarAttackEnemy : EnemyController
 
     public override void OnDied()
     {
-        if (Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity); 
+        if (Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity);
         base.OnDied();
     }
 }

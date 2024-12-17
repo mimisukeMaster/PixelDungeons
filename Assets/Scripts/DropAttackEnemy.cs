@@ -76,10 +76,4 @@ public class DropAttackEnemy : EnemyController
             nextDropTime = Time.time + DropInterval;
         }
     }
-
-    public override void OnDied()
-    {
-        if(Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity); 
-        base.OnDied();
-    }
 }
