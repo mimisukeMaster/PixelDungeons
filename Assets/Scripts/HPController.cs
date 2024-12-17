@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class HPController : MonoBehaviour
     public int HP;
     [Tooltip("体力の最大値")]
     public int MaxHP = 100;
+    [Tooltip("TagがPlayer出ない場合は必要なし")]
+    public PlayerController PlayerController;
     [Tooltip("TagがEnemyでない場合は必要なし")]
     public EnemyController EnemyController;
     [Tooltip("HPバー")]
@@ -31,10 +34,7 @@ public class HPController : MonoBehaviour
         UpdateHPBar();
         if(HP <= 0)
         {
-            if(gameObject.CompareTag("Player"))
-            {
-
-            }
+            if(gameObject.CompareTag("Player"))PlayerController.OnDied();
             else if(gameObject.CompareTag("Enemy")) EnemyController.OnDied();
         }
     }
@@ -53,7 +53,6 @@ public class HPController : MonoBehaviour
         if(HPBar)
         {
             HPBar.fillAmount = (float)HP/MaxHP;
-            Debug.Log((float)HP/MaxHP);
         }
     }
 }
