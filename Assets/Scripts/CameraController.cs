@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -33,6 +32,7 @@ public class CameraController : MonoBehaviour
             horizontalRotation += mouseX;
 
             verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+
             // 角度を反映、水平方向はプレイヤーごと回転
             transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
             transform.parent.transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);

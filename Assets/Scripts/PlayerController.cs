@@ -1,7 +1,5 @@
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -178,13 +176,16 @@ public class PlayerController : MonoBehaviour
     private void SwitchInventory(InputAction.CallbackContext context)
     {
         InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
-        if(InventoryCanvas.activeSelf)//インベントリが開いたとき
+
+        //インベントリが開いたとき
+        if(InventoryCanvas.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
             CameraController.movePerspective_S = false;
             Time.timeScale = 0;
         }
-        else//インベントリが閉じたとき
+        //インベントリが閉じたとき
+        else
         {
             Cursor.lockState = CursorLockMode.Locked;
             CameraController.movePerspective_S = false;

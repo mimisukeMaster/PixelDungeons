@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
 
