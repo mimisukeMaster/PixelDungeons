@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     public float NearAttackRange = 1.0f;
     [Tooltip("インベントリのキャンバス")]
     public GameObject InventoryCanvas;
+    [Tooltip("ゲームオーバーのキャンバス")]
+    public GameObject GameOverCanvas;
 
     private Rigidbody rb;
     private ControlActions controls;
@@ -169,14 +171,24 @@ public class PlayerController : MonoBehaviour
         if(InventoryCanvas.activeSelf)//インベントリが開いたとき
         {
             Cursor.lockState = CursorLockMode.None;
+            CameraController.movePerspective_S = false;
             Time.timeScale = 0;
-
         }
         else//インベントリが閉じたとき
         {
             Cursor.lockState = CursorLockMode.Locked;
+            CameraController.movePerspective_S = false;
             Time.timeScale = 1;
         }
         Debug.Log(InventoryCanvas.activeSelf);
+    }
+
+    public void OnDied()
+    {
+        Debug.Log("Plater Dead");
+        GameOverCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        CameraController.movePerspective_S = false;
+        Time.timeScale = 0;
     }
 }
