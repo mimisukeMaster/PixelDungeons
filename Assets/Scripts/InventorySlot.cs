@@ -5,14 +5,13 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     public int Id;
-    public Item item = null;
+    public Item Item = null;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("InventoryItem"))
         {
             InventoryManager.InventorySlotInHover_S = Id;
-            Debug.Log(InventoryManager.InventorySlotInHover_S);
         }
     }
 
@@ -36,32 +35,32 @@ public class InventorySlot : MonoBehaviour
 
     public void OnDragStart()
     {
-        if(item != null)
+        if(Item != null)
         {
-            InventoryManager.ItemBeingDragged_S = item;
-            item.isDragged = true;
+            InventoryManager.ItemBeingDragged_S = Item;
+            Item.isDragged = true;
         }
     }
 
     public void OnDragEnd()
     {
-        item.isDragged = false;
+        Item.isDragged = false;
         InventoryManager.ItemBeingDragged_S = null;
         if(InventoryManager.InventorySlotInHover_S == 100)//アイテムがスロットから外れていたら元あった場所に戻して終わる
         {
-            item.gameObject.GetComponent<RectTransform>().position = transform.position;
+            Item.gameObject.GetComponent<RectTransform>().position = transform.position;
             return;
         }
         InventorySlot destination = InventoryManager.inventorySlots_S[InventoryManager.InventorySlotInHover_S];
-        if(destination.item == null)
+        if(destination.Item == null)
         {
-            destination.item = item;
-            item.gameObject.GetComponent<RectTransform>().position = destination.gameObject.transform.position;
-            item = null;
+            destination.Item = Item;
+            Item.gameObject.GetComponent<RectTransform>().position = destination.gameObject.transform.position;
+            Item = null;
         }
         else
         {
-            item.gameObject.GetComponent<RectTransform>().position = transform.position;
+            Item.gameObject.GetComponent<RectTransform>().position = transform.position;
         }
     }
 }

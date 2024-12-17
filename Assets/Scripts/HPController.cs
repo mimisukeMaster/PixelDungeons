@@ -1,5 +1,6 @@
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HPController : MonoBehaviour
 {   
@@ -9,11 +10,14 @@ public class HPController : MonoBehaviour
     public int MaxHP = 100;
     [Tooltip("TagがEnemyでない場合は必要なし")]
     public EnemyController EnemyController;
+    [Tooltip("HPバー")]
+    public Image HPBar;
 
 
     void Start()
     {
         HP = MaxHP;
+        UpdateHPBar();
     }
 
     void Update()
@@ -24,6 +28,7 @@ public class HPController : MonoBehaviour
     public void Damaged(int damage)
     {
         HP -= damage;
+        UpdateHPBar();
         if(HP <= 0)
         {
             if(gameObject.CompareTag("Player"))
@@ -38,5 +43,17 @@ public class HPController : MonoBehaviour
     {
         HP += heal;
         if(HP > MaxHP) HP = MaxHP;
+    }
+
+    /// <summary>
+    /// HPバーを更新する
+    /// </summary>
+    public void UpdateHPBar()
+    {
+        if(HPBar)
+        {
+            HPBar.fillAmount = (float)HP/MaxHP;
+            Debug.Log((float)HP/MaxHP);
+        }
     }
 }

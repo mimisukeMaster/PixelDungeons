@@ -19,14 +19,14 @@ public class InventoryManager : MonoBehaviour
     public Canvas CanvasRoot;
     public static Canvas CanvasRoot_S;
     [Tooltip("アイテムの画像の親")]
-    public RectTransform rtParent;
+    public RectTransform RtParent;
     public static RectTransform rtParent_S; 
 
     void Start()
     {
         CanvasRoot_S = CanvasRoot;
-        rtParent_S = rtParent;
-        //各スロットをリストに追加
+        rtParent_S = RtParent;
+        //各スロットを追加
         for(int i = 0;i < BagParent.childCount;i++)
         {
             inventorySlots_S.Add(i,BagParent.GetChild(i).GetComponent<InventorySlot>());
@@ -36,13 +36,13 @@ public class InventoryManager : MonoBehaviour
     }
 
     //アイテムを移動する
-    public bool Inventory(int id)
+    public bool UpdateInventory(int id)
     {
         if(inventorySlots_S[id] != null)
         {
             return false;
         }
-        inventorySlots_S[id].item = ItemBeingDragged_S;
+        inventorySlots_S[id].Item = ItemBeingDragged_S;
         return true;
     }
 }
