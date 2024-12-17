@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
         else//インベントリが閉じたとき
         {
             Cursor.lockState = CursorLockMode.Locked;
-            CameraController.movePerspective_S = false;
+            CameraController.movePerspective_S = true;
             Time.timeScale = 1;
         }
     }
