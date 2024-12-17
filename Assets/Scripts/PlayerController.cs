@@ -166,13 +166,16 @@ public class PlayerController : MonoBehaviour
     private void SwitchInventory(InputAction.CallbackContext context)
     {
         InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
-        if(InventoryCanvas.activeSelf)
+        if(InventoryCanvas.activeSelf)//インベントリが開いたとき
         {
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+
         }
-        else
+        else//インベントリが閉じたとき
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
         }
         Debug.Log(InventoryCanvas.activeSelf);
     }
