@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     public GameObject InventoryCanvas;
     [Tooltip("ゲームオーバーのキャンバス")]
     public GameObject GameOverCanvas;
+    [Tooltip("ゲーム中のキャンバス")]
+    public GameObject GamingCanvas;
 
     private Rigidbody rb;
     private ControlActions controls;
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
         InventoryCanvas.SetActive(false);
         GameOverCanvas.SetActive(false);
+        GamingCanvas.SetActive(true);
 
         // インスタンス生成
         controls = new ControlActions();
@@ -90,7 +93,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //アイテム関係
-        if(collision.gameObject.CompareTag("DropItem"))
+        if (collision.gameObject.CompareTag("DropItem"))
         {
             GetComponent<InventoryManager>().AddItem(collision.gameObject.GetComponent<DropItem>().Item);
             Destroy(collision.gameObject);
@@ -101,7 +104,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnJumpPerformed(InputAction.CallbackContext controls)
     {
-        if (isGrounded) {
+        if (isGrounded)
+        {
             rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
@@ -110,9 +114,9 @@ public class PlayerController : MonoBehaviour
     private void OnMovePerformed(InputAction.CallbackContext context) => moveInput = context.ReadValue<Vector2>();
 
     private void OnMoveCanceled(InputAction.CallbackContext context) => moveInput = Vector2.zero;
-    
+
     private void OnTimerStart(InputAction.CallbackContext context) => clickedTime = Time.time;
-    
+
     private void OnTimerStop(InputAction.CallbackContext context)
     {
         if (Time.time - clickedTime < 0.4f) OnAttack(context);
@@ -125,13 +129,13 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnAttack(InputAction.CallbackContext context)
     {
-        if (!CameraController.movePerspective_S) return;
+        if (!CameraController.isGaming) return;
 
         // 遠距離攻撃
         if (context.control == Mouse.current.leftButton)
         {
             animatorL.SetTrigger("Attack");
-            GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity); 
+            GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity);
             magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             magic.GetComponent<AttackController>().Init("Enemy", FarAttack);
 
@@ -153,14 +157,14 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnSuperAttack(InputAction.CallbackContext context)
     {
-        if (!CameraController.movePerspective_S) return;
+        if (!CameraController.isGaming) return;
 
         // 強い遠距離攻撃 弾を変える
         if (context.control == Mouse.current.leftButton)
         {
             animatorL.SetTrigger("SuperAttack");
 
-            GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
+            GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity);
             superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
 
@@ -185,28 +189,31 @@ public class PlayerController : MonoBehaviour
     private void SwitchInventory(InputAction.CallbackContext context)
     {
         InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
+        GamingCanvas.SetActive(!GamingCanvas.activeSelf);
 
         //インベントリが開いたとき
-        if(InventoryCanvas.activeSelf)
+        if (InventoryCanvas.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
-            CameraController.movePerspective_S = false;
+            CameraController.isGaming = false;
             Time.timeScale = 0;
         }
         //インベントリが閉じたとき
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            CameraController.movePerspective_S = true;
+            CameraController.isGaming = true;
             Time.timeScale = 1;
         }
     }
 
     public void OnDied()
     {
+        InventoryCanvas.SetActive(false);
+        GamingCanvas.SetActive(false);
         GameOverCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-        CameraController.movePerspective_S = false;
+        CameraController.isGaming = false;
         Time.timeScale = 0;
     }
 }
