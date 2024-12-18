@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
+    public static bool isGaming;
     private float clickedTime;
     private Animator animatorL;
     private Animator animatorR;
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
         animatorL = WeaponSlotL.GetComponent<Animator>();
         animatorR = WeaponSlotR.GetComponent<Animator>();
         attackController = WeaponSlotR.GetComponentInChildren<AttackController>();
+        isGaming = true;
 
         InventoryCanvas.SetActive(false);
         GameOverCanvas.SetActive(false);
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnAttack(InputAction.CallbackContext context)
     {
-        if (!CameraController.isGaming) return;
+        if (!isGaming) return;
 
         // 遠距離攻撃
         if (context.control == Mouse.current.leftButton)
@@ -157,7 +159,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnSuperAttack(InputAction.CallbackContext context)
     {
-        if (!CameraController.isGaming) return;
+        if (!isGaming) return;
 
         // 強い遠距離攻撃 弾を変える
         if (context.control == Mouse.current.leftButton)
@@ -195,14 +197,14 @@ public class PlayerController : MonoBehaviour
         if (InventoryCanvas.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
-            CameraController.isGaming = false;
+            isGaming = false;
             Time.timeScale = 0;
         }
         //インベントリが閉じたとき
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            CameraController.isGaming = true;
+            isGaming = true;
             Time.timeScale = 1;
         }
     }
@@ -213,7 +215,7 @@ public class PlayerController : MonoBehaviour
         GamingCanvas.SetActive(false);
         GameOverCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-        CameraController.isGaming = false;
+        isGaming = false;
         Time.timeScale = 0;
     }
 }

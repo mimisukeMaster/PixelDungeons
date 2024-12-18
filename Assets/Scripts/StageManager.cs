@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
     [Tooltip("敵の種類と出現数を設定")]
     public List<EnemyProperty> Enemies;
     [Tooltip("敵の種類と数を設定")]
     [System.Serializable]
-    public struct EnemyProperty{
+    public struct EnemyProperty
+    {
         public GameObject enemy;
         public int count;
     };

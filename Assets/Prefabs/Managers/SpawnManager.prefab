@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4411775095751136195}
   - component: {fileID: 233476175658443459}
   m_Layer: 0
-  m_Name: StageManager
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   - enemy: {fileID: 7056604927472754041, guid: 34b8d9daad685624aafc4a3f54505dd5, type: 3}
     count: 1
   SpawnArea: {x: 50, y: 50}
-  Boss: {fileID: 919132149155446097, guid: 9ea6884e75b1ea64d9f2d0cd604c4be2, type: 3}
+  Boss: {fileID: 7994933551681786214, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
   BossSpawnPos: {x: 0, y: 0, z: 0}
   BossMode: 0
   existEnemyNum: 0

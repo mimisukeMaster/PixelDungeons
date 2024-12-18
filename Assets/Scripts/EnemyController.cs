@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     protected bool isChasing;
     protected GameObject targetPlayer;
     protected Vector3 distanceVector;
-    protected StageManager stageManager;
+    protected SpawnManager stageManager;
 
 
     protected virtual void Start()
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         nextDetectTime = Time.time;
         nextWanderTime = Time.time;
         rb = GetComponent<Rigidbody>();
-        stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
+        stageManager = GameObject.Find("StageManager").GetComponent<SpawnManager>();
     }
 
     protected virtual void Update()
@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour
     protected void DetectPlayer()
     {
         if (Time.time < nextDetectTime) return;
-        
+
         // 周囲の物体を検知
         Collider[] detectedObjs = Physics.OverlapSphere(transform.position, DetectionRadius);
         isChasing = false;
@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
         foreach (var obj in detectedObjs)
         {
             if (obj.CompareTag("Player"))
-            {                
+            {
                 // 衝突相手を格納
                 targetPlayer = obj.gameObject;
 
@@ -85,7 +85,7 @@ public class EnemyController : MonoBehaviour
     private void RandomMove()
     {
         if (Time.time < nextWanderTime || isChasing || rb.isKinematic) return;
-    
+
         Vector3 randomDirection = new Vector3(
                 Random.Range(-1.0f, 1.0f), 0f, Random.Range(-1.0f, 1.0f)).normalized;
         rb.linearVelocity = randomDirection * WanderVelocity;
