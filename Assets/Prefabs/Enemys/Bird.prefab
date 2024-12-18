@@ -283,6 +283,7 @@ MonoBehaviour:
   Attack: 10
   DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   DropProbability: 1
+  stageManager: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
   Altitude: 5
   DropInterval: 1
   Bullet: {fileID: 4581094999854356183, guid: c028ad137dcb1324eb688393e0f86157, type: 3}
@@ -302,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 100
+  PlayerController: {fileID: 0}
   EnemyController: {fileID: 6596950609731399366}
   HPBar: {fileID: 333165918866452063}
 --- !u!1 &7492457773056861744

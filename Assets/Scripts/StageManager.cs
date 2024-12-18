@@ -4,24 +4,39 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     [Tooltip("敵の種類と出現数を設定")]
-    public List<EnemyPropaty> Enemies;
+    public List<EnemyProperty> Enemies;
     [Tooltip("敵の種類と数を設定")]
     [System.Serializable]
-    public struct EnemyPropaty{
+    public struct EnemyProperty{
         public GameObject enemy;
         public int count;
     };
     [Tooltip("生成される範囲")]
     public Vector2 SpawnArea;
+    [Tooltip("ステージのボス")]
+    public GameObject Boss;
+    [Tooltip("ボスが生まれる場所")]
+    public Vector3 BossSpawnPos;
 
-    private void Start()
+    [HideInInspector]
+    public bool BossMode;
+    [HideInInspector]
+    public int existEnemyNum;
+
+
+    private void Awake()
     {
+        existEnemyNum = 0;
         SpawnEnemies();
     }
 
     void Update()
     {
-        
+        if (existEnemyNum <= 0 && !BossMode)
+        {
+            Instantiate(Boss, BossSpawnPos, Quaternion.identity);
+            BossMode = true;
+        }
     }
 
     private void SpawnEnemies()
@@ -33,6 +48,7 @@ public class StageManager : MonoBehaviour
                 float z = Random.Range(SpawnArea.y / -2.0f, SpawnArea.y / 2.0f);
 
                 Instantiate(Enemies[i].enemy, new Vector3(x, 0, z), Quaternion.identity);
+                existEnemyNum++;
             }
         }
     }

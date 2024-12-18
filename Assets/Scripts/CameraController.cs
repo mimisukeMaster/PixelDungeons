@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         bool isLeftShift = Input.GetKey(KeyCode.LeftShift);
         if (isLeftShift)
         {
-            if (playerCam.fieldOfView - ScopeFOV > 0.1f) playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, ScopeFOV, 0.5f);
+            if (playerCam.fieldOfView - ScopeFOV > 0.1f) playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, ScopeFOV, 0.3f);
             else playerCam.fieldOfView = ScopeFOV;
         }
         else playerCam.fieldOfView = 60;

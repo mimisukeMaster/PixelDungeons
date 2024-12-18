@@ -22,6 +22,8 @@ public class EnemyController : MonoBehaviour
     public GameObject DropItem;
     [Tooltip("アイテムドロップの確率")]
     public float DropProbability = 1.0f;
+    [Tooltip("StageManagerへのpublic接続")]
+    public StageManager stageManager;
 
 
     protected Rigidbody rb;
@@ -104,7 +106,8 @@ public class EnemyController : MonoBehaviour
         {
             GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
         }
-
+        
+        stageManager.existEnemyNum--;
         Destroy(gameObject);
     }
 

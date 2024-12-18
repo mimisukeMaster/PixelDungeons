@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public int SuperNearAttack = 30;
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
+    [Header("UI")]
     [Tooltip("インベントリのキャンバス")]
     public GameObject InventoryCanvas;
     [Tooltip("ゲームオーバーのキャンバス")]
@@ -162,6 +163,9 @@ public class PlayerController : MonoBehaviour
             GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity); 
             superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
             superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
+
+            Destroy(superMagic, 5.0f);
+
         }
         // 強い近距離攻撃 パーティクルを出す 内部処理はWeaponEventHandler.csから呼びだす
         else if (context.control == Mouse.current.rightButton)
