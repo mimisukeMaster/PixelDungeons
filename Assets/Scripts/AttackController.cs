@@ -26,7 +26,8 @@ public class AttackController : MonoBehaviour
         if (other.gameObject.CompareTag(targetTag))
         {
             other.gameObject.GetComponent<HPController>().Damaged(damage);
-
+            //UIを表示
+            if(targetTag == "Enemy")DamageNumberManager.AddUI(damage,other.contacts[0].point);
             Destroy(gameObject);
         }
     }
@@ -45,6 +46,8 @@ public class AttackController : MonoBehaviour
             if (obj.CompareTag(targetTag))
             {                
                 obj.GetComponent<HPController>().Damaged(damage);
+                //UIを表示
+                if(targetTag == "Enemy")DamageNumberManager.AddUI(damage,obj.transform.position);
                 return;
             }
         }
