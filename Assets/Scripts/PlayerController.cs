@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
         animatorR = WeaponSlotR.GetComponent<Animator>();
         attackController = WeaponSlotR.GetComponentInChildren<AttackController>();
 
+        InventoryCanvas.SetActive(false);
+        GameOverCanvas.SetActive(false);
+
         // インスタンス生成
         controls = new ControlActions();
 
