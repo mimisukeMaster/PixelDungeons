@@ -2832,7 +2832,7 @@ GameObject:
   - component: {fileID: 1454905360}
   - component: {fileID: 1454905359}
   m_Layer: 5
-  m_Name: StaticCanvas
+  m_Name: GamingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3388,6 +3388,7 @@ MonoBehaviour:
   NearAttackRange: 1
   InventoryCanvas: {fileID: 89594842}
   GameOverCanvas: {fileID: 1969464328}
+  GamingCanvas: {fileID: 1454905358}
 --- !u!54 &1738896457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4017,7 +4018,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 384811827}
   m_HandleRect: {fileID: 384811826}
   m_Direction: 2
-  m_Value: 1.0000011
+  m_Value: 1.0000008
   m_Size: 0.6420007
   m_NumberOfSteps: 0
   m_OnValueChanged:

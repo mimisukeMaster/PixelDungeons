@@ -17,11 +17,6 @@ public class InventoryItem : MonoBehaviour
         NameText.text = Name;
     }
 
-    public void OnClicik()
-    {
-        Debug.Log("Clicked");
-    }
-
     public void AddNumber(int number)
     {
         Debug.Log(this.number);

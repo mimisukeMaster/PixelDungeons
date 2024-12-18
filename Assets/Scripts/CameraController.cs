@@ -8,13 +8,13 @@ public class CameraController : MonoBehaviour
     private float verticalRotation;
     private float horizontalRotation;
     private Camera playerCam;
-    public static bool movePerspective_S = true;
+    public static bool isGaming;
 
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        movePerspective_S = true;
+        isGaming = true;
         verticalRotation = 0f;
         horizontalRotation = 0f;
 
@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
-        if(movePerspective_S)
+        if (isGaming)
         {
             // 入力受付
             float mouseX = Input.GetAxis("Mouse X") * Weight;
