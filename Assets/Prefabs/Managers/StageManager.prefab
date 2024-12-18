@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &677572351791009707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4411775095751136195}
+  - component: {fileID: 233476175658443459}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4411775095751136195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677572351791009707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &233476175658443459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677572351791009707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e319d718dd8aef64492198cdb826b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - enemy: {fileID: 2112501586520397462, guid: 52901f2b022f5714cb670db920fadc0f, type: 3}
+    count: 1
+  - enemy: {fileID: 7056604927472754041, guid: 34b8d9daad685624aafc4a3f54505dd5, type: 3}
+    count: 1
+  SpawnArea: {x: 50, y: 50}
+  Boss: {fileID: 919132149155446097, guid: 9ea6884e75b1ea64d9f2d0cd604c4be2, type: 3}
+  BossSpawnPos: {x: 0, y: 0, z: 0}
+  BossMode: 0
+  existEnemyNum: 0

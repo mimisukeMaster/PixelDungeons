@@ -104,8 +104,9 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Attack: 10
-  DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
+  DropItem: {fileID: 2823868261986922460, guid: 0dbc3a353288db049a06e4354c498881, type: 3}
   DropProbability: 1
+  stageManager: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
   AttackDistance: 1.5
   BlowInterval: 1.5
 --- !u!114 &4261218973931920639
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 100
+  PlayerController: {fileID: 0}
   EnemyController: {fileID: 3183878954942499601}
   HPBar: {fileID: 3737038518282163228}
 --- !u!114 &2660937604897501992
