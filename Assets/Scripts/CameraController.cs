@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float Weight = 10.0f;
+    public float Weight = 8.0f;
     public float ScopeFOV = 35.0f;
 
     private float verticalRotation;
     private float horizontalRotation;
     private Camera playerCam;
-    public static bool isGaming;
 
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        isGaming = true;
         verticalRotation = 0f;
         horizontalRotation = 0f;
 
@@ -22,7 +20,7 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
-        if (isGaming)
+        if (PlayerController.isGaming)
         {
             // 入力受付
             float mouseX = Input.GetAxis("Mouse X") * Weight;
