@@ -37,10 +37,9 @@ public class CameraController : MonoBehaviour
             transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
             transform.parent.transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
         }
-        // 入力受付
-        bool isLeftShift = Input.GetKey(KeyCode.LeftShift);
 
         // スコープモード 線形補間を適用
+        bool isLeftShift = Input.GetKey(KeyCode.LeftShift);
         if (isLeftShift)
         {
             if (playerCam.fieldOfView - ScopeFOV > 0.1f) playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, ScopeFOV, 0.5f);
