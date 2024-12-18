@@ -59,8 +59,6 @@ public class PlayerController : MonoBehaviour
         animatorR = WeaponSlotR.GetComponent<Animator>();
         attackController = WeaponSlotR.GetComponentInChildren<AttackController>();
 
-        
-
         // インスタンス生成
         controls = new ControlActions();
 
@@ -123,6 +121,8 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnAttack(InputAction.CallbackContext context)
     {
+        if (!CameraController.movePerspective_S) return;
+
         // 遠距離攻撃
         if (context.control == Mouse.current.leftButton)
         {
@@ -149,6 +149,8 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     private void OnSuperAttack(InputAction.CallbackContext context)
     {
+        if (!CameraController.movePerspective_S) return;
+
         // 強い遠距離攻撃 弾を変える
         if (context.control == Mouse.current.leftButton)
         {
