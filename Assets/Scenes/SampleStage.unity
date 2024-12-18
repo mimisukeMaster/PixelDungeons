@@ -372,7 +372,6 @@ MonoBehaviour:
   Attack: 10
   DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   DropProbability: 1
-  stageManager: {fileID: 0}
   BeamInterval: 5
   BeamLength: 20
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
@@ -1208,7 +1207,6 @@ MonoBehaviour:
   Attack: 10
   DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   DropProbability: 1
-  stageManager: {fileID: 0}
   AttackDistance: 5
   ShootSpeed: 10
   ShootInterval: 1
@@ -4242,6 +4240,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 6596950609731399366, guid: 34b8d9daad685624aafc4a3f54505dd5, type: 3}
+      propertyPath: DropItem
+      value: 
+      objectReference: {fileID: 2038873515553743555, guid: 657ff9e6c9d752941a635de42ee2912c, type: 3}
     - target: {fileID: 7056604927472754041, guid: 34b8d9daad685624aafc4a3f54505dd5, type: 3}
       propertyPath: m_Name
       value: Bird
@@ -4324,6 +4326,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[0].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[1].count
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 677572351791009707, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: m_Name
       value: StageManager

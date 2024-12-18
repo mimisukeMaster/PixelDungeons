@@ -22,9 +22,6 @@ public class EnemyController : MonoBehaviour
     public GameObject DropItem;
     [Tooltip("アイテムドロップの確率")]
     public float DropProbability = 1.0f;
-    [Tooltip("StageManagerへのpublic接続")]
-    public StageManager stageManager;
-
 
     protected Rigidbody rb;
     protected float nextDetectTime;
@@ -32,6 +29,7 @@ public class EnemyController : MonoBehaviour
     protected bool isChasing;
     protected GameObject targetPlayer;
     protected Vector3 distanceVector;
+    protected StageManager stageManager;
 
 
     protected virtual void Start()
@@ -39,6 +37,7 @@ public class EnemyController : MonoBehaviour
         nextDetectTime = Time.time;
         nextWanderTime = Time.time;
         rb = GetComponent<Rigidbody>();
+        stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
     }
 
     protected virtual void Update()
@@ -106,8 +105,7 @@ public class EnemyController : MonoBehaviour
         {
             GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
         }
-        
-        stageManager.existEnemyNum--;
+        stageManager.existEnemyNum -= 1;
         Destroy(gameObject);
     }
 
