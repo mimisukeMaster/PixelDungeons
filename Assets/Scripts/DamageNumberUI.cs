@@ -18,10 +18,9 @@ public class DamageNumberUI : MonoBehaviour
         text.text = damage.ToString();
     }
 
-    void Update() 
+    void Update()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(target);
-        Debug.Log(screenPos);
         if(screenPos.z > 0)text.enabled = true;
         else text.enabled = false;
         transform.position = screenPos + Vector3.up * height;
