@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &243682162112687166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7374039257531652831}
+  m_Layer: 0
+  m_Name: SmashPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7374039257531652831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243682162112687166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 2.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7696557274012416438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &532699418476504983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1122,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1342701399686015981}
+  - {fileID: 7374039257531652831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7431557909337544641
@@ -1113,6 +1145,9 @@ MonoBehaviour:
   Attack: 10
   DropItem: {fileID: 2823868261986922460, guid: 0dbc3a353288db049a06e4354c498881, type: 3}
   DropProbability: 1
+  SmashInterval: 1
+  SmashArea: {fileID: 7374039257531652831}
+  smashRange: 0
 --- !u!1 &8299365492596692701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1435,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5116686780842457338, guid: ab8885b2595b0e244abf9df372d6814b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 893855111585611010}
+    - targetCorrespondingSourceObject: {fileID: 5116686780842457338, guid: ab8885b2595b0e244abf9df372d6814b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2811154718548496308}
   m_SourcePrefab: {fileID: 100100000, guid: ab8885b2595b0e244abf9df372d6814b, type: 3}
 --- !u!4 &59939228212084424 stripped
 Transform:
@@ -1493,6 +1531,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2811154718548496308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920717519378986236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e5621aee50fc743aece9eb854c84d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6164700035625861499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4564986773060956803, guid: ab8885b2595b0e244abf9df372d6814b, type: 3}
