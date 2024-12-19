@@ -1069,6 +1069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7696557274012416438}
+  - component: {fileID: 7431557909337544641}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -1092,6 +1093,26 @@ Transform:
   - {fileID: 1342701399686015981}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7431557909337544641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994933551681786214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb825e40f53c4de4b8afe87e25876b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WanderVelocity: 5
+  ChasingSpeed: 4
+  WanderInterval: 1
+  DetectionInterval: 0.5
+  DetectionRadius: 5
+  Attack: 10
+  DropItem: {fileID: 2823868261986922460, guid: 0dbc3a353288db049a06e4354c498881, type: 3}
+  DropProbability: 1
 --- !u!1 &8299365492596692701
 GameObject:
   m_ObjectHideFlags: 0
