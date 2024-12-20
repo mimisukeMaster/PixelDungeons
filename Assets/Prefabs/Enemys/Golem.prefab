@@ -1100,7 +1100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7696557274012416438}
-  - component: {fileID: 7431557909337544641}
+  - component: {fileID: 6534431712290561106}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -1125,7 +1125,7 @@ Transform:
   - {fileID: 7374039257531652831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7431557909337544641
+--- !u!114 &6534431712290561106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1134,20 +1134,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7994933551681786214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb825e40f53c4de4b8afe87e25876b0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 018692c36fd5400449c50547ffb2b8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WanderVelocity: 5
   ChasingSpeed: 4
   WanderInterval: 1
   DetectionInterval: 0.5
-  DetectionRadius: 5
+  DetectionRadius: 50
   Attack: 10
-  DropItem: {fileID: 2823868261986922460, guid: 0dbc3a353288db049a06e4354c498881, type: 3}
+  DropItem: {fileID: 0}
   DropProbability: 1
+  head: {fileID: 2847695765646077143}
+  attackrange: 2
+  animator: {fileID: 893855111585611010}
   SmashInterval: 1
   SmashArea: {fileID: 7374039257531652831}
-  smashRange: 0
+  smashRange: 1
 --- !u!1 &8299365492596692701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e5621aee50fc743aece9eb854c84d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  golem: {fileID: 6534431712290561106}
 --- !u!4 &6164700035625861499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4564986773060956803, guid: ab8885b2595b0e244abf9df372d6814b, type: 3}
