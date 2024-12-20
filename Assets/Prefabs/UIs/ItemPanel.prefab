@@ -40,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 630, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9121302046705899433
 CanvasRenderer:
@@ -108,6 +108,7 @@ MonoBehaviour:
   NameText: {fileID: 8291199899201457346}
   NumberText: {fileID: 8143764747063132115}
   ItemImage: {fileID: 8698226244815522905}
+  UsePanel: {fileID: 0}
 --- !u!1 &5099612527992757758
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,10 +141,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6768241303607759984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.3695, y: 0}
-  m_SizeDelta: {x: 191.2611, y: 50}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 207.06996, y: 0}
+  m_SizeDelta: {x: 295.601, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8536500782267253030
 CanvasRenderer:
@@ -238,7 +239,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 11.726807, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.4569778, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -353,7 +354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132.79436, y: 0}
+  m_AnchoredPosition: {x: 278.1, y: 0}
   m_SizeDelta: {x: 64.4113, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1304698937097798528

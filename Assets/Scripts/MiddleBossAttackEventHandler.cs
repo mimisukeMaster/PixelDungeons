@@ -1,22 +1,18 @@
 using UnityEngine;
 
-public class MiddleBossAttackEventHandler : MonoBehaviour
+public class GolemEventHandler : MonoBehaviour
 {
-    private AttackController attackController;
-    private MiddleBossEnemy middleBossEnemy;
+    public Golem golem;
 
-    private void Start()
+    public void OnAttackLand()
     {
-        attackController = GetComponentInParent<AttackController>();
-        middleBossEnemy = GetComponentInParent<MiddleBossEnemy>();
+        Debug.Log("AttackLand Event");
+        golem.OnAttack();
     }
 
-    /// <summary>
-    /// 攻撃イベント発生時の処理
-    /// </summary>
-    /// <remarks>アニメーションのタイミングでUnity側から呼ばれる</remarks>
-    public void SmashEvent()
+    public void OnMoveEnd()
     {
-        attackController.NearAttack(middleBossEnemy.SmashArea.position, middleBossEnemy.smashRange);
+        Debug.Log("Move End Event");
+        golem.OnMoveEnd();
     }
 }

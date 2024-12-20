@@ -97,7 +97,8 @@ public class PlayerController : MonoBehaviour
         //アイテム関係
         if (collision.gameObject.CompareTag("DropItem"))
         {
-            GetComponent<InventoryManager>().AddItem(collision.gameObject.GetComponent<DropItem>().Item);
+            DropItem item = collision.gameObject.GetComponent<DropItem>();
+            GetComponent<InventoryManager>().AddItem(item.Item,item.Number);
             Destroy(collision.gameObject);
         }
         //着地
