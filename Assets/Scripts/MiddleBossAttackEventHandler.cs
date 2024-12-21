@@ -6,13 +6,11 @@ public class GolemEventHandler : MonoBehaviour
 
     public void OnAttackLand()
     {
-        Debug.Log("AttackLand Event");
         golem.OnAttack();
     }
 
     public void OnMoveEnd()
     {
-        Debug.Log("Move End Event");
         golem.OnMoveEnd();
     }
 }

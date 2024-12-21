@@ -1,8 +1,8 @@
 using UnityEngine;
 public class Golem : MiddleBossEnemy
 {
-    [Tooltip("頭のボーン")]
-    public Transform head;
+    [Tooltip("目のボーン")]
+    public Transform Eye;
 
     public float attackrange = 2;
 
@@ -10,7 +10,7 @@ public class Golem : MiddleBossEnemy
     [Tooltip("攻撃時間間隔")]
     public float SmashInterval = 1.0f;
     [Tooltip("攻撃の中心")]
-    public Transform SmashArea;
+    public Transform SmashPosition;
     [Tooltip("攻撃半径")]
     public float smashRange;
     private float nextSmashTime;
@@ -30,7 +30,8 @@ public class Golem : MiddleBossEnemy
         if(isChasing)
         {
             //頭をプレイヤーに向ける
-            head.rotation = Quaternion.LookRotation(targetPlayer.transform.position - head.position);
+            Eye.transform.rotation = Quaternion.FromToRotation(Vector3.up,targetPlayer.transform.position - Eye.position);
+            //Eye.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.position);
 
             if(!hasMoved)
             {
@@ -44,7 +45,6 @@ public class Golem : MiddleBossEnemy
     {
         if((transform.position - targetPlayer.transform.position).magnitude < attackrange) StartAttack();
         else StartMove();
-        Debug.Log((transform.position - targetPlayer.transform.position).magnitude);
     }
 
     private void StartAttack()
@@ -70,7 +70,7 @@ public class Golem : MiddleBossEnemy
     public void OnAttack()
     {
         Debug.Log("AttackLand");
-        attackController.NearAttack(SmashArea.position,smashRange);
+        attackController.NearAttack(SmashPosition.position,smashRange);
         CheckNextMove();
     }
 

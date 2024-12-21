@@ -282,7 +282,7 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 10
   Attack: 10
-  DropItem: {fileID: 2038873515553743555, guid: 657ff9e6c9d752941a635de42ee2912c, type: 3}
+  DropItem: {fileID: 1164410848181273032, guid: 6437ffc018a8550438e0a578dd2cb2be, type: 3}
   DropProbability: 1
   Altitude: 5
   DropInterval: 1
