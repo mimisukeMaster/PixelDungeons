@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1581730308692890820
+--- !u!1001 &6544131188395364935
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -49,8 +49,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6051713405099996358, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: name
+      value: Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051713405099996358, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
       propertyPath: ItemName
-      value: WeaponTest1
+      value: test_sword_1
       objectReference: {fileID: 0}
     - target: {fileID: 6051713405099996358, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
       propertyPath: ItemImage
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 98c93a0e846e4764db338478000e0299, type: 3}
     - target: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
       propertyPath: m_Name
-      value: Item_Weapon_Test_1
+      value: Item_Material_Test_1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6051713405099996358, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
@@ -67,29 +71,25 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7565616378445620900}
+      addedObject: {fileID: 7036775543035616125}
   m_SourcePrefab: {fileID: 100100000, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
---- !u!1 &7499169340516559199 stripped
+--- !u!1 &2823868261986922460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
-  m_PrefabInstance: {fileID: 1581730308692890820}
+  m_PrefabInstance: {fileID: 6544131188395364935}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7565616378445620900
+--- !u!114 &7036775543035616125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499169340516559199}
+  m_GameObject: {fileID: 2823868261986922460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473708d54f3c8724d84e68f4e55a3add, type: 3}
+  m_Script: {fileID: 11500000, guid: 42a71f2a82dfbc14ca0e9109286b7190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemImage: {fileID: 21300000, guid: 98c93a0e846e4764db338478000e0299, type: 3}
-  ItemName: WeaponTest1
-  Damage: 1
-  FireRate: 1
-  Speed: 1
-  Range: 1
-  Prefab: {fileID: 0}
+  ItemImage: {fileID: 21300000, guid: 567d981c7e8c61e419e03d814bcfbaea, type: 3}
+  ItemName: Test1
+  number: 0
