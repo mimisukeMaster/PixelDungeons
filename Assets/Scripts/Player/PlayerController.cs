@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Jump.performed += OnJumpPerformed;
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
+        controls.Player.OpenInventory.performed += SwitchInventory;
     }
 
     private void FixedUpdate()
