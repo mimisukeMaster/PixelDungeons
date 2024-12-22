@@ -8,9 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7810788639553466409, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1770519702718950591}
+    - target: {fileID: -7810788639553466409, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1770519702718950591}
+    - target: {fileID: -7810788639553466409, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: -7810788639553466409, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnUnhover
+      objectReference: {fileID: 0}
     - target: {fileID: 2247259043282303209, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
       propertyPath: m_Name
-      value: ItemPanel_Material Variant
+      value: ItemPanel_Material
       objectReference: {fileID: 0}
     - target: {fileID: 6768241303607759984, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
       propertyPath: m_Pivot.x
@@ -134,6 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4252135019496894953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5311609770171449838, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+  m_PrefabInstance: {fileID: 8265300162680467463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7898153234964678894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2247259043282303209, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
@@ -153,6 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameText: {fileID: 118356748500499653}
   ItemImage: {fileID: 721262155436506206}
-  UsePanel: {fileID: 0}
+  UsePanel: {fileID: 4252135019496894953}
   Number: 0
   NumberText: {fileID: 265791916741218260}

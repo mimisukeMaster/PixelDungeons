@@ -28,19 +28,36 @@ public class InventoryManager : MonoBehaviour
     public Transform WeaponUIContent;
     [Tooltip("消費アイテム欄の親")]
     public Transform ConsumableUIContent;
+    [Tooltip("初期装備右")]
+    public Item_Weapon initialWeaponRight;
+    [Tooltip("初期装備左")]
+    public Item_Weapon initialWeaponLeft;
     [Tooltip("右手")]
     public Transform RightHand;
     [Tooltip("左手")]
     public Transform LeftHand;    
+    [Tooltip("右手の攻撃発生場所")]
+    public Transform RightEmmitionTransform;
+    [Tooltip("左手の攻撃発生場所")]
+    public Transform LeftEmmitionTransform;
 
     [Tooltip("デバッグ用初期アイテム")]
     public Item[] startItems;
+    public Transform EmmitTransform;
 
     private void Start()
     {
         foreach(Item item in startItems)
         {
             AddItem(item,1);
+        }
+        if(initialWeaponRight != null)
+        {
+            ChangeWeapon(true,initialWeaponRight);
+        }
+        if(initialWeaponLeft != null)
+        {
+            ChangeWeapon(false,initialWeaponLeft);
         }
     }
 
@@ -70,7 +87,7 @@ public class InventoryManager : MonoBehaviour
             GameObject panel = Instantiate(WeaponPanel,WeaponUIContent);
             //パネル追加
             InventoryItem_Weapon inventoryItem = panel.GetComponent<InventoryItem_Weapon>();
-            inventoryItem.Init(weapon.name,weapon.ItemImage,weapon.Damage,weapon.FireRate,weapon.Range,weapon.Speed);
+            inventoryItem.Init(weapon,this);
             weaponsInInventory.Add(weapon,inventoryItem);
             //UIのサイズを調節する
             RectTransform contentPanelRectTransform = WeaponUIContent.GetComponent<RectTransform>();
@@ -117,17 +134,30 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void ChangeWeapon(bool isRightHand,GameObject weapon)
+    /// <summary>
+    /// 装備変更
+    /// </summary>
+    /// <param name="isRightHand"></param>
+    /// <param name="weapon"></param>
+    public void ChangeWeapon(bool isRightHand,Item_Weapon weapon)
     {
-        if(isRightHand)
+        if(isRightHand)//右手
         {
-            Destroy(RightHand.GetChild(0));
-            Instantiate(weapon,RightHand);
+            if(RightHand.childCount != 0)
+            {
+                Destroy(RightHand.GetChild(0).gameObject);
+            }
+            GameObject weaponInstance = Instantiate(weapon.Prefab,RightHand);
+            weaponInstance.GetComponent<WeaponController>().Init(weapon.Damage,weapon.FireRate,weapon.Range,weapon.Speed,true,weapon.AttackPrefab,RightEmmitionTransform);
         }
-        else
+        else//左手
         {
-            Destroy(LeftHand.GetChild(0));
-            Instantiate(weapon,LeftHand);
+            if(LeftHand.childCount != 0)
+            {
+                Destroy(LeftHand.GetChild(0).gameObject);
+            }
+            GameObject weaponInstance = Instantiate(weapon.Prefab,LeftHand);
+            weaponInstance.GetComponent<WeaponController>().Init(weapon.Damage,weapon.FireRate,weapon.Range,weapon.Speed,false,weapon.AttackPrefab,LeftEmmitionTransform);
         }
     }
 }

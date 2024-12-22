@@ -24,18 +24,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "OpenInventory",
                     "type": "Button",
-                    "id": "549302f7-f0a8-42cc-8ead-19ace3a9c6ae",
+                    "id": "f3669caa-9547-4076-9ca6-7e99228cdf5b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenInventory",
+                    "name": "RightAttack",
                     "type": "Button",
-                    "id": "f3669caa-9547-4076-9ca6-7e99228cdf5b",
+                    "id": "b667a624-31fc-4100-a2b0-eff6877d2a66",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftAttack",
+                    "type": "Button",
+                    "id": "89f34f15-b9ae-4171-9e12-2b601f670956",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -122,12 +131,23 @@
                 },
                 {
                     "name": "",
+                    "id": "4e669658-f49b-4188-b98c-6e4f266c825d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "894000ec-4216-40c2-8c2a-f42e50656549",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "RightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -138,18 +158,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4e669658-f49b-4188-b98c-6e4f266c825d",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventory",
+                    "action": "LeftAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

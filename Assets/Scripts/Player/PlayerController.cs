@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     public GameObject GamingCanvas;
 
     private Rigidbody rb;
-    private ControlActions controls;
+    public static ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
     public static bool isGaming;
@@ -70,14 +70,10 @@ public class PlayerController : MonoBehaviour
 
         // インスタンス生成
         controls = new ControlActions();
-
         // InputSystemでの入力に対応するリスナーを追加
         controls.Player.Jump.performed += OnJumpPerformed;
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
-        controls.Player.Attack.started += OnTimerStart;
-        controls.Player.Attack.canceled += OnTimerStop;
-        controls.Player.OpenInventory.performed += SwitchInventory;
     }
 
     private void FixedUpdate()
@@ -117,73 +113,6 @@ public class PlayerController : MonoBehaviour
     private void OnMovePerformed(InputAction.CallbackContext context) => moveInput = context.ReadValue<Vector2>();
 
     private void OnMoveCanceled(InputAction.CallbackContext context) => moveInput = Vector2.zero;
-
-    private void OnTimerStart(InputAction.CallbackContext context) => clickedTime = Time.time;
-
-    private void OnTimerStop(InputAction.CallbackContext context)
-    {
-        if (Time.time - clickedTime < 0.4f) OnAttack(context);
-        else OnSuperAttack(context);
-    }
-
-    /// <summary>
-    /// 通常操作のプレイヤー攻撃処理
-    /// </summary>
-    /// <param name="context"></param>
-    private void OnAttack(InputAction.CallbackContext context)
-    {
-        if (!isGaming) return;
-
-        // 遠距離攻撃
-        if (context.control == Mouse.current.leftButton)
-        {
-            animatorL.SetTrigger("Attack");
-            GameObject magic = Instantiate(MagicObj, MagicPos.position, Quaternion.identity);
-            magic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-            magic.GetComponent<AttackController>().Init("Enemy", FarAttack);
-
-            Destroy(magic, 5.0f);
-        }
-        // 近距離攻撃 内部処理はWeaponEventHandler.csから呼びだす
-        else if (context.control == Mouse.current.rightButton)
-        {
-            animatorR.SetTrigger("Attack");
-
-            attackController.Init("Enemy", NearAttack);
-        }
-    }
-
-    /// <summary>
-    /// 溜め操作時のプレイヤー攻撃処理
-    /// </summary>
-    /// <remarks>強めの攻撃</remarks>
-    /// <param name="context"></param>
-    private void OnSuperAttack(InputAction.CallbackContext context)
-    {
-        if (!isGaming) return;
-
-        // 強い遠距離攻撃 弾を変える
-        if (context.control == Mouse.current.leftButton)
-        {
-            animatorL.SetTrigger("SuperAttack");
-
-            GameObject superMagic = Instantiate(SuperMagicObj, MagicPos.position, Quaternion.identity);
-            superMagic.GetComponent<Rigidbody>().linearVelocity = PlayerCam.transform.forward * AttackSpeed;
-            superMagic.GetComponent<AttackController>().Init("Enemy", SuperFarAttack);
-
-            Destroy(superMagic, 5.0f);
-
-        }
-        // 強い近距離攻撃 パーティクルを出す 内部処理はWeaponEventHandler.csから呼びだす
-        else if (context.control == Mouse.current.rightButton)
-        {
-            animatorR.SetTrigger("SuperAttack");
-
-            attackController.Init("Enemy", SuperNearAttack);
-
-            if (SuperNearAttackParticle) Instantiate(SuperNearAttackParticle, WeaponSlotR.transform.position, Quaternion.identity);
-        }
-    }
 
     /// <summary>
     /// インベントリを開く/閉じる

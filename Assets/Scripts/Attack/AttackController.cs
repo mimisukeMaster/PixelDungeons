@@ -5,11 +5,14 @@ public class AttackController : MonoBehaviour
     private string targetTag;
     private int damage;
 
+    private int penetration = 100;//攻撃が敵を貫通する数
+
     // 初期化
-    public void Init(string TargetTag, int Damage)
+    public void Init(string TargetTag, int Damage,float destroyTime)
     {
         targetTag = TargetTag;
         damage = Damage;
+        Destroy(gameObject,destroyTime);
     }
 
     /// <summary>
@@ -30,6 +33,26 @@ public class AttackController : MonoBehaviour
             // UIを表示
             if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, other.contacts[0].point);
             Destroy(gameObject);
+        }
+    }
+    /// <summary>
+    /// 攻撃の処理
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other) 
+    {
+        // タグで判定する
+        if (other.CompareTag(targetTag))
+        {
+            other.GetComponent<HPController>().Damaged(damage);
+
+            // UIを表示
+            if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, transform.position);
+            penetration--;
+            if(penetration <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
