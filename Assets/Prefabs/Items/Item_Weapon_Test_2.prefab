@@ -88,8 +88,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: be1ad253222d0a44dbe1c13224e42b59, type: 3}
   ItemName: WeaponTest2
-  Damage: 1
+  Damage: 10
   FireRate: 1
   Speed: 1
   Range: 1
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 3651563267847403976, guid: 0f1d59f0b3f46304881bf307f0e5b1f4, type: 3}
+  AttackPrefab: {fileID: 4021758720569903429, guid: aac738f0fddcb944ea0df92edc7b0f55, type: 3}

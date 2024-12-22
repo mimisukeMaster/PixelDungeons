@@ -14,13 +14,18 @@ public class InventoryItem : MonoBehaviour
         NameText.text = Name;
     }
 
-    public void OnClick()
+    public void OnClick()//UIをクリックしたときの反応
     {
         UsePanel.SetActive(true);
     }
 
-    public void OnUnhover()
+    public void OnUnhover()//マウスのホバーを外したとき
     {
         UsePanel.SetActive(false);
+    }
+
+    public void OnDropClick()//Dropをクリック
+    {
+        Debug.Log("Drop");
     }
 }

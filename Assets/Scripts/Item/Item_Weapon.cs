@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//インベントリ上の武器の挙動を書くところ
+//武器のステータスを書くところ
 //WeaponControllerとは違うので注意
 public class Item_Weapon : Item
 {
@@ -9,4 +9,6 @@ public class Item_Weapon : Item
     public float Speed;
     public float Range;
     public GameObject Prefab;
+    public GameObject AttackPrefab;
+
 }
