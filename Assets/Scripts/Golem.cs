@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class Golem : MiddleBossEnemy
 {
@@ -29,8 +30,16 @@ public class Golem : MiddleBossEnemy
         DetectPlayer();
         if(isChasing)
         {
-            //頭をプレイヤーに向ける
-            Eye.transform.rotation = Quaternion.FromToRotation(Vector3.up,targetPlayer.transform.position - Eye.position);
+            //目をプレイヤーに向ける
+            //Eye.transform.rotation = Quaternion.FromToRotation(Vector3.up,targetPlayer.transform.position - Eye.position);
+            if(Vector3.Angle(transform.forward,targetPlayer.transform.position - transform.position)<90)
+            {
+                //Eye.transform.LookAt(targetPlayer.transform);
+                Eye.transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.transform.position);
+                Eye.transform.rotation = Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation;
+            }
+            else Eye.transform.rotation = Quaternion.Euler(90,0,0);
+            
             //Eye.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.position);
 
             if(!hasMoved)
@@ -67,16 +76,18 @@ public class Golem : MiddleBossEnemy
         golemState = GolemState.move;
     }
 
-    public void OnAttack()
+    public void OnAttackLand()
     {
-        Debug.Log("AttackLand");
         attackController.NearAttack(SmashPosition.position,smashRange);
+    }
+
+    public void OnAttackEnd()
+    {
         CheckNextMove();
     }
 
     public void OnMoveEnd()
     {
-        Debug.Log("Move End");
         transform.position += transform.forward * 5;//前に進む 5はアニメーションの腕のスパン
         CheckNextMove();
     }
