@@ -99,6 +99,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: ShapeModule.m_Scale.x
       value: 0.8
       objectReference: {fileID: 0}
@@ -120,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: VelocityModule.inWorldSpace
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1248066661931860930, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: InitialModule.maxNumParticles
