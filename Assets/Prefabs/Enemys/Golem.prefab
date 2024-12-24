@@ -1304,7 +1304,7 @@ MonoBehaviour:
   ChasingSpeed: 4
   WanderInterval: 1
   DetectionInterval: 0.5
-  DetectionRadius: 50
+  DetectionRadius: 20
   Attack: 10
   DropItem: {fileID: 0}
   DropProbability: 1

@@ -17,15 +17,14 @@ public class GolemEventHandler : MonoBehaviour
         attackController.NearAttack(golem.SmashPosition.position, golem.SmashRange);
     }
 
-    public void OnAttackEnd()
-    {
-        golem.CheckNextMove();
-    }
+    public void OnAttackEnd() => golem.CheckNextMove();
 
     public void OnMoveEnd()
     {
         golem.transform.position += golem.transform.forward * ARM_ANIMATION_SPAN;
         golem.CheckNextMove();
     }
+
+    public void OnIdleEnd() => golem.CheckNextMove();
 
 }
