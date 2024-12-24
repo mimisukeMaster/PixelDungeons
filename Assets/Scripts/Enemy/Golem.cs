@@ -28,11 +28,11 @@ public class Golem : MiddleBossEnemy
         if (isChasing)
         {
             //目をプレイヤーに向ける
-            if (Vector3.Angle(transform.forward, distanceVector) < 90)
+            if (Vector3.Angle(transform.forward, distanceVector) < 90f)
             {
                 Eye.transform.forward = distanceVector;
             }
-            else Eye.transform.rotation = Quaternion.Euler(90,0,0);
+            else Eye.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
 
             if (isInitChasing)
             {
@@ -47,6 +47,11 @@ public class Golem : MiddleBossEnemy
     /// </summary>
     public void CheckNextMove()
     {
+        if (!isChasing)
+        {
+            animator.SetTrigger("Idle");
+            return;
+        }
         Vector3 destVec = distanceVector;
         destVec.y = 0;
         gameObject.transform.forward = destVec;
