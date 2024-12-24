@@ -7,7 +7,8 @@ public class GolemEventHandler : MonoBehaviour
     private const int ARM_ANIMATION_SPAN = 5;
 
     
-    private void Start() {
+    private void Start()
+    {
         attackController = GetComponentInParent<AttackController>();
         golem = GetComponentInParent<Golem>();
     }
