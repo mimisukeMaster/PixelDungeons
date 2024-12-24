@@ -4,7 +4,7 @@ public class Golem : MiddleBossEnemy
     [Tooltip("目のボーン")]
     public Transform Eye;
     [Tooltip("攻撃モーションを始める距離")]
-    public float AttackMotionRange = 5.0f;
+    public float AttackMotionRange = 8.0f;
     [Tooltip("攻撃時間間隔")]
     public float SmashInterval = 1.0f;
     [Tooltip("攻撃の中心")]
@@ -12,14 +12,6 @@ public class Golem : MiddleBossEnemy
     [Tooltip("攻撃半径")]
     public float SmashRange = 4.0f;
 
-    private enum GolemState
-    {
-        idle,
-        move,
-        turn,
-        attack
-    }
-    private GolemState golemState;
     private bool isInitChasing = true;
 
     protected override void Update()
@@ -28,16 +20,20 @@ public class Golem : MiddleBossEnemy
         if (isChasing)
         {
             //目をプレイヤーに向ける
-            if (Vector3.Angle(transform.forward, distanceVector) < 90f)
-            {
-                Eye.transform.forward = distanceVector;
-            }
-            else Eye.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
-
+            Eye.transform.forward = distanceVector;
+            
             if (isInitChasing)
             {
                 CheckNextMove();
                 isInitChasing = false;
+            }
+
+            // アニメーションの関係でプレイヤーに近づきすぎた時は即座に攻撃の挙動
+            if (distanceVector.magnitude < AttackMotionRange)
+            {
+                Debug.Log("tikai");
+                animator.StopPlayback();
+                animator.SetTrigger("Attack");
             }
         }
     }
@@ -52,6 +48,7 @@ public class Golem : MiddleBossEnemy
             animator.SetTrigger("Idle");
             return;
         }
+
         Vector3 destVec = distanceVector;
         destVec.y = 0;
         gameObject.transform.forward = destVec;
@@ -59,12 +56,10 @@ public class Golem : MiddleBossEnemy
         if (distanceVector.magnitude < AttackMotionRange)
         {
             animator.SetTrigger("Attack");
-            golemState = GolemState.attack;
         }
         else
         {
             animator.SetTrigger("Move");
-            golemState = GolemState.move;
         }
     }
 }

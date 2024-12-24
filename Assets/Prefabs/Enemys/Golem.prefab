@@ -1310,7 +1310,7 @@ MonoBehaviour:
   DropProbability: 1
   attackController: {fileID: -8004292896959952709}
   Eye: {fileID: 4418861329660572704}
-  AttackMotionRange: 5
+  AttackMotionRange: 8
   SmashInterval: 1
   SmashPosition: {fileID: 7401053809736737244}
   SmashRange: 4
