@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     protected bool isChasing;
     protected GameObject targetPlayer;
     protected Vector3 distanceVector;
-    protected SpawnManager stageManager;
+    protected SpawnManager spawnManager;
 
 
     protected virtual void Start()
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         nextDetectTime = Time.time;
         nextWanderTime = Time.time;
         rb = GetComponent<Rigidbody>();
-        stageManager = GameObject.Find("StageManager").GetComponent<SpawnManager>();
+        spawnManager = GameObject.Find("StageManager").GetComponent<SpawnManager>();
     }
 
     protected virtual void Update()
@@ -105,7 +105,7 @@ public class EnemyController : MonoBehaviour
         {
             GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
         }
-        stageManager.existEnemyNum -= 1;
+        spawnManager.existEnemyNum -= 1;
         Destroy(gameObject);
     }
 
