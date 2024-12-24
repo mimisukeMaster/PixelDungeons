@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.EditorTools;
 using System.Globalization;
+using System.Linq;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -74,24 +75,28 @@ public class InventoryManager : MonoBehaviour
             {
                 GameObject panel = Instantiate(MaterialPanel,MaterialUIContent);
                 //パネル追加
-                InventoryItem_Material inventoryItem = panel.GetComponent<InventoryItem_Material>();
-                inventoryItem.Init(material.name,material.ItemImage,number);
-                materialsInInventory.Add(material,inventoryItem);
+                InventoryItem inventoryItem = SetPanel(material,panel,number);
+                materialsInInventory.Add(material,(InventoryItem_Material)inventoryItem);
                 //UIのサイズを調節する
-                RectTransform contentPanelRectTransform = MaterialUIContent.GetComponent<RectTransform>();
-                contentPanelRectTransform.sizeDelta = new Vector2(contentPanelRectTransform.sizeDelta.x,70 * (materialsInInventory.Count + 1));
+                SetContentHeight(MaterialUIContent.GetComponent<RectTransform>(),materialsInInventory.Count);
             }
         }
         else if(item is Item_Weapon weapon)
         {
-            GameObject panel = Instantiate(WeaponPanel,WeaponUIContent);
-            //パネル追加
-            InventoryItem_Weapon inventoryItem = panel.GetComponent<InventoryItem_Weapon>();
-            inventoryItem.Init(weapon,this);
-            weaponsInInventory.Add(weapon,inventoryItem);
-            //UIのサイズを調節する
-            RectTransform contentPanelRectTransform = WeaponUIContent.GetComponent<RectTransform>();
-            contentPanelRectTransform.sizeDelta = new Vector2(contentPanelRectTransform.sizeDelta.x,70 * (weaponsInInventory.Count + 1));
+            if(weaponsInInventory.ContainsKey(weapon))
+            {
+                weaponsInInventory[weapon].AddNumber(number);
+            }
+            else
+            {
+                GameObject panel = Instantiate(WeaponPanel,WeaponUIContent);
+                //パネル追加
+                InventoryItem_Weapon inventoryItem = panel.GetComponent<InventoryItem_Weapon>();
+                inventoryItem.Init(weapon,this,number,true);
+                weaponsInInventory.Add(weapon,(InventoryItem_Weapon)inventoryItem);
+                //UIのサイズを調節する
+                SetContentHeight(WeaponUIContent.GetComponent<RectTransform>(),weaponsInInventory.Count);
+            }
         }
         else if(item is Item_Consumable consumable)
         {
@@ -103,35 +108,32 @@ public class InventoryManager : MonoBehaviour
             {
                 GameObject panel = Instantiate(ConsumablePanel,ConsumableUIContent);
                 //パネル追加
-                InventoryItem_Consumable inventoryItem = panel.GetComponent<InventoryItem_Consumable>();
-                inventoryItem.Init(item.name,item.ItemImage,number);
-                consumablesInInventory.Add(consumable,inventoryItem);
+                InventoryItem inventoryItem = SetPanel(consumable,panel,number);
+                consumablesInInventory.Add(consumable,(InventoryItem_Consumable)inventoryItem);
                 //UIのサイズを調節する
-                RectTransform contentPanelRectTransform = ConsumableUIContent.GetComponent<RectTransform>();
-                contentPanelRectTransform.sizeDelta = new Vector2(contentPanelRectTransform.sizeDelta.x,70 * (consumablesInInventory.Count + 1));
+                SetContentHeight(ConsumableUIContent.GetComponent<RectTransform>(),consumablesInInventory.Count);
             }
         }
-
-        string str = "";
-        foreach (Item_Material key in materialsInInventory.Keys)
-        {
-            str = str + "key=" + key.name + ",val=" + materialsInInventory[key] + "/";
-        }
-        foreach (Item_Weapon key in weaponsInInventory.Keys)
-        {
-            str = str + "key=" + key.name + ",val=" + weaponsInInventory[key] + "/";
-        }
-        foreach (Item_Consumable key in consumablesInInventory.Keys)
-        {
-            str = str + "key=" + key.name + ",val=" + consumablesInInventory[key] + "/";
-        }
-        Debug.Log(str);
     }
 
     //AddNumberの重複を解消する
-    private void SetUI(Item item)
+    private InventoryItem SetPanel(Item item,GameObject panel,int number)
     {
+        InventoryItem inventoryItem = panel.GetComponent<InventoryItem>();
+        inventoryItem.Init(item,this,number);
+        return inventoryItem;
+    }
 
+    private void SetContentHeight(RectTransform targetRectTransform,int count)
+    {
+        targetRectTransform.sizeDelta = new Vector2(targetRectTransform.sizeDelta.x,70 * (count + 1));
+    }
+
+    public void RemoveItem(Item item)
+    {
+        if(item is Item_Material) materialsInInventory.Remove((Item_Material)item);
+        else if(item is Item_Weapon)weaponsInInventory.Remove((Item_Weapon)item);
+        else if(item is Item_Consumable)consumablesInInventory.Remove((Item_Consumable)item);
     }
 
     /// <summary>
@@ -147,8 +149,9 @@ public class InventoryManager : MonoBehaviour
             {
                 Destroy(RightHand.GetChild(0).gameObject);
             }
+            Debug.Log(weapon);
             GameObject weaponInstance = Instantiate(weapon.Prefab,RightHand);
-            weaponInstance.GetComponent<WeaponController>().Init(weapon.Damage,weapon.FireRate,weapon.Range,weapon.Speed,true,weapon.AttackPrefab,RightEmmitionTransform);
+            weaponInstance.GetComponent<WeaponController>().Init(weapon,true,RightEmmitionTransform);
         }
         else//左手
         {
@@ -157,7 +160,46 @@ public class InventoryManager : MonoBehaviour
                 Destroy(LeftHand.GetChild(0).gameObject);
             }
             GameObject weaponInstance = Instantiate(weapon.Prefab,LeftHand);
-            weaponInstance.GetComponent<WeaponController>().Init(weapon.Damage,weapon.FireRate,weapon.Range,weapon.Speed,false,weapon.AttackPrefab,LeftEmmitionTransform);
+            weaponInstance.GetComponent<WeaponController>().Init(weapon,false,LeftEmmitionTransform);
         }
+    }
+
+    /// <summary>
+    /// クラフト
+    /// </summary>
+    /// <param name="materials"></param>
+    /// <param name="number"></param>
+    /// <param name="result"></param>
+    /// <param name="resultNumber"></param>
+    public bool Craft(Item[] materials,int[] number,Item result,int resultNumber)
+    {
+        //インベントリ内に素材があるかチェックする
+        bool[] itemsExists = new bool[materials.Length];
+        for(int i = 0;i < materials.Length;i++)
+        {
+            Item material = materials[i];
+            if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material))itemsExists[i] = materialsInInventory[(Item_Material)material].GetRemovable(number[i]);
+            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material))itemsExists[i] = weaponsInInventory[(Item_Weapon)material].GetRemovable(number[i]);
+            else if(material is Item_Consumable &&consumablesInInventory.ContainsKey((Item_Consumable)material))itemsExists[i] = consumablesInInventory[(Item_Consumable)material].GetRemovable(number[i]);
+        }
+
+        if(itemsExists.Contains(false))
+        {
+            Debug.Log("Craft lack material");
+            return false;
+        }
+        
+        //素材を消費する
+        for(int i = 0;i < materials.Length;i++)
+        {
+            Item material = materials[i];
+            if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material))materialsInInventory[(Item_Material)material].SubNumber(number[i]);
+            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material))weaponsInInventory[(Item_Weapon)material].SubNumber(number[i]);
+            else if(material is Item_Consumable && consumablesInInventory.ContainsKey((Item_Consumable)material))consumablesInInventory[(Item_Consumable)material].SubNumber(number[i]);
+        }
+        
+        AddItem((Item_Weapon)result,resultNumber);
+        Debug.Log("Craft Success");
+        return true;
     }
 }

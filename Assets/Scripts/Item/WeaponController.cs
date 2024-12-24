@@ -21,16 +21,16 @@ public class WeaponController : MonoBehaviour
     private bool continueAttack;
     private Animator animator;
 
-    public void Init(int damage,float fireRate,float range,float speed,bool isRightHand,GameObject attackPrefab,Transform attackTransform)
+    public void Init(Item_Weapon weapon,bool isRightHand,Transform attackTransform)
     {
-        this.damage = damage;
-        this.fireRate = fireRate;
-        this.range = range;
-        this.speed = speed;
+        damage = weapon.Damage;
+        fireRate = weapon.FireRate;
+        range = weapon.Range;
+        speed = weapon.Speed;
         this.isRightHand = isRightHand;
         animator = transform.parent.gameObject.GetComponent<Animator>();
         animator.SetFloat("Speed",1/fireRate);
-        AttackPrefab = attackPrefab;
+        AttackPrefab = weapon.AttackPrefab;
         EmmitTransform = attackTransform;
 
         if(isRightHand)
