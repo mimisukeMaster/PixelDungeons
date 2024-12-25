@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         nextDetectTime = Time.time;
         nextWanderTime = Time.time;
         rb = GetComponent<Rigidbody>();
-        spawnManager = GameObject.Find("StageManager").GetComponent<SpawnManager>();
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
     protected virtual void Update()
