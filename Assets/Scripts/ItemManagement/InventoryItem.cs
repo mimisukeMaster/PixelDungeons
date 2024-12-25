@@ -10,14 +10,16 @@ public class InventoryItem : MonoBehaviour
 
     public TMP_Text NumberText;
 
-    private int number;
+    [System.NonSerialized]
+    public int number;
 
     protected InventoryManager inventoryManager;
 
-    private Item item;
+    protected Item item;
 
     public virtual void Init(Item item,InventoryManager inventoryManager,int number)
     {
+        this.item = item;
         ItemImage.sprite = item.ItemImage;
         NameText.text = item.name;
         this.inventoryManager = inventoryManager;
@@ -41,7 +43,7 @@ public class InventoryItem : MonoBehaviour
     {
         this.number -= number;
         NumberText.text = this.number.ToString();
-        if(number <= 0)
+        if(this.number <= 0)
         {
             inventoryManager.RemoveItem(item);
             Destroy(gameObject);

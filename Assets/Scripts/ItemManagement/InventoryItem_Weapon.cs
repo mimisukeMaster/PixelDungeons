@@ -8,13 +8,11 @@ public class InventoryItem_Weapon : InventoryItem
     private float range;
     private float speed;
 
-    private Item_Weapon item_Weapon;
-
     //初期化
     public void Init(Item_Weapon item_Weapon,InventoryManager inventoryManager,int number,bool isWeapon)
     {
         base.Init(item_Weapon,inventoryManager,number);
-        this.item_Weapon = item_Weapon;
+        item = item_Weapon;
         damage = item_Weapon.Damage;
         fireRate = item_Weapon.FireRate;
         range = item_Weapon.Range;
@@ -25,7 +23,7 @@ public class InventoryItem_Weapon : InventoryItem
     //装備する
     public void Equip(bool isRightHand)
     {
-        inventoryManager.ChangeWeapon(isRightHand,item_Weapon);
+        inventoryManager.ChangeWeapon(isRightHand,(Item_Weapon)item,this);
     }
 
     public void OnEquipRightClick()//右手

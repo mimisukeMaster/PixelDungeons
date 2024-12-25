@@ -54,11 +54,11 @@ public class InventoryManager : MonoBehaviour
         }
         if(initialWeaponRight != null)
         {
-            ChangeWeapon(true,initialWeaponRight);
+            ChangeWeapon(true,initialWeaponRight,null);
         }
         if(initialWeaponLeft != null)
         {
-            ChangeWeapon(false,initialWeaponLeft);
+            ChangeWeapon(false,initialWeaponLeft,null);
         }
     }
 
@@ -114,6 +114,23 @@ public class InventoryManager : MonoBehaviour
                 SetContentHeight(ConsumableUIContent.GetComponent<RectTransform>(),consumablesInInventory.Count);
             }
         }
+
+        string str = "";
+        foreach(Item_Material material_ in materialsInInventory.Keys)
+        {
+            str += material_.name + ":" + materialsInInventory[material_].number + ";";
+        }
+        str += "\n";
+        foreach(Item_Weapon weapon_ in weaponsInInventory.Keys)
+        {
+            str += weapon_.name + ":" + weaponsInInventory[weapon_].number + ";";
+        }
+        str += "\n";
+        foreach(Item_Consumable consumable_ in consumablesInInventory.Keys)
+        {
+            str += consumable_.name + ":" + consumablesInInventory[consumable_].number + ";";
+        }
+        Debug.Log(str);
     }
 
     //AddNumberの重複を解消する
@@ -141,25 +158,35 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     /// <param name="isRightHand"></param>
     /// <param name="weapon"></param>
-    public void ChangeWeapon(bool isRightHand,Item_Weapon weapon)
+    public void ChangeWeapon(bool isRightHand,Item_Weapon weapon,InventoryItem inventoryItem)
     {
         if(isRightHand)//右手
         {
             if(RightHand.childCount != 0)
             {
+                Debug.Log(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon);
+                AddItem(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon,1);
                 Destroy(RightHand.GetChild(0).gameObject);
             }
-            Debug.Log(weapon);
             GameObject weaponInstance = Instantiate(weapon.Prefab,RightHand);
+            if(inventoryItem != null)
+            {
+                inventoryItem.SubNumber(1);
+            }
             weaponInstance.GetComponent<WeaponController>().Init(weapon,true,RightEmmitionTransform);
         }
         else//左手
         {
             if(LeftHand.childCount != 0)
             {
+                AddItem(LeftHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon,1);
                 Destroy(LeftHand.GetChild(0).gameObject);
             }
             GameObject weaponInstance = Instantiate(weapon.Prefab,LeftHand);
+            if(inventoryItem != null)
+            {
+                inventoryItem.SubNumber(1);
+            }
             weaponInstance.GetComponent<WeaponController>().Init(weapon,false,LeftEmmitionTransform);
         }
     }

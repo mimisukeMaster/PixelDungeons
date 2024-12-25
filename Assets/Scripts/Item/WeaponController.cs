@@ -8,11 +8,8 @@ using UnityEngine.InputSystem;
 //Item_Weaponとは違うので注意
 public class WeaponController : MonoBehaviour
 {
-    private int damage;
-    private float fireRate;
-    private float speed;
-    private float range;
-    private GameObject AttackPrefab;
+    [System.NonSerialized]
+    public Item_Weapon weapon;
 
     public Transform EmmitTransform;
 
@@ -23,14 +20,10 @@ public class WeaponController : MonoBehaviour
 
     public void Init(Item_Weapon weapon,bool isRightHand,Transform attackTransform)
     {
-        damage = weapon.Damage;
-        fireRate = weapon.FireRate;
-        range = weapon.Range;
-        speed = weapon.Speed;
+        this.weapon = weapon;
         this.isRightHand = isRightHand;
         animator = transform.parent.gameObject.GetComponent<Animator>();
-        animator.SetFloat("Speed",1/fireRate);
-        AttackPrefab = weapon.AttackPrefab;
+        animator.SetFloat("Speed",1/weapon.FireRate);
         EmmitTransform = attackTransform;
 
         if(isRightHand)
@@ -51,7 +44,7 @@ public class WeaponController : MonoBehaviour
     {
         //攻撃
         interval += Time.deltaTime;
-        if(interval >= fireRate && continueAttack)
+        if(interval >= weapon.FireRate && continueAttack)
         {   
             Attack();
             interval = 0;
@@ -83,11 +76,11 @@ public class WeaponController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        GameObject attack = Instantiate(AttackPrefab,EmmitTransform.position,EmmitTransform.rotation);
-        attack.GetComponent<Rigidbody>().linearVelocity = EmmitTransform.forward * speed;
-        if(speed != 0)attack.GetComponent<AttackController>().Init("Enemy",damage,range / speed);
+        GameObject attack = Instantiate(weapon.AttackPrefab,EmmitTransform.position,EmmitTransform.rotation);
+        attack.GetComponent<Rigidbody>().linearVelocity = EmmitTransform.forward * weapon.Speed;
+        if(weapon.Speed != 0)attack.GetComponent<AttackController>().Init("Enemy",weapon.Damage,weapon.Range / weapon.Speed);
         //0チェック
-        else attack.GetComponent<AttackController>().Init("Enemy",damage,0.5f);
+        else attack.GetComponent<AttackController>().Init("Enemy",weapon.Damage,0.5f);
 
         animator.SetTrigger("Attack");
     }
