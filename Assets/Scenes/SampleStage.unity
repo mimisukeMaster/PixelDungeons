@@ -5681,7 +5681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.825263
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5689,7 +5689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.0153742
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5738,6 +5738,10 @@ PrefabInstance:
     - target: {fileID: 4418861329660572704, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186489354113355265, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_Name
+      value: Model_GolemAttack_Wave
       objectReference: {fileID: 0}
     - target: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
       propertyPath: m_Name

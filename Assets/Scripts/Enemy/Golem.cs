@@ -31,7 +31,6 @@ public class Golem : MiddleBossEnemy
             // アニメーションの関係でプレイヤーに近づきすぎた時は即座に攻撃の挙動
             if (distanceVector.magnitude < AttackMotionRange)
             {
-                Debug.Log("tikai");
                 animator.StopPlayback();
                 animator.SetTrigger("Attack");
             }
