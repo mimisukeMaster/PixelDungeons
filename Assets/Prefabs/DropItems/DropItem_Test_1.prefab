@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -3829496058754064992, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
       propertyPath: Item
       value: 
-      objectReference: {fileID: 5727715205208888899, guid: 2cfe18e9e9f2b5f41b722d2b9f36d303, type: 3}
+      objectReference: {fileID: 7036775543035616125, guid: 0dbc3a353288db049a06e4354c498881, type: 3}
     - target: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
       propertyPath: m_Name
       value: DropItem_Test_1
