@@ -2318,8 +2318,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: GAME CLEAR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: defef219eaa5adc4f9d7bff747f202f1, type: 2}
-  m_sharedMaterial: {fileID: -3175197753938887858, guid: defef219eaa5adc4f9d7bff747f202f1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 29703fa10ad24214daef11039ad69415, type: 2}
+  m_sharedMaterial: {fileID: -8902912114537846690, guid: 29703fa10ad24214daef11039ad69415, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2343,17 +2343,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3712,6 +3712,7 @@ GameObject:
   - component: {fileID: 1151894378}
   - component: {fileID: 1151894377}
   - component: {fileID: 1151894376}
+  - component: {fileID: 1151894380}
   m_Layer: 5
   m_Name: NextStageButton
   m_TagString: Untagged
@@ -3738,7 +3739,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -97}
-  m_SizeDelta: {x: 400, y: 70}
+  m_SizeDelta: {x: 356.1, y: 52.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1151894376
 MonoBehaviour:
@@ -3820,6 +3821,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151894374}
   m_CullTransparentMesh: 1
+--- !u!114 &1151894380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151894374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 7, y: -7}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1153570822
 GameObject:
   m_ObjectHideFlags: 0
@@ -4466,7 +4482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1373628375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4638,6 +4654,7 @@ GameObject:
   - component: {fileID: 1389171311}
   - component: {fileID: 1389171313}
   - component: {fileID: 1389171312}
+  - component: {fileID: 1389171314}
   m_Layer: 5
   m_Name: Pixelated
   m_TagString: Untagged
@@ -4662,7 +4679,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 380, y: 80}
+  m_SizeDelta: {x: 324.1, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389171312
 MonoBehaviour:
@@ -4702,6 +4719,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389171310}
   m_CullTransparentMesh: 1
+--- !u!114 &1389171314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389171310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 7, y: -7}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1394268913
 GameObject:
   m_ObjectHideFlags: 0
@@ -5051,15 +5083,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Next Stage \u2192"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: defef219eaa5adc4f9d7bff747f202f1, type: 2}
-  m_sharedMaterial: {fileID: -3175197753938887858, guid: defef219eaa5adc4f9d7bff747f202f1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 29703fa10ad24214daef11039ad69415, type: 2}
+  m_sharedMaterial: {fileID: -8902912114537846690, guid: 29703fa10ad24214daef11039ad69415, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280756086
-  m_fontColor: {r: 0.46226418, g: 0.1548149, b: 0.1548149, a: 1}
+    rgba: 4282000749
+  m_fontColor: {r: 0.4264151, g: 0.14401565, b: 0.22791937, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5082,11 +5114,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5809,7 +5841,7 @@ MonoBehaviour:
   InventoryCanvas: {fileID: 89594842}
   GameOverCanvas: {fileID: 1969464328}
   GamingCanvas: {fileID: 1454905358}
-  ClearCanvas: {fileID: 0}
+  ClearCanvas: {fileID: 1373628374}
 --- !u!54 &1738896457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7396,12 +7428,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1738896456}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[1].count
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 677572351791009707, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: m_Name
       value: SpawnManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 677572351791009707, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4411775095751136195, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: m_LocalPosition.x
