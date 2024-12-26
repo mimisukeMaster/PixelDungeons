@@ -18,6 +18,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject Boss;
     [Tooltip("ボスが生まれる場所")]
     public Vector3 BossSpawnPos;
+    [Tooltip("プレイヤーの参照")]
+    public PlayerController playerController;
 
     [HideInInspector]
     public bool BossMode;
@@ -33,10 +35,20 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        if (existEnemyNum <= 0 && !BossMode)
+        if (existEnemyNum <= 0)
         {
-            Instantiate(Boss, BossSpawnPos, Quaternion.identity);
-            BossMode = true;
+            // 敵をすべて倒したらボス出現
+            if (!BossMode)
+            {
+                Instantiate(Boss, BossSpawnPos, Quaternion.identity);
+                existEnemyNum += 1;
+                BossMode = true;
+            }
+            // ボスを倒したらクリア
+            else
+            {
+                playerController.OnCleared();
+            }
         }
     }
 

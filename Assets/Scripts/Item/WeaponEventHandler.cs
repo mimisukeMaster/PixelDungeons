@@ -7,7 +7,7 @@ public class WeaponEventHandler : MonoBehaviour
 
     private void Start()
     {
-        attackController = GetComponentInChildren<AttackController>();
+        attackController = GetComponentInParent<AttackController>();
         playerController = GetComponentInParent<PlayerController>();
     }
 

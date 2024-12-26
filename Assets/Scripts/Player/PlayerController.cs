@@ -45,24 +45,19 @@ public class PlayerController : MonoBehaviour
     public GameObject GameOverCanvas;
     [Tooltip("ゲーム中のキャンバス")]
     public GameObject GamingCanvas;
+    [Tooltip("クリア時のキャンバス")]
+    public GameObject ClearCanvas;
 
     private Rigidbody rb;
     public static ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
     public static bool isGaming;
-    private float clickedTime;
-    private Animator animatorL;
-    private Animator animatorR;
-    private AttackController attackController;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        animatorL = WeaponSlotL.GetComponent<Animator>();
-        animatorR = WeaponSlotR.GetComponent<Animator>();
-        attackController = WeaponSlotR.GetComponentInChildren<AttackController>();
         isGaming = true;
 
         InventoryCanvas.SetActive(false);
@@ -148,6 +143,13 @@ public class PlayerController : MonoBehaviour
         GameOverCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         isGaming = false;
+        Time.timeScale = 0;
+    }
+
+    public void OnCleared()
+    {
+        ClearCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
     }
 }
