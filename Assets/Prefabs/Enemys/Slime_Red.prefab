@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderVelocity: 5
-  ChasingSpeed: 2
+  ChasingSpeed: 4
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5

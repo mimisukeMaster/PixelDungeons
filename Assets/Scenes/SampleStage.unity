@@ -6734,29 +6734,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
-      propertyPath: Enemies.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
-      propertyPath: Enemies.Array.data[0].count
+      propertyPath: Enemies.Array.data[1].count
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
-      propertyPath: Enemies.Array.data[2].count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
-      propertyPath: Enemies.Array.data[2].enemy
-      value: 
-      objectReference: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
-    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
-      propertyPath: Enemies.Array.data[3].count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
-      propertyPath: Enemies.Array.data[3].enemy
-      value: 
-      objectReference: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
     - target: {fileID: 677572351791009707, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: m_Name
       value: SpawnManager
