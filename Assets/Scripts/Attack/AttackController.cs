@@ -12,7 +12,7 @@ public class AttackController : MonoBehaviour
     {
         targetTag = TargetTag;
         damage = Damage;
-        Destroy(gameObject,destroyTime);
+        Destroy(gameObject, destroyTime);
     }
 
     /// <summary>
@@ -31,21 +31,22 @@ public class AttackController : MonoBehaviour
             other.gameObject.GetComponent<HPController>().Damaged(damage);
 
             // UIを表示
-            if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, other.contacts[0].point);
+            if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, other.contacts[0].point);
             Destroy(gameObject);
         }
     }
+
     /// <summary>
     /// 攻撃の処理
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) 
     {
+        Debug.Log(targetTag + "攻撃");
         // タグで判定する
         if (other.CompareTag(targetTag))
         {
             other.GetComponent<HPController>().Damaged(damage);
-
             // UIを表示
             if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, transform.position);
             penetration--;

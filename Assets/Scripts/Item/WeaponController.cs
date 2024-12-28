@@ -76,11 +76,11 @@ public class WeaponController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        GameObject attack = Instantiate(weapon.AttackPrefab,EmmitTransform.position,EmmitTransform.rotation);
+        GameObject attack = Instantiate(weapon.AttackPrefab, EmmitTransform.position, EmmitTransform.rotation);
         attack.GetComponent<Rigidbody>().linearVelocity = EmmitTransform.forward * weapon.Speed;
-        if(weapon.Speed != 0)attack.GetComponent<AttackController>().Init("Enemy",weapon.Damage,weapon.Range / weapon.Speed);
+        if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, weapon.Range / weapon.Speed);
         //0チェック
-        else attack.GetComponent<AttackController>().Init("Enemy",weapon.Damage,0.5f);
+        else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f);
 
         animator.SetTrigger("Attack");
     }

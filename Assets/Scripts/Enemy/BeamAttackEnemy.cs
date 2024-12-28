@@ -11,6 +11,8 @@ public class BeamAttackEnemy : EnemyController
     public float BeamLength = 20.0f;
     [Tooltip("ビームのPrefab")]
     public GameObject Beam;
+    [Tooltip("浮遊高度")]
+    public float Altitude = 2.0f;
 
     private float nextBeamTime;
     private LineRenderer lineRenderer;
@@ -21,6 +23,10 @@ public class BeamAttackEnemy : EnemyController
     {
         base.Start();
         BeamInit();
+
+        // 位置と回転の固定
+        transform.position = new Vector3(transform.position.x, Altitude, transform.position.z); 
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     protected override void Update()
@@ -66,6 +72,7 @@ public class BeamAttackEnemy : EnemyController
         // 実際に攻撃
         beamObj = Instantiate(Beam, transform.position, Quaternion.LookRotation(beamRootPos - beamTipPos));
         beamObj.transform.localScale = new Vector3(beamObj.transform.localScale.x, beamObj.transform.localScale.y, BeamLength);
+        beamObj.GetComponentInChildren<AttackController>().Init("Player", Attack, 2.0f);
 
         yield return new WaitForSeconds(2.0f);
 

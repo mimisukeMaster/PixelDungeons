@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
                 float x = Random.Range(SpawnArea.x / -2.0f, SpawnArea.x / 2.0f);
                 float z = Random.Range(SpawnArea.y / -2.0f, SpawnArea.y / 2.0f);
 
-                Instantiate(Enemies[i].enemy, new Vector3(x, 0, z), Quaternion.identity);
+                Instantiate(Enemies[i].enemy, new Vector3(x, 0, z), Enemies[i].enemy.transform.rotation);
                 existEnemyNum += 1;
             }
         }
