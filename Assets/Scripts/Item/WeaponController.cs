@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
     [System.NonSerialized]
     public Item_Weapon weapon;
 
-    public Transform EmmitTransform;
+    public Transform EmitTransform;
 
     private bool isRightHand;
 
@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
         this.isRightHand = isRightHand;
         animator = transform.parent.gameObject.GetComponent<Animator>();
         animator.SetFloat("Speed",1/weapon.FireRate);
-        EmmitTransform = attackTransform;
+        EmitTransform = attackTransform;
 
         if(isRightHand)
         {
@@ -76,8 +76,8 @@ public class WeaponController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        GameObject attack = Instantiate(weapon.AttackPrefab, EmmitTransform.position, EmmitTransform.rotation);
-        attack.GetComponent<Rigidbody>().linearVelocity = EmmitTransform.forward * weapon.Speed;
+        GameObject attack = Instantiate(weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
+        attack.GetComponent<Rigidbody>().linearVelocity = EmitTransform.forward * weapon.Speed;
         if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, weapon.Range / weapon.Speed);
         //0チェック
         else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f);

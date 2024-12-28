@@ -17,7 +17,7 @@ public class NearAttackEnemy : EnemyController
         base.Start();
         animator = gameObject.GetComponentInChildren<Animator>();
         attackController = gameObject.GetComponent<AttackController>();
-        attackController.Init("Player", Attack, 1000);
+        attackController.Init("Player", Attack, float.PositiveInfinity);
     }
 
     protected override void Update()

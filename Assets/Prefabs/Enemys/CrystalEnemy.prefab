@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5510222015080557402}
   - component: {fileID: 2541557043636107173}
   - component: {fileID: 6325873816707008032}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: HPBarBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6804188492599303530}
   - component: {fileID: 193929173221300924}
   - component: {fileID: 9171571283317788575}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CrystalEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 5000
+  MaxHP: 500
   PlayerController: {fileID: 0}
   EnemyController: {fileID: 193929173221300924}
   HPBar: {fileID: 2491135365962620885}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 8183488989602091863}
   - component: {fileID: 1220280531645596350}
   - component: {fileID: 7123612866186254351}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 7263281128140846215}
   - component: {fileID: 2491135365962620885}
   - component: {fileID: 3798586316798158014}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: HPBarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,6 +600,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c4f2a6ebdffeff9419381619961e7838, type: 3}
       propertyPath: m_Name
       value: Model_EnemyCrystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4f2a6ebdffeff9419381619961e7838, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

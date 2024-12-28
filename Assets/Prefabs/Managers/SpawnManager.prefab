@@ -48,13 +48,14 @@ MonoBehaviour:
   - enemy: {fileID: 2112501586520397462, guid: 52901f2b022f5714cb670db920fadc0f, type: 3}
     count: 5
   - enemy: {fileID: 649294079909011640, guid: 220ed966025dd3b47b3f14f9e884ff19, type: 3}
-    count: 1
+    count: 5
   - enemy: {fileID: 7056604927472754041, guid: 34b8d9daad685624aafc4a3f54505dd5, type: 3}
     count: 1
-  - enemy: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+  - enemy: {fileID: 6141053187844308292, guid: efbd599536daf39469fb8eb263daf1e9, type: 3}
     count: 1
   SpawnArea: {x: 50, y: 50}
-  Boss: {fileID: 7994933551681786214, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+  Boss: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
   BossSpawnPos: {x: 0, y: 0, z: 0}
+  playerController: {fileID: 0}
   BossMode: 0
   existEnemyNum: 0

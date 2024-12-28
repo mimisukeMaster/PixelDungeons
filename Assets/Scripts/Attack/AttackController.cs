@@ -42,7 +42,6 @@ public class AttackController : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) 
     {
-        Debug.Log(targetTag + "攻撃");
         // タグで判定する
         if (other.CompareTag(targetTag))
         {
