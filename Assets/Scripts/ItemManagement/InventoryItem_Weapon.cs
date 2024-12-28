@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 //インベントリ内の武器を表示するUI
 public class InventoryItem_Weapon : InventoryItem
@@ -7,17 +8,22 @@ public class InventoryItem_Weapon : InventoryItem
     private float fireRate;
     private float range;
     private float speed;
+    public TMP_Text DamageText;
+    public TMP_Text FireRateText;
+    public TMP_Text SpeedText;
+    public TMP_Text RangeText;
 
     //初期化
     public void Init(Item_Weapon item_Weapon,InventoryManager inventoryManager,int number,bool isWeapon)
     {
         base.Init(item_Weapon,inventoryManager,number);
         item = item_Weapon;
-        damage = item_Weapon.Damage;
-        fireRate = item_Weapon.FireRate;
-        range = item_Weapon.Range;
-        speed = item_Weapon.Speed;
         this.inventoryManager = inventoryManager;
+        //UIを設定
+        DamageText.text = item_Weapon.Damage.ToString();
+        FireRateText.text = item_Weapon.FireRate.ToString();
+        RangeText.text = item_Weapon.Range.ToString();
+        SpeedText.text = item_Weapon.Speed.ToString();
     }
 
     //装備する
