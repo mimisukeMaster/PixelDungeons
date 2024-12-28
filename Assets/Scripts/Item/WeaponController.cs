@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,13 +15,15 @@ public class WeaponController : MonoBehaviour
 
     private bool continueAttack;
     private Animator animator;
+    private float onClickTime;
+    private bool isSuperAttack;
 
     public void Init(Item_Weapon weapon,bool isRightHand,Transform attackTransform)
     {
         this.weapon = weapon;
         this.isRightHand = isRightHand;
         animator = transform.parent.gameObject.GetComponent<Animator>();
-        animator.SetFloat("Speed",1/weapon.FireRate);
+        animator.SetFloat("Speed", 1 / weapon.FireRate);
         EmitTransform = attackTransform;
 
         if(isRightHand)
@@ -38,37 +38,35 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private float interval = 0.0f;
-
     private void Update() 
     {
-        //攻撃
-        interval += Time.deltaTime;
-        if(interval >= weapon.FireRate && continueAttack)
-        {   
+
+    }
+
+    // 右クリック押下
+    private void OnClickRight(InputAction.CallbackContext context)
+    {
+        if (isRightHand) Attack();
+    }
+
+    // 右クリックが離す
+    private void ReleaseClickRight(InputAction.CallbackContext context)
+    {
+
+    }
+
+    // 左クリック押下
+    private void OnClickLeft(InputAction.CallbackContext context) => onClickTime = Time.time;
+
+    //左クリック離す
+    private void ReleaseClickLeft(InputAction.CallbackContext context)
+    {
+        if(!isRightHand)
+        {
+            // 攻撃
+            if (Time.time - onClickTime >= 0.5f) isSuperAttack = true;
             Attack();
-            interval = 0;
         }
-    }
-
-    private void OnClickRight(InputAction.CallbackContext context)//右クリック押す
-    {
-        if(isRightHand)continueAttack = true;
-    }
-
-    private void ReleaseClickRight(InputAction.CallbackContext context)//右クリック離す
-    {
-        if(isRightHand)continueAttack = false;
-    }
-
-    private void OnClickLeft(InputAction.CallbackContext context)//左クリック押す
-    {
-        if(!isRightHand)continueAttack = true;
-    }
-
-    private void ReleaseClickLeft(InputAction.CallbackContext context)//左クリック離す
-    {
-        if(!isRightHand)continueAttack = false;
     }
 
     /// <summary>
@@ -76,12 +74,14 @@ public class WeaponController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        GameObject attack = Instantiate(weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
+        GameObject attack = Instantiate(
+            isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
         attack.GetComponent<Rigidbody>().linearVelocity = EmitTransform.forward * weapon.Speed;
-        if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, weapon.Range / weapon.Speed);
+        if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed);
         //0チェック
         else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f);
 
+        isSuperAttack = false;
         animator.SetTrigger("Attack");
     }
 }
