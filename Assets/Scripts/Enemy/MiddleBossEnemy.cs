@@ -9,6 +9,6 @@ public class MiddleBossEnemy : EnemyController
     {
         base.Start();
         animator = GetComponentInChildren<Animator>();
-        attackController.Init("Player", Attack, 5000);
+        attackController.Init("Player", Attack, float.PositiveInfinity);
     }
 }
