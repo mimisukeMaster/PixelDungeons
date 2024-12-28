@@ -1306,7 +1306,7 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 20
   Attack: 10
-  DropItem: {fileID: 0}
+  DropItem: {fileID: 2038873515553743555, guid: 657ff9e6c9d752941a635de42ee2912c, type: 3}
   DropProbability: 1
   attackController: {fileID: -8004292896959952709}
   Eye: {fileID: 4418861329660572704}
