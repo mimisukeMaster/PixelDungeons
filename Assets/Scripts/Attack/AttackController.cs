@@ -25,6 +25,7 @@ public class AttackController : MonoBehaviour
         // 敵自身の衝突（近距離）はNearAttackで行う
         if (gameObject.CompareTag("Enemy")) return;
 
+            Debug.Log(targetTag + "にあたった");
         // タグで判定する
         if (other.gameObject.CompareTag(targetTag))
         {
@@ -45,7 +46,7 @@ public class AttackController : MonoBehaviour
         // タグで判定する
         if (other.CompareTag(targetTag))
         {
-            other.GetComponent<HPController>().Damaged(damage);
+            other.GetComponentInParent<HPController>().Damaged(damage);
             // UIを表示
             if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, transform.position);
             penetration--;
