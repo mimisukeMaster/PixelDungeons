@@ -38,9 +38,9 @@ public class InventoryManager : MonoBehaviour
     [Tooltip("左手")]
     public Transform LeftHand;    
     [Tooltip("右手の攻撃発生場所")]
-    public Transform RightEmmitionTransform;
+    public Transform RightEmissionTransform;
     [Tooltip("左手の攻撃発生場所")]
-    public Transform LeftEmmitionTransform;
+    public Transform LeftEmissionTransform;
 
     [Tooltip("デバッグ用初期アイテム")]
     public Item[] startItems;
@@ -50,15 +50,15 @@ public class InventoryManager : MonoBehaviour
     {
         foreach(Item item in startItems)
         {
-            AddItem(item,1);
+            AddItem(item, 1);
         }
         if(initialWeaponRight != null)
         {
-            ChangeWeapon(true,initialWeaponRight,null);
+            ChangeWeapon(true, initialWeaponRight, null);
         }
         if(initialWeaponLeft != null)
         {
-            ChangeWeapon(false,initialWeaponLeft,null);
+            ChangeWeapon(false, initialWeaponLeft, null);
         }
     }
 
@@ -134,7 +134,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     //AddNumberの重複を解消する
-    private InventoryItem SetPanel(Item item,GameObject panel,int number)
+    private InventoryItem SetPanel(Item item, GameObject panel, int number)
     {
         InventoryItem inventoryItem = panel.GetComponent<InventoryItem>();
         inventoryItem.Init(item,this,number);
@@ -143,7 +143,7 @@ public class InventoryManager : MonoBehaviour
 
     private void SetContentHeight(RectTransform targetRectTransform,int count)
     {
-        targetRectTransform.sizeDelta = new Vector2(targetRectTransform.sizeDelta.x,70 * (count + 1));
+        targetRectTransform.sizeDelta = new Vector2(targetRectTransform.sizeDelta.x, 70 * (count + 1));
     }
 
     public void RemoveItem(Item item)
@@ -158,36 +158,36 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     /// <param name="isRightHand"></param>
     /// <param name="weapon"></param>
-    public void ChangeWeapon(bool isRightHand,Item_Weapon weapon,InventoryItem inventoryItem)
+    public void ChangeWeapon(bool isRightHand, Item_Weapon weapon, InventoryItem inventoryItem)
     {
         if(isRightHand)//右手
         {
             if(RightHand.childCount != 0)
             {
                 Debug.Log(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon);
-                AddItem(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon,1);
+                AddItem(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon, 1);
                 Destroy(RightHand.GetChild(0).gameObject);
             }
-            GameObject weaponInstance = Instantiate(weapon.Prefab,RightHand);
+            GameObject weaponInstance = Instantiate(weapon.Prefab, RightHand);
             if(inventoryItem != null)
             {
                 inventoryItem.SubNumber(1);
             }
-            weaponInstance.GetComponent<WeaponController>().Init(weapon,true,RightEmmitionTransform);
+            weaponInstance.GetComponent<WeaponController>().Init(weapon, true, RightEmissionTransform);
         }
         else//左手
         {
             if(LeftHand.childCount != 0)
             {
-                AddItem(LeftHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon,1);
+                AddItem(LeftHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon, 1);
                 Destroy(LeftHand.GetChild(0).gameObject);
             }
-            GameObject weaponInstance = Instantiate(weapon.Prefab,LeftHand);
+            GameObject weaponInstance = Instantiate(weapon.Prefab, LeftHand);
             if(inventoryItem != null)
             {
                 inventoryItem.SubNumber(1);
             }
-            weaponInstance.GetComponent<WeaponController>().Init(weapon,false,LeftEmmitionTransform);
+            weaponInstance.GetComponent<WeaponController>().Init(weapon, false, LeftEmissionTransform);
         }
     }
 

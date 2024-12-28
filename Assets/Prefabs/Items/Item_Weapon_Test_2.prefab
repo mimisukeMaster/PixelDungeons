@@ -94,3 +94,4 @@ MonoBehaviour:
   Range: 1
   Prefab: {fileID: 3651563267847403976, guid: 0f1d59f0b3f46304881bf307f0e5b1f4, type: 3}
   AttackPrefab: {fileID: 4021758720569903429, guid: aac738f0fddcb944ea0df92edc7b0f55, type: 3}
+  SuperAttackPrefab: {fileID: 0}

@@ -10,5 +10,6 @@ public class Item_Weapon : Item
     public float Range;
     public GameObject Prefab;
     public GameObject AttackPrefab;
+    public GameObject SuperAttackPrefab;
 
 }

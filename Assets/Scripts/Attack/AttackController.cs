@@ -25,7 +25,6 @@ public class AttackController : MonoBehaviour
         // 敵自身の衝突（近距離）はNearAttackで行う
         if (gameObject.CompareTag("Enemy")) return;
 
-            Debug.Log(targetTag + "にあたった");
         // タグで判定する
         if (other.gameObject.CompareTag(targetTag))
         {
@@ -43,6 +42,9 @@ public class AttackController : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) 
     {
+        // 自分自身の衝突は無視
+        if (other.gameObject.CompareTag(gameObject.tag)) return;
+
         // タグで判定する
         if (other.CompareTag(targetTag))
         {

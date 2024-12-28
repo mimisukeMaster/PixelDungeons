@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
       propertyPath: m_Name
-      value: Item_Weapon_Test_3 Variant
+      value: Item_Weapon_Test_3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6051713405099996358, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
@@ -86,3 +86,4 @@ MonoBehaviour:
   Range: 0
   Prefab: {fileID: 411385838327493557, guid: 589c4d1ab258f3847a1e140e682b5a9e, type: 3}
   AttackPrefab: {fileID: 4021758720569903429, guid: aac738f0fddcb944ea0df92edc7b0f55, type: 3}
+  SuperAttackPrefab: {fileID: 0}
