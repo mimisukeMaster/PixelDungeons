@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HPController : MonoBehaviour
 {   
@@ -13,6 +14,8 @@ public class HPController : MonoBehaviour
     public EnemyController EnemyController;
     [Tooltip("HPバー")]
     public Image HPBar;
+    [Tooltip("HPテキスト")]
+    public TMP_Text HPText;
 
 
     void Start()
@@ -48,9 +51,7 @@ public class HPController : MonoBehaviour
     /// </summary>
     public void UpdateHPBar()
     {
-        if(HPBar)
-        {
-            HPBar.fillAmount = (float)HP/MaxHP;
-        }
+        if(HPBar)HPBar.fillAmount = (float)HP/MaxHP;
+        if(HPText != null)HPText.text = $"{HP}/{MaxHP}";
     }
 }
