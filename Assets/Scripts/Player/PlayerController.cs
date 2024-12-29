@@ -85,17 +85,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable() => controls.Disable();
 
+    /// <summary>
+    /// 衝突判定
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        //アイテム関係
+        // アイテム
         if (collision.gameObject.CompareTag("DropItem"))
         {
             DropItem item = collision.gameObject.GetComponent<DropItem>();
-            GetComponent<InventoryManager>().AddItem(item.Item,item.Number);
+            GetComponent<InventoryManager>().AddItem(item.Item, item.Number);
             Destroy(collision.gameObject);
         }
-        //着地
+        // 着地
         isGrounded = true;
+
+        // ゴールゲート
+        if (collision.gameObject.CompareTag("GoalGate")) OnCleared();
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext controls)
