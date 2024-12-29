@@ -56,6 +56,6 @@ MonoBehaviour:
   SpawnArea: {x: 50, y: 50}
   Boss: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
   BossSpawnPos: {x: 0, y: 0, z: 0}
-  playerController: {fileID: 0}
+  GoalGate: {fileID: 6901921673752083169, guid: dd70fc94b9aa5a44097b481a9bcad093, type: 3}
   BossMode: 0
   existEnemyNum: 0

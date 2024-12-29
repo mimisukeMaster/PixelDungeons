@@ -18,8 +18,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject Boss;
     [Tooltip("ボスが生まれる場所")]
     public Vector3 BossSpawnPos;
-    [Tooltip("プレイヤーの参照")]
-    public PlayerController playerController;
+    [Tooltip("ゴールゲート")]
+    public GameObject GoalGate;
 
     [HideInInspector]
     public bool BossMode;
@@ -44,11 +44,8 @@ public class SpawnManager : MonoBehaviour
                 existEnemyNum += 1;
                 BossMode = true;
             }
-            // ボスを倒したらクリア
-            else
-            {
-                playerController.OnCleared();
-            }
+            // ボスを倒したらゴールゲート出現
+            else Instantiate(GoalGate, BossSpawnPos, Quaternion.identity);
         }
     }
 
