@@ -42,8 +42,8 @@ public class AttackController : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) 
     {
-        // 自分自身の衝突は無視
-        if (other.gameObject.CompareTag(gameObject.tag)) return;
+        // 自分自身との衝突と自分が敵の場合は無視
+        if (other.gameObject.CompareTag(gameObject.tag) || gameObject.CompareTag(gameObject.tag)) return;
 
         // タグで判定する
         if (other.CompareTag(targetTag))
