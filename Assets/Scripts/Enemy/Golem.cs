@@ -88,17 +88,19 @@ public class Golem : MiddleBossEnemy
 
     public void OnBeamStart()
     {
-        //目をプレイヤーに向け、目の上側がちゃんと上を向くようにする　ビームは目の回転をもとにしているのでもう一回やる
-        if(Vector3.Angle(transform.forward,targetPlayer.transform.position - transform.position)<90)
-        {
-            //Eye.transform.LookAt(targetPlayer.transform);
-            Eye.transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.transform.position);
-            Eye.transform.rotation = Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation;
-        }
-        //プレイヤーが正面にいない場合は正面を向く
-        else Eye.transform.rotation = Quaternion.Euler(90,0,0);
+        // 追跡中でないならreturn
+        if (!isChasing) return;
 
-        GameObject beam = Instantiate(Beam,Eye.transform.position,Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation);
-        beam.GetComponentInChildren<Beam>().Init("Player",Attack,100,BeamChargeTime,BeamEmittionTime,20);
+        if (Vector3.Angle(transform.forward, distanceVector) < 90.0f)
+        {
+            // 目をプレイヤーに向け、目の上側が正しく上を向くようにする　ビームは目の回転をもとにしているので再度回転を調整する
+            Eye.transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.transform.position);
+            Eye.transform.rotation = Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation;
+        }
+        // プレイヤーの方を向いていない場合は正面を向く
+        else Eye.transform.rotation = Quaternion.Euler(90.0f, 0f, 0f);
+
+        GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
+        beam.GetComponentInChildren<Beam>().Init("Player", Attack, 100, BeamChargeTime, BeamEmittionTime, 20.0f);
     }
 }
