@@ -9,7 +9,7 @@ public class CraftingStation : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             craftingCanvas.SetActive(true);
-            Time.timeScale = 0.2f;
+            Time.timeScale = 0.4f;
             Cursor.lockState = CursorLockMode.None;
         }
     }
@@ -19,8 +19,8 @@ public class CraftingStation : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             craftingCanvas.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
