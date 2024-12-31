@@ -33,6 +33,9 @@ public class GolemEventHandler : MonoBehaviour
         golem.CheckNextMove();
     }
 
-    public void OnIdleEnd() => golem.CheckNextMove();
+    public void OnBeamStart() => golem.OnBeamStart();//アニメーションが始まる直後に呼ぶ
 
+    public void OnBeamEnd()=> golem.CheckNextMove();
+
+    public void OnIdleEnd() => golem.CheckNextMove();
 }
