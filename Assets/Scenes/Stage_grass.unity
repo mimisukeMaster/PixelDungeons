@@ -5207,6 +5207,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1677212176
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2715673240687885751, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: Beam
+      value: 
+      objectReference: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
+    - target: {fileID: 2715673240687885751, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: BeamChargeTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715673240687885751, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: DetectionRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715673240687885751, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: beamProbability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715673240687885751, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: BeamEmittionTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.225301
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.923181
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322472367032555868, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339947921235990378, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
+      propertyPath: m_Name
+      value: Golem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cd409b44e3bce54a99eafb8a76fffe5, type: 3}
 --- !u!1 &1696107642
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,3 +7468,4 @@ SceneRoots:
   - {fileID: 9138128840684033275}
   - {fileID: 993539732}
   - {fileID: 513602357}
+  - {fileID: 1677212176}

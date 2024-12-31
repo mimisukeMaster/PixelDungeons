@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    private string targetTag;
-    private int damage;
+    protected string targetTag = "";
+    protected int damage;
 
     private int penetration = 100;//攻撃が敵を貫通する数
 
     // 初期化
-    public void Init(string TargetTag, int Damage,float destroyTime)
+    public virtual void Init(string TargetTag, int Damage,float destroyTime)
     {
         targetTag = TargetTag;
         damage = Damage;
@@ -20,10 +20,10 @@ public class AttackController : MonoBehaviour
     /// </summary>
     /// <remarks>物理演算による衝突判定を用いる</remarks>
     /// <param name="other"></param>
-    private void OnCollisionEnter(Collision other)
+    protected void OnCollisionEnter(Collision other)
     {
         // 敵自身の衝突（近距離）はNearAttackで行う
-        if (gameObject.CompareTag("Enemy")) return;
+        if (gameObject.CompareTag("Enemy")||targetTag == "") return;
 
         // タグで判定する
         if (other.gameObject.CompareTag(targetTag))
@@ -40,10 +40,10 @@ public class AttackController : MonoBehaviour
     /// 攻撃の処理
     /// </summary>
     /// <param name="other"></param>
-    private void OnTriggerEnter(Collider other) 
+    protected void OnTriggerEnter(Collider other) 
     {
         // 自分自身との衝突と自分が敵の場合は無視
-        if (other.gameObject.CompareTag(gameObject.tag) || gameObject.CompareTag(gameObject.tag)) return;
+        if (other.gameObject.CompareTag(gameObject.tag)) return;
 
         // タグで判定する
         if (other.CompareTag(targetTag))

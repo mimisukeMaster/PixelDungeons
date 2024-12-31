@@ -1477,6 +1477,10 @@ MonoBehaviour:
   SmashInterval: 1
   SmashPosition: {fileID: 7401053809736737244}
   SmashRange: 3
+  beamProbability: 0.2
+  BeamInterval: 5
+  BeamLength: 20
+  Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
 --- !u!114 &7318278754861073940
 MonoBehaviour:
   m_ObjectHideFlags: 0

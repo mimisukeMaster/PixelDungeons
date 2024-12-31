@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 public class Golem : MiddleBossEnemy
 {
     [Tooltip("目のボーン")]
@@ -11,6 +13,20 @@ public class Golem : MiddleBossEnemy
     public Transform SmashPosition;
     [Tooltip("攻撃半径")]
     public float SmashRange = 4.0f;
+    [Space(20)]
+    [Header("ビーム関係")]
+    [Tooltip("ビームを出す確率")]
+    public float beamProbability = 0.2f;//遠距離の場合一定確率でビームを打つ
+    [Tooltip("ビームの攻撃間隔")]
+    public float BeamInterval = 5.0f;
+    [Tooltip("ビームの長さ")]
+    public float BeamLength = 20.0f;
+    [Tooltip("ビームのPrefab")]
+    public GameObject Beam;
+    [Tooltip("ビームが打たれるまでの時間")]
+    public float BeamChargeTime = 1;
+    [Tooltip("ビームが照射されている時間")]
+    public float BeamEmittionTime = 2;
 
     private bool isInitChasing = true;
 
@@ -19,8 +35,15 @@ public class Golem : MiddleBossEnemy
         DetectPlayer();
         if (isChasing)
         {
-            //目をプレイヤーに向ける
-            Eye.transform.forward = distanceVector;
+            //目をプレイヤーに向け、目の上側がちゃんと上を向くようにする
+            if(Vector3.Angle(transform.forward,targetPlayer.transform.position - transform.position)<90)
+            {
+                //Eye.transform.LookAt(targetPlayer.transform);
+                Eye.transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.transform.position);
+                Eye.transform.rotation = Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation;
+            }
+            //プレイヤーが正面にいない場合は正面を向く
+            else Eye.transform.rotation = Quaternion.Euler(90,0,0);
             
             if (isInitChasing)
             {
@@ -58,7 +81,24 @@ public class Golem : MiddleBossEnemy
         }
         else
         {
-            animator.SetTrigger("Move");
+            if(Random.value < beamProbability)animator.SetTrigger("Beam");
+            else animator.SetTrigger("Move");
         }
+    }
+
+    public void OnBeamStart()
+    {
+        //目をプレイヤーに向け、目の上側がちゃんと上を向くようにする　ビームは目の回転をもとにしているのでもう一回やる
+        if(Vector3.Angle(transform.forward,targetPlayer.transform.position - transform.position)<90)
+        {
+            //Eye.transform.LookAt(targetPlayer.transform);
+            Eye.transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.transform.position);
+            Eye.transform.rotation = Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation;
+        }
+        //プレイヤーが正面にいない場合は正面を向く
+        else Eye.transform.rotation = Quaternion.Euler(90,0,0);
+
+        GameObject beam = Instantiate(Beam,Eye.transform.position,Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation);
+        beam.GetComponentInChildren<Beam>().Init("Player",Attack,100,BeamChargeTime,BeamEmittionTime,20);
     }
 }
