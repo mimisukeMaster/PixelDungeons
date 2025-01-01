@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using UnityEngine.PlayerLoop;
 
 public class Golem : MiddleBossEnemy
 {
@@ -41,15 +39,14 @@ public class Golem : MiddleBossEnemy
         DetectPlayer();
         if (isChasing)
         {
-            //目をプレイヤーに向け、目の上側がちゃんと上を向くようにする
-            if(Vector3.Angle(transform.forward,targetPlayer.transform.position - transform.position)<90)
+            // 目をプレイヤーに向け、目の上側がちゃんと上を向くようにする
+            if(Vector3.Angle(transform.forward, distanceVector) < 90.0f)
             {
-                //Eye.transform.LookAt(targetPlayer.transform);
                 Eye.transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - Eye.transform.position);
-                Eye.transform.rotation = Quaternion.AngleAxis(90,Eye.transform.right) * Eye.transform.rotation;
+                Eye.transform.rotation = Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation;
             }
-            //プレイヤーが正面にいない場合は正面を向く
-            else Eye.transform.rotation = Quaternion.Euler(90,0,0);
+            // プレイヤーが正面にいない場合は正面を向く
+            else Eye.transform.rotation = Quaternion.Euler(90.0f, 0f, 0f);
             
             if (isInitChasing)
             {
@@ -68,6 +65,7 @@ public class Golem : MiddleBossEnemy
 
     /// <summary>
     /// プレイヤーに十分近づいたかを調べ、移動または攻撃の挙動をする
+    /// 2回目以降の呼び出しは<see cref="GolemEventHandler"/>から
     /// </summary>
     public void CheckNextMove()
     {
@@ -112,11 +110,11 @@ public class Golem : MiddleBossEnemy
 
     public void OnAttackLand()
     {
-        for(int i = 0;i < SmashParticleNumber;i++)
+        for (int i = 0; i < SmashParticleNumber; i++)
         {
-            GameObject particle = Instantiate(SmashParticle,SmashPosition.position + Vector3.up * 0.4f,Quaternion.Euler(Random.Range(-180,180),Random.Range(-180,180),Random.Range(-180,180)));
-            particle.GetComponent<AttackController>().Init("Player",Attack,2);
-            particle.GetComponent<Rigidbody>().linearVelocity = new Vector3(Random.Range(-10,10),Random.Range(3,8),Random.Range(-10,10));
+            GameObject particle = Instantiate(SmashParticle, SmashPosition.position + Vector3.up * 0.4f, Quaternion.Euler(Random.Range(-180.0f, 180.0f),Random.Range(-180.0f, 180.0f),Random.Range(-180.0f, 180.0f)));
+            particle.GetComponent<AttackController>().Init("Player", Attack, 2.0f);
+            particle.GetComponent<Rigidbody>().linearVelocity = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(3.0f, 8.0f), Random.Range(-10.0f, 10.0f));
         }
     }
 }
