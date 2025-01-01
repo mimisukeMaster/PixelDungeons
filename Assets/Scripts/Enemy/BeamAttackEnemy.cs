@@ -16,7 +16,7 @@ public class BeamAttackEnemy : EnemyController
     [Tooltip("ビームが打たれるまでの時間")]
     public float BeamChargeTime = 1;
     [Tooltip("ビームが照射されている時間")]
-    public float BeamEmittionTime = 2;
+    public float BeamEmissionTime = 2;
 
     private float nextBeamTime;
     private LineRenderer lineRenderer;
@@ -28,7 +28,7 @@ public class BeamAttackEnemy : EnemyController
         base.Start();
 
         // 位置と回転の固定
-        transform.position = new Vector3(transform.position.x, Altitude, transform.position.z); 
+        transform.position = new Vector3(transform.position.x, Altitude, transform.position.z);
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -37,10 +37,10 @@ public class BeamAttackEnemy : EnemyController
         base.Update();
 
         // 一定時間ごとに攻撃挙動
-        if(Time.time > nextBeamTime && isChasing)
+        if (Time.time > nextBeamTime && isChasing)
         {
-            GameObject beam = Instantiate(Beam, transform.position, Quaternion.LookRotation(transform.position - targetPlayer.transform.position));
-            beam.GetComponentInChildren<Beam>().Init("Player", Attack, 100, BeamChargeTime, BeamEmittionTime, 20.0f);
+            GameObject beam = Instantiate(Beam, transform.position, Quaternion.LookRotation(distanceVector * -1.0f));
+            beam.GetComponentInChildren<Beam>().BeamInit("Player", Attack, float.PositiveInfinity, BeamChargeTime, BeamEmissionTime, 20.0f);
             nextBeamTime = Time.time + BeamInterval;
         }
     }
@@ -48,7 +48,7 @@ public class BeamAttackEnemy : EnemyController
     public override void OnDied()
     {
         if (beamObj != null) Destroy(beamObj);
-        if(Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity); 
+        if (Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity);
         base.OnDied();
     }
 }
