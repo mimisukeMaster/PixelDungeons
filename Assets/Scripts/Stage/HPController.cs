@@ -10,6 +10,8 @@ public class HPController : MonoBehaviour
     public int MaxHP = 100;
     [Tooltip("TagがPlayer出ない場合は必要なし")]
     public PlayerController PlayerController;
+    [Tooltip("プレイヤーがダメージを受けたら発生するエフェクトのUI")]
+    public Animator playerDamageUI;
     [Tooltip("TagがEnemyでない場合は必要なし")]
     public EnemyController EnemyController;
     [Tooltip("HPバー")]
@@ -33,6 +35,9 @@ public class HPController : MonoBehaviour
     {
         HP -= damage;
         UpdateHPBar();
+        //プレイヤーがダメージを受けるとUIを表示
+        if(gameObject.tag == "Player")playerDamageUI.SetTrigger("Damage");
+
         if(HP <= 0)
         {
             if(gameObject.CompareTag("Player"))PlayerController.OnDied();
