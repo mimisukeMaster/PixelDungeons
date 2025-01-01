@@ -15,12 +15,11 @@ public class Beam : AttackController
         this.chargeTime  = chargeTime;
         this.beamLength = beamLength;
         this.emittionTime = emittionTime;
-        Debug.Log(destroyTime);
         BeamInit();
         StartCoroutine(BeamAttack());
     }
 
-        /// <summary>
+    /// <summary>
     /// 予測線の初期設定
     /// </summary>
     private void BeamInit()
@@ -46,12 +45,11 @@ public class Beam : AttackController
         yield return new WaitForSeconds(chargeTime);
 
         // 実際に攻撃
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, beamLength * 2);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, beamLength * 2.0f);
         GetComponentInChildren<AttackController>().Init("Player", damage, 2.0f);
 
         yield return new WaitForSeconds(emittionTime);
 
-        Debug.Log(transform.parent.gameObject);
         Destroy(transform.parent.gameObject);
     }
 
