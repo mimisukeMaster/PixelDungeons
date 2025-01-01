@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.PlayerLoop;
 
 public class Golem : MiddleBossEnemy
 {
@@ -27,6 +28,11 @@ public class Golem : MiddleBossEnemy
     public float BeamChargeTime = 1;
     [Tooltip("ビームが照射されている時間")]
     public float BeamEmittionTime = 2;
+    [Space(20)]
+    [Tooltip("近接攻撃で出るがれきの数")]
+    public int SmashParticleNumber;
+    [Tooltip("がれき")]
+    public GameObject SmashParticle;
 
     private bool isInitChasing = true;
 
@@ -102,5 +108,15 @@ public class Golem : MiddleBossEnemy
 
         GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
         beam.GetComponentInChildren<Beam>().Init("Player", Attack, 100, BeamChargeTime, BeamEmittionTime, 20.0f);
+    }
+
+    public void OnAttackLand()
+    {
+        for(int i = 0;i < SmashParticleNumber;i++)
+        {
+            GameObject particle = Instantiate(SmashParticle,SmashPosition.position + Vector3.up * 0.4f,Quaternion.Euler(Random.Range(-180,180),Random.Range(-180,180),Random.Range(-180,180)));
+            particle.GetComponent<AttackController>().Init("Player",Attack,2);
+            particle.GetComponent<Rigidbody>().linearVelocity = new Vector3(Random.Range(-10,10),Random.Range(3,8),Random.Range(-10,10));
+        }
     }
 }

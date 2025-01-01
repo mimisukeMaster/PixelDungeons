@@ -1481,6 +1481,10 @@ MonoBehaviour:
   BeamInterval: 5
   BeamLength: 20
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
+  BeamChargeTime: 1
+  BeamEmittionTime: 2
+  SmashParticleNumber: 5
+  SmashParticle: {fileID: 8339947921235990378}
 --- !u!114 &7318278754861073940
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class GolemEventHandler : MonoBehaviour
 
     public void OnAttackLand()
     {
+        golem.OnAttackLand();
         attackController.NearAttack(golem.SmashPosition.position, golem.SmashRange);
         SmashWave.SetActive(true);
     }
