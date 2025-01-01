@@ -8,7 +8,7 @@ public class AttackController : MonoBehaviour
     private int penetration = 100;//攻撃が敵を貫通する数
 
     // 初期化
-    public virtual void Init(string TargetTag, int Damage,float destroyTime)
+    public virtual void Init(string TargetTag, int Damage, float destroyTime)
     {
         targetTag = TargetTag;
         damage = Damage;
