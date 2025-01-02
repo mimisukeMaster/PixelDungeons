@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
+    public AudioClip BallFireImpactSE;
     protected string targetTag = "";
     protected int damage;
 
-    private int penetration = 100;//攻撃が敵を貫通する数
+    [Tooltip("攻撃が敵を貫通する数")]
+    private int penetration = 100;
+    private AudioSource audioSource;
 
     // 初期化
     public virtual void Init(string TargetTag, int Damage, float destroyTime)
@@ -13,6 +16,11 @@ public class AttackController : MonoBehaviour
         targetTag = TargetTag;
         damage = Damage;
         Destroy(gameObject, destroyTime);
+    }
+
+    private void Start()
+    {
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -30,6 +38,9 @@ public class AttackController : MonoBehaviour
         {
             other.gameObject.GetComponent<HPController>().Damaged(damage);
 
+            // 自身のLayerがWeaponなら効果音鳴らす
+            if (gameObject.layer == 6) audioSource.PlayOneShot(BallFireImpactSE);
+            
             // UIを表示
             if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, other.contacts[0].point);
             Destroy(gameObject);

@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b877adfbc701cb44aaeb20c1290fda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmmitTransform: {fileID: 0}
+  EmitTransform: {fileID: 0}
+  audioSource: {fileID: 6795172616323454362, guid: 9cd3c08e29ec4374fbd522797575a7bb, type: 3}
+  BallFireLaunchSE: {fileID: 8300000, guid: e27a199289142a44c8d5cb2f0d727e28, type: 3}
 --- !u!1001 &1880933871700832926
 PrefabInstance:
   m_ObjectHideFlags: 0

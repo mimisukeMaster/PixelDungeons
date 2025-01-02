@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: VelocityModule.speedModifier.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3461897681241546005, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: BallFireImpactSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 30fe1b729d8170f4cb2041ab8b5eeecf, type: 3}
     - target: {fileID: 4085847363782797479, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

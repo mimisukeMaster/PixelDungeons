@@ -8,15 +8,14 @@ public class WeaponController : MonoBehaviour
 {
     [System.NonSerialized]
     public Item_Weapon weapon;
-
     public Transform EmitTransform;
+    public AudioClip BallFireLaunchSE;
 
     private bool isRightHand;
-
-    private bool continueAttack;
     private Animator animator;
     private float onClickTime;
     private bool isSuperAttack;
+    private AudioSource audioSource;
 
     public void Init(Item_Weapon weapon,bool isRightHand,Transform attackTransform)
     {
@@ -38,9 +37,9 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private void Update() 
+    private void Start() 
     {
-
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
     }
 
     // 右クリック押下
@@ -65,6 +64,7 @@ public class WeaponController : MonoBehaviour
         {
             // 攻撃
             if (Time.time - onClickTime >= 0.5f) isSuperAttack = true;
+            audioSource.PlayOneShot(BallFireLaunchSE);
             Attack();
         }
     }
