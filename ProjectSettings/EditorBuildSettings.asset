@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Stage_title.unity
+    guid: 8f5bb5f3696b9184f90fa84e35c945ea
+  - enabled: 1
     path: Assets/Scenes/Stage_grass.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
