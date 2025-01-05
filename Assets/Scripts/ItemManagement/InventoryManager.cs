@@ -130,7 +130,6 @@ public class InventoryManager : MonoBehaviour
         {
             str += consumable_.name + ":" + consumablesInInventory[consumable_].number + ";";
         }
-        Debug.Log(str);
     }
 
     //AddNumberの重複を解消する

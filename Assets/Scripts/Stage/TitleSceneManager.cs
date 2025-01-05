@@ -19,6 +19,10 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Start()
     {
+        // UI非表示
+        CreditsPanel.SetActive(false);
+        SettingPanel.SetActive(false);
+
         // 鳥の挙動
         BirdAnim.SetBool("Chasing", true);
         BirdAnim.SetFloat("WingSpeed", 2.0f);
