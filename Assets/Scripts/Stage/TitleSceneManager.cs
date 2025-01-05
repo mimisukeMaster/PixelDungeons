@@ -7,9 +7,13 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class TitleSceneManager : MonoBehaviour
 {
+    public AudioSource AudioSource;
+    public GameObject Camera;
+    [Header("UI")]
     public GameObject CreditsPanel;
     public GameObject SettingPanel;
-    public GameObject Camera;
+    public Slider SoundsSlider;
+    [Header("景観")]
     public Animator BirdAnim;
     public Animator GolemAnim;
 
@@ -18,6 +22,10 @@ public class TitleSceneManager : MonoBehaviour
         // 鳥の挙動
         BirdAnim.SetBool("Chasing", true);
         BirdAnim.SetFloat("WingSpeed", 2.0f);
+
+        // シーン間共有の値を取得
+        AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
+        SoundsSlider.value = AudioSource.volume;
     }
 
     private void FixedUpdate()
@@ -47,6 +55,17 @@ public class TitleSceneManager : MonoBehaviour
     public void OnSetting()
     {
         SettingPanel.SetActive(!SettingPanel.activeSelf);
+    }
+
+    /// <summary>
+    /// 音量変更ボタン
+    /// </summary>
+    public void OnSoundsChanged()
+    {
+        AudioSource.volume = SoundsSlider.value;
+
+        // シーン間共有で値を保存
+        PlayerPrefs.SetFloat("SoundsValue", SoundsSlider.value);
     }
 
     /// <summary>

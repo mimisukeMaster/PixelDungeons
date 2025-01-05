@@ -184,6 +184,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd3c08e29ec4374fbd522797575a7bb, type: 3}
+--- !u!82 &26626036 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6795172616323454362, guid: 9cd3c08e29ec4374fbd522797575a7bb, type: 3}
+  m_PrefabInstance: {fileID: 26626035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &43613331
 GameObject:
   m_ObjectHideFlags: 0
@@ -8557,6 +8562,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: AudioSource
+      value: 
+      objectReference: {fileID: 26626036}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1738896456}
@@ -8623,10 +8632,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 1745290002}
+  - {fileID: 26626035}
   - {fileID: 234941431}
   - {fileID: 4422699651180614171}
   - {fileID: 428036626}
   - {fileID: 9138128840684033275}
   - {fileID: 993539732}
   - {fileID: 513602357}
-  - {fileID: 26626035}
