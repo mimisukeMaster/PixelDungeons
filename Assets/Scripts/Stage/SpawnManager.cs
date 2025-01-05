@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Tooltip("BGM処理")]
+    public AudioSource AudioSource;
     [Tooltip("敵の種類と出現数を設定")]
     public List<EnemyProperty> Enemies;
     [Tooltip("敵の種類と数を設定")]
@@ -30,6 +32,8 @@ public class SpawnManager : MonoBehaviour
     private void Awake()
     {
         existEnemyNum = 0;
+        AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
+        
         SpawnEnemies();
     }
 
