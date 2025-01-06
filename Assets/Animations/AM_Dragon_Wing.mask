@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AM_Dragon_Wing
+  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Mesh_Dragon1
+    m_Weight: 0
+  - m_Path: Model_Dragon
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Body_1
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Body_1/Body_2
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Body_1/Body_2/Body_3
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Body_1/Body_2/Body_3/Body_4
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Body_1/Body_2/Body_3/Body_4/Tail
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Body_1/Body_2/Body_3/Body_4/Tail/Tail_end
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Foot_L
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Foot_L/Foot_L_end
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Foot_R
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Foot_R/Foot_R_end
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Neck
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Neck/Head
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Neck/Head/Head_end
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Neck/Jaw
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/Neck/Jaw/Jaw_end
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/WingRoot
+    m_Weight: 0
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_1_L.001
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_1_L.001/Wing_1_L.002
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_1_L.001/Wing_1_L.002/Wing_1_L.003
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_1_L.001/Wing_1_L.002/Wing_1_L.003/Wing_1_L.003_end
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_2_L.001
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_2_L.001/Wing_2_L.002
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_2_L.001/Wing_2_L.002/Wing_2_L.003
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_2_L.001/Wing_2_L.002/Wing_2_L.003/Wing_2_L.003_end
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_3_L.001
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_3_L.001/Wing_3_L.002
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_3_L.001/Wing_3_L.002/Wing_3_L.003
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_L/Wing_3_L.001/Wing_3_L.002/Wing_3_L.003/Wing_3_L.003_end
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_1_R.001
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_1_R.001/Wing_1_R.002
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_1_R.001/Wing_1_R.002/Wing_1_R.003
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_1_R.001/Wing_1_R.002/Wing_1_R.003/Wing_1_R.003_end
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_2_R.001
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_2_R.001/Wing_2_R.002
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_2_R.001/Wing_2_R.002/Wing_2_R.003
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_2_R.001/Wing_2_R.002/Wing_2_R.003/Wing_2_R.003_end
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_3_R.001
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_3_R.001/Wing_3_R.002
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_3_R.001/Wing_3_R.002/Wing_3_R.003
+    m_Weight: 1
+  - m_Path: Model_Dragon/Root/WingRoot/Wing_R/Wing_3_R.001/Wing_3_R.002/Wing_3_R.003/Wing_3_R.003_end
+    m_Weight: 1
