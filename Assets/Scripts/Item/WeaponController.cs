@@ -45,7 +45,7 @@ public class WeaponController : MonoBehaviour
     // 右クリック押下
     private void OnClickRight(InputAction.CallbackContext context)
     {
-        if (isRightHand) Attack();
+        if (isRightHand && PlayerController.isGaming) Attack();
     }
 
     // 右クリックが離す
@@ -60,7 +60,7 @@ public class WeaponController : MonoBehaviour
     //左クリック離す
     private void ReleaseClickLeft(InputAction.CallbackContext context)
     {
-        if(!isRightHand)
+        if(!isRightHand && PlayerController.isGaming)
         {
             // 攻撃
             if (Time.time - onClickTime >= 0.5f) isSuperAttack = true;
