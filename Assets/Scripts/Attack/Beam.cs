@@ -12,9 +12,9 @@ public class Beam : AttackController
     /// <summary>
     /// ビームの初期設定
     /// </summary>
-    public void BeamInit(string TargetTag, int Damage, float destroyTime, float chargeTime, float emissionTime, float beamLength)
+    public void InitBeam(string TargetTag, int Damage, float destroyTime,int Penetration, float chargeTime, float emissionTime, float beamLength)
     {
-        base.Init(TargetTag, Damage, destroyTime);
+        base.Init(TargetTag, Damage, destroyTime,Penetration);
         this.chargeTime = chargeTime;
         this.beamLength = beamLength;
         this.emissionTime = emissionTime;

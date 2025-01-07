@@ -105,7 +105,7 @@ public class Golem : MiddleBossEnemy
         else Eye.transform.rotation = Quaternion.Euler(90.0f, 0f, 0f);
 
         GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
-        beam.GetComponentInChildren<Beam>().BeamInit("Player", Attack, 100, BeamChargeTime, BeamEmittionTime, 20.0f);
+        beam.GetComponentInChildren<Beam>().InitBeam("Player", Attack, 100,10, BeamChargeTime, BeamEmittionTime, 20.0f);
     }
 
     public void OnAttackLand()
@@ -113,7 +113,7 @@ public class Golem : MiddleBossEnemy
         for (int i = 0; i < SmashParticleNumber; i++)
         {
             GameObject particle = Instantiate(SmashParticle, SmashPosition.position + Vector3.up * 0.4f, Quaternion.Euler(Random.Range(-180.0f, 180.0f), Random.Range(-180.0f, 180.0f), Random.Range(-180.0f, 180.0f)));
-            particle.GetComponent<AttackController>().Init("Player", Attack, 2.0f);
+            particle.GetComponent<AttackController>().Init("Player", Attack, 2.0f,1);
             particle.GetComponent<Rigidbody>().linearVelocity = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(3.0f, 8.0f), Random.Range(-10.0f, 10.0f));
         }
     }

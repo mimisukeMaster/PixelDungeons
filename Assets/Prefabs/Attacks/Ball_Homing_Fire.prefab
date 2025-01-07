@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8453991057136489325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3749739803958615257, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288094631000541260, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_Name
+      value: Ball_Homing_Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3461897681241546005, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5288094631000541260, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3780063751172192924}
+  m_SourcePrefab: {fileID: 100100000, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+--- !u!1 &4337399785733692193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5288094631000541260, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+  m_PrefabInstance: {fileID: 8453991057136489325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3780063751172192924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337399785733692193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76a7e9a5e779cc40ae256fa6efd43c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallFireImpactSE: {fileID: 8300000, guid: 30fe1b729d8170f4cb2041ab8b5eeecf, type: 3}

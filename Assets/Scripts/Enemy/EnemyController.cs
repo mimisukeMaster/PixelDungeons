@@ -106,6 +106,7 @@ public class EnemyController : MonoBehaviour
             GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
         }
         spawnManager.existEnemyNum -= 1;
+        SpawnManager.EnemysInStage.Remove(gameObject);
         Destroy(gameObject);
     }
 

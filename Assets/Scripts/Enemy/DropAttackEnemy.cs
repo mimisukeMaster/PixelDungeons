@@ -68,7 +68,7 @@ public class DropAttackEnemy : EnemyController
         if(Time.time > nextDropTime)
         {
             GameObject bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
-            bullet.GetComponent<AttackController>().Init("Player", Attack, 5.0f);
+            bullet.GetComponent<AttackController>().Init("Player", Attack, 5.0f,1);
 
             nextDropTime = Time.time + DropInterval;
         }

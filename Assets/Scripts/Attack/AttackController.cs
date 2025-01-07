@@ -5,16 +5,18 @@ public class AttackController : MonoBehaviour
     public AudioClip BallFireImpactSE;
     protected string targetTag = "";
     protected int damage;
+    protected float speed;
 
     [Tooltip("攻撃が敵を貫通する数")]
-    private int penetration = 100;
+    protected int penetration = 100;
     private AudioSource audioSource;
 
     // 初期化
-    public virtual void Init(string TargetTag, int Damage, float destroyTime)
+    public virtual void Init(string TargetTag, int Damage, float destroyTime,int Penetration)
     {
         targetTag = TargetTag;
         damage = Damage;
+        penetration = Penetration;
         Destroy(gameObject, destroyTime);
     }
 

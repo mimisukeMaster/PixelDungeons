@@ -12,4 +12,6 @@ public class Item_Weapon : Item
     public GameObject AttackPrefab;
     public GameObject SuperAttackPrefab;
 
+    public bool isHoming;
+
 }

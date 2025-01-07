@@ -54,6 +54,12 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     public static bool isGaming;
 
+    public static GameObject PlayerObject;
+
+    private void Start() 
+    {
+        PlayerObject = gameObject;
+    }
 
     private void Awake()
     {

@@ -28,12 +28,17 @@ public class SpawnManager : MonoBehaviour
     [HideInInspector]
     public int existEnemyNum;
 
+    public static List<GameObject> EnemysInStage = new List<GameObject>() ;//スポーンした敵のリスト
 
     private void Awake()
     {
         existEnemyNum = 0;
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
-        
+    }
+
+    private void Start() 
+    {
+        EnemysInStage.Clear();
         SpawnEnemies();
     }
 
@@ -62,7 +67,9 @@ public class SpawnManager : MonoBehaviour
                 float x = Random.Range(SpawnArea.x / -2.0f, SpawnArea.x / 2.0f);
                 float z = Random.Range(SpawnArea.y / -2.0f, SpawnArea.y / 2.0f);
 
-                Instantiate(Enemies[i].enemy, new Vector3(x, 0, z), Enemies[i].enemy.transform.rotation);
+                GameObject enemy = Instantiate(Enemies[i].enemy, new Vector3(x, 0, z), Enemies[i].enemy.transform.rotation);
+                EnemysInStage.Add(enemy);
+
                 existEnemyNum += 1;
             }
         }
