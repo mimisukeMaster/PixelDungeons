@@ -8,34 +8,6 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 5.0f;
     [Tooltip("移動の速さ")]
     public float MoveSpeed = 5.0f;
-    [Tooltip("カメラ")]
-    public Camera PlayerCam;
-
-    [Header("遠距離攻撃")]
-    [Tooltip("オブジェクト参照")]
-    public GameObject WeaponSlotL;
-    [Tooltip("魔法オブジェクト参照")]
-    public GameObject MagicObj;
-    [Tooltip("強い魔法オブジェクト参照")]
-    public GameObject SuperMagicObj;
-    [Tooltip("遠距離攻撃力")]
-    public int FarAttack = 10;
-    [Tooltip("強い遠距離攻撃")]
-    public int SuperFarAttack = 20;
-    [Tooltip("遠距離攻撃発射位置")]
-    public Transform MagicPos;
-    [Tooltip("遠距離攻撃発射の速さ")]
-    public float AttackSpeed = 5.0f;
-
-    [Header("近距離攻撃")]
-    [Tooltip("オブジェクト参照")]
-    public GameObject WeaponSlotR;
-    [Tooltip("強い攻撃のパーティクル")]
-    public ParticleSystem SuperNearAttackParticle;
-    [Tooltip("近距離攻撃力")]
-    public int NearAttack = 20;
-    [Tooltip("強い近距離攻撃")]
-    public int SuperNearAttack = 30;
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
     [Header("UI")]

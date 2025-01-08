@@ -26,11 +26,6 @@ public class HPController : MonoBehaviour
         UpdateHPBar();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void Damaged(int damage)
     {
         HP -= damage;
@@ -56,7 +51,7 @@ public class HPController : MonoBehaviour
     /// </summary>
     public void UpdateHPBar()
     {
-        if(HPBar)HPBar.fillAmount = (float)HP/MaxHP;
-        if(HPText != null)HPText.text = $"{HP}/{MaxHP}";
+        if (HPBar) HPBar.fillAmount = (float)HP / MaxHP;
+        if (HPText != null) HPText.text = $"{HP}/{MaxHP}";
     }
 }
