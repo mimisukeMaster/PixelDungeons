@@ -1484,7 +1484,7 @@ MonoBehaviour:
   BeamChargeTime: 1
   BeamEmittionTime: 2
   SmashParticleNumber: 5
-  SmashParticle: {fileID: 8339947921235990378}
+  SmashParticle: {fileID: 8571045898123795658, guid: fab95f749732be64390114d247243673, type: 3}
 --- !u!114 &7318278754861073940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,6 +1500,7 @@ MonoBehaviour:
   HP: 0
   MaxHP: 1000
   PlayerController: {fileID: 0}
+  playerDamageUI: {fileID: 0}
   EnemyController: {fileID: 2715673240687885751}
   HPBar: {fileID: 7454449955098292489}
   HPText: {fileID: 1592501525543628030}
@@ -1515,6 +1516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallFireImpactSE: {fileID: 0}
 --- !u!1 &8509173655254136920
 GameObject:
   m_ObjectHideFlags: 0

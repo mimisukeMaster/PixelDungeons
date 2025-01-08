@@ -25,32 +25,29 @@ public class SpawnManager : MonoBehaviour
 
     [HideInInspector]
     public bool BossMode;
-    [HideInInspector]
-    public int existEnemyNum;
 
-    public static List<GameObject> EnemysInStage = new List<GameObject>() ;//スポーンした敵のリスト
+    public static List<GameObject> EnemiesInStage = new List<GameObject>();//スポーンした敵のリスト
 
     private void Awake()
     {
-        existEnemyNum = 0;
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
     }
 
-    private void Start() 
+    private void Start()
     {
-        EnemysInStage.Clear();
+        EnemiesInStage.Clear();
         SpawnEnemies();
     }
 
     void Update()
     {
-        if (existEnemyNum <= 0)
+        if (EnemiesInStage.Count == 0)
         {
             // 敵をすべて倒したらボス出現
             if (!BossMode)
             {
                 Instantiate(Boss, BossSpawnPos, Quaternion.identity);
-                existEnemyNum += 1;
+                EnemiesInStage.Add(Boss);
                 BossMode = true;
             }
             // ボスを倒したらゴールゲート出現
@@ -68,9 +65,7 @@ public class SpawnManager : MonoBehaviour
                 float z = Random.Range(SpawnArea.y / -2.0f, SpawnArea.y / 2.0f);
 
                 GameObject enemy = Instantiate(Enemies[i].enemy, new Vector3(x, 0, z), Enemies[i].enemy.transform.rotation);
-                EnemysInStage.Add(enemy);
-
-                existEnemyNum += 1;
+                EnemiesInStage.Add(enemy);
             }
         }
     }
