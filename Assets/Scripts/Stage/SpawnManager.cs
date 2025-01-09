@@ -46,8 +46,8 @@ public class SpawnManager : MonoBehaviour
             // 敵をすべて倒したらボス出現
             if (!BossMode)
             {
-                Instantiate(Boss, BossSpawnPos, Quaternion.identity);
-                EnemiesInStage.Add(Boss);
+                GameObject boss = Instantiate(Boss, BossSpawnPos, Quaternion.identity);
+                EnemiesInStage.Add(boss);
                 BossMode = true;
             }
             // ボスを倒したらゴールゲート出現
