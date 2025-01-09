@@ -266,15 +266,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1168398325041871206}
   m_Father: {fileID: 6367916760370039892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.05, y: 0}
+  m_SizeDelta: {x: 0.1, y: -0.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1485840967698988720
 CanvasRenderer:
@@ -440,6 +440,7 @@ MonoBehaviour:
   HP: 0
   MaxHP: 100
   PlayerController: {fileID: 0}
+  playerDamageUI: {fileID: 0}
   EnemyController: {fileID: 6596950609731399366}
   HPBar: {fileID: 333165918866452063}
   HPText: {fileID: 1920503603389654970}
@@ -455,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallFireImpactSE: {fileID: 0}
 --- !u!1 &7492457773056861744
 GameObject:
   m_ObjectHideFlags: 0

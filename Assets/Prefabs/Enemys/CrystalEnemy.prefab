@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -0.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2541557043636107173
 CanvasRenderer:
@@ -322,7 +322,7 @@ MonoBehaviour:
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
   Altitude: 2
   BeamChargeTime: 1
-  BeamEmittionTime: 2
+  BeamEmissionTime: 2
 --- !u!114 &9171571283317788575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   HP: 0
   MaxHP: 500
   PlayerController: {fileID: 0}
-  PlayerDamageUI: {fileID: 0}
+  playerDamageUI: {fileID: 0}
   EnemyController: {fileID: 193929173221300924}
   HPBar: {fileID: 2491135365962620885}
   HPText: {fileID: 3923810627851139737}
