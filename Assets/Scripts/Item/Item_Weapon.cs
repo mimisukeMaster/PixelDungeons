@@ -13,5 +13,6 @@ public class Item_Weapon : Item
     public GameObject SuperAttackPrefab;
 
     public bool isHoming;
-
+    public bool isBomb;
+    public bool isArea;
 }

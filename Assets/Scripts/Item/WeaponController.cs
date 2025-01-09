@@ -78,6 +78,7 @@ public class WeaponController : MonoBehaviour
             isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
         attack.GetComponent<Rigidbody>().linearVelocity = EmitTransform.forward * weapon.Speed;
         if(weapon.isHoming)attack.GetComponent<HomingAttack>().InitHoming("Enemy",isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1,weapon.Speed,180,10);
+        else if(weapon.isBomb)attack.GetComponent<BombAttack>().InitBomb("Enemy",isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1,4);
         else
         {
             if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1);

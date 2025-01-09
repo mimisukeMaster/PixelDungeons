@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
+//個別のアイテムのデータ
 public class Item:MonoBehaviour
 {
     [Tooltip("アイテムの画像")]
