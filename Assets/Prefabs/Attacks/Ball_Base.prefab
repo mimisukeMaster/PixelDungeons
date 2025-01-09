@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3461897681241546005}
   m_Layer: 6
   m_Name: Ball_Base
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallFireImpactSE: {fileID: 0}
 --- !u!1 &6726977213088852004
 GameObject:
   m_ObjectHideFlags: 0

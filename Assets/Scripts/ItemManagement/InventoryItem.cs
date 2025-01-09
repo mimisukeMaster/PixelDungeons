@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//UI上に表示されるもの
 public class InventoryItem : MonoBehaviour
 {
     public TMP_Text NameText;

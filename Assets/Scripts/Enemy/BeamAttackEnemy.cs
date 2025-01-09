@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework.Constraints;
 using UnityEditor.EditorTools;
 using UnityEngine;
 
@@ -41,8 +42,20 @@ public class BeamAttackEnemy : EnemyController
         {
             GameObject beam = Instantiate(Beam, transform.position, Quaternion.LookRotation(distanceVector * -1.0f));
             beam.GetComponentInChildren<Beam>().InitBeam("Player", Attack, float.PositiveInfinity, 3,BeamChargeTime, BeamEmissionTime, 20.0f);
+            StartCoroutine(FreezeForCharge());
             nextBeamTime = Time.time + BeamInterval;
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FreezeForCharge()
+    {
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(BeamChargeTime + BeamEmissionTime);
+        rb.isKinematic = false;
     }
 
     public override void OnDied()

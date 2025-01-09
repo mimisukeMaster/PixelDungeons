@@ -18,6 +18,5 @@ public class NearAttackEventHandler : MonoBehaviour
     public void AttackEvent()
     {
         attackController.NearAttack(transform.position, nearAttackEnemy.AttackDistance);
-
     }
 }

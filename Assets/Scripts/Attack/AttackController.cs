@@ -5,10 +5,9 @@ public class AttackController : MonoBehaviour
     public AudioClip BallFireImpactSE;
     protected string targetTag = "";
     protected int damage;
-    protected float speed;
 
     [Tooltip("攻撃が敵を貫通する数")]
-    protected int penetration = 100;
+    private int penetration = 100;
     private AudioSource audioSource;
 
     // 初期化
@@ -28,35 +27,11 @@ public class AttackController : MonoBehaviour
     /// <summary>
     /// 攻撃の処理
     /// </summary>
-    /// <remarks>物理演算による衝突判定を用いる</remarks>
     /// <param name="other"></param>
-    protected void OnCollisionEnter(Collision other)
-    {
-        // 敵自身の衝突（近距離）はNearAttackで行う
-        if (gameObject.CompareTag("Enemy") || targetTag == "") return;
-
-        // タグで判定する
-        if (other.gameObject.CompareTag(targetTag))
-        {
-            other.gameObject.GetComponent<HPController>().Damaged(damage);
-
-            // 自身のLayerがWeaponなら効果音鳴らす
-            if (gameObject.layer == 6) audioSource.PlayOneShot(BallFireImpactSE);
-            
-            // UIを表示
-            if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, other.contacts[0].point);
-            Destroy(gameObject);
-        }
-    }
-
-    /// <summary>
-    /// 攻撃の処理
-    /// </summary>
-    /// <param name="other"></param>
-    protected void OnTriggerEnter(Collider other) 
+    protected void OnTriggerEnter(Collider other)
     {
         // 自分自身との衝突と自分が敵の場合は無視
-        if (other.gameObject.CompareTag(gameObject.tag) || targetTag == "") return;
+        if (other.gameObject.CompareTag(gameObject.tag) ||gameObject.CompareTag("Enemy")) return;
 
         // タグで判定する
         if (other.CompareTag(targetTag))
@@ -64,12 +39,18 @@ public class AttackController : MonoBehaviour
             other.GetComponentInParent<HPController>().Damaged(damage);
             // UIを表示
             if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, transform.position);
-            penetration--;
-            if(penetration <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
+        penetration--;
+        Debug.Log(penetration);
+        if(penetration <= 0)
+        {
+            OnLastHit();
+        }
+    }
+
+    protected virtual void OnLastHit() 
+    {
+        Destroy(gameObject);
     }
 
     /// <summary>

@@ -12,6 +12,9 @@ public class HPController : MonoBehaviour
     public PlayerController PlayerController;
     [Tooltip("プレイヤーがダメージを受けたら発生するエフェクトのUI")]
     public Animator playerDamageUI;
+    [Tooltip("プレイヤーの無敵時間")]
+    public float PlayerInvincibleTime;
+    private float playerNextDamageTime;
     [Tooltip("TagがEnemyでない場合は必要なし")]
     public EnemyController EnemyController;
     [Tooltip("HPバー")]
@@ -26,12 +29,19 @@ public class HPController : MonoBehaviour
         UpdateHPBar();
     }
 
+
     public void Damaged(int damage)
     {
+        if(gameObject.CompareTag("Player") && Time.time < playerNextDamageTime)return;
+
         HP -= damage;
         UpdateHPBar();
         //プレイヤーがダメージを受けるとUIを表示
-        if(gameObject.tag == "Player")playerDamageUI.SetTrigger("Damage");
+        if(gameObject.tag == "Player")
+        {
+            playerDamageUI.SetTrigger("Damage");
+            playerNextDamageTime = Time.time + PlayerInvincibleTime;
+        }
 
         if(HP <= 0)
         {
