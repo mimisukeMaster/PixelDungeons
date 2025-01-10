@@ -10,6 +10,7 @@ public class TitleSceneManager : MonoBehaviour
     public AudioSource AudioSource;
     public GameObject Camera;
     [Header("UI")]
+    public GameObject StageSelectUI;
     public GameObject CreditsPanel;
     public GameObject SettingPanel;
     public Slider SoundsSlider;
@@ -20,6 +21,7 @@ public class TitleSceneManager : MonoBehaviour
     private void Start()
     {
         // UI非表示
+        StageSelectUI.SetActive(false);
         CreditsPanel.SetActive(false);
         SettingPanel.SetActive(false);
 
@@ -50,9 +52,24 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void OnStart()
     {
+        StageSelectUI.SetActive(!StageSelectUI.activeSelf);
+    }
+
+    public void OnStageGrass()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    
+
+    public void OnStageSky()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+
+    public void OnStageCastle()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+    }
+
     /// <summary>
     /// 設定ボタン
     /// </summary>
