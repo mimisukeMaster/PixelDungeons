@@ -622,7 +622,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 217374421}
   m_OnClick:
     m_PersistentCalls:
@@ -1207,7 +1207,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 601916441}
   m_OnClick:
     m_PersistentCalls:
@@ -1581,7 +1581,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 638196821}
   m_OnClick:
     m_PersistentCalls:
@@ -4012,6 +4012,10 @@ MonoBehaviour:
   StageSelectUI: {fileID: 1112695171}
   CreditsPanel: {fileID: 721651674}
   SettingPanel: {fileID: 1713644602}
+  StageButtons:
+  - {fileID: 638196820}
+  - {fileID: 601916440}
+  - {fileID: 217374420}
   SoundsSlider: {fileID: 1940245040}
   BirdAnim: {fileID: 807070952}
   GolemAnim: {fileID: 1915418642}

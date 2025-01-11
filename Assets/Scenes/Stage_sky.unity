@@ -779,6 +779,7 @@ MonoBehaviour:
   MaxHP: 100
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
+  PlayerInvincibleTime: 0
   EnemyController: {fileID: 428036627}
   HPBar: {fileID: 0}
   HPText: {fileID: 0}
@@ -1038,7 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b177a990d6ecd64478363178cf75b3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craftingCanvas: {fileID: 0}
+  craftingCanvas: {fileID: 1669815499}
 --- !u!1 &601439166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,6 +1914,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96cc68973f46c00419be4e412ca9ca60, type: 3}
   m_PrefabInstance: {fileID: 1622281107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1669815499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6080955367539508517, guid: bf2178734ffe7ef499c3fc47443f3c4d, type: 3}
+  m_PrefabInstance: {fileID: 432547240}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1745289999
 GameObject:
