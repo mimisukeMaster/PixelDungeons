@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Golem : MiddleBossEnemy
 {
@@ -31,6 +32,8 @@ public class Golem : MiddleBossEnemy
     public int SmashParticleNumber;
     [Tooltip("がれき")]
     public GameObject SmashParticle;
+    [Tooltip("回転する時間")]
+    public float TurningTime = 0.1f;
 
     private bool isInitChasing = true;
 
@@ -77,7 +80,8 @@ public class Golem : MiddleBossEnemy
 
         Vector3 destVec = distanceVector;
         destVec.y = 0;
-        gameObject.transform.forward = destVec;
+        StopCoroutine(Turn(destVec));
+        StartCoroutine(Turn(destVec));
 
         if (distanceVector.magnitude < AttackMotionRange)
         {
@@ -88,6 +92,23 @@ public class Golem : MiddleBossEnemy
             if (Random.value < beamProbability) animator.SetTrigger("Beam");
             else animator.SetTrigger("Move");
         }
+    }
+
+    private IEnumerator Turn( Vector3 destVec)
+    {
+        Quaternion from = transform.rotation;
+        Quaternion to = Quaternion.FromToRotation(Vector3.forward,destVec);
+        float angle = Quaternion.Angle(from,to);
+        while(true)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation,to,angle / TurningTime * Time.deltaTime);
+            if(transform.rotation == to)
+            {
+                break;
+            }
+            yield return null;
+        }
+        yield return null;
     }
 
     public void OnBeamStart()
