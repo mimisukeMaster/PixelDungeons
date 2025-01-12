@@ -22,11 +22,10 @@ public class SpawnManager : MonoBehaviour
     public Vector3 BossSpawnPos;
     [Tooltip("ゴールゲート")]
     public GameObject GoalGate;
-
     [HideInInspector]
     public bool BossMode;
+    public static List<GameObject> EnemiesInStage = new List<GameObject>();
 
-    public static List<GameObject> EnemiesInStage = new List<GameObject>();//スポーンした敵のリスト
 
     private void Awake()
     {
@@ -36,12 +35,11 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         EnemiesInStage.Clear();
-        SpawnEnemies();
     }
 
     void Update()
     {
-        if (EnemiesInStage.Count == 0)
+        if (EnemiesInStage.Count == 0 && PlayerController.isGaming)
         {
             // 敵をすべて倒したらボス出現
             if (!BossMode)
@@ -55,7 +53,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemies()
+    public void SpawnEnemies()
     {
         for (int i = 0; i < Enemies.Count; i++)
         {
@@ -68,5 +66,8 @@ public class SpawnManager : MonoBehaviour
                 EnemiesInStage.Add(enemy);
             }
         }
+
+        // ゲーム中フラグ有効化
+        PlayerController.isGaming = true;
     }
 }

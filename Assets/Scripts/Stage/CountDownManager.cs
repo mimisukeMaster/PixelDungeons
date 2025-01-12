@@ -4,7 +4,9 @@ using System.Collections;
 
 public class CountDownManager : MonoBehaviour
 {
+    public SpawnManager spawnManager;
     public GameObject CountDownUI;
+
     private TMP_Text textComponent;
 
     private void Start()
@@ -21,6 +23,13 @@ public class CountDownManager : MonoBehaviour
             textComponent.text = i.ToString();
             yield return new WaitForSeconds(1.0f);
         }
+        textComponent.text = "Start";
+
+        // カウントダウン後、敵生成
+        spawnManager.SpawnEnemies();
+
+        yield return new WaitForSeconds(1.0f);
         CountDownUI.SetActive(false);
+
     }
 }
