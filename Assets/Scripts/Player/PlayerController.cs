@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        isGaming = true;
 
         InventoryCanvas.SetActive(false);
         GameOverCanvas.SetActive(false);
@@ -44,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
         // インスタンス生成
         controls = new ControlActions();
+
         // InputSystemでの入力に対応するリスナーを追加
         controls.Player.Jump.performed += OnJumpPerformed;
         controls.Player.Move.performed += OnMovePerformed;
@@ -92,7 +92,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnMovePerformed(InputAction.CallbackContext context) => moveInput = context.ReadValue<Vector2>();
+    private void OnMovePerformed(InputAction.CallbackContext context)
+    {
+        if (isGaming) moveInput = context.ReadValue<Vector2>();
+    }
 
     private void OnMoveCanceled(InputAction.CallbackContext context) => moveInput = Vector2.zero;
 
