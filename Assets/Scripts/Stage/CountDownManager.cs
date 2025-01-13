@@ -23,7 +23,7 @@ public class CountDownManager : MonoBehaviour
             textComponent.text = i.ToString();
             yield return new WaitForSeconds(1.0f);
         }
-        textComponent.text = "Start";
+        textComponent.text = "Start!";
 
         // カウントダウン後、敵生成
         spawnManager.SpawnEnemies();
