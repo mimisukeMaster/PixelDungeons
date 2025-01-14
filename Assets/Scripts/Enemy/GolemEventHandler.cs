@@ -38,5 +38,9 @@ public class GolemEventHandler : MonoBehaviour
 
     public void OnBeamEnd()=> golem.CheckNextMove();
 
+    public void OnBeamRotationStart()=>golem.OnBeamRotationStart();
+
+    public void OnBeamRotationEnd() => golem.CheckNextMove();
+
     public void OnIdleEnd() => golem.CheckNextMove();
 }
