@@ -17,8 +17,8 @@ public class Golem : MiddleBossEnemy
     [Header("ビーム関係")]
     [Tooltip("ビームを出す確率")]
     public float beamProbability = 0.2f;//遠距離の場合一定確率でビームを打つ
-    [Tooltip("ビームの攻撃間隔")]
-    public float BeamInterval = 5.0f;
+    [Tooltip("ビームのダメージ")]
+    public int BeamDamage = 20;
     [Tooltip("ビームの長さ")]
     public float BeamLength = 20.0f;
     [Tooltip("ビームのPrefab")]
@@ -27,6 +27,20 @@ public class Golem : MiddleBossEnemy
     public float BeamChargeTime = 1;
     [Tooltip("ビームが照射されている時間")]
     public float BeamEmittionTime = 2;
+    [Space(20)]
+    [Header("ビーム回転関係")]
+    [Tooltip("ビーム回転を出す確率")]
+    public float BeamRotationProbability;
+    [Tooltip("ビーム回転チャージ時間")]
+    public float BeamRotationChargeTime = 1.5f;
+    [Tooltip("ビームが出ている時間")]
+    public float BeamRotationEmittionTime;
+    [Tooltip("ビーム回転のダメージ")]
+    public int BeamRotationDamage;
+    [Tooltip("右手Transform")]
+    public Transform RightHandLaserPoint;
+    [Tooltip("左手Transform")]
+    public Transform LeftHandLaserPoint;
     [Space(20)]
     [Tooltip("近接攻撃で出るがれきの数")]
     public int SmashParticleNumber;
@@ -86,10 +100,18 @@ public class Golem : MiddleBossEnemy
         if (distanceVector.magnitude < AttackMotionRange)
         {
             animator.SetTrigger("Attack");
+            return;
         }
         else
         {
-            if (Random.value < beamProbability) animator.SetTrigger("Beam");
+            if(Random.value < BeamRotationProbability)
+            {
+                animator.SetTrigger("BeamRotation");
+            }
+            else if (Random.value < beamProbability)
+            {
+                animator.SetTrigger("Beam");
+            }
             else animator.SetTrigger("Move");
         }
     }
@@ -126,11 +148,23 @@ public class Golem : MiddleBossEnemy
         else Eye.transform.rotation = Quaternion.Euler(90.0f, 0f, 0f);
 
         GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
-        beam.GetComponentInChildren<Beam>().InitBeam("Player", Attack, 100,10, BeamChargeTime, BeamEmittionTime, 20.0f);
+        beam.GetComponentInChildren<Beam>().InitBeam("Player", BeamDamage, 100,10, BeamChargeTime, BeamEmittionTime, 20.0f);
+    }
+
+    public void OnBeamRotationStart()
+    {
+        // 追跡中でないならreturn
+        if (!isChasing) return;
+
+        GameObject rightBeam = Instantiate(Beam,RightHandLaserPoint);
+        rightBeam.GetComponentInChildren<Beam>().InitBeam("Player", BeamRotationDamage, BeamRotationEmittionTime + BeamRotationChargeTime,100, BeamRotationChargeTime, BeamRotationEmittionTime, 20.0f);
+        GameObject leftBeam = Instantiate(Beam,LeftHandLaserPoint);
+        leftBeam.GetComponentInChildren<Beam>().InitBeam("Player", BeamRotationDamage, BeamRotationEmittionTime + BeamRotationChargeTime,100, BeamRotationChargeTime, BeamRotationEmittionTime, 20.0f);
     }
 
     public void OnAttackLand()
     {
+        
         for (int i = 0; i < SmashParticleNumber; i++)
         {
             GameObject particle = Instantiate(SmashParticle, SmashPosition.position + Vector3.up * 0.4f, Quaternion.Euler(Random.Range(-180.0f, 180.0f), Random.Range(-180.0f, 180.0f), Random.Range(-180.0f, 180.0f)));

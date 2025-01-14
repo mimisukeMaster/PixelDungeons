@@ -53,6 +53,68 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1617766589217918753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8755344075821563079}
+  m_Layer: 7
+  m_Name: LeftHandLaserPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8755344075821563079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617766589217918753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.641804, y: 0.3272797, z: -0.35127267, w: 0.59798265}
+  m_LocalPosition: {x: 0.038, y: 0.781, z: -0.014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5441684556954334424}
+  m_LocalEulerAnglesHint: {x: 94.049, y: 57.394, z: 0.009}
+--- !u!1 &1794044537985127290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8501742314194212843}
+  m_Layer: 7
+  m_Name: RightHandLaserPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8501742314194212843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794044537985127290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.667862, y: 0.29939976, z: -0.20999531, w: 0.64824545}
+  m_LocalPosition: {x: -0.064, y: 0.782, z: -0.064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3448019464572982420}
+  m_LocalEulerAnglesHint: {x: 82.578, y: 123.534, z: 81.217}
 --- !u!1 &2025512050273881461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,13 +1540,20 @@ MonoBehaviour:
   SmashPosition: {fileID: 7401053809736737244}
   SmashRange: 3
   beamProbability: 0.2
-  BeamInterval: 5
+  BeamDamage: 20
   BeamLength: 20
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
   BeamChargeTime: 1
   BeamEmittionTime: 2
+  BeamRotationProbability: 1
+  BeamRotationChargeTime: 1.5
+  BeamRotationEmittionTime: 6.5
+  BeamRotationDamage: 10
+  RightHandLaserPoint: {fileID: 8501742314194212843}
+  LeftHandLaserPoint: {fileID: 8755344075821563079}
   SmashParticleNumber: 5
   SmashParticle: {fileID: 8571045898123795658, guid: fab95f749732be64390114d247243673, type: 3}
+  TurningTime: 0.1
 --- !u!114 &7318278754861073940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,6 +1570,7 @@ MonoBehaviour:
   MaxHP: 1000
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
+  PlayerInvincibleTime: 0
   EnemyController: {fileID: 2715673240687885751}
   HPBar: {fileID: 7454449955098292489}
   HPText: {fileID: 1592501525543628030}
@@ -2205,6 +2275,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2778486999100398293, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8977653089404651253}
+    - targetCorrespondingSourceObject: {fileID: 2778486999100398293, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8755344075821563079}
     - targetCorrespondingSourceObject: {fileID: -1145261324696886950, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
       insertIndex: 0
       addedObject: {fileID: 5959812667659589347}
@@ -2226,6 +2299,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4408382887542965607, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2321505083245363255}
+    - targetCorrespondingSourceObject: {fileID: -4408382887542965607, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8501742314194212843}
     - targetCorrespondingSourceObject: {fileID: 3474929583506372281, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8253085955006285128}
