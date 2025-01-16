@@ -5094,6 +5094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c4d83f3e692a44c9bccda24d4f5988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BallFireImpactSE: {fileID: 0}
   lineRenderer: {fileID: 5457365616026031382}
 --- !u!4 &8751051843565131564 stripped
 Transform:
