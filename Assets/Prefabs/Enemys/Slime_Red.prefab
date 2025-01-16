@@ -156,6 +156,7 @@ MonoBehaviour:
   MaxHP: 20
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
+  PlayerInvincibleTime: 0
   EnemyController: {fileID: 2169163739681826210}
   HPBar: {fileID: 1948658462459003425}
   HPText: {fileID: 2548273939632544413}
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallFireImpactSE: {fileID: 0}
+  ImpactSE: {fileID: 0}
 --- !u!1 &2836023928193740376
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,3 +701,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d87bb47a6d09749a39184d84f49397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 8759126034270955192, guid: 6550c7b8d7f8d8c44ae74d479f474b30, type: 3}

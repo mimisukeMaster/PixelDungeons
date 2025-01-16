@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    public AudioClip BallFireImpactSE;
+    public AudioClip ImpactSE;
     protected string targetTag = "";
     protected int damage;
 
@@ -51,27 +51,5 @@ public class AttackController : MonoBehaviour
     protected virtual void OnLastHit() 
     {
         Destroy(gameObject);
-    }
-
-    /// <summary>
-    /// 攻撃の処理
-    /// </summary>
-    /// <remarks>物理演算による衝突判定が使えない場合</remarks>
-    /// <param name="DetectPos"></param>
-    /// <param name="DetectRange"></param>
-    public void NearAttack(Vector3 DetectPos, float DetectRange)
-    {
-        Collider[] hitObjs = Physics.OverlapSphere(DetectPos, DetectRange);
-        foreach (var obj in hitObjs)
-        {
-            if (obj.CompareTag(targetTag))
-            {                
-                obj.GetComponent<HPController>().Damaged(damage);
-                
-                // UIを表示
-                if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, obj.transform.position);
-                return;
-            }
-        }
     }
 }

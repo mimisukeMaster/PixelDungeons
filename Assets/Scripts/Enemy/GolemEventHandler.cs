@@ -3,14 +3,13 @@ using UnityEngine;
 public class GolemEventHandler : MonoBehaviour
 {
     public GameObject SmashWave;
-    private AttackController attackController;
+    public GameObject attackPrefab;
     private Golem golem;
     private const int ARM_ANIMATION_SPAN = 5;
 
     
     private void Start()
     {
-        attackController = GetComponentInParent<AttackController>();
         golem = GetComponentInParent<Golem>();
         SmashWave.SetActive(false);
     }
@@ -18,7 +17,8 @@ public class GolemEventHandler : MonoBehaviour
     public void OnAttackLand()
     {
         golem.OnAttackLand();
-        attackController.NearAttack(golem.SmashPosition.position, golem.SmashRange);
+        GameObject attack = Instantiate(attackPrefab,golem.SmashPosition.parent);
+        attack.GetComponent<AttackController>().Init("Player",golem.Attack,0.2f,1);
         SmashWave.SetActive(true);
     }
 
