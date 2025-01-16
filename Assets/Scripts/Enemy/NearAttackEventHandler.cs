@@ -4,6 +4,7 @@ public class NearAttackEventHandler : MonoBehaviour
 {
     private AttackController attackController;
     private NearAttackEnemy nearAttackEnemy;
+    public GameObject attackPrefab;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class NearAttackEventHandler : MonoBehaviour
     /// <remarks>アニメーションのタイミングでUnity側から呼ばれる</remarks>
     public void AttackEvent()
     {
-        attackController.NearAttack(transform.position, nearAttackEnemy.AttackDistance);
+        GameObject attack = Instantiate(attackPrefab,transform.position,transform.rotation);
+        attack.GetComponent<AttackController>().Init("Player",nearAttackEnemy.Attack,0.2f,1);
     }
 }

@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallFireImpactSE: {fileID: 0}
+  ImpactSE: {fileID: 0}
 --- !u!1 &8509173655254136920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,6 +2415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmashWave: {fileID: 8186489354113355265}
+  attackPrefab: {fileID: 7516632334098461264, guid: 9b74c348b896665409f2799948a6f1e9, type: 3}
 --- !u!4 &3291705570952618864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4564986773060956803, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}

@@ -184,7 +184,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4700806396073841148}
   - component: {fileID: 5858506586523173321}
-  - component: {fileID: 4750535942990749941}
   m_Layer: 0
   m_Name: WeaponSlotLeft
   m_TagString: Untagged
@@ -229,18 +228,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4750535942990749941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7159086248062430136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db14a236882a34449267c5924b10341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7322111612918997274
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +238,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2451618608687994595}
   - component: {fileID: 2912236058357196581}
-  - component: {fileID: 9065530543283951723}
   m_Layer: 6
   m_Name: WeaponSlotRight
   m_TagString: Untagged
@@ -296,18 +282,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9065530543283951723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7322111612918997274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db14a236882a34449267c5924b10341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8288278698229999728
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,18 +467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpForce: 5
   MoveSpeed: 6
-  PlayerCam: {fileID: 7048189023478879757}
-  WeaponSlotL: {fileID: 7159086248062430136}
-  MagicObj: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
-  SuperMagicObj: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
-  FarAttack: 10
-  SuperFarAttack: 20
-  MagicPos: {fileID: 5571536356916051085}
-  AttackSpeed: 10
-  WeaponSlotR: {fileID: 7322111612918997274}
-  SuperNearAttackParticle: {fileID: 0}
-  NearAttack: 20
-  SuperNearAttack: 30
   NearAttackRange: 1
   InventoryCanvas: {fileID: 0}
   GameOverCanvas: {fileID: 0}
@@ -526,6 +488,7 @@ MonoBehaviour:
   MaxHP: 100
   PlayerController: {fileID: 3554490523010719503}
   playerDamageUI: {fileID: 0}
+  PlayerInvincibleTime: 0
   EnemyController: {fileID: 0}
   HPBar: {fileID: 0}
   HPText: {fileID: 0}
