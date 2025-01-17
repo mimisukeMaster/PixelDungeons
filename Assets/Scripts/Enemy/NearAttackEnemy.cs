@@ -8,7 +8,6 @@ public class NearAttackEnemy : EnemyController
     [Tooltip("攻撃時間間隔")]
     public float BlowInterval = 1.5f;
 
-    private AttackController attackController;
     private Animator animator;
     private float nextBlowTime;
 
@@ -16,8 +15,6 @@ public class NearAttackEnemy : EnemyController
     {
         base.Start();
         animator = gameObject.GetComponentInChildren<Animator>();
-        attackController = gameObject.GetComponent<AttackController>();
-        attackController.Init("Player", Attack, float.PositiveInfinity,100);
     }
 
     protected override void Update()

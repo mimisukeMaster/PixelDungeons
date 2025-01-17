@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 1038338417772697354}
   - component: {fileID: 2169163739681826210}
   - component: {fileID: 8799816239257199025}
-  - component: {fileID: 5234289884457081833}
   m_Layer: 7
   m_Name: Slime_Red
   m_TagString: Enemy
@@ -160,19 +159,6 @@ MonoBehaviour:
   EnemyController: {fileID: 2169163739681826210}
   HPBar: {fileID: 1948658462459003425}
   HPText: {fileID: 2548273939632544413}
---- !u!114 &5234289884457081833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649294079909011640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ImpactSE: {fileID: 0}
 --- !u!1 &2836023928193740376
 GameObject:
   m_ObjectHideFlags: 0

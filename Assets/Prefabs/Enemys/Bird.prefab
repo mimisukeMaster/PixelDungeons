@@ -327,7 +327,6 @@ GameObject:
   - component: {fileID: 144055601849126906}
   - component: {fileID: 6596950609731399366}
   - component: {fileID: 7068457939069228589}
-  - component: {fileID: 4874055732386423769}
   m_Layer: 7
   m_Name: Bird
   m_TagString: Enemy
@@ -441,22 +440,10 @@ MonoBehaviour:
   MaxHP: 100
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
+  PlayerInvincibleTime: 0
   EnemyController: {fileID: 6596950609731399366}
   HPBar: {fileID: 333165918866452063}
   HPText: {fileID: 1920503603389654970}
---- !u!114 &4874055732386423769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7056604927472754041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BallFireImpactSE: {fileID: 0}
 --- !u!1 &7492457773056861744
 GameObject:
   m_ObjectHideFlags: 0
