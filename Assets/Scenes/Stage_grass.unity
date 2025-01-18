@@ -5418,7 +5418,7 @@ PrefabInstance:
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: initialWeaponLeft
       value: 
-      objectReference: {fileID: 564270227181040933, guid: 68f25ad104be71b40aad053b8d260ff0, type: 3}
+      objectReference: {fileID: 7286974414373067261, guid: d338643fc41edc8469e6b11ced05d641, type: 3}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: ConsumableUIContent
       value: 
