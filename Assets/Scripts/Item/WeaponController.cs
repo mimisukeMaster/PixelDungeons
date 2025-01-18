@@ -77,13 +77,26 @@ public class WeaponController : MonoBehaviour
         GameObject attack = Instantiate(
             isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
         attack.GetComponent<Rigidbody>().linearVelocity = EmitTransform.forward * weapon.Speed;
-        if(weapon.isHoming)attack.GetComponent<HomingAttack>().InitHoming("Enemy",isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1,weapon.Speed,180,10);
-        else if(weapon.isBomb)attack.GetComponent<BombAttack>().InitBomb("Enemy",isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1,4);
-        else if(weapon.isRemain)attack.GetComponent<RemainAttackParent>().InitRemainParent("Enemy",isSuperAttack ? weapon.Damage * 2 : weapon.Damage,weapon.Range / weapon.Speed,1,weapon.areaChild,weapon.areaDuration,weapon.areaChildAttackInterval,weapon.areaChildDamage);
+
+        if (weapon.isHoming)
+        {
+            attack.GetComponent<HomingAttack>().InitHoming(
+                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.Speed, 180, 10);
+        }
+        else if (weapon.isBomb)
+        {
+            attack.GetComponent<BombAttack>().InitBomb(
+                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, 4);
+        }
+        else if (weapon.isRemain)
+        {
+            attack.GetComponent<RemainAttackParent>().InitRemainParent(
+                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage,weapon.Range / weapon.Speed, 1, weapon.areaChild, weapon.areaDuration, weapon.areaChildAttackInterval, weapon.areaChildDamage);
+        }
         else
         {
+            // 0チェック
             if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1);
-            //0チェック
             else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f,1);
         }
 
