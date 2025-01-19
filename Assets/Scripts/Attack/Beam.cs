@@ -12,9 +12,9 @@ public class Beam : AttackController
     /// <summary>
     /// ビームの初期設定
     /// </summary>
-    public void InitBeam(string TargetTag, int Damage, float destroyTime,int Penetration, float chargeTime, float emissionTime, float beamLength)
+    public void InitBeam(string TargetTag, int Damage, float destroyTime, int Penetration, float chargeTime, float emissionTime, float beamLength)
     {
-        base.Init(TargetTag, Damage, destroyTime,Penetration);
+        base.Init(TargetTag, Damage, destroyTime, Penetration);
         this.chargeTime = chargeTime;
         this.beamLength = beamLength;
         this.emissionTime = emissionTime;
@@ -41,10 +41,13 @@ public class Beam : AttackController
 
         yield return new WaitForSeconds(chargeTime);
 
-        // 実際に攻撃 ビームのパラメータはBeamInitで設定済み
+        // 実際に攻撃 ビームのパラメータはInitBeamで設定済み
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, beamLength * 2.0f);
 
         yield return new WaitForSeconds(emissionTime);
+
+        // パーティクルが消えないバグ（条件不明）対処
+        transform.parent.GetComponentInChildren<ParticleSystem>().gameObject.SetActive(false);
 
         Destroy(transform.parent.gameObject);
     }

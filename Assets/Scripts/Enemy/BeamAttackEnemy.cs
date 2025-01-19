@@ -21,7 +21,6 @@ public class BeamAttackEnemy : EnemyController
 
     private float nextBeamTime;
     private LineRenderer lineRenderer;
-    private GameObject beamObj;
 
 
     protected override void Start()
@@ -41,7 +40,7 @@ public class BeamAttackEnemy : EnemyController
         if (Time.time > nextBeamTime && isChasing)
         {
             GameObject beam = Instantiate(Beam, transform.position, Quaternion.LookRotation(distanceVector * -1.0f));
-            beam.GetComponentInChildren<Beam>().InitBeam("Player", Attack, float.PositiveInfinity, 3,BeamChargeTime, BeamEmissionTime, 20.0f);
+            beam.GetComponentInChildren<Beam>().InitBeam("Player", Attack, float.PositiveInfinity, 3, BeamChargeTime, BeamEmissionTime, 20.0f);
             StartCoroutine(FreezeForCharge());
             nextBeamTime = Time.time + BeamInterval;
         }
@@ -60,7 +59,6 @@ public class BeamAttackEnemy : EnemyController
 
     public override void OnDied()
     {
-        if (beamObj != null) Destroy(beamObj);
         if (Random.Range(0f, 1.0f) < DropProbability) Instantiate(DropItem, transform.position, Quaternion.identity);
         base.OnDied();
     }

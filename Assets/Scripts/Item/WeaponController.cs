@@ -48,7 +48,7 @@ public class WeaponController : MonoBehaviour
         if (isRightHand && PlayerController.isGaming) Attack();
     }
 
-    // 右クリックが離す
+    // 右クリック離す
     private void ReleaseClickRight(InputAction.CallbackContext context)
     {
 
@@ -57,7 +57,7 @@ public class WeaponController : MonoBehaviour
     // 左クリック押下
     private void OnClickLeft(InputAction.CallbackContext context) => onClickTime = Time.time;
 
-    //左クリック離す
+    // 左クリック離す
     private void ReleaseClickLeft(InputAction.CallbackContext context)
     {
         if(!isRightHand && PlayerController.isGaming)
@@ -91,13 +91,13 @@ public class WeaponController : MonoBehaviour
         else if (weapon.isRemain)
         {
             attack.GetComponent<RemainAttackParent>().InitRemainParent(
-                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage,weapon.Range / weapon.Speed, 1, weapon.areaChild, weapon.areaDuration, weapon.areaChildAttackInterval, weapon.areaChildDamage);
+                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.areaChild, weapon.areaDuration, weapon.areaChildAttackInterval, weapon.areaChildDamage);
         }
         else
         {
             // 0チェック
             if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1);
-            else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f,1);
+            else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f, 1);
         }
 
         isSuperAttack = false;
