@@ -52,7 +52,7 @@ MonoBehaviour:
   Range: 50
   Prefab: {fileID: 8239319607032346977, guid: fd8901a9de952a64390988139ca26a60, type: 3}
   AttackPrefab: {fileID: 7277526461261542775, guid: 8b47124173abb8741866c6c81b2973fb, type: 3}
-  SuperAttackPrefab: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
+  SuperAttackPrefab: {fileID: 4180958553588815054, guid: 2ab8e66231f30634d85ef24c0b353e93, type: 3}
   isHoming: 0
   isBomb: 0
   bombRadius: 0

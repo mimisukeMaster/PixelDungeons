@@ -86,5 +86,13 @@ MonoBehaviour:
   Range: 50
   Prefab: {fileID: 4954120431200293446, guid: c686dd3e3ea686344905e83c769c67f4, type: 3}
   AttackPrefab: {fileID: 4337399785733692193, guid: 137a4d8708d923744b21f39521365191, type: 3}
-  SuperAttackPrefab: {fileID: 4337399785733692193, guid: 137a4d8708d923744b21f39521365191, type: 3}
+  SuperAttackPrefab: {fileID: 4574598796706547049, guid: 2982d547531c3c940b94f509388592ad, type: 3}
   isHoming: 1
+  isBomb: 0
+  bombRadius: 0
+  bombDamage: 0
+  isRemain: 0
+  areaChild: {fileID: 0}
+  areaDuration: 0
+  areaChildAttackInterval: 0
+  areaChildDamage: 0

@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1825450779656368971, guid: c9f8b6fe2472e394984a0066258c7892, type: 3}
       propertyPath: m_Name
-      value: Ball_Base Variant
+      value: Ball_Big_Light
       objectReference: {fileID: 0}
     - target: {fileID: 1901502455944561312, guid: c9f8b6fe2472e394984a0066258c7892, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1788976
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1901502455944561312, guid: c9f8b6fe2472e394984a0066258c7892, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.805
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1901502455944561312, guid: c9f8b6fe2472e394984a0066258c7892, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.96052694
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1901502455944561312, guid: c9f8b6fe2472e394984a0066258c7892, type: 3}
       propertyPath: m_LocalRotation.w
