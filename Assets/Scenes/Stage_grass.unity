@@ -5429,7 +5429,7 @@ PrefabInstance:
       objectReference: {fileID: 1777850998}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: startItems.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: RightEmissionTransform
@@ -5439,6 +5439,10 @@ PrefabInstance:
       propertyPath: 'startItems.Array.data[6]'
       value: 
       objectReference: {fileID: 564270227181040933, guid: 68f25ad104be71b40aad053b8d260ff0, type: 3}
+    - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'startItems.Array.data[7]'
+      value: 
+      objectReference: {fileID: 5115892613942263358, guid: 0b2d5288d21255d49afec3553e9c697b, type: 3}
     - target: {fileID: 4146492896925286903, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
