@@ -167,7 +167,7 @@ public class InventoryManager : MonoBehaviour
                 AddItem(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon, 1);
                 Destroy(RightHand.GetChild(0).gameObject);
             }
-            GameObject weaponInstance = Instantiate(weapon.Prefab, RightHand);
+            GameObject weaponInstance = Instantiate(weapon.WeaponModelPrefab, RightHand);
             if(inventoryItem != null)
             {
                 inventoryItem.SubNumber(1);
@@ -181,7 +181,7 @@ public class InventoryManager : MonoBehaviour
                 AddItem(LeftHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon, 1);
                 Destroy(LeftHand.GetChild(0).gameObject);
             }
-            GameObject weaponInstance = Instantiate(weapon.Prefab, LeftHand);
+            GameObject weaponInstance = Instantiate(weapon.WeaponModelPrefab, LeftHand);
             if(inventoryItem != null)
             {
                 inventoryItem.SubNumber(1);

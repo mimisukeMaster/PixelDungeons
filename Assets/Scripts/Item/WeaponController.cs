@@ -37,6 +37,20 @@ public class WeaponController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if(isRightHand)
+        {
+            PlayerController.controls.Player.RightAttack.started -= OnClickRight;
+            PlayerController.controls.Player.RightAttack.canceled -= ReleaseClickRight;
+        }
+        else
+        {
+            PlayerController.controls.Player.LeftAttack.started -= OnClickLeft;
+            PlayerController.controls.Player.LeftAttack.canceled -= ReleaseClickLeft;
+        }
+    }
+
     private void Start() 
     {
         audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
@@ -65,7 +79,7 @@ public class WeaponController : MonoBehaviour
             // 攻撃
             if (Time.time - onClickTime >= 0.5f) isSuperAttack = true;
             audioSource.PlayOneShot(BallFireLaunchSE);
-            Attack();
+            for(int i = 0;i < weapon.attackNumber;i++)Attack();
         }
     }
 
@@ -74,9 +88,14 @@ public class WeaponController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
+        //攻撃する方向を決める
+        Quaternion attackDirection = Quaternion.Euler(Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
+                                                                                Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
+                                                                                Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread));
+
         GameObject attack = Instantiate(
-            isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
-        attack.GetComponent<Rigidbody>().linearVelocity = EmitTransform.forward * weapon.Speed;
+            isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, attackDirection);
+        attack.GetComponent<Rigidbody>().linearVelocity = attackDirection * EmitTransform.forward * weapon.Speed;
 
         if (weapon.isHoming)
         {

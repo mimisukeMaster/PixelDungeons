@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: SuperAttackPrefab
       value: 
       objectReference: {fileID: 2887981091375416170, guid: 0ec8060462ccd8844af20db39833aeff, type: 3}
+    - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+      propertyPath: WeaponModelPrefab
+      value: 
+      objectReference: {fileID: 4954120431200293446, guid: c686dd3e3ea686344905e83c769c67f4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -92,6 +92,17 @@ MonoBehaviour:
   FireRate: 1
   Speed: 1
   Range: 1
-  Prefab: {fileID: 3651563267847403976, guid: 0f1d59f0b3f46304881bf307f0e5b1f4, type: 3}
+  attackNumber: 1
+  attackDirectionSpread: 0
+  WeaponModelPrefab: {fileID: 8263932616216334503, guid: 4579d17a77374564a80e7fecbde82980, type: 3}
   AttackPrefab: {fileID: 4021758720569903429, guid: aac738f0fddcb944ea0df92edc7b0f55, type: 3}
   SuperAttackPrefab: {fileID: 0}
+  isHoming: 0
+  isBomb: 0
+  bombRadius: 0
+  bombDamage: 0
+  isRemain: 0
+  areaChild: {fileID: 0}
+  areaDuration: 0
+  areaChildAttackInterval: 0
+  areaChildDamage: 0
