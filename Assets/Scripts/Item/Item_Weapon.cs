@@ -9,7 +9,9 @@ public class Item_Weapon : Item
     public float FireRate;
     public float Speed;
     public float Range;
-    public GameObject Prefab;
+    public int attackNumber = 1;
+    public float attackDirectionSpread = 0;
+    public GameObject WeaponModelPrefab;
     public GameObject AttackPrefab;
     public GameObject SuperAttackPrefab;
     [Space(20)]
