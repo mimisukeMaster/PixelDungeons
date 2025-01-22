@@ -80,21 +80,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: c41e0a078c6e3d74699e107bc3ab081d, type: 3}
   ItemName: RodTest
-  Damage: 5
+  Damage: 10
   FireRate: 0.5
   Speed: 10
   Range: 100
+  Penetration: 1
   attackNumber: 5
   attackDirectionSpread: 10
   WeaponModelPrefab: {fileID: 8448637460716603139, guid: 5d0c73388be108b4b91e3f2e20a659a9, type: 3}
   AttackPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
   SuperAttackPrefab: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
-  isHoming: 0
-  isBomb: 0
-  bombRadius: 0
-  bombDamage: 0
-  isRemain: 0
-  areaChild: {fileID: 0}
-  areaDuration: 0
-  areaChildAttackInterval: 0
-  areaChildDamage: 0
+  IsHoming: 0
+  HomingAngle: 0
+  DetectionDistance: 0
+  IsBomb: 0
+  BombRadius: 0
+  BombDamage: 0
+  IsRemain: 0
+  AreaChild: {fileID: 0}
+  AreaDuration: 0
+  AreaChildAttackInterval: 0
+  AreaChildDamage: 0

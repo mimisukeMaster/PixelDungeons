@@ -26,7 +26,7 @@ public class Golem : MiddleBossEnemy
     [Tooltip("ビームが打たれるまでの時間")]
     public float BeamChargeTime = 1;
     [Tooltip("ビームが照射されている時間")]
-    public float BeamEmittionTime = 2;
+    public float BeamEmissionTime = 2;
     [Space(20)]
     [Header("ビーム回転関係")]
     [Tooltip("ビーム回転を出す確率")]
@@ -148,7 +148,8 @@ public class Golem : MiddleBossEnemy
         else Eye.transform.rotation = Quaternion.Euler(90.0f, 0f, 0f);
 
         GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
-        beam.GetComponentInChildren<Beam>().InitBeam("Player", BeamDamage, 100,10, BeamChargeTime, BeamEmittionTime, 20.0f);
+        LineRenderer line = beam.transform.parent.GetComponent<LineRenderer>();
+        beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Attack,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
     }
 
     public void OnBeamRotationStart()
@@ -157,9 +158,11 @@ public class Golem : MiddleBossEnemy
         if (!isChasing) return;
 
         GameObject rightBeam = Instantiate(Beam,RightHandLaserPoint);
-        rightBeam.GetComponentInChildren<Beam>().InitBeam("Player", BeamRotationDamage, BeamRotationEmittionTime + BeamRotationChargeTime,100, BeamRotationChargeTime, BeamRotationEmittionTime, 20.0f);
+        LineRenderer rightLine = rightBeam.GetComponentInChildren<LineRenderer>();
+        rightBeam.GetComponentInChildren<AttackController>().Init("Player",BeamRotationEmittionTime + BeamRotationChargeTime ,BeamRotationDamage,rightLine, BeamRotationChargeTime, BeamRotationEmittionTime, 20.0f);
         GameObject leftBeam = Instantiate(Beam,LeftHandLaserPoint);
-        leftBeam.GetComponentInChildren<Beam>().InitBeam("Player", BeamRotationDamage, BeamRotationEmittionTime + BeamRotationChargeTime,100, BeamRotationChargeTime, BeamRotationEmittionTime, 20.0f);
+        LineRenderer leftLine = leftBeam.GetComponentInChildren<LineRenderer>();
+        leftBeam.GetComponentInChildren<AttackController>().Init("Player",BeamRotationEmittionTime + BeamRotationChargeTime, BeamRotationDamage, leftLine,BeamRotationChargeTime, BeamRotationEmittionTime, 20.0f);
     }
 
     public void OnAttackLand()
