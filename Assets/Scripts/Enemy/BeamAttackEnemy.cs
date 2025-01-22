@@ -40,7 +40,8 @@ public class BeamAttackEnemy : EnemyController
         if (Time.time > nextBeamTime && isChasing)
         {
             GameObject beam = Instantiate(Beam, transform.position, Quaternion.LookRotation(distanceVector * -1.0f));
-            beam.GetComponentInChildren<Beam>().InitBeam("Player", Attack, float.PositiveInfinity, 3, BeamChargeTime, BeamEmissionTime, 20.0f);
+            LineRenderer line = beam.GetComponentInChildren<LineRenderer>();
+            beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Attack,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
             StartCoroutine(FreezeForCharge());
             nextBeamTime = Time.time + BeamInterval;
         }

@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+      propertyPath: IsBomb
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
       propertyPath: Prefab
       value: 
       objectReference: {fileID: 6715663482914733227, guid: 179fafc9df9b6a848a78bb8a3a433247, type: 3}
@@ -69,13 +73,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+      propertyPath: BombDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+      propertyPath: BombRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+      propertyPath: Penetration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
       propertyPath: AttackPrefab
       value: 
-      objectReference: {fileID: 7545080397329517919, guid: 7388eaa99517f7049952e700665ee7ea, type: 3}
+      objectReference: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
     - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
       propertyPath: SuperAttackPrefab
       value: 
-      objectReference: {fileID: 2887981091375416170, guid: 0ec8060462ccd8844af20db39833aeff, type: 3}
+      objectReference: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
     - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
       propertyPath: WeaponModelPrefab
       value: 

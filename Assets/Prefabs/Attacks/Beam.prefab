@@ -4946,7 +4946,7 @@ PrefabInstance:
       addedObject: {fileID: 5457365616026031382}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2e3ae3522154942b326ddfc0267f3e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7804829911371498933}
+      addedObject: {fileID: 8284262434974885161}
   m_SourcePrefab: {fileID: 100100000, guid: 1c2e3ae3522154942b326ddfc0267f3e, type: 3}
 --- !u!1 &8230939535681932694 stripped
 GameObject:
@@ -5082,7 +5082,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &7804829911371498933
+--- !u!114 &8284262434974885161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5091,11 +5091,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8230939535681932694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c4d83f3e692a44c9bccda24d4f5988, type: 3}
+  m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallFireImpactSE: {fileID: 0}
-  lineRenderer: {fileID: 5457365616026031382}
+  ImpactSE: {fileID: 0}
 --- !u!4 &8751051843565131564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1c2e3ae3522154942b326ddfc0267f3e, type: 3}

@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -280,6 +284,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -366,6 +374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -390,7 +402,7 @@ GameObject:
   - component: {fileID: 234941431}
   m_Layer: 0
   m_Name: Stage
-  m_TagString: Untagged
+  m_TagString: StageObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,6 +565,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -853,6 +869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model_Tree_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -974,6 +994,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
       propertyPath: m_Name
       value: Model_Tree_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
@@ -1244,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model_Tree_6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1369,6 +1397,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1680,6 +1712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1760,6 +1796,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
       propertyPath: m_Name
       value: Model_Tree_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
@@ -1908,6 +1948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_15
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1988,6 +2032,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
       propertyPath: m_Name
       value: Model_Tree_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
@@ -2111,6 +2159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model_Tree_7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2232,6 +2284,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
       propertyPath: m_Name
       value: Model_Tree_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
@@ -2360,6 +2416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockPillar_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96cc68973f46c00419be4e412ca9ca60, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2441,6 +2501,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2579,6 +2643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2664,6 +2732,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 96cc68973f46c00419be4e412ca9ca60, type: 3}
       propertyPath: m_Name
       value: RockPillar_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96cc68973f46c00419be4e412ca9ca60, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2773,6 +2845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_13
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2872,6 +2948,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3026,6 +3106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockPillar_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96cc68973f46c00419be4e412ca9ca60, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3120,6 +3204,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3231,6 +3319,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3347,6 +3439,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3476,6 +3572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model_Tree_9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3590,6 +3690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockPillar
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96cc68973f46c00419be4e412ca9ca60, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3671,6 +3775,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
       propertyPath: m_Name
       value: Env_Rock_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3773,6 +3881,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
       propertyPath: m_Name
       value: Model_Tree_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
@@ -3947,6 +4059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4053,6 +4169,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
       propertyPath: m_Name
       value: Model_Tree_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0aebc95e38df5ca4d8a905a47d12bb54, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
       objectReference: {fileID: 0}
     - target: {fileID: -5962755588348855424, guid: 3d13c73708aca65459356ab1a1653011, type: 3}
       propertyPath: m_Mesh
@@ -4351,6 +4471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockFloor_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b14da0540dca407439111b227bf9eb01, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4647,6 +4771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4764,6 +4892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockFloor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b14da0540dca407439111b227bf9eb01, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4846,6 +4978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Env_Rock_8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a901cfbdd4311f40929b730dd3ab274, type: 3}
+      propertyPath: m_TagString
+      value: StageObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4903,7 +5039,7 @@ GameObject:
   - component: {fileID: 2130150226}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: StageObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5420,6 +5556,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7286974414373067261, guid: d338643fc41edc8469e6b11ced05d641, type: 3}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: initialWeaponRight
+      value: 
+      objectReference: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+    - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: ConsumableUIContent
       value: 
       objectReference: {fileID: 1509454805}
@@ -5429,7 +5569,7 @@ PrefabInstance:
       objectReference: {fileID: 1777850998}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: startItems.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: RightEmissionTransform
@@ -5443,6 +5583,10 @@ PrefabInstance:
       propertyPath: 'startItems.Array.data[7]'
       value: 
       objectReference: {fileID: 5115892613942263358, guid: 0b2d5288d21255d49afec3553e9c697b, type: 3}
+    - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'startItems.Array.data[8]'
+      value: 
+      objectReference: {fileID: 7565616378445620900, guid: da8643ae4d9ed4a4b86e3dd4d97a0c5e, type: 3}
     - target: {fileID: 4146492896925286903, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

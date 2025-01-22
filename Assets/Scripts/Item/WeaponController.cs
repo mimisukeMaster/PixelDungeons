@@ -89,35 +89,39 @@ public class WeaponController : MonoBehaviour
     private void Attack()
     {
         //攻撃する方向を決める
-        Quaternion attackDirection = Quaternion.Euler(Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
-                                                                                Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
-                                                                                Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread));
+        Quaternion randomDirection = Quaternion.Euler(Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
+                                                        Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
+                                                        Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread));
 
         GameObject attack = Instantiate(
-            isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, attackDirection);
-        attack.GetComponent<Rigidbody>().linearVelocity = attackDirection * EmitTransform.forward * weapon.Speed;
+            isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
+        attack.GetComponent<Rigidbody>().linearVelocity = randomDirection * EmitTransform.forward * weapon.Speed;
 
-        if (weapon.isHoming)
-        {
-            attack.GetComponent<HomingAttack>().InitHoming(
-                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.Speed, 180, 10);
-        }
-        else if (weapon.isBomb)
-        {
-            attack.GetComponent<BombAttack>().InitBomb(
-                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, 4);
-        }
-        else if (weapon.isRemain)
-        {
-            attack.GetComponent<RemainAttackParent>().InitRemainParent(
-                "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.areaChild, weapon.areaDuration, weapon.areaChildAttackInterval, weapon.areaChildDamage);
-        }
-        else
-        {
-            // 0チェック
-            if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1);
-            else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f, 1);
-        }
+        // 0チェック
+        if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", weapon.Range / weapon.Speed,weapon);
+        else attack.GetComponent<AttackController>().Init("Enemy",0.5f, weapon);
+
+        // if (weapon.IsHoming)
+        // {
+        //     attack.GetComponent<HomingAttack>().InitHoming(
+        //         "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.Speed, 180, 10);
+        // }
+        // else if (weapon.IsBomb)
+        // {
+        //     attack.GetComponent<BombAttack>().InitBomb(
+        //         "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, 4);
+        // }
+        // else if (weapon.IsRemain)
+        // {
+        //     attack.GetComponent<RemainAttackParent>().InitRemainParent(
+        //         "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.AreaChild, weapon.AreaDuration, weapon.AreaChildAttackInterval, weapon.AreaChildDamage);
+        // }
+        // else
+        // {
+        //     // 0チェック
+        //     if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1);
+        //     else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f, 1);
+        // }
 
         isSuperAttack = false;
         animator.SetTrigger("Attack");

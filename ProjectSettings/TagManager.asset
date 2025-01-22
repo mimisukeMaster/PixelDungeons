@@ -10,6 +10,7 @@ TagManager:
   - GoalGate
   - AudioSource
   - Bullet
+  - StageObject
   layers:
   - Default
   - TransparentFX
