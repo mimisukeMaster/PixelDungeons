@@ -12,6 +12,7 @@ public class AttackController : MonoBehaviour
     //ステータス
     protected int damage;
     protected float speed;
+    private int penetration = 100;
 
     protected bool isHoming = false;
     protected float homingAngle;
@@ -35,8 +36,8 @@ public class AttackController : MonoBehaviour
     protected float areaChildDuration;
     protected float areaChildAttackInterval;
     protected int areaChildDamage;
+    // \ステータス
 
-    private int penetration = 100;
     private AudioSource audioSource;
 
     // シンプルな初期化
@@ -233,13 +234,13 @@ public class AttackController : MonoBehaviour
             if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, transform.position);
         }
         penetration--;
-        Debug.Log(penetration);
         if(penetration <= 0)
         {
             OnLastHit();
         }
     }
 
+    //
     protected virtual void OnLastHit() 
     {
         if(isBomb)
@@ -303,7 +304,6 @@ public class AttackController : MonoBehaviour
                 sqrClosestDistance = distance;
             }
         }
-        Debug.Log(sqrClosestDistance);
         return closestEnemyPosition;
     }
 

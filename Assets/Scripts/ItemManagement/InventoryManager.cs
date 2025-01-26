@@ -44,7 +44,6 @@ public class InventoryManager : MonoBehaviour
 
     [Tooltip("デバッグ用初期アイテム")]
     public Item[] startItems;
-    public Transform EmmitTransform;
 
     private void Start()
     {
@@ -113,22 +112,6 @@ public class InventoryManager : MonoBehaviour
                 //UIのサイズを調節する
                 SetContentHeight(ConsumableUIContent.GetComponent<RectTransform>(),consumablesInInventory.Count);
             }
-        }
-
-        string str = "";
-        foreach(Item_Material material_ in materialsInInventory.Keys)
-        {
-            str += material_.name + ":" + materialsInInventory[material_].number + ";";
-        }
-        str += "\n";
-        foreach(Item_Weapon weapon_ in weaponsInInventory.Keys)
-        {
-            str += weapon_.name + ":" + weaponsInInventory[weapon_].number + ";";
-        }
-        str += "\n";
-        foreach(Item_Consumable consumable_ in consumablesInInventory.Keys)
-        {
-            str += consumable_.name + ":" + consumablesInInventory[consumable_].number + ";";
         }
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 591206356953856859}
   - component: {fileID: 6376450857186093658}
   - component: {fileID: 5678420591740560744}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: AttackBulletExample
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4147d977625924db2891796e05f9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallFireImpactSE: {fileID: 0}
+  ImpactSE: {fileID: 0}
 --- !u!54 &5678420591740560744
 Rigidbody:
   m_ObjectHideFlags: 0
