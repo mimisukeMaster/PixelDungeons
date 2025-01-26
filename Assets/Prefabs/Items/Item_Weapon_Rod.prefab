@@ -82,7 +82,7 @@ MonoBehaviour:
   ItemName: RodTest
   Damage: 10
   FireRate: 0.5
-  Speed: 10
+  Speed: 20
   Range: 100
   Penetration: 1
   attackNumber: 5
@@ -93,6 +93,11 @@ MonoBehaviour:
   IsHoming: 0
   HomingAngle: 0
   DetectionDistance: 0
+  isBeam: 0
+  beamLineRenderer: {fileID: 0}
+  beamChargeTime: 0
+  beamEmissionTime: 0
+  beamLength: 0
   IsBomb: 0
   BombRadius: 0
   BombDamage: 0

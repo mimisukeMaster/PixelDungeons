@@ -48,7 +48,7 @@ MonoBehaviour:
   ItemName: RemainTest
   Damage: 1
   FireRate: 1
-  Speed: 10
+  Speed: 20
   Range: 50
   Penetration: 1
   attackNumber: 1
@@ -59,6 +59,11 @@ MonoBehaviour:
   IsHoming: 0
   HomingAngle: 0
   DetectionDistance: 0
+  isBeam: 0
+  beamLineRenderer: {fileID: 0}
+  beamChargeTime: 0
+  beamEmissionTime: 0
+  beamLength: 0
   IsBomb: 0
   BombRadius: 0
   BombDamage: 0
