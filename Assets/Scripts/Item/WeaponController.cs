@@ -101,28 +101,6 @@ public class WeaponController : MonoBehaviour
         if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", weapon.Range / weapon.Speed,weapon);
         else attack.GetComponent<AttackController>().Init("Enemy",0.5f, weapon);
 
-        // if (weapon.IsHoming)
-        // {
-        //     attack.GetComponent<HomingAttack>().InitHoming(
-        //         "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.Speed, 180, 10);
-        // }
-        // else if (weapon.IsBomb)
-        // {
-        //     attack.GetComponent<BombAttack>().InitBomb(
-        //         "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, 4);
-        // }
-        // else if (weapon.IsRemain)
-        // {
-        //     attack.GetComponent<RemainAttackParent>().InitRemainParent(
-        //         "Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed, 1, weapon.AreaChild, weapon.AreaDuration, weapon.AreaChildAttackInterval, weapon.AreaChildDamage);
-        // }
-        // else
-        // {
-        //     // 0チェック
-        //     if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", isSuperAttack ? weapon.Damage * 2 : weapon.Damage, weapon.Range / weapon.Speed,1);
-        //     else attack.GetComponent<AttackController>().Init("Enemy", weapon.Damage, 0.5f, 1);
-        // }
-
         isSuperAttack = false;
         animator.SetTrigger("Attack");
     }

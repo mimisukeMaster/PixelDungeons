@@ -29,7 +29,7 @@ public class InventoryItem_Weapon : InventoryItem
     //装備する
     public void Equip(bool isRightHand)
     {
-        inventoryManager.ChangeWeapon(isRightHand,(Item_Weapon)item,this);
+        inventoryManager.ChangeWeapon(isRightHand,(Item_Weapon)item,this,true);
     }
 
     public void OnEquipRightClick()//右手

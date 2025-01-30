@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6901921673752083169
+--- !u!1 &5941164647260009178
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9177230364005927457}
+  - component: {fileID: 5839708517043786290}
   m_Layer: 0
-  m_Name: Gate
-  m_TagString: GoalGate
+  m_Name: HomeGate
+  m_TagString: HomeGate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9177230364005927457
+--- !u!4 &5839708517043786290
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901921673752083169}
+  m_GameObject: {fileID: 5941164647260009178}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 10.466441, y: 0.05000019, z: 4.766328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6474177834909343001}
+  - {fileID: 591976268665562831}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6796599297376254706
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1001 &1134245452828950820
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 9177230364005927457}
+    m_TransformParent: {fileID: 5839708517043786290}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
       propertyPath: m_LocalScale.x
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
       propertyPath: m_TagString
-      value: GoalGate
+      value: HomeGate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -114,20 +114,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5038348931112464818}
+      addedObject: {fileID: 1180594740509375362}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3957224019540330528}
   m_SourcePrefab: {fileID: 100100000, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
---- !u!1 &5950159855314192291 stripped
+--- !u!1 &251304288321928309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
-  m_PrefabInstance: {fileID: 6796599297376254706}
+  m_PrefabInstance: {fileID: 1134245452828950820}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5038348931112464818
+--- !u!65 &1180594740509375362
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5950159855314192291}
+  m_GameObject: {fileID: 251304288321928309}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -142,8 +145,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0407867, y: 0.4482458, z: 3.0232353}
   m_Center: {x: 0.000000050377164, y: -0.024780981, z: 1.5116175}
---- !u!4 &6474177834909343001 stripped
+--- !u!114 &3957224019540330528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251304288321928309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02422366e523d484188502f8efb6c6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetScene: Stage_grass
+--- !u!4 &591976268665562831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4317f5069e39eb24287a8df07f5ce767, type: 3}
-  m_PrefabInstance: {fileID: 6796599297376254706}
+  m_PrefabInstance: {fileID: 1134245452828950820}
   m_PrefabAsset: {fileID: 0}
