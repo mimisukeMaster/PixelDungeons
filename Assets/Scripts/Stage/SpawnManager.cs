@@ -29,6 +29,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
+        AudioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
     }
 

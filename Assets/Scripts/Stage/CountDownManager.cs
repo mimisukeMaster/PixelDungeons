@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEditor.PackageManager;
 
 public class CountDownManager : MonoBehaviour
@@ -16,8 +17,17 @@ public class CountDownManager : MonoBehaviour
     {
         textComponent = GetComponent<TMP_Text>();
 
+
         StartCoroutine(nameof(CountDown));
         if(DebugMode)Debug.Log("カウントダウンデバッグモード");
+        SceneManager.sceneLoaded +=  OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        transform.parent.gameObject.SetActive(true);
+        StartCoroutine(CountDown());
     }
 
     private IEnumerator CountDown()
