@@ -1,11 +1,12 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DamageNumberManager : MonoBehaviour
 {
     [Tooltip("ダメージのUIの最大値")]
-    public int MaxDamageUINumver = 30;
+    public int MaxDamageUINumber = 30;
     private static int MaxDamageUINumver_S;
     [Tooltip("ダメージのUI")]
     public GameObject Panel;
@@ -19,20 +20,30 @@ public class DamageNumberManager : MonoBehaviour
     private WaitForSeconds waitForSeconds;
     private static DamageNumberManager damageNumberManager;
 
-    private void Start() 
+    private void Start()
     {
         Panel_S = Panel;
         Canvas_S = Canvas;
-        MaxDamageUINumver_S = MaxDamageUINumver;
+        MaxDamageUINumver_S = MaxDamageUINumber;
         damageNumberManager = this;
-        UIs = new GameObject[MaxDamageUINumver];
+        UIs = new GameObject[MaxDamageUINumber];
         waitForSeconds = new WaitForSeconds(displayTime);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded:DamageNumberManager");
+        Canvas_S = Canvas;
+        Debug.Log(Canvas_S);
     }
 
     public static void AddUI(int damage,Vector3 target)
     {
         if(index >= MaxDamageUINumver_S)index = 0;
         GameObject UI;
+        Debug.Log(Canvas_S);
+        Debug.Log(Panel_S);
         if(UIs[index] == null)UI = Instantiate(Panel_S,Canvas_S.transform);
         else
         {

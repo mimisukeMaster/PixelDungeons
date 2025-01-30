@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Start() 
     {
         PlayerObject = gameObject;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Awake()
@@ -63,6 +65,12 @@ public class PlayerController : MonoBehaviour
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
         controls.Player.OpenInventory.performed += SwitchInventory;
+    }
+
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
     }
 
     private void FixedUpdate()
