@@ -35,8 +35,10 @@ public class InventoryManager : MonoBehaviour
     public Item_Weapon initialWeaponLeft;
     [Tooltip("右手")]
     public Transform RightHand;
+    public static Item_Weapon rightHandWeapon = null;
     [Tooltip("左手")]
     public Transform LeftHand;    
+    public static Item_Weapon leftHandWeapon = null;
     [Tooltip("右手の攻撃発生場所")]
     public Transform RightEmissionTransform;
     [Tooltip("左手の攻撃発生場所")]
@@ -44,20 +46,36 @@ public class InventoryManager : MonoBehaviour
 
     [Tooltip("デバッグ用初期アイテム")]
     public Item[] startItems;
+    public static bool hasInitializedInventory = false;
 
     private void Start()
     {
-        foreach(Item item in startItems)
+        if(!hasInitializedInventory)
         {
-            AddItem(item, 1);
+            foreach(Item item in startItems)
+            {
+                AddItem(item, 1);
+            }
+            if(initialWeaponRight != null)
+            {
+                ChangeWeapon(true, initialWeaponRight, null,false);
+            }
+            if(initialWeaponLeft != null)
+            {
+                ChangeWeapon(false, initialWeaponLeft, null,false);
+            }
+            hasInitializedInventory = true;
         }
-        if(initialWeaponRight != null)
+        else
         {
-            ChangeWeapon(true, initialWeaponRight, null);
-        }
-        if(initialWeaponLeft != null)
-        {
-            ChangeWeapon(false, initialWeaponLeft, null);
+            if(initialWeaponRight != null)
+            {
+                ChangeWeapon(true, initialWeaponRight, null,false);
+            }
+            if(initialWeaponLeft != null)
+            {
+                ChangeWeapon(false, initialWeaponLeft, null,false);
+            }
         }
     }
 
@@ -140,18 +158,18 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     /// <param name="isRightHand"></param>
     /// <param name="weapon"></param>
-    public void ChangeWeapon(bool isRightHand, Item_Weapon weapon, InventoryItem inventoryItem)
+    public void ChangeWeapon(bool isRightHand, Item_Weapon weapon, InventoryItem inventoryItem,bool consumeItem)
     {
         if(isRightHand)//右手
         {
+            rightHandWeapon = weapon;
             if(RightHand.childCount != 0)
             {
-                Debug.Log(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon);
                 AddItem(RightHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon, 1);
                 Destroy(RightHand.GetChild(0).gameObject);
             }
             GameObject weaponInstance = Instantiate(weapon.WeaponModelPrefab, RightHand);
-            if(inventoryItem != null)
+            if(inventoryItem != null && consumeItem)
             {
                 inventoryItem.SubNumber(1);
             }
@@ -159,6 +177,7 @@ public class InventoryManager : MonoBehaviour
         }
         else//左手
         {
+            leftHandWeapon = weapon;
             if(LeftHand.childCount != 0)
             {
                 AddItem(LeftHand.GetChild(0).gameObject.GetComponent<WeaponController>().weapon, 1);

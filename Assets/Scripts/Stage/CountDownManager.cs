@@ -32,6 +32,7 @@ public class CountDownManager : MonoBehaviour
 
         // カウントダウン後、敵生成
         if(spawnManager != null)spawnManager.SpawnEnemies();
+        else PlayerController.isGaming = true;
 
         yield return new WaitForSeconds(1.0f);
         CountDownUI.SetActive(false);

@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public static GameObject PlayerObject;
 
+    public static PlayerController singleton;
+
     private void Start() 
     {
         PlayerObject = gameObject;
@@ -35,6 +36,18 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        //Coreをシングルトン化
+        if(singleton == null)
+        {
+            singleton = this;
+        }
+        else
+        {
+            Destroy(transform.parent.gameObject);
+            return;
+        }
+        DontDestroyOnLoad(transform.parent.gameObject);
+
         rb = GetComponent<Rigidbody>();
 
         InventoryCanvas.SetActive(false);
@@ -43,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
         // インスタンス生成
         controls = new ControlActions();
+        Debug.Log("Control instance created");
 
         // InputSystemでの入力に対応するリスナーを追加
         controls.Player.Jump.performed += OnJumpPerformed;
@@ -61,7 +75,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable() => controls.Enable();
 
-    private void OnDisable() => controls.Disable();
+    private void OnDisable()
+    {
+        if(singleton != this)return;
+        Debug.Log("インプット削除:"+gameObject.name);
+        controls.Disable();
+    }
 
     /// <summary>
     /// 衝突判定
