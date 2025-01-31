@@ -14,7 +14,7 @@ public class TitleSceneManager : MonoBehaviour
     public GameObject StageSelectUI;
     public GameObject CreditsPanel;
     public GameObject SettingPanel;
-    public List<Button> StageButtons;
+    // public List<Button> StageButtons;
     public Slider SoundsSlider;
     [Header("景観")]
     public Animator BirdAnim;
@@ -35,7 +35,7 @@ public class TitleSceneManager : MonoBehaviour
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
         SoundsSlider.value = AudioSource.volume;
         
-        for (int i = 0; i < PlayerPrefs.GetInt("PlayableStages", 1); i++) StageButtons[i].interactable = true;
+        // for (int i = 0; i < PlayerPrefs.GetInt("PlayableStages", 1); i++) StageButtons[i].interactable = true;
     }
 
     private void FixedUpdate()
@@ -56,7 +56,8 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void OnStart()
     {
-        StageSelectUI.SetActive(!StageSelectUI.activeSelf);
+        // StageSelectUI.SetActive(!StageSelectUI.activeSelf);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OnStageGrass()
