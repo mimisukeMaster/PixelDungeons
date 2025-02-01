@@ -32,16 +32,19 @@ public class CountDownManager : MonoBehaviour
 
     private IEnumerator CountDown()
     {
-        for (int i = 3; i > 0; i--)
+        if (DebugMode) yield return null;
+        else
         {
-            textComponent.text = i.ToString();
-            if(DebugMode)yield return null;
-            else yield return new WaitForSeconds(1.0f);
+            for (int i = 3; i > 0; i--)
+            {
+                textComponent.text = i.ToString();
+                yield return new WaitForSeconds(1.0f);
+            }
+            textComponent.text = "Start!";
         }
-        textComponent.text = "Start!";
 
         // カウントダウン後、敵生成
-        if(spawnManager != null)spawnManager.SpawnEnemies();
+        if (spawnManager != null) spawnManager.SpawnEnemies();
         else PlayerController.isGaming = true;
 
         yield return new WaitForSeconds(1.0f);
