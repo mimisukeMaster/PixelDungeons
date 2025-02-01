@@ -1847,6 +1847,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3038213697166578289, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4650952153426097233, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1854,6 +1858,14 @@ PrefabInstance:
     - target: {fileID: 5690961377777531044, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: m_Name
       value: Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511302141659976175, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511302141659976175, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9173847967916974101, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: m_text
