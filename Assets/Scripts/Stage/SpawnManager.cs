@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         EnemiesInStage.Clear();
+        PlayerController.isGaming = false;
     }
 
     void Update()

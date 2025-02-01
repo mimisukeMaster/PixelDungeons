@@ -11,19 +11,15 @@ public class CountDownManager : MonoBehaviour
 
     private TMP_Text textComponent;
 
-    public bool DebugMode = false;
-
     private void Start()
     {
         textComponent = GetComponent<TMP_Text>();
-
-
-        StartCoroutine(nameof(CountDown));
-        if(DebugMode)Debug.Log("カウントダウンデバッグモード");
-        SceneManager.sceneLoaded +=  OnSceneLoaded;
+        StartCoroutine(CountDown());
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         transform.parent.gameObject.SetActive(true);
@@ -32,8 +28,8 @@ public class CountDownManager : MonoBehaviour
 
     private IEnumerator CountDown()
     {
-        if (DebugMode) yield return null;
-        else
+        // 戦闘シーンのみカウントダウンして始まる
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             for (int i = 3; i > 0; i--)
             {
@@ -41,11 +37,10 @@ public class CountDownManager : MonoBehaviour
                 yield return new WaitForSeconds(1.0f);
             }
             textComponent.text = "Start!";
+            if (spawnManager != null) spawnManager.SpawnEnemies();
         }
-
-        // カウントダウン後、敵生成
-        if (spawnManager != null) spawnManager.SpawnEnemies();
-        else PlayerController.isGaming = true;
+        
+        PlayerController.isGaming = true;
 
         yield return new WaitForSeconds(1.0f);
         CountDownUI.SetActive(false);
