@@ -10,11 +10,48 @@ using System.Linq;
 public class InventoryManager : MonoBehaviour
 {
     //インベントリ内にある素材
-    public Dictionary<Item_Material,InventoryItem_Material> materialsInInventory = new Dictionary<Item_Material,InventoryItem_Material>();
+    public  Dictionary<Item_Material,ItemProperty> materialsInInventory = new Dictionary<Item_Material,ItemProperty>();
     //インベントリ内にある武器
-    public Dictionary<Item_Weapon,InventoryItem_Weapon> weaponsInInventory = new Dictionary<Item_Weapon,InventoryItem_Weapon>();
+    public  Dictionary<Item_Weapon,ItemProperty> weaponsInInventory = new Dictionary<Item_Weapon,ItemProperty>();
     //インベントリ内にある消費アイテム
-    public Dictionary<Item_Consumable,InventoryItem_Consumable> consumablesInInventory = new Dictionary<Item_Consumable,InventoryItem_Consumable>();
+    public  Dictionary<Item_Consumable,ItemProperty> consumablesInInventory = new Dictionary<Item_Consumable,ItemProperty>();
+    public class ItemProperty
+    {
+        public Item item;
+        public InventoryItem inventoryItem;
+        public int number;
+        public InventoryManager inventoryManager;
+
+        public ItemProperty(InventoryItem inventoryItem,int number,Item item,InventoryManager inventoryManager)
+        {
+            this.inventoryItem = inventoryItem;
+            this.number = number;
+            this.item = item;
+            this.inventoryManager = inventoryManager;
+        }
+
+        public void AddNumber(int number)
+        {
+            this.number += number;
+            inventoryItem.ChangeText(this.number);
+        }
+
+        public void SubNumber(int number)
+        {
+            this.number -= number;
+            inventoryItem.ChangeText(this.number);
+            if(number <= 0)
+            {
+                inventoryManager.RemoveItem(item);
+                Destroy(inventoryItem);
+            }
+        }
+
+        public bool GetRemovable(int number)
+        {
+            return this.number >= number;
+        }
+    }
 
     [Tooltip("アイテムを表示する個別のUIのプレハブ")]
     public GameObject MaterialPanel;
@@ -93,7 +130,7 @@ public class InventoryManager : MonoBehaviour
                 GameObject panel = Instantiate(MaterialPanel,MaterialUIContent);
                 //パネル追加
                 InventoryItem inventoryItem = SetPanel(material,panel,number);
-                materialsInInventory.Add(material,(InventoryItem_Material)inventoryItem);
+                materialsInInventory.Add(material,new ItemProperty((InventoryItem_Material)inventoryItem,1,material,this));
                 //UIのサイズを調節する
                 SetContentHeight(MaterialUIContent.GetComponent<RectTransform>(),materialsInInventory.Count);
             }
@@ -102,6 +139,7 @@ public class InventoryManager : MonoBehaviour
         {
             if(weaponsInInventory.ContainsKey(weapon))
             {
+
                 weaponsInInventory[weapon].AddNumber(number);
             }
             else
@@ -110,7 +148,7 @@ public class InventoryManager : MonoBehaviour
                 //パネル追加
                 InventoryItem_Weapon inventoryItem = panel.GetComponent<InventoryItem_Weapon>();
                 inventoryItem.Init(weapon,this,number,true);
-                weaponsInInventory.Add(weapon,(InventoryItem_Weapon)inventoryItem);
+                weaponsInInventory.Add(weapon,new ItemProperty((InventoryItem_Weapon)inventoryItem,1,weapon,this));
                 //UIのサイズを調節する
                 SetContentHeight(WeaponUIContent.GetComponent<RectTransform>(),weaponsInInventory.Count);
             }
@@ -119,6 +157,7 @@ public class InventoryManager : MonoBehaviour
         {
             if(consumablesInInventory.ContainsKey(consumable))//キーがすでにある
             {
+
                 consumablesInInventory[consumable].AddNumber(number);
             }
             else//初めて
@@ -126,7 +165,7 @@ public class InventoryManager : MonoBehaviour
                 GameObject panel = Instantiate(ConsumablePanel,ConsumableUIContent);
                 //パネル追加
                 InventoryItem inventoryItem = SetPanel(consumable,panel,number);
-                consumablesInInventory.Add(consumable,(InventoryItem_Consumable)inventoryItem);
+                consumablesInInventory.Add(consumable,new ItemProperty((InventoryItem_Consumable)inventoryItem,1,consumable,this));
                 //UIのサイズを調節する
                 SetContentHeight(ConsumableUIContent.GetComponent<RectTransform>(),consumablesInInventory.Count);
             }
@@ -153,6 +192,24 @@ public class InventoryManager : MonoBehaviour
         else if(item is Item_Consumable)consumablesInInventory.Remove((Item_Consumable)item);
     }
 
+    public ItemProperty SerchItem(InventoryItem inventoryItem)
+    {
+        foreach(ItemProperty itemProperty in materialsInInventory.Values)
+        {
+            if(itemProperty.inventoryItem == inventoryItem){return itemProperty;}
+        }
+        foreach(ItemProperty itemProperty in weaponsInInventory.Values)
+        {
+            if(itemProperty.inventoryItem == inventoryItem){return itemProperty;}
+        }
+        foreach(ItemProperty itemProperty in consumablesInInventory.Values)
+        {
+            if(itemProperty.inventoryItem == inventoryItem){return itemProperty;}
+        }
+        
+        return null;
+    }
+
     /// <summary>
     /// 装備変更
     /// </summary>
@@ -171,7 +228,8 @@ public class InventoryManager : MonoBehaviour
             GameObject weaponInstance = Instantiate(weapon.WeaponModelPrefab, RightHand);
             if(inventoryItem != null && consumeItem)
             {
-                inventoryItem.SubNumber(1);
+                ItemProperty item = SerchItem(inventoryItem);
+                if(item != null)item.SubNumber(1);
             }
             weaponInstance.GetComponent<WeaponController>().Init(weapon, true, RightEmissionTransform);
         }
@@ -186,7 +244,8 @@ public class InventoryManager : MonoBehaviour
             GameObject weaponInstance = Instantiate(weapon.WeaponModelPrefab, LeftHand);
             if(inventoryItem != null)
             {
-                inventoryItem.SubNumber(1);
+                ItemProperty item = SerchItem(inventoryItem);
+                if(item != null)item.SubNumber(1);
             }
             weaponInstance.GetComponent<WeaponController>().Init(weapon, false, LeftEmissionTransform);
         }
@@ -221,9 +280,9 @@ public class InventoryManager : MonoBehaviour
         for(int i = 0;i < materials.Length;i++)
         {
             Item material = materials[i];
-            if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material))materialsInInventory[(Item_Material)material].SubNumber(number[i]);
-            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material))weaponsInInventory[(Item_Weapon)material].SubNumber(number[i]);
-            else if(material is Item_Consumable && consumablesInInventory.ContainsKey((Item_Consumable)material))consumablesInInventory[(Item_Consumable)material].SubNumber(number[i]);
+            if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material)) materialsInInventory[(Item_Material)material].number -= number[i];
+            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material)) weaponsInInventory[(Item_Weapon)material].number -= number[i];
+            else if(material is Item_Consumable && consumablesInInventory.ContainsKey((Item_Consumable)material)) consumablesInInventory[(Item_Consumable)material].number -= number[i];
         }
         
         AddItem((Item_Weapon)result,resultNumber);

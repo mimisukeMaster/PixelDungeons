@@ -11,9 +11,6 @@ public class InventoryItem : MonoBehaviour
 
     public TMP_Text NumberText;
 
-    [System.NonSerialized]
-    public int number;
-
     protected InventoryManager inventoryManager;
 
     protected Item item;
@@ -24,31 +21,12 @@ public class InventoryItem : MonoBehaviour
         ItemImage.sprite = item.ItemImage;
         NameText.text = item.name;
         this.inventoryManager = inventoryManager;
-        this.number = number;
-        NumberText.text = this.number.ToString();
+        NumberText.text = number.ToString();
     }
 
-    public void AddNumber(int number)
+    public void ChangeText(int number)
     {
-        this.number += number;
-        NumberText.text = this.number.ToString();
-    }
-
-    public bool GetRemovable(int number)
-    {
-        if(this.number >= number)return true;
-        else return false;
-    }
-
-    public void SubNumber(int number)
-    {
-        this.number -= number;
-        NumberText.text = this.number.ToString();
-        if(this.number <= 0)
-        {
-            inventoryManager.RemoveItem(item);
-            Destroy(gameObject);
-        }
+        NumberText.text = number.ToString();
     }
 
     public void OnClick()//UIをクリックしたときの反応

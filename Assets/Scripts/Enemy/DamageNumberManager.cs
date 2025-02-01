@@ -33,17 +33,13 @@ public class DamageNumberManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded:DamageNumberManager");
         Canvas_S = Canvas;
-        Debug.Log(Canvas_S);
     }
 
     public static void AddUI(int damage,Vector3 target)
     {
         if(index >= MaxDamageUINumver_S)index = 0;
         GameObject UI;
-        Debug.Log(Canvas_S);
-        Debug.Log(Panel_S);
         if(UIs[index] == null)UI = Instantiate(Panel_S,Canvas_S.transform);
         else
         {

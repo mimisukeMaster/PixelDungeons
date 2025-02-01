@@ -37,6 +37,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
+    //DontDestroyOnLoadのため
     private void OnDestroy()
     {
         if(isRightHand)
