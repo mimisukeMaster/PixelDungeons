@@ -2628,7 +2628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1112695172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4012,10 +4012,6 @@ MonoBehaviour:
   StageSelectUI: {fileID: 1112695171}
   CreditsPanel: {fileID: 721651674}
   SettingPanel: {fileID: 1713644602}
-  StageButtons:
-  - {fileID: 638196820}
-  - {fileID: 601916440}
-  - {fileID: 217374420}
   SoundsSlider: {fileID: 1940245040}
   BirdAnim: {fileID: 807070952}
   GolemAnim: {fileID: 1915418642}
