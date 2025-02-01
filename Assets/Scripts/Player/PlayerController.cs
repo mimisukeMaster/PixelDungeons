@@ -69,7 +69,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
     {
-        transform.position = Vector3.zero;
+        rb.isKinematic = true;
+        rb.isKinematic = false;
+        transform.position = new Vector3(0f, 0.5f, 0f);
         transform.rotation = Quaternion.identity;
     }
 
