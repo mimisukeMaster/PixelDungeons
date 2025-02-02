@@ -24,8 +24,10 @@ public class SpawnManager : MonoBehaviour
     [Tooltip("ゴールゲート")]
     public GameObject GoalGate;
     [HideInInspector]
-    public bool BossMode;
     public static List<GameObject> EnemiesInStage = new List<GameObject>();
+
+    private bool bossMode;
+    private GameObject goalGate;
 
 
     private void Awake()
@@ -45,14 +47,14 @@ public class SpawnManager : MonoBehaviour
         if (EnemiesInStage.Count == 0 && PlayerController.isGaming)
         {
             // 敵をすべて倒したらボス出現
-            if (!BossMode)
+            if (!bossMode)
             {
                 GameObject boss = Instantiate(Boss, BossSpawnPos, Quaternion.identity);
                 EnemiesInStage.Add(boss);
-                BossMode = true;
+                bossMode = true;
             }
             // ボスを倒したらゴールゲート出現
-            else Instantiate(GoalGate, BossSpawnPos, Quaternion.identity);
+            else if (goalGate == null) goalGate = Instantiate(GoalGate, BossSpawnPos, Quaternion.identity);
         }
     }
 
