@@ -14,7 +14,6 @@ public class TitleSceneManager : MonoBehaviour
     public GameObject StageSelectUI;
     public GameObject CreditsPanel;
     public GameObject SettingPanel;
-    // public List<Button> StageButtons;
     public Slider SoundsSlider;
     [Header("景観")]
     public Animator BirdAnim;
@@ -34,8 +33,6 @@ public class TitleSceneManager : MonoBehaviour
         // シーン間共有の値を取得し制御
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
         SoundsSlider.value = AudioSource.volume;
-        
-        // for (int i = 0; i < PlayerPrefs.GetInt("PlayableStages", 1); i++) StageButtons[i].interactable = true;
     }
 
     private void FixedUpdate()

@@ -18,9 +18,6 @@ public class GameOverUIController : MonoBehaviour
 
     public void OnTitle()
     {
-        // 進行状況をセーブ
-        PlayerPrefs.SetInt("PlayableStages", nowSceneIndex);
-
         SceneManager.LoadScene(0);
         Time.timeScale = 1.0f;
     }
