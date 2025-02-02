@@ -17,6 +17,8 @@ public class HPController : MonoBehaviour
     private float playerNextDamageTime;
     [Tooltip("TagがEnemyでない場合は必要なし")]
     public EnemyController EnemyController;
+    [Tooltip("ダミーでない場合必要なし")]
+    public Dummy dummy;
     [Tooltip("HPバー")]
     public Image HPBar;
     [Tooltip("HPテキスト")]
@@ -34,7 +36,15 @@ public class HPController : MonoBehaviour
     {
         if(gameObject.CompareTag("Player") && Time.time < playerNextDamageTime)return;
 
+        //
+        if(dummy != null)
+        {
+            dummy.damageTaken += damage;
+            return;
+        }
+
         HP -= damage;
+
         UpdateHPBar();
         //プレイヤーがダメージを受けるとUIを表示
         if(gameObject.tag == "Player")
