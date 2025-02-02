@@ -52,15 +52,19 @@ public class RemainAttackChild : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.CompareTag(targetTag))
+        if (other.CompareTag(targetTag))
         {
-            targets.Add(other.GetComponentInParent<HPController>(),Time.time);
+            HPController hpController = other.GetComponentInParent<HPController>();
+
+            // ゴーレムにはColliderが複数あり同じKeyで重複エラーになるので一度のみにする
+            if (other.GetComponentInParent<Golem>() && targets.ContainsKey(hpController)) return;
+            targets.Add(hpController, Time.time);
         }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.CompareTag(targetTag))
+        if (other.CompareTag(targetTag))
         {
             targets.Remove(other.GetComponentInParent<HPController>());
         }
