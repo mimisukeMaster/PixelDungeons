@@ -89,7 +89,7 @@ MonoBehaviour:
   attackDirectionSpread: 0
   WeaponModelPrefab: {fileID: 6715663482914733227, guid: 179fafc9df9b6a848a78bb8a3a433247, type: 3}
   AttackPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
-  SuperAttackPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  SuperAttackPrefab: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
   IsHoming: 1
   HomingAngle: 90
   DetectionDistance: 20
