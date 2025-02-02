@@ -240,7 +240,6 @@ public class AttackController : MonoBehaviour
         }
     }
 
-    //
     protected virtual void OnLastHit() 
     {
         if(isBomb)

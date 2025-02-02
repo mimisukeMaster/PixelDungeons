@@ -54,6 +54,7 @@ public class RemainAttackChild : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
+            Debug.Log("Enter");
             HPController hpController = other.GetComponentInParent<HPController>();
 
             // ゴーレムにはColliderが複数あり同じKeyで重複エラーになるので一度のみにする
