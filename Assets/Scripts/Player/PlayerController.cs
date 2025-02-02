@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = false;
         transform.position = new Vector3(0f, 0.5f, 0f);
         transform.rotation = Quaternion.identity;
+
+        if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
+
     }
 
     private void FixedUpdate()
