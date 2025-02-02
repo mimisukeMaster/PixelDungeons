@@ -4970,6 +4970,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3461897681241546005, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: ImpactSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 30fe1b729d8170f4cb2041ab8b5eeecf, type: 3}
     - target: {fileID: 3749739803958615257, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       propertyPath: m_Radius
       value: 0.25
@@ -5018,8 +5022,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3461897681241546005, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6936019027184915863, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
     - {fileID: 6726977213088852004, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
@@ -5034,34 +5037,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5584600319151738941}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5288094631000541260, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3357704289300092354}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
 --- !u!4 &4121792017098450213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5356228752039442855, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
   m_PrefabInstance: {fileID: 8315520317048675458}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4180958553588815054 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5288094631000541260, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
-  m_PrefabInstance: {fileID: 8315520317048675458}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3357704289300092354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4180958553588815054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be00c2fe8d314349a9c2d999c56f6ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ImpactSE: {fileID: 0}
 --- !u!1001 &9046177034759956189
 PrefabInstance:
   m_ObjectHideFlags: 0
