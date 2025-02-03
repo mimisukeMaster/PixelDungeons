@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = false;
         transform.position = new Vector3(0f, 0.5f, 0f);
         transform.rotation = Quaternion.identity;
+        Cursor.lockState = CursorLockMode.Locked;
 
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
 
@@ -91,7 +92,6 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         if(singleton != this)return;
-        Debug.Log("インプット削除:"+gameObject.name);
         controls.Disable();
     }
 
