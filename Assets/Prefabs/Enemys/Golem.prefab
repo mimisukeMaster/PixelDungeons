@@ -1542,7 +1542,7 @@ MonoBehaviour:
   BeamLength: 20
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
   BeamChargeTime: 1
-  BeamEmittionTime: 2
+  BeamEmissionTime: 2
   BeamRotationProbability: 1
   BeamRotationChargeTime: 1.5
   BeamRotationEmittionTime: 6.5
@@ -1570,6 +1570,7 @@ MonoBehaviour:
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
   EnemyController: {fileID: 2715673240687885751}
+  dummy: {fileID: 0}
   HPBar: {fileID: 7454449955098292489}
   HPText: {fileID: 1592501525543628030}
 --- !u!1 &8509173655254136920
@@ -2039,6 +2040,10 @@ PrefabInstance:
     - target: {fileID: -1539938049333295495, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -1498460024265056705, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 194880453473566149, guid: 7a22df968a046144c9c3c1e807843bdb, type: 3}
       propertyPath: m_Layer

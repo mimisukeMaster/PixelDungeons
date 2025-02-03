@@ -339,7 +339,9 @@ MonoBehaviour:
   MaxHP: 500
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
+  PlayerInvincibleTime: 0
   EnemyController: {fileID: 193929173221300924}
+  dummy: {fileID: 0}
   HPBar: {fileID: 2491135365962620885}
   HPText: {fileID: 3923810627851139737}
 --- !u!1 &6459605475914699130
@@ -612,6 +614,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: c4f2a6ebdffeff9419381619961e7838, type: 3}
       propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: c4f2a6ebdffeff9419381619961e7838, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: c4f2a6ebdffeff9419381619961e7838, type: 3}

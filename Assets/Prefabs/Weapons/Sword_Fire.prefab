@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b877adfbc701cb44aaeb20c1290fda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmmitTransform: {fileID: 0}
+  EmitTransform: {fileID: 0}
+  BallFireLaunchSE: {fileID: 0}
 --- !u!1001 &8424092196587160568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,6 +110,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a33e14dbb1a4eba40b43798b3b1618e9, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a33e14dbb1a4eba40b43798b3b1618e9, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a33e14dbb1a4eba40b43798b3b1618e9, type: 3}
       propertyPath: m_Name

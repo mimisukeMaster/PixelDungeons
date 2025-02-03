@@ -442,6 +442,7 @@ MonoBehaviour:
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
   EnemyController: {fileID: 6596950609731399366}
+  dummy: {fileID: 0}
   HPBar: {fileID: 333165918866452063}
   HPText: {fileID: 1920503603389654970}
 --- !u!1 &7492457773056861744
@@ -632,6 +633,10 @@ PrefabInstance:
     - target: {fileID: -2482505193348275139, guid: a9d4cb6e8a6311f47b92e29babcfdaa4, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1578373571446707184, guid: a9d4cb6e8a6311f47b92e29babcfdaa4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 687917229350237188, guid: a9d4cb6e8a6311f47b92e29babcfdaa4, type: 3}
       propertyPath: m_Name

@@ -125,6 +125,7 @@ MonoBehaviour:
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
   EnemyController: {fileID: 3183878954942499601}
+  dummy: {fileID: 0}
   HPBar: {fileID: 3737038518282163228}
   HPText: {fileID: 2381689575751033667}
 --- !u!1 &2667342170940346538
@@ -436,7 +437,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7073738542969256388}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
