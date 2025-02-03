@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = false;
         transform.position = new Vector3(0f, 0.5f, 0f);
         transform.rotation = Quaternion.identity;
+        moveInput = Vector2.zero;
         Cursor.lockState = CursorLockMode.Locked;
 
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
