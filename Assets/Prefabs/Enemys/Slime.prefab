@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2112501586520397462}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -125,6 +125,7 @@ MonoBehaviour:
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
   EnemyController: {fileID: 3183878954942499601}
+  dummy: {fileID: 0}
   HPBar: {fileID: 3737038518282163228}
   HPText: {fileID: 2381689575751033667}
 --- !u!1 &2667342170940346538

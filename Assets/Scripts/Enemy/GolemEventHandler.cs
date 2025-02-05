@@ -18,7 +18,7 @@ public class GolemEventHandler : MonoBehaviour
     {
         golem.OnAttackLand();
         GameObject attack = Instantiate(attackPrefab,golem.SmashPosition.parent);
-        attack.GetComponent<AttackController>().Init("Player",golem.Attack,0.2f,1);
+        attack.GetComponent<AttackController>().Init("Player",golem.Damage,0.2f,1);
         SmashWave.SetActive(true);
     }
 

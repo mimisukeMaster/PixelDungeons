@@ -1477,7 +1477,7 @@ Transform:
   m_GameObject: {fileID: 8339947921235990378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.98, y: 0, z: 3.0153742}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1542,7 +1542,7 @@ MonoBehaviour:
   BeamLength: 20
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
   BeamChargeTime: 1
-  BeamEmittionTime: 2
+  BeamEmissionTime: 2
   BeamRotationProbability: 1
   BeamRotationChargeTime: 1.5
   BeamRotationEmittionTime: 6.5
@@ -1570,6 +1570,7 @@ MonoBehaviour:
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
   EnemyController: {fileID: 2715673240687885751}
+  dummy: {fileID: 0}
   HPBar: {fileID: 7454449955098292489}
   HPText: {fileID: 1592501525543628030}
 --- !u!1 &8509173655254136920

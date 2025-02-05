@@ -19,6 +19,6 @@ public class NearAttackEventHandler : MonoBehaviour
     public void AttackEvent()
     {
         GameObject attack = Instantiate(attackPrefab,transform.position,transform.rotation);
-        attack.GetComponent<AttackController>().Init("Player",nearAttackEnemy.Attack,0.2f,1);
+        attack.GetComponent<AttackController>().Init("Player",nearAttackEnemy.Damage,0.2f,1);
     }
 }

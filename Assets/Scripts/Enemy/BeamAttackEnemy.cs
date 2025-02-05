@@ -41,7 +41,7 @@ public class BeamAttackEnemy : EnemyController
         {
             GameObject beam = Instantiate(Beam, transform.position, Quaternion.LookRotation(distanceVector * -1.0f));
             LineRenderer line = beam.GetComponentInChildren<LineRenderer>();
-            beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Attack,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
+            beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Damage,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
             StartCoroutine(FreezeForCharge());
             nextBeamTime = Time.time + BeamInterval;
         }

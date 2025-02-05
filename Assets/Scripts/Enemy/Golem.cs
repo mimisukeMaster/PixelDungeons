@@ -149,7 +149,7 @@ public class Golem : MiddleBossEnemy
 
         GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
         LineRenderer line = beam.transform.parent.GetComponent<LineRenderer>();
-        beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Attack,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
+        beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Damage,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
     }
 
     public void OnBeamRotationStart()
@@ -171,7 +171,7 @@ public class Golem : MiddleBossEnemy
         for (int i = 0; i < SmashParticleNumber; i++)
         {
             GameObject particle = Instantiate(SmashParticle, SmashPosition.position + Vector3.up * 0.4f, Quaternion.Euler(Random.Range(-180.0f, 180.0f), Random.Range(-180.0f, 180.0f), Random.Range(-180.0f, 180.0f)));
-            particle.GetComponent<AttackController>().Init("Player", Attack, 2.0f,1);
+            particle.GetComponent<AttackController>().Init("Player", Damage, 2.0f,1);
             particle.GetComponent<Rigidbody>().linearVelocity = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(3.0f, 8.0f), Random.Range(-10.0f, 10.0f));
         }
     }

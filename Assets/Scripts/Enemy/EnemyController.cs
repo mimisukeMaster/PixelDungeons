@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     [Tooltip("プレイヤーを発見するまでの距離")]
     public float DetectionRadius = 5.0f;
     [Tooltip("攻撃力")]
-    public int Attack = 10;
+    public int Damage = 10;
     [Tooltip("ドロップアイテム")]
     public GameObject DropItem;
     [Tooltip("アイテムドロップの確率")]
