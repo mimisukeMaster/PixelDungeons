@@ -32,7 +32,7 @@ public class RemainAttackChild : MonoBehaviour
             if(Time.time >= targets[target])
             {
                 enemysDamaged.Add(target);
-                target.Damaged(damage);
+                target.Damaged(damage,target.gameObject.transform.position);
                 // UIを表示
                 if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, target.transform.position);
             }

@@ -379,6 +379,7 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
+  canBeDamaged: 1
   EnemyController: {fileID: 1008677725011035506}
   dummy: {fileID: 0}
   HPBar: {fileID: 5533232742290867001}

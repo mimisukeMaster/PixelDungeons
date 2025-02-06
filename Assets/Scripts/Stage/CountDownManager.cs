@@ -11,11 +11,13 @@ public class CountDownManager : MonoBehaviour
 
     private TMP_Text textComponent;
 
+    public bool IsDebugMode;
+
     private void Start()
     {
         textComponent = GetComponent<TMP_Text>();
         StartCoroutine(CountDown());
-        
+        if(IsDebugMode)Debug.Log("カウントダウンデバッグモード");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -34,7 +36,8 @@ public class CountDownManager : MonoBehaviour
             for (int i = 3; i > 0; i--)
             {
                 textComponent.text = i.ToString();
-                yield return new WaitForSeconds(1.0f);
+                if(IsDebugMode)yield return null;
+                else yield return new WaitForSeconds(1.0f);
             }
             textComponent.text = "Start!";
             if (spawnManager != null) spawnManager.SpawnEnemies();
