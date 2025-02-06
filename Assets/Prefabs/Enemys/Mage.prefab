@@ -399,10 +399,16 @@ MonoBehaviour:
   ChasingSpeed: 0
   WanderInterval: 0
   DetectionInterval: 0.5
-  DetectionRadius: 5
-  Attack: 10
+  DetectionRadius: 10
+  Damage: 10
   DropItem: {fileID: 0}
   DropProbability: 1
+  TeleportDistance: 6
+  TeleportInterval: 2.5
+  magic: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  cooldown: 0.5
+  range: 100
+  speed: 10
 --- !u!1 &8341527895975964232
 GameObject:
   m_ObjectHideFlags: 0
