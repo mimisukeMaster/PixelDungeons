@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class HPController : MonoBehaviour
 {   
@@ -14,7 +15,7 @@ public class HPController : MonoBehaviour
     public Animator playerDamageUI;
     [Tooltip("プレイヤーの無敵時間")]
     public float PlayerInvincibleTime;
-    private float playerNextDamageTime;
+    public bool canBeDamaged = true;
     [Tooltip("TagがEnemyでない場合は必要なし")]
     public EnemyController EnemyController;
     [Tooltip("ダミーでない場合必要なし")]
@@ -32,11 +33,10 @@ public class HPController : MonoBehaviour
     }
 
 
-    public void Damaged(int damage)
+    public void Damaged(int damage,Vector3 UIPosition)
     {
-        if(gameObject.CompareTag("Player") && Time.time < playerNextDamageTime)return;
+        if(!canBeDamaged)return;
 
-        //
         if(dummy != null)
         {
             dummy.damageTaken += damage;
@@ -50,7 +50,13 @@ public class HPController : MonoBehaviour
         if(gameObject.tag == "Player")
         {
             playerDamageUI.SetTrigger("Damage");
-            playerNextDamageTime = Time.time + PlayerInvincibleTime;
+            StartCoroutine(PlayerInvincible());
+        }
+
+        if(gameObject.tag == "Enemy")
+        {
+            // UIを表示
+            DamageNumberManager.AddUI(damage, UIPosition);
         }
 
         if(HP <= 0)
@@ -58,6 +64,13 @@ public class HPController : MonoBehaviour
             if(gameObject.CompareTag("Player"))PlayerController.OnDied();
             else if(gameObject.CompareTag("Enemy")) EnemyController.OnDied();
         }
+    }
+
+    private IEnumerator PlayerInvincible()
+    {
+        canBeDamaged = false;
+        yield return new WaitForSeconds(PlayerInvincibleTime);
+        canBeDamaged = true;
     }
 
     public void Healed(int heal)

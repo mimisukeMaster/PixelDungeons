@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
-
     }
 
     private void FixedUpdate()

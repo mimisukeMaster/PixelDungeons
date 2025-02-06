@@ -229,9 +229,7 @@ public class AttackController : MonoBehaviour
         // タグで判定する
         if (other.CompareTag(targetTag))
         {
-            other.GetComponentInParent<HPController>().Damaged(damage);
-            // UIを表示
-            if(targetTag == "Enemy") DamageNumberManager.AddUI(damage, transform.position);
+            other.GetComponentInParent<HPController>().Damaged(damage,other.transform.position);
         }
         penetration--;
         if(penetration <= 0)
@@ -249,7 +247,7 @@ public class AttackController : MonoBehaviour
             {
                 if (obj.CompareTag(targetTag))
                 {
-                    obj.GetComponentInParent<HPController>().Damaged(damage);
+                    obj.GetComponentInParent<HPController>().Damaged(damage,obj.transform.position);
                     
                     // UIを表示
                     if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, obj.transform.position);

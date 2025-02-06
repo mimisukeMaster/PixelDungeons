@@ -1529,7 +1529,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 20
-  Attack: 10
+  Damage: 10
   DropItem: {fileID: 2038873515553743555, guid: 657ff9e6c9d752941a635de42ee2912c, type: 3}
   DropProbability: 1
   Eye: {fileID: 4418861329660572704}
@@ -1569,6 +1569,7 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
+  canBeDamaged: 1
   EnemyController: {fileID: 2715673240687885751}
   dummy: {fileID: 0}
   HPBar: {fileID: 7454449955098292489}

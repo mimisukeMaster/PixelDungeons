@@ -379,6 +379,7 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
+  canBeDamaged: 1
   EnemyController: {fileID: 1008677725011035506}
   dummy: {fileID: 0}
   HPBar: {fileID: 5533232742290867001}
@@ -400,7 +401,7 @@ MonoBehaviour:
   WanderInterval: 0
   DetectionInterval: 0.5
   DetectionRadius: 5
-  Attack: 10
+  Damage: 10
   DropItem: {fileID: 0}
   DropProbability: 1
 --- !u!1 &8341527895975964232

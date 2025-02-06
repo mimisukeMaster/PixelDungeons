@@ -31,7 +31,6 @@ public class EnemyController : MonoBehaviour
     protected Vector3 distanceVector;
     protected SpawnManager spawnManager;
 
-
     protected virtual void Start()
     {
         nextDetectTime = Time.time;
@@ -69,7 +68,6 @@ public class EnemyController : MonoBehaviour
 
                 // 距離ベクトルを計算
                 distanceVector = targetPlayer.transform.position - transform.position;
-
                 isChasing = true;
                 break;
             }
@@ -101,11 +99,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     public virtual void OnDied()
     {
-        if (Random.Range(0f, 1.0f) < DropProbability)
+        if (Random.Range(0f, 1.0f) < DropProbability &&  DropItem)
         {
             GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
         }
-        SpawnManager.EnemiesInStage.Remove(gameObject);
+        if(SpawnManager.EnemiesInStage.Contains(gameObject)) SpawnManager.EnemiesInStage.Remove(gameObject);
         Destroy(gameObject);
     }
 

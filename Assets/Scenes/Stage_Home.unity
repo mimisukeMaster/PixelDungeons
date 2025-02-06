@@ -452,6 +452,7 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
+  canBeDamaged: 1
   EnemyController: {fileID: 0}
   dummy: {fileID: 432379028}
   HPBar: {fileID: 0}
@@ -500,7 +501,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1536,6 +1537,10 @@ PrefabInstance:
     - target: {fileID: 799823063878539052, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571838431925194282, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
+      propertyPath: IsDebugMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5690961377777531044, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: m_Name
