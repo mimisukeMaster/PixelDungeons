@@ -1538,6 +1538,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1868430381134358766, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398621807572629662, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
+      propertyPath: m_text
+      value: STAGE CLEAR
+      objectReference: {fileID: 0}
     - target: {fileID: 5571838431925194282, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: IsDebugMode
       value: 1

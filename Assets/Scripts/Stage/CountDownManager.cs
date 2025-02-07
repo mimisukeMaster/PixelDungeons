@@ -23,7 +23,7 @@ public class CountDownManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        spawnManager = GameObject.Find("SpawnManager")?.GetComponent<SpawnManager>();
         transform.parent.gameObject.SetActive(true);
         StartCoroutine(CountDown());
     }
