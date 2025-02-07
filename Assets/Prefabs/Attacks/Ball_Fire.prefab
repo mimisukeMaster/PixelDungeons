@@ -72,6 +72,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9433962
       objectReference: {fileID: 0}
+    - target: {fileID: 9220347622557419351, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: e27a199289142a44c8d5cb2f0d727e28, type: 3}
+    - target: {fileID: 9220347622557419351, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e27a199289142a44c8d5cb2f0d727e28, type: 3}
+    - target: {fileID: 9220347622557419351, guid: 6387f3000778d8948a3aa73dd5ba2b21, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.386
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

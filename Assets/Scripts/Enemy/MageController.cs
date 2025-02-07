@@ -34,7 +34,7 @@ public class MageController : EnemyController
 private IEnumerator WaitCooldown(){
     yield return new WaitForSeconds(cooldown);
     GameObject newMagic=Instantiate(magic,transform.position+new Vector3(0,0.5f,0),Quaternion.identity);
-    newMagic.GetComponent <Rigidbody>().linearVelocity=targetPlayer.transform.position-transform.position.normalized*speed;
+    newMagic.GetComponent <Rigidbody>().linearVelocity=(targetPlayer.transform.position-transform.position).normalized*speed;
     if(speed!=0){
         newMagic.GetComponent<AttackController>().Init("Player",Damage,range/speed,1);
     }
