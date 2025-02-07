@@ -12,6 +12,8 @@ TagManager:
   - Bullet
   - StageObject
   - HomeGate
+  - CraftingStation
+  - Chest
   layers:
   - Default
   - TransparentFX
