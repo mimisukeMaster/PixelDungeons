@@ -449,6 +449,7 @@ Transform:
   - {fileID: 920008259}
   - {fileID: 1717145390}
   - {fileID: 1547495955}
+  - {fileID: 1745290002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255179737 stripped
@@ -757,7 +758,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
-  Attack: 10
+  Damage: 10
   DropItem: {fileID: 4581094999854356183, guid: a9eb229fd5a6b3c439b5f35b0d6c0890, type: 3}
   DropProbability: 1
   AttackDistance: 5
@@ -781,7 +782,9 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
+  canBeDamaged: 1
   EnemyController: {fileID: 428036627}
+  dummy: {fileID: 0}
   HPBar: {fileID: 0}
   HPText: {fileID: 0}
 --- !u!1001 &511280287
@@ -4127,12 +4130,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745289999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 234941431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752513549 stripped
 GameObject:
@@ -4778,7 +4781,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
-  - {fileID: 1745290002}
   - {fileID: 234941431}
   - {fileID: 428036626}
   - {fileID: 1226018547}

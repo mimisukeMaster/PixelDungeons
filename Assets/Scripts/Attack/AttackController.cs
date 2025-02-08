@@ -218,7 +218,11 @@ public class AttackController : MonoBehaviour
     protected void OnTriggerEnter(Collider other)
     {
         // 自分自身との衝突と自分が敵の場合は無視
-        if (other.gameObject.CompareTag(gameObject.tag) ||gameObject.CompareTag("Enemy")) return;
+        if (other.gameObject.CompareTag(gameObject.tag))
+        {
+            return;
+        } 
+
         //地形に当たったら削除
         if(other.gameObject.CompareTag("StageObject"))
         {
@@ -238,7 +242,7 @@ public class AttackController : MonoBehaviour
         }
     }
 
-    protected virtual void OnLastHit() 
+    protected virtual void OnLastHit()
     {
         if(isBomb)
         {
@@ -248,9 +252,6 @@ public class AttackController : MonoBehaviour
                 if (obj.CompareTag(targetTag))
                 {
                     obj.GetComponentInParent<HPController>().Damaged(damage,obj.transform.position);
-                    
-                    // UIを表示
-                    if (targetTag == "Enemy") DamageNumberManager.AddUI(damage, obj.transform.position);
                 }
             }
         }
