@@ -1,17 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 /// <summary>
 /// タイトルシーンの外観とボタンUI制御
 /// </summary>
 public class TitleSceneManager : MonoBehaviour
 {
+    public GameObject Camera;
+    [Header("音")]
     public AudioSource AudioSource;
     public AudioClip TitleGingle;
     public AudioClip TitleBGM;
-    public GameObject Camera;
+    public AudioClip ButtonSE;
     [Header("UI")]
     public GameObject StageSelectUI;
     public GameObject CreditsPanel;
@@ -68,23 +69,8 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void OnStart()
     {
-        // StageSelectUI.SetActive(!StageSelectUI.activeSelf);
+        AudioSource.PlayOneShot(ButtonSE);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void OnStageGrass()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void OnStageSky()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    }
-
-    public void OnStageCastle()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
     /// <summary>
@@ -92,6 +78,7 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void OnSetting()
     {
+        AudioSource.PlayOneShot(ButtonSE);
         SettingPanel.SetActive(!SettingPanel.activeSelf);
     }
 
@@ -111,6 +98,7 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void OnCredits()
     {
+        AudioSource.PlayOneShot(ButtonSE);
         CreditsPanel.SetActive(!CreditsPanel.activeSelf);
     }
 }

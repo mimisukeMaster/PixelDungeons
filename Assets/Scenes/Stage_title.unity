@@ -4007,10 +4007,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d35ca169649cc49b4a7d9b4c82a491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 2116226616}
   AudioSource: {fileID: 1699759989}
   TitleGingle: {fileID: 8300000, guid: 0b7788cf0eb0aa141837c6e409171172, type: 3}
   TitleBGM: {fileID: 8300000, guid: c457b3ff12b44da4a9416ab2e4c2af91, type: 3}
-  Camera: {fileID: 2116226616}
+  ButtonSE: {fileID: 8300000, guid: f7f508bd7aca68546b24536293979892, type: 3}
   StageSelectUI: {fileID: 1112695171}
   CreditsPanel: {fileID: 721651674}
   SettingPanel: {fileID: 1713644602}
