@@ -19,7 +19,7 @@ public class FinalBoss : EnemyController
     {
         base.Start();
         hPController.canBeDamaged = false;
-        shield.SetActive(false);
+        shield.SetActive(true);
         foreach(FinalBossChild finalBossChild in finalBossChildren)
         {
             finalBossChild.Init(this);
