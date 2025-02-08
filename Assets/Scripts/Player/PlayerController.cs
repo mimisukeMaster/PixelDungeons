@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 5.0f;
     [Tooltip("移動の速さ")]
     public float MoveSpeed = 5.0f;
+    [HideInInspector]
+    public Vector3 lastMoveDirection;
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
     [Header("UI")]
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
         // 入力に合わせた移動
         Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y)
                              * MoveSpeed * Time.fixedDeltaTime;
+        lastMoveDirection = move * MoveSpeed;
         rb.MovePosition(rb.position + move);
     }
 
