@@ -9,6 +9,8 @@ using System.Collections.Generic;
 public class TitleSceneManager : MonoBehaviour
 {
     public AudioSource AudioSource;
+    public AudioClip TitleGingle;
+    public AudioClip TitleBGM;
     public GameObject Camera;
     [Header("UI")]
     public GameObject StageSelectUI;
@@ -33,6 +35,11 @@ public class TitleSceneManager : MonoBehaviour
         // シーン間共有の値を取得し制御
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
         SoundsSlider.value = AudioSource.volume;
+
+        // ジングル再生
+        AudioSource.clip = TitleGingle;
+        AudioSource.loop = false;
+        AudioSource.Play();
     }
 
     private void FixedUpdate()
@@ -46,6 +53,14 @@ public class TitleSceneManager : MonoBehaviour
         // ユーザ操作（隠し操作）
         if (Input.GetKey(KeyCode.A)) Camera.transform.Rotate(0f, -1.0f, 0f, Space.World);
         if (Input.GetKey(KeyCode.D)) Camera.transform.Rotate(0f, 1.0f, 0f, Space.World);
+
+        // ジングルが終了したらBGMに変更
+        if (!AudioSource.isPlaying)
+        {
+            AudioSource.clip = TitleBGM;
+            AudioSource.loop = true;
+            AudioSource.Play();
+        }
     }
 
     /// <summary>

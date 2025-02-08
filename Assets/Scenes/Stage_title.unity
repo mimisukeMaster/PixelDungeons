@@ -4008,6 +4008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 1699759989}
+  TitleGingle: {fileID: 8300000, guid: 0b7788cf0eb0aa141837c6e409171172, type: 3}
+  TitleBGM: {fileID: 8300000, guid: c457b3ff12b44da4a9416ab2e4c2af91, type: 3}
   Camera: {fileID: 2116226616}
   StageSelectUI: {fileID: 1112695171}
   CreditsPanel: {fileID: 721651674}
