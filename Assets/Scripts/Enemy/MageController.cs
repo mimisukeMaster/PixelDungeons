@@ -12,6 +12,8 @@ public class MageController : EnemyController
     public float cooldown;
     public float range;
     public float speed;
+    public Transform TeleportPosition;
+    public ParticleSystem teleportEffect;
 
     protected override void Start()
     {
@@ -24,12 +26,20 @@ public class MageController : EnemyController
         DetectPlayer();
         if(isChasing){
             if (Time.time < nextTeleportTime) return;
-            Vector3 Teleportposition=new Vector3(TeleportDistance,0,0);
-            Teleportposition=Quaternion.Euler(0,UnityEngine.Random.Range(0,360),0)*Teleportposition;
-            Teleportposition+=targetPlayer.transform.position;
-            Teleportposition.y=0;
-            transform.position = Teleportposition;
+
+            Vector3 teleportPosition=new Vector3(TeleportDistance,0,0);
+            teleportPosition=Quaternion.Euler(0,UnityEngine.Random.Range(0,360),0)*teleportPosition;
+            teleportPosition+=targetPlayer.transform.position;
+            teleportPosition.y=0;
+
+            TeleportPosition.transform.position = transform.position + new Vector3(0,0.5f,0);
+            TeleportPosition.transform.rotation = Quaternion.FromToRotation(Vector3.forward,teleportPosition - transform.position);
+            teleportEffect.Play();
+
+            transform.position = teleportPosition;
             nextTeleportTime=Time.time+TeleportInterval;
+            transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - transform.position);
+
             StartCoroutine(WaitCooldown());
         }
     }
