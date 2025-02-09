@@ -76,7 +76,7 @@ public class FinalBoss : EnemyController
                                                         Random.Range(-spread,spread),
                                                         Random.Range(-spread,spread));
                 GameObject bullet = Instantiate(randomShotPrefab,transform.position,Quaternion.identity);
-                bullet.GetComponent<AttackController>().Init("Player",randomShotDamage,100,10);
+                bullet.GetComponent<AttackController>().Init("Player",randomShotDamage,100,1);
                 bullet.GetComponent<Rigidbody>().linearVelocity = randomDirection * ((estimatedPlayerPosition-transform.position).normalized*speed);
             }
             yield return waitForCoolDown;

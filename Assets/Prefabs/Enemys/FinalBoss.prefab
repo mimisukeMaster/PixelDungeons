@@ -418,7 +418,7 @@ MonoBehaviour:
   hPController: {fileID: 1056807846879872554}
   shield: {fileID: 748934639225067097}
   randomShotDamage: 10
-  randomShotPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  randomShotPrefab: {fileID: 3678542401583548555, guid: 434af81b428baec4ba7830c41c63978e, type: 3}
   estimatedPlayerPositionObject: {fileID: 1673443795500433780}
 --- !u!114 &1056807846879872554
 MonoBehaviour:

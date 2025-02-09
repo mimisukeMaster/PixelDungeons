@@ -3023,6 +3023,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[0].count
       value: 1
       objectReference: {fileID: 0}
@@ -3030,6 +3034,14 @@ PrefabInstance:
       propertyPath: Enemies.Array.data[1].count
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[4].count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[4].enemy
+      value: 
+      objectReference: {fileID: 6150952713316352914, guid: 871194bc583c44e4eb656366a33c0d52, type: 3}
     - target: {fileID: 677572351791009707, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: m_Name
       value: SpawnManager
