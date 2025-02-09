@@ -234,11 +234,11 @@ public class AttackController : MonoBehaviour
         if (other.CompareTag(targetTag))
         {
             other.GetComponentInParent<HPController>().Damaged(damage,other.transform.position);
-        }
-        penetration--;
-        if(penetration <= 0)
-        {
-            OnLastHit();
+            penetration--;
+            if(penetration <= 0)
+            {
+                OnLastHit();
+            }
         }
     }
 

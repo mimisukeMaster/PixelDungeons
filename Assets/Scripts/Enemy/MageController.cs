@@ -12,12 +12,15 @@ public class MageController : EnemyController
     public float cooldown;
     public float range;
     public float speed;
+
     protected override void Start()
     {
         base.Start();
         nextTeleportTime=Time.time;
     }
-    protected override void Update(){
+
+    protected override void Update()
+    {
         DetectPlayer();
         if(isChasing){
             if (Time.time < nextTeleportTime) return;
@@ -28,21 +31,22 @@ public class MageController : EnemyController
             transform.position = Teleportposition;
             nextTeleportTime=Time.time+TeleportInterval;
             StartCoroutine(WaitCooldown());
-            
         }
     }
-private IEnumerator WaitCooldown(){
-    yield return new WaitForSeconds(cooldown);
-    GameObject newMagic=Instantiate(magic,transform.position+new Vector3(0,0.5f,0),Quaternion.identity);
-    newMagic.GetComponent <Rigidbody>().linearVelocity=(targetPlayer.transform.position-transform.position).normalized*speed;
-    if(speed!=0){
-        newMagic.GetComponent<AttackController>().Init("Player",Damage,range/speed,1);
+
+    private IEnumerator WaitCooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        GameObject newMagic=Instantiate(magic,transform.position+new Vector3(0,0.5f,0),Quaternion.identity);
+        newMagic.GetComponent <Rigidbody>().linearVelocity=(targetPlayer.transform.position-(transform.position+ new Vector3(0,0.5f,0))).normalized*speed;
+        if(speed!=0)
+        {
+            newMagic.GetComponent<AttackController>().Init("Player",Damage,range/speed,1);
+        }
+        else
+        {
+            newMagic.GetComponent<AttackController>().Init("Player",Damage,5,1);
+        }
     }
-    else{
-        newMagic.GetComponent<AttackController>().Init("Player",Damage,5,1);
-    }
-    Debug.Log(distanceVector.normalized*speed);
-    
-}
 }
 
