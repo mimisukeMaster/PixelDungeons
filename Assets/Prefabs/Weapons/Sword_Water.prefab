@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b877adfbc701cb44aaeb20c1290fda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmmitTransform: {fileID: 0}
+  EmitTransform: {fileID: 0}
+  AttackSE: {fileID: 8300000, guid: ceefc6916f30fe148b200e7814cf35f4, type: 3}
 --- !u!1001 &4017604977510231698
 PrefabInstance:
   m_ObjectHideFlags: 0
