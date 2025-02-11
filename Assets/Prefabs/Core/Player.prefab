@@ -467,11 +467,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpForce: 5
   MoveSpeed: 6
+  lastMoveDirection: {x: 0, y: 0, z: 0}
   NearAttackRange: 1
   InventoryCanvas: {fileID: 0}
   GameOverCanvas: {fileID: 0}
   GamingCanvas: {fileID: 0}
   ClearCanvas: {fileID: 0}
+  GoalGateSE: {fileID: 0}
 --- !u!114 &8411240504714403245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,9 +491,12 @@ MonoBehaviour:
   PlayerController: {fileID: 3554490523010719503}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0
+  canBeDamaged: 1
   EnemyController: {fileID: 0}
+  dummy: {fileID: 0}
   HPBar: {fileID: 0}
   HPText: {fileID: 0}
+  DamegedSE: {fileID: 8300000, guid: 0de937151b7b5dc4d8a2925a716bb982, type: 3}
 --- !u!114 &3609241389091412737
 MonoBehaviour:
   m_ObjectHideFlags: 0

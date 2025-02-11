@@ -24,18 +24,23 @@ public class HPController : MonoBehaviour
     public Image HPBar;
     [Tooltip("HPテキスト")]
     public TMP_Text HPText;
+    public AudioClip DamegedSE;
+
+    private AudioSource audioSource;
+    
 
 
     void Start()
     {
         HP = MaxHP;
         UpdateHPBar();
+        if(gameObject.CompareTag("Player")) audioSource = transform.parent.GetComponentInChildren<AudioSource>();
     }
 
 
     public void Damaged(int damage,Vector3 UIPosition)
     {
-        if(!canBeDamaged)return;
+        if (!canBeDamaged) return;
 
         if(dummy != null)
         {
@@ -47,13 +52,14 @@ public class HPController : MonoBehaviour
 
         UpdateHPBar();
         //プレイヤーがダメージを受けるとUIを表示
-        if(gameObject.tag == "Player")
+        if (gameObject.CompareTag("Player"))
         {
+            audioSource.PlayOneShot(DamegedSE);
             playerDamageUI.SetTrigger("Damage");
             StartCoroutine(PlayerInvincible());
         }
 
-        if(gameObject.tag == "Enemy")
+        if (gameObject.CompareTag("Enemy"))
         {
             // UIを表示
             DamageNumberManager.AddUI(damage, UIPosition);
