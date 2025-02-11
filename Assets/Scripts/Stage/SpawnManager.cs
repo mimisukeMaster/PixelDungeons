@@ -6,6 +6,8 @@ public class SpawnManager : MonoBehaviour
 {
     [Tooltip("BGM処理")]
     public AudioSource AudioSource;
+    [Tooltip("ステージBGM")]
+    public AudioClip StageBGM;
     [Tooltip("敵の種類と出現数を設定")]
     public List<EnemyProperty> Enemies;
     [Tooltip("敵の種類と数を設定")]
@@ -34,6 +36,13 @@ public class SpawnManager : MonoBehaviour
     {
         AudioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
+        if (StageBGM)
+        {
+            AudioSource.clip = StageBGM;
+            AudioSource.Play();
+        }
+        else Debug.LogWarning("ステージBGM未設定");
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -50,7 +59,6 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(EnemiesInStage.Count);
         if (EnemiesInStage.Count == 0 && PlayerController.isGaming)
         {
             // 敵をすべて倒したらボス出現
