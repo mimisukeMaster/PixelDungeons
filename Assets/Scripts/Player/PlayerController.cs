@@ -21,13 +21,16 @@ public class PlayerController : MonoBehaviour
     public GameObject GamingCanvas;
     [Tooltip("クリア時のキャンバス")]
     public GameObject ClearCanvas;
+    [Tooltip("ゴールゲート通過SE")]
+    public AudioClip GoalGateSE;
 
     private Rigidbody rb;
-    public static ControlActions controls;
     private Vector2 moveInput;
     private bool isGrounded;
-    public static bool isGaming;
+    private AudioSource audioSource;
 
+    public static ControlActions controls;
+    public static bool isGaming;
     public static GameObject PlayerObject;
 
     public static PlayerController singleton;
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(transform.parent.gameObject);
 
         rb = GetComponent<Rigidbody>();
+        audioSource = transform.parent.GetComponentInChildren<AudioSource>();
 
         InventoryCanvas.SetActive(false);
         GameOverCanvas.SetActive(false);
@@ -170,6 +174,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCleared()
     {
+        audioSource.PlayOneShot(GoalGateSE);
         ClearCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
