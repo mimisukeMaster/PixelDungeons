@@ -97,14 +97,14 @@ public class EnemyController : MonoBehaviour
     /// <summary>
     /// 死んだときの処理
     /// </summary>
-    public virtual void OnDied()
+    public virtual void OnDied(GameObject destroyTarget)
     {
         if (Random.Range(0f, 1.0f) < DropProbability &&  DropItem)
         {
             GameObject dropItem = Instantiate(DropItem, transform.position + Vector3.up * 0.2f, Quaternion.identity);
         }
-        if(SpawnManager.EnemiesInStage.Contains(gameObject)) SpawnManager.EnemiesInStage.Remove(gameObject);
-        Destroy(gameObject);
+        if(SpawnManager.EnemiesInStage.Contains(destroyTarget)) SpawnManager.EnemiesInStage.Remove(destroyTarget);
+        Destroy(destroyTarget);
     }
 
 }

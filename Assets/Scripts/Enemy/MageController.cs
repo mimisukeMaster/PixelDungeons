@@ -38,7 +38,9 @@ public class MageController : EnemyController
 
             transform.position = teleportPosition;
             nextTeleportTime=Time.time+TeleportInterval;
-            transform.rotation = Quaternion.LookRotation(targetPlayer.transform.position - transform.position);
+            Vector3 rotationTarget = targetPlayer.transform.position;
+            rotationTarget.y = 0;
+            transform.rotation = Quaternion.LookRotation(rotationTarget - transform.position);
 
             StartCoroutine(WaitCooldown());
         }
@@ -57,6 +59,11 @@ public class MageController : EnemyController
         {
             newMagic.GetComponent<AttackController>().Init("Player",Damage,5,1);
         }
+    }
+
+    public override void OnDied(GameObject destroyTarget)
+    {
+        base.OnDied(transform.parent.gameObject);
     }
 }
 

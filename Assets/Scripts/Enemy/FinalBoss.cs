@@ -37,8 +37,7 @@ public class FinalBoss : EnemyController
         switch(finalBossChildren.Count)
         {
             case 0:
-                hPController.canBeDamaged = true;
-                shield.SetActive(false);
+                OnAllChildrenDead();
                 StopCoroutine(randomShotCoroutine);
                 randomShotCoroutine = StartCoroutine(RandomShot(20,0.3f,20,15));
                 break;
@@ -57,12 +56,17 @@ public class FinalBoss : EnemyController
 
                 break;
         }
-        Debug.Log("Stage"+finalBossChildren.Count);
+        Debug.Log("Final Boss Stage:"+finalBossChildren.Count);
+    }
+
+    private void OnAllChildrenDead()
+    {
+        hPController.canBeDamaged = true;
+        shield.SetActive(false);
     }
 
     private IEnumerator RandomShot(int number,float fireRate,float spread,float speed)
     {
-        Debug.Log("RandomShot");
         WaitForSeconds waitForCoolDown = new WaitForSeconds(fireRate);
         while(true)
         {
@@ -83,9 +87,9 @@ public class FinalBoss : EnemyController
         }
     }
 
-    public override void OnDied()
+    public override void OnDied(GameObject gameObject)
     {
-        base.OnDied();
+        base.OnDied(gameObject);
 
     }
 }

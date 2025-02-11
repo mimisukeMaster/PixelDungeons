@@ -62,7 +62,7 @@ public class HPController : MonoBehaviour
         if(HP <= 0)
         {
             if(gameObject.CompareTag("Player"))PlayerController.OnDied();
-            else if(gameObject.CompareTag("Enemy")) EnemyController.OnDied();
+            else if(gameObject.CompareTag("Enemy")) EnemyController.OnDied(gameObject);
         }
     }
 
