@@ -38,9 +38,4 @@ public class InventoryItem : MonoBehaviour
     {
         UsePanel.SetActive(false);
     }
-
-    public void OnDropClick()//Dropをクリック
-    {
-        Debug.Log("Drop");
-    }
 }

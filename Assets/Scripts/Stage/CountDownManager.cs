@@ -17,7 +17,7 @@ public class CountDownManager : MonoBehaviour
     {
         textComponent = GetComponent<TMP_Text>();
         StartCoroutine(CountDown());
-        if(IsDebugMode)Debug.Log("カウントダウンデバッグモード");
+        if (IsDebugMode) Debug.Log("カウントダウンデバッグモード");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
