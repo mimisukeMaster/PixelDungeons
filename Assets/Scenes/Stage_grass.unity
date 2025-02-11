@@ -2774,6 +2774,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: StageBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 0eb83f06f93a1b44b85e6850948da0c3, type: 3}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: BossSpawnPos.x
       value: 10
       objectReference: {fileID: 0}
