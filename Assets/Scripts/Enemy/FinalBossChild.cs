@@ -13,9 +13,9 @@ public class FinalBossChild : EnemyController
         
     }
 
-    public override void OnDied()
+    public override void OnDied(GameObject gameObject)
     {
         finalBoss.OnChildDestroyed(this);
-        base.OnDied();
+        base.OnDied(gameObject);
     }
 }

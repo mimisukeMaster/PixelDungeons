@@ -34,6 +34,7 @@ public class SpawnManager : MonoBehaviour
     {
         AudioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
         AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
@@ -42,8 +43,14 @@ public class SpawnManager : MonoBehaviour
         PlayerController.isGaming = false;
     }
 
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        EnemiesInStage.Clear();
+    }
+
     void Update()
     {
+        Debug.Log(EnemiesInStage.Count);
         if (EnemiesInStage.Count == 0 && PlayerController.isGaming)
         {
             // 敵をすべて倒したらボス出現
