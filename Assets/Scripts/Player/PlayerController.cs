@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
 
         // インスタンス生成
         controls = new ControlActions();
-        Debug.Log("controll actions initialized");
 
         // InputSystemでの入力に対応するリスナーを追加
         controls.Player.Jump.performed += OnJumpPerformed;
