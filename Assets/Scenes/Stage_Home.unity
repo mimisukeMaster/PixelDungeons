@@ -12894,18 +12894,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4650952153426097233, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5098611530463505327, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5629133612354811223, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
-      propertyPath: GoalGateSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 12470fbc7a93e7c4283a992626d87245, type: 3}
     - target: {fileID: 5690961377777531044, guid: 8d2d60f3bcd4ce84888daf300890090e, type: 3}
       propertyPath: m_Name
       value: Core

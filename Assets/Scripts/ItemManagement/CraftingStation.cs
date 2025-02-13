@@ -1,26 +1,37 @@
 using UnityEngine;
+using TMPro;
+using NUnit.Framework.Interfaces;
 
+//CraftCanvasのCanvas下のContentに付ける
+//Craftingがこれに依存している
 public class CraftingStation : MonoBehaviour
 {
-    public GameObject craftingCanvas;
+    public InventoryManager inventoryManager;
+    public CraftingDescriptionCanvas descriptionCanvas;
 
-    private void OnTriggerEnter(Collider other) 
+    CraftingElement.CraftingMaterial[] materials;
+    Item resultItem;
+    int resultNumber;
+
+    public void ShowDescription(CraftingElement.CraftingMaterial[] materials,Item_Weapon resultItem,int resultNumber)
     {
-        if(other.CompareTag("Player"))
-        {
-            craftingCanvas.SetActive(true);
-            Time.timeScale = 0.4f;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        descriptionCanvas.gameObject.SetActive(true);
+        descriptionCanvas.Init(resultItem,materials);
+        this.materials = materials;
+        this.resultItem = resultItem;
+        this.resultNumber = resultNumber;
     }
 
-    private void OnTriggerExit(Collider other) 
+    public bool Craft()
     {
-        if(other.CompareTag("Player"))
+        Item[] material = new Item[materials.Length ];
+        int[] numbers = new int[materials.Length];
+
+        for(int i = 0;i < materials.Length; i ++)
         {
-            craftingCanvas.SetActive(false);
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
+            material[i] = materials[i].Material;
+            numbers[i] = materials[i].number;
         }
+        return inventoryManager.Craft(material,numbers,resultItem,resultNumber);
     }
 }

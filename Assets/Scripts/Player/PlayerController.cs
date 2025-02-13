@@ -12,9 +12,18 @@ public class PlayerController : MonoBehaviour
     public Vector3 lastMoveDirection;
     [Tooltip("近距離攻撃検知範囲")]
     public float NearAttackRange = 1.0f;
+
     [Header("UI")]
     [Tooltip("インベントリのキャンバス")]
     public GameObject InventoryCanvas;
+    private bool isInChestArea;
+    [Tooltip("インベントリのボタンのヒント")]
+    public GameObject ChestHint;
+    [Tooltip("クラフティングのキャンバス")]
+    public GameObject CraftingCanvas;
+    private bool isInCraftingArea;
+    [Tooltip("クラフティングのボタンのヒント")]
+    public GameObject CraftingHint;
     [Tooltip("ゲームオーバーのキャンバス")]
     public GameObject GameOverCanvas;
     [Tooltip("ゲーム中のキャンバス")]
@@ -70,6 +79,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
         controls.Player.OpenInventory.performed += SwitchInventory;
+        controls.Player.OpenInventory.performed += SwitchCrafting;
     }
 
     private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
@@ -121,6 +131,40 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("GoalGate")) OnCleared();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        //クラフティング
+        if (other.CompareTag("CraftingStation"))
+        {
+             isInCraftingArea = true;
+             CraftingHint.SetActive(true);
+        }
+        //インベントリ
+        if (other.CompareTag("Chest"))
+        {
+            isInChestArea = true;
+            ChestHint.SetActive(true);
+        } 
+        Debug.Log(isInChestArea + ":" + isInCraftingArea);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        //クラフティングから出たら
+        if (other.CompareTag("CraftingStation"))
+        {
+            isInCraftingArea = false;
+            CraftingHint.SetActive(false);
+        } 
+        //インベントリから出たら
+        if (other.CompareTag("Chest"))
+        {
+            isInChestArea = false;
+            ChestHint.SetActive(false);
+        }
+        Debug.Log(isInChestArea + ":" + isInCraftingArea);
+    }
+
     private void OnJumpPerformed(InputAction.CallbackContext controls)
     {
         if (isGrounded)
@@ -138,27 +182,54 @@ public class PlayerController : MonoBehaviour
     private void OnMoveCanceled(InputAction.CallbackContext context) => moveInput = Vector2.zero;
 
     /// <summary>
-    /// インベントリを開く/閉じる
+    /// UIを開く/閉じる
     /// </summary>
     /// <param name="context"></param>
     private void SwitchInventory(InputAction.CallbackContext context)
     {
-        InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
-        GamingCanvas.SetActive(!GamingCanvas.activeSelf);
+        if(isInChestArea)
+        {
+            InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
+            GamingCanvas.SetActive(!GamingCanvas.activeSelf);
 
-        //インベントリが開いたとき
-        if (InventoryCanvas.activeSelf)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            isGaming = false;
-            Time.timeScale = 0;
+            //インベントリが開いたとき
+            if (InventoryCanvas.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                isGaming = false;
+                Time.timeScale = 0;
+            }
+            //インベントリが閉じたとき
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                isGaming = true;
+                Time.timeScale = 1;
+            }
         }
-        //インベントリが閉じたとき
-        else
+    }
+
+    private void SwitchCrafting(InputAction.CallbackContext context)
+    {
+        if(isInCraftingArea)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            isGaming = true;
-            Time.timeScale = 1;
+            CraftingCanvas.SetActive(!CraftingCanvas.activeSelf);
+            GamingCanvas.SetActive(!GamingCanvas.activeSelf);
+
+            //クラフティング画面が開いたとき
+            if (CraftingCanvas.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                isGaming = false;
+                Time.timeScale = 0;
+            }
+            //クラフティング画面が閉じたとき
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                isGaming = true;
+                Time.timeScale = 1;
+            }
         }
     }
 

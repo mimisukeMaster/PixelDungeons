@@ -40,10 +40,11 @@ public class InventoryManager : MonoBehaviour
         {
             this.number -= number;
             inventoryItem.ChangeText(this.number);
-            if(number <= 0)
+            if(this.number <= 0)
             {
                 inventoryManager.RemoveItem(item);
-                Destroy(inventoryItem);
+                Debug.Log(inventoryItem.gameObject);
+                Destroy(inventoryItem.gameObject);
             }
         }
 
@@ -139,7 +140,6 @@ public class InventoryManager : MonoBehaviour
         {
             if(weaponsInInventory.ContainsKey(weapon))
             {
-
                 weaponsInInventory[weapon].AddNumber(number);
             }
             else
@@ -280,9 +280,9 @@ public class InventoryManager : MonoBehaviour
         for(int i = 0;i < materials.Length;i++)
         {
             Item material = materials[i];
-            if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material)) materialsInInventory[(Item_Material)material].number -= number[i];
-            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material)) weaponsInInventory[(Item_Weapon)material].number -= number[i];
-            else if(material is Item_Consumable && consumablesInInventory.ContainsKey((Item_Consumable)material)) consumablesInInventory[(Item_Consumable)material].number -= number[i];
+            if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material)) materialsInInventory[(Item_Material)material].SubNumber(number[i]);
+            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material)) weaponsInInventory[(Item_Weapon)material].SubNumber(number[i]);
+            else if(material is Item_Consumable && consumablesInInventory.ContainsKey((Item_Consumable)material)) consumablesInInventory[(Item_Consumable)material].SubNumber(number[i]);
         }
         
         AddItem((Item_Weapon)result,resultNumber);
