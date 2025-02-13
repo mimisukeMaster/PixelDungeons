@@ -192,6 +192,14 @@ public class InventoryManager : MonoBehaviour
         else if(item is Item_Consumable)consumablesInInventory.Remove((Item_Consumable)item);
     }
 
+    public int GetItemNumber(Item item)
+    {
+        if(item is Item_Material) return materialsInInventory[(Item_Material)item].number;
+        else if(item is Item_Weapon)return weaponsInInventory[(Item_Weapon)item].number;
+        else if(item is Item_Consumable)return consumablesInInventory[(Item_Consumable)item].number;
+        else return 0;
+    }
+
     public ItemProperty SerchItem(InventoryItem inventoryItem)
     {
         foreach(ItemProperty itemProperty in materialsInInventory.Values)
