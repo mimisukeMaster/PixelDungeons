@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class CraftingDescriptionCanvas : MonoBehaviour
 {
+    public InventoryManager inventoryManager;
     public Image itemImage;
     public TMP_Text itemNameText;
     public TMP_Text damageText;
@@ -13,6 +14,7 @@ public class CraftingDescriptionCanvas : MonoBehaviour
     public TMP_Text speedText;
     public TMP_Text rangeText;
     public GameObject materialUI;
+    public Color CraftableColor;
     public Transform materialUIParent;
     private GameObject[] addedElements;
 
@@ -42,7 +44,9 @@ public class CraftingDescriptionCanvas : MonoBehaviour
             //画像を設定
             ui.transform.GetChild(0).GetComponent<Image>().sprite = materials[i].Material.ItemImage;
             //数を設定
-            ui.transform.GetChild(1).GetComponent<TMP_Text>().text = materials[i].number.ToString();
+            ui.transform.GetChild(1).GetComponent<TMP_Text>().text = $"{inventoryManager.GetItemNumber(materials[i].Material)}/{materials[i].number}";
+            //素材が足りていたら緑にする
+            if(inventoryManager.GetItemNumber(materials[i].Material) >= materials[i].number)ui.GetComponent<Image>().color = CraftableColor;
         }
     }
 }
