@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class LargeDropAttackEnemy : EnemyController
+public class BigDropAttackEnemy : EnemyController
 {
     [Space(20)]
     [Tooltip("飛行高度")]
-    public float Altitude = 30.0f;
-    [Tooltip("弾の落下時間間隔")]
+    public float Altitude = 20.0f;
+    [Tooltip("爆発弾の落下時間間隔")]
     public float DropInterval = 1.0f;
     [Tooltip("弾のPrefab")]
     public GameObject Bullet;
@@ -26,7 +26,8 @@ public class LargeDropAttackEnemy : EnemyController
     protected override void Start()
     {
         base.Start();
-        
+
+        nextDropTime = Time.time;
         ChasingSpeed = 10.0f;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
@@ -77,6 +78,7 @@ public class LargeDropAttackEnemy : EnemyController
         {
             DropBomb();
             nextDropTime = Time.time + DropInterval;
+            Debug.Log("攻撃タイミング");
         }
     }
 

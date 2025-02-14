@@ -787,6 +787,7 @@ MonoBehaviour:
   dummy: {fileID: 0}
   HPBar: {fileID: 0}
   HPText: {fileID: 0}
+  DamegedSE: {fileID: 0}
 --- !u!1001 &511280287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2782,6 +2783,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[0].count
       value: 1
       objectReference: {fileID: 0}
@@ -2797,6 +2802,14 @@ PrefabInstance:
       propertyPath: Enemies.Array.data[3].count
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[4].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[4].enemy
+      value: 
+      objectReference: {fileID: 7056604927472754041, guid: af0adbd03301a3a43822f49d58b29600, type: 3}
     - target: {fileID: 677572351791009707, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: m_Name
       value: SpawnManager
