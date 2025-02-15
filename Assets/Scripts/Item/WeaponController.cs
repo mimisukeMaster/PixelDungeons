@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
     [System.NonSerialized]
     public Item_Weapon weapon;
     public Transform EmitTransform;
-    public AudioClip AttackSE;
+    public AudioClip[] AttackSEs;
 
     private bool isRightHand;
     private Animator animator;
@@ -62,7 +62,7 @@ public class WeaponController : MonoBehaviour
     {
         if (isRightHand && PlayerController.isGaming) 
         {
-            audioSource.PlayOneShot(AttackSE);
+            audioSource.PlayOneShot(AttackSEs[Random.Range(0, 3)]);
             Attack();
         }
     }
@@ -83,8 +83,10 @@ public class WeaponController : MonoBehaviour
         {
             // 攻撃
             if (Time.time - onClickTime >= 0.5f) isSuperAttack = true;
-            audioSource.PlayOneShot(AttackSE);
-            for(int i = 0;i < weapon.attackNumber;i++)Attack();
+            
+            // ランダムに効果音を鳴らす
+            audioSource.PlayOneShot(AttackSEs[Random.Range(0, 3)]);
+            for (int i = 0; i < weapon.attackNumber; i++) Attack();
         }
     }
 

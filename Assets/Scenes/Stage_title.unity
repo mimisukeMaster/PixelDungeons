@@ -913,7 +913,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Made by <b><i>UniGunkan</i></b>\n\n<b><u>Planning</u></b>\nRen\n<b><u>Graphics</u></b>\nRen,
     Sora, Agary, 67\n<b><u>Programming</u></b> \nMimisuke, Konnyaku\n<b><u>Sounds</u></b>\nBunchoo,
-    Light bulb   <size=\"33\"><color=\"yellow\"><b>click to continue...</b></color></size>\n<size=\"13\">\n\xA92024-2025
+    Light bulb   <size=\"33\"><color=\"yellow\"><b>click to continue...</b></color></size>\n<size=\"5\">                     
+    </size>\n<size=\"18\">SE: https://maou.audio https://soundeffect-lab.info</size>\n<size=\"13\">\n\xA92024-2025
     Piedpiper - UniGunkan</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

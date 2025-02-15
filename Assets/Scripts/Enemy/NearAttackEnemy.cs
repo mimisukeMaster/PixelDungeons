@@ -7,14 +7,18 @@ public class NearAttackEnemy : EnemyController
     public float AttackDistance = 1.0f;
     [Tooltip("攻撃時間間隔")]
     public float BlowInterval = 1.5f;
+    [Tooltip("追跡時効果音")]
+    public AudioClip attackSE;
 
     private Animator animator;
     private float nextBlowTime;
+    private AudioSource audioSource;
 
     protected override void Start()
     {
         base.Start();
         animator = gameObject.GetComponentInChildren<Animator>();
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -36,6 +40,7 @@ public class NearAttackEnemy : EnemyController
             // 攻撃モーション 中身はNearAttackEventHandler.csから呼び出す
             if (Time.time > nextBlowTime && distanceVector.magnitude < AttackDistance)
             {
+                audioSource.PlayOneShot(attackSE);
                 gameObject.transform.forward = destVec;
                 animator.SetTrigger("Attack");
 

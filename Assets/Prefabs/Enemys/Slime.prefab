@@ -107,6 +107,7 @@ MonoBehaviour:
   DropProbability: 1
   AttackDistance: 1.5
   BlowInterval: 1.5
+  attackSE: {fileID: 8300000, guid: 93e5cddcd4fa96741b53d61f77e56bab, type: 3}
 --- !u!114 &4261218973931920639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   dummy: {fileID: 0}
   HPBar: {fileID: 3737038518282163228}
   HPText: {fileID: 2381689575751033667}
+  DamegedSE: {fileID: 0}
 --- !u!1 &7073738542969256388
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +380,10 @@ PrefabInstance:
     - target: {fileID: 2771984191672430857, guid: 6a2201b8c2fa5564ab2a5b35e9785c0d, type: 3}
       propertyPath: m_Name
       value: HPBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599064523680929294, guid: 6a2201b8c2fa5564ab2a5b35e9785c0d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
