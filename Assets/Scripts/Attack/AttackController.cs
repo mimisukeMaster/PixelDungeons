@@ -12,7 +12,7 @@ public class AttackController : MonoBehaviour
     //ステータス
     protected int damage;
     protected float speed;
-    private int penetration = 100;
+    private int penetration = 50;
 
     protected bool isHoming = false;
     protected float homingAngle;
@@ -235,7 +235,7 @@ public class AttackController : MonoBehaviour
         {
             other.GetComponentInParent<HPController>().Damaged(damage,other.transform.position);
             penetration--;
-            if(penetration <= 0)
+            if(penetration <= 40)
             {
                 OnLastHit();
             }
@@ -251,7 +251,7 @@ public class AttackController : MonoBehaviour
             {
                 if (obj.CompareTag(targetTag))
                 {
-                    obj.GetComponentInParent<HPController>().Damaged(damage,obj.transform.position);
+                    obj.GetComponentInParent<HPController>().Damaged(damage + bombDamage, obj.transform.position);
                 }
             }
         }
