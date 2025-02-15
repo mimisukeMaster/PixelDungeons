@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EmitTransform: {fileID: 0}
-  AttackSE: {fileID: 8300000, guid: ceefc6916f30fe148b200e7814cf35f4, type: 3}
+  AttackSEs:
+  - {fileID: 8300000, guid: ceefc6916f30fe148b200e7814cf35f4, type: 3}
+  - {fileID: 8300000, guid: c154407d928b79644859913aefc84ee0, type: 3}
+  - {fileID: 8300000, guid: 09205b8d6d102724aa5b88ad0e26ba31, type: 3}
 --- !u!1001 &5377683195916261657
 PrefabInstance:
   m_ObjectHideFlags: 0
