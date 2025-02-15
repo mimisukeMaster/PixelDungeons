@@ -136,6 +136,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8143764747063132115, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 27c23c10fad99f741989697f63920f0d, type: 2}
+    - target: {fileID: 8143764747063132115, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8902912114537846690, guid: 27c23c10fad99f741989697f63920f0d, type: 2}
+    - target: {fileID: 8143764747063132115, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_characterSpacing
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143764747063132115, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291199899201457346, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_margin.z
+      value: -173.25195
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291199899201457346, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 27c23c10fad99f741989697f63920f0d, type: 2}
+    - target: {fileID: 8291199899201457346, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8902912114537846690, guid: 27c23c10fad99f741989697f63920f0d, type: 2}
+    - target: {fileID: 8291199899201457346, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_characterSpacing
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291199899201457346, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3690854846825558527, guid: d04af04fcfeec5e44b2462be89638c6e, type: 3}
     m_RemovedGameObjects: []
