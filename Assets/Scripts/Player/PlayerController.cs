@@ -136,16 +136,15 @@ public class PlayerController : MonoBehaviour
         //クラフティング
         if (other.CompareTag("CraftingStation"))
         {
-             isInCraftingArea = true;
-             CraftingHint.SetActive(true);
+            isInCraftingArea = true;
+            CraftingHint.SetActive(true);
         }
         //インベントリ
         if (other.CompareTag("Chest"))
         {
             isInChestArea = true;
             ChestHint.SetActive(true);
-        } 
-        Debug.Log(isInChestArea + ":" + isInCraftingArea);
+        }
     }
 
     void OnTriggerExit(Collider other)
