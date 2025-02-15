@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     public AudioSource AudioSource;
     [Tooltip("ステージBGM")]
     public AudioClip StageBGM;
+    [Tooltip("ボス出現SE")]
+    public AudioClip BossEmergeSE;
     [Tooltip("敵の種類と出現数を設定")]
     public List<EnemyProperty> Enemies;
     [Tooltip("敵の種類と数を設定")]
@@ -67,6 +69,7 @@ public class SpawnManager : MonoBehaviour
                 GameObject boss = Instantiate(Boss, BossSpawnPos, Quaternion.identity);
                 EnemiesInStage.Add(boss);
                 bossMode = true;
+                AudioSource.PlayOneShot(BossEmergeSE);
             }
             // ボスを倒したらゴールゲート出現
             else if (goalGate == null) goalGate = Instantiate(GoalGate, BossSpawnPos, Quaternion.identity);
