@@ -1537,13 +1537,14 @@ MonoBehaviour:
   SmashInterval: 1
   SmashPosition: {fileID: 7401053809736737244}
   SmashRange: 3
-  beamProbability: 0.2
+  MoveSE: {fileID: 8300000, guid: 469ef1ed67ddfed4c85594b18508566c, type: 3}
+  BeamProbability: 0.5
   BeamDamage: 20
   BeamLength: 20
   Beam: {fileID: 1001286949525761641, guid: fc48b4a27e8832847995cd25978889dc, type: 3}
   BeamChargeTime: 1
   BeamEmissionTime: 2
-  BeamRotationProbability: 1
+  BeamRotationProbability: 0.3
   BeamRotationChargeTime: 1.5
   BeamRotationEmittionTime: 6.5
   BeamRotationDamage: 10
@@ -1574,6 +1575,7 @@ MonoBehaviour:
   dummy: {fileID: 0}
   HPBar: {fileID: 7454449955098292489}
   HPText: {fileID: 1592501525543628030}
+  DamegedSE: {fileID: 0}
 --- !u!1 &8509173655254136920
 GameObject:
   m_ObjectHideFlags: 0

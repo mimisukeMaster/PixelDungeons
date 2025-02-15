@@ -2779,6 +2779,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 0eb83f06f93a1b44b85e6850948da0c3, type: 3}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: BossEmergeSE
+      value: 
+      objectReference: {fileID: 8300000, guid: f829f8d5ca8ec6349aa2b7b980fd23ee, type: 3}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: BossSpawnPos.x
       value: 10
       objectReference: {fileID: 0}

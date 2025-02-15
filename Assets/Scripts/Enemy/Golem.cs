@@ -13,10 +13,12 @@ public class Golem : MiddleBossEnemy
     public Transform SmashPosition;
     [Tooltip("攻撃半径")]
     public float SmashRange = 4.0f;
+    [Tooltip("移動SE")]
+    public AudioClip MoveSE;
     [Space(20)]
     [Header("ビーム関係")]
     [Tooltip("ビームを出す確率")]
-    public float beamProbability = 0.2f;//遠距離の場合一定確率でビームを打つ
+    public float BeamProbability = 0.1f;//遠距離の場合一定確率でビームを打つ
     [Tooltip("ビームのダメージ")]
     public int BeamDamage = 20;
     [Tooltip("ビームの長さ")]
@@ -30,7 +32,7 @@ public class Golem : MiddleBossEnemy
     [Space(20)]
     [Header("ビーム回転関係")]
     [Tooltip("ビーム回転を出す確率")]
-    public float BeamRotationProbability;
+    public float BeamRotationProbability = 0.2f;
     [Tooltip("ビーム回転チャージ時間")]
     public float BeamRotationChargeTime = 1.5f;
     [Tooltip("ビームが出ている時間")]
@@ -50,6 +52,13 @@ public class Golem : MiddleBossEnemy
     public float TurningTime = 0.1f;
 
     private bool isInitChasing = true;
+    private AudioSource audioSource;
+
+    protected override void Start()
+    {
+        base.Start();
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
+    }
 
     protected override void Update()
     {
@@ -108,11 +117,15 @@ public class Golem : MiddleBossEnemy
             {
                 animator.SetTrigger("BeamRotation");
             }
-            else if (Random.value < beamProbability)
+            else if (Random.value < BeamProbability)
             {
                 animator.SetTrigger("Beam");
             }
-            else animator.SetTrigger("Move");
+            else
+            {
+                animator.SetTrigger("Move");
+                audioSource.PlayOneShot(MoveSE);
+            }
         }
     }
 
@@ -148,7 +161,7 @@ public class Golem : MiddleBossEnemy
         else Eye.transform.rotation = Quaternion.Euler(90.0f, 0f, 0f);
 
         GameObject beam = Instantiate(Beam, Eye.transform.position, Quaternion.AngleAxis(90.0f, Eye.transform.right) * Eye.transform.rotation);
-        LineRenderer line = beam.transform.parent.GetComponent<LineRenderer>();
+        LineRenderer line = beam.GetComponent<LineRenderer>();
         beam.GetComponentInChildren<AttackController>().Init("Player",  float.PositiveInfinity,Damage,line,  BeamChargeTime, BeamEmissionTime, 20.0f);
     }
 
