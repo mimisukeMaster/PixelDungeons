@@ -17,7 +17,7 @@ public class BigDropAttackEnemy : EnemyController
     [Header("爆発攻撃用パラメータ")]
     [Tooltip("爆発の半径")]
     public float BombRadius = 5.0f;
-    [Tooltip("爆発ダメージ(追加ダメージ)")]
+    [Tooltip("爆発ダメージ")]
     public int BombDamage = 20;
 
 
