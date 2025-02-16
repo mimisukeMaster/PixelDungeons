@@ -1,4 +1,3 @@
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using System.Collections;
 
@@ -251,6 +250,7 @@ public class AttackController : MonoBehaviour
             {
                 if (obj.CompareTag(targetTag))
                 {
+                    if (ImpactSE) audioSource.PlayOneShot(ImpactSE);
                     obj.GetComponentInParent<HPController>().Damaged(damage + bombDamage, obj.transform.position);
                 }
             }
