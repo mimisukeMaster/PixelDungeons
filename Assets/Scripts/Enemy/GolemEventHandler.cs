@@ -31,6 +31,7 @@ public class GolemEventHandler : MonoBehaviour
     public void OnMoveEnd()
     {
         golem.transform.position += golem.transform.forward * ARM_ANIMATION_SPAN;
+        golem.RingMoveSE();
         golem.CheckNextMove();
     }
 

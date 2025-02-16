@@ -124,10 +124,11 @@ public class Golem : MiddleBossEnemy
             else
             {
                 animator.SetTrigger("Move");
-                audioSource.PlayOneShot(MoveSE);
             }
         }
     }
+
+    public void RingMoveSE() => audioSource.PlayOneShot(MoveSE);
 
     private IEnumerator Turn( Vector3 destVec)
     {
