@@ -23,11 +23,13 @@
 <p align="center">
     <img src="Assets/Images/Textures/PixelDungeons_icon_light.png" width="100">
 </p>
-<a href="https://unityroom.com/games/pixeldungeons">
-    <h3>
-        <p align="center">▶ プレイはこちらから</p>
-    </h3>
-</a>
+<h3>
+    <p align="center">
+        <a href="https://unityroom.com/games/pixeldungeons">
+        ▶ プレイはこちらから
+        </a>
+    </p>
+</h3>
 
 ## 制作者
 このゲームは複数人で開発されたものです。
