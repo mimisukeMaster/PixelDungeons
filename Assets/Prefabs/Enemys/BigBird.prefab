@@ -426,6 +426,7 @@ MonoBehaviour:
   FlyUpAnimationSpeed: 2
   BombRadius: 5
   BombDamage: 20
+  chirpSE: {fileID: 8300000, guid: d425e65644ba0184e8c02b2d9c9e0d58, type: 3}
 --- !u!114 &1174642608226223176
 MonoBehaviour:
   m_ObjectHideFlags: 0

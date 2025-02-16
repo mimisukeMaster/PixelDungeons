@@ -2177,6 +2177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnManager: {fileID: 0}
   CountDownUI: {fileID: 7966231135029482502}
+  GameStartSE: {fileID: 8300000, guid: 2d39ade944a3bfa439c976b5458ebe18, type: 3}
   IsDebugMode: 0
 --- !u!1 &2568019598713058250
 GameObject:

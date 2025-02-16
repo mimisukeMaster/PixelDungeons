@@ -19,15 +19,19 @@ public class BigDropAttackEnemy : EnemyController
     public float BombRadius = 5.0f;
     [Tooltip("爆発ダメージ")]
     public int BombDamage = 20;
+    [Tooltip("鳴き声SE")]
+    public AudioClip chirpSE;
 
 
     private float nextDropTime;
+    private AudioSource audioSource;
 
     protected override void Start()
     {
         base.Start();
 
         nextDropTime = Time.time;
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
         ChasingSpeed = 10.0f;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
@@ -78,7 +82,6 @@ public class BigDropAttackEnemy : EnemyController
         {
             DropBomb();
             nextDropTime = Time.time + DropInterval;
-            Debug.Log("攻撃タイミング");
         }
     }
 
@@ -87,10 +90,10 @@ public class BigDropAttackEnemy : EnemyController
     /// </summary>
     private void DropBomb()
     {
-    
+        audioSource.PlayOneShot(chirpSE, 0.5f);
         GameObject bulletObj = Instantiate(Bullet, transform.position, Quaternion.identity);
 
-    
+
         bulletObj.GetComponent<AttackController>().Init(
             "Player",       // 攻撃対象のタグ
             5.0f,           // 弾が何秒後に消えるか
