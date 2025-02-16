@@ -2833,11 +2833,15 @@ PrefabInstance:
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: StageBGM
       value: 
-      objectReference: {fileID: 8300000, guid: effdff17dba93a14e922146f340c83f9, type: 3}
+      objectReference: {fileID: 8300000, guid: 9e3f87e9a1cb6a440ab76b479707d3e5, type: 3}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: AudioSource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: BossEmergeSE
+      value: 
+      objectReference: {fileID: 8300000, guid: f829f8d5ca8ec6349aa2b7b980fd23ee, type: 3}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: playerController
       value: 

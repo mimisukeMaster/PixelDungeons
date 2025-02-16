@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
         if (StageBGM)
         {
             AudioSource.clip = StageBGM;
-            AudioSource.Play();
+            AudioSource.PlayDelayed(3.0f);
         }
         else Debug.LogWarning("ステージBGM未設定");
         
@@ -54,7 +54,7 @@ public class SpawnManager : MonoBehaviour
         PlayerController.isGaming = false;
     }
 
-    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         EnemiesInStage.Clear();
     }

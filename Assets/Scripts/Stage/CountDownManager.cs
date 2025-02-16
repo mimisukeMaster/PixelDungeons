@@ -2,12 +2,12 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor.PackageManager;
 
 public class CountDownManager : MonoBehaviour
 {
     public SpawnManager spawnManager;
     public GameObject CountDownUI;
+    public AudioClip GameStartSE;
 
     private TMP_Text textComponent;
 
@@ -41,6 +41,7 @@ public class CountDownManager : MonoBehaviour
             }
             textComponent.text = "Start!";
             if (spawnManager != null) spawnManager.SpawnEnemies();
+            GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>().PlayOneShot(GameStartSE);
         }
         
         PlayerController.isGaming = true;

@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour
             isInChestArea = false;
             ChestHint.SetActive(false);
         }
-        Debug.Log(isInChestArea + ":" + isInCraftingArea);
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext controls)
