@@ -49,7 +49,7 @@ public class HPController : MonoBehaviour
         }
 
         HP -= damage;
-
+        
         UpdateHPBar();
         //プレイヤーがダメージを受けるとUIを表示
         if (gameObject.CompareTag("Player"))
