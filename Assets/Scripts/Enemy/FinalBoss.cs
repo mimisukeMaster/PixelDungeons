@@ -6,20 +6,41 @@ using UnityEngine;
 public class FinalBoss : EnemyController
 {
     public List<FinalBossChild> finalBossChildren = new List<FinalBossChild>();
-    public HPController hPController;
     public GameObject shield;
+    public HPController hPController;
     [Header("ランダムショット")]
     public Coroutine randomShotCoroutine;
     public int randomShotDamage;
     public GameObject randomShotPrefab;
+    [Tooltip("デバッグ用:スタート時卵を倒した状態にする")]
+    public bool BossInstantKill;
 
     public Transform estimatedPlayerPositionObject;
+    [Header("死亡処理")]
+    public ParticleSystem destroyParticle;
+    public float crackTime;
+    public Material crackMaterial;
+    public MeshRenderer eggMeshRenderer;
+    [Tooltip("ドラゴンのプレハブ")]
+    public GameObject Dragon;
+    private bool isAttackMode;
+    private bool isDead = false;
 
     protected override void Start() 
     {
         base.Start();
+        if(BossInstantKill)
+        {
+            Debug.Log("卵即殺す");
+            OnDied(gameObject);
+            return;
+        }
+        CheckState();
+        isAttackMode = true;
         hPController.canBeDamaged = false;
         shield.SetActive(true);
+
+        if(finalBossChildren.Count == 0)return;
         foreach(FinalBossChild finalBossChild in finalBossChildren)
         {
             finalBossChild.Init(this);
@@ -34,19 +55,24 @@ public class FinalBoss : EnemyController
     public void OnChildDestroyed(FinalBossChild finalBossChild)
     {
         finalBossChildren.Remove(finalBossChild);
+        CheckState();
+    }
+
+    private void CheckState()
+    {
         switch(finalBossChildren.Count)
         {
             case 0:
                 OnAllChildrenDead();
-                StopCoroutine(randomShotCoroutine);
+                if(randomShotCoroutine != null)StopCoroutine(randomShotCoroutine);
                 randomShotCoroutine = StartCoroutine(RandomShot(20,0.3f,20,15));
                 break;
             case 1:
-                StopCoroutine(randomShotCoroutine);
+                if(randomShotCoroutine != null)StopCoroutine(randomShotCoroutine);
                 randomShotCoroutine = StartCoroutine(RandomShot(20,0.3f,20,15));
                 break;
             case 2: 
-                StopCoroutine(randomShotCoroutine);
+                if(randomShotCoroutine != null)StopCoroutine(randomShotCoroutine);
                 randomShotCoroutine = StartCoroutine(RandomShot(10,0.3f,20,15));
                 break;
             case 3:
@@ -61,6 +87,7 @@ public class FinalBoss : EnemyController
 
     private void OnAllChildrenDead()
     {
+        Debug.Log("All Childeren Destroyed");
         hPController.canBeDamaged = true;
         shield.SetActive(false);
     }
@@ -68,7 +95,7 @@ public class FinalBoss : EnemyController
     private IEnumerator RandomShot(int number,float fireRate,float spread,float speed)
     {
         WaitForSeconds waitForCoolDown = new WaitForSeconds(fireRate);
-        while(true)
+        while(true && isAttackMode)
         {
             PlayerController playerController = targetPlayer.GetComponent<PlayerController>();
             Vector3 estimatedPlayerPosition = targetPlayer.transform.position + playerController.lastMoveDirection * (targetPlayer.transform.position - transform.position).magnitude / (speed/10);
@@ -79,7 +106,7 @@ public class FinalBoss : EnemyController
                 Quaternion randomDirection = Quaternion.Euler(Random.Range(-spread,spread),
                                                         Random.Range(-spread,spread),
                                                         Random.Range(-spread,spread));
-                GameObject bullet = Instantiate(randomShotPrefab,transform.position,Quaternion.identity);
+                GameObject bullet = Instantiate(randomShotPrefab,transform.position + Vector3.up * 2,Quaternion.identity);
                 bullet.GetComponent<AttackController>().Init("Player",randomShotDamage,100,1);
                 bullet.GetComponent<Rigidbody>().linearVelocity = randomDirection * ((estimatedPlayerPosition-transform.position).normalized*speed);
             }
@@ -89,7 +116,24 @@ public class FinalBoss : EnemyController
 
     public override void OnDied(GameObject gameObject)
     {
-        base.OnDied(gameObject);
+        if(!isDead)
+        {
+            StartCoroutine(Crack());
+            isDead = true;
+        }
+    }
 
+    private IEnumerator Crack()
+    {
+        isAttackMode = false;
+        hPController.canBeDamaged = false;
+        eggMeshRenderer.materials[0] = crackMaterial;
+        Destroy(hPController.HPBar.transform.parent.parent.gameObject);
+        yield return new WaitForSeconds(crackTime);
+        destroyParticle.Play();
+        Instantiate(Dragon,transform.position + new Vector3(0,2,1),Quaternion.Euler(-90,0,0));
+        Destroy(eggMeshRenderer.gameObject);
+        yield return new WaitForSeconds(5);//卵が壊れるエフェクトが消えるまで待機
+        base.OnDied(transform.parent.gameObject);
     }
 }
