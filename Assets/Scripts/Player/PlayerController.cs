@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public GameObject ClearCanvas;
     [Tooltip("ゴールゲート通過SE")]
     public AudioClip GoalGateSE;
+    [Tooltip("ラスボスを倒した後のジングル")]
+    public AudioClip DefeatedGingle;
 
     private Rigidbody rb;
     private Vector2 moveInput;
@@ -246,6 +248,13 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(GoalGateSE);
         ClearCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+
+        // 最終ステージなら専用ジングルを鳴らす
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            audioSource.clip = DefeatedGingle;
+            audioSource.Play();
+        }
         Time.timeScale = 0;
     }
 }
