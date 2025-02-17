@@ -1907,6 +1907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d12a0da81315e479d89a32e1065754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HomeBGM: {fileID: 0}
 --- !u!114 &2190335868394183109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5185,6 +5186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d12a0da81315e479d89a32e1065754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HomeBGM: {fileID: 8300000, guid: 141f8f6a08b72884faf39094fca01f2b, type: 3}
 --- !u!114 &6912050986424600244
 MonoBehaviour:
   m_ObjectHideFlags: 0

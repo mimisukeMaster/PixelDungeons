@@ -53,7 +53,7 @@ public class DamageNumberManager : MonoBehaviour
 
     private void DisableUICount(GameObject UI)
     {
-        StartCoroutine(DisableUI(UI));
+        if (UI) StartCoroutine(DisableUI(UI));
     }
 
     private IEnumerator DisableUI(GameObject UI)

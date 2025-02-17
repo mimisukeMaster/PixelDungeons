@@ -24,6 +24,7 @@ public class CountDownManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         spawnManager = GameObject.Find("SpawnManager")?.GetComponent<SpawnManager>();
+        if (this == null) return;
         transform.parent.gameObject.SetActive(true);
         StartCoroutine(CountDown());
     }
@@ -42,11 +43,11 @@ public class CountDownManager : MonoBehaviour
             textComponent.text = "Start!";
             if (spawnManager != null) spawnManager.SpawnEnemies();
             GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>().PlayOneShot(GameStartSE);
+            
+            PlayerController.isGaming = true;
+            yield return new WaitForSeconds(1.0f);
         }
-        
-        PlayerController.isGaming = true;
-
-        yield return new WaitForSeconds(1.0f);
+        else PlayerController.isGaming = true;
         CountDownUI.SetActive(false);
 
     }
