@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FinalBoss : EnemyController
 {
+    [Space(20)]
     public List<FinalBossChild> finalBossChildren = new List<FinalBossChild>();
     public GameObject shield;
     public HPController hPController;
@@ -12,6 +13,7 @@ public class FinalBoss : EnemyController
     public Coroutine randomShotCoroutine;
     public int randomShotDamage;
     public GameObject randomShotPrefab;
+    [Space(10)]
     [Tooltip("デバッグ用:スタート時卵を倒した状態にする")]
     public bool BossInstantKill;
 
@@ -127,8 +129,8 @@ public class FinalBoss : EnemyController
     {
         isAttackMode = false;
         hPController.canBeDamaged = false;
-        eggMeshRenderer.materials[0] = crackMaterial;
-        Destroy(hPController.HPBar.transform.parent.parent.gameObject);
+        eggMeshRenderer.material = crackMaterial;
+        Destroy(hPController.HPBar.transform.parent.parent.gameObject);//HPバーを消す
         yield return new WaitForSeconds(crackTime);
         destroyParticle.Play();
         Instantiate(Dragon,transform.position + new Vector3(0,2,1),Quaternion.Euler(-90,0,0));

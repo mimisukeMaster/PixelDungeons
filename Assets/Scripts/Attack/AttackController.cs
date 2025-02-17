@@ -232,6 +232,7 @@ public class AttackController : MonoBehaviour
         // タグで判定する
         if (other.CompareTag(targetTag))
         {
+            Debug.Log("Damage:"+other.gameObject.name);
             other.GetComponentInParent<HPController>().Damaged(damage,other.transform.position);
             penetration--;
             if(penetration <= 40)
