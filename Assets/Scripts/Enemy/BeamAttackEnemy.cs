@@ -1,6 +1,4 @@
 using System.Collections;
-using NUnit.Framework.Constraints;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class BeamAttackEnemy : EnemyController
