@@ -1129,10 +1129,11 @@ MonoBehaviour:
   homingInterval: 1
   HomingSpread: 20
   shotsPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
-  shotsDamage: 0
+  shotsDamage: 5
   shotsSpeed: 20
   shotsFireRate: 0.2
   shotsNumber: 30
+  shotsSpread: 5
   shotsChargeTime: 1
   isCharging: 0
   chargeDamage: 30
@@ -1167,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 100
+  MaxHP: 500
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0

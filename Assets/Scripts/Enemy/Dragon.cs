@@ -17,7 +17,6 @@ public class Dragon : EnemyController
     public float normalAltitude;
     public float AltitudeRandomness;
     private Transform myTransform;
-    private Transform MoveTargetSphere;//デバッグ用
     public Animator animator;
 
     [Space(20)]
@@ -39,6 +38,7 @@ public class Dragon : EnemyController
     public float shotsSpeed;
     public float shotsFireRate;
     public int shotsNumber;
+    public float shotsSpread;
     public float shotsChargeTime;
 
     [Header("突進")]
@@ -89,7 +89,6 @@ public class Dragon : EnemyController
     protected override void Start()
     {
         base.Start();
-        MoveTargetSphere = GameObject.Find("DragonMoveTransformSphere").transform;
         myTransform = transform;
         dragonState = DragonState.init;
     }
@@ -145,7 +144,6 @@ public class Dragon : EnemyController
                                                         Quaternion.LookRotation(MoveTargetPosition - myTransform.position),
                                                         rotationSpeed * Time.deltaTime);
 
-        MoveTargetSphere.position = MoveTargetPosition;
         if((myTransform.position - MoveTargetPosition).sqrMagnitude <= SqrMoveUpdateDistance)
         {
             Vector3 moveTransform = targetPlayer.transform.position + new Vector3(Random.Range(-10,10),normalAltitude + Random.Range(-AltitudeRandomness,AltitudeRandomness),Random.Range(-10,10));
@@ -181,7 +179,7 @@ public class Dragon : EnemyController
             {
                 Quaternion randomSpread = Quaternion.Euler(Random.Range(-HomingSpread,HomingSpread),Random.Range(-HomingSpread,HomingSpread),Random.Range(-HomingSpread,HomingSpread));
                 GameObject homingBullet = Instantiate(homingPrefab,transform.position,randomSpread * Quaternion.Euler(-90,0,0) * myTransform.rotation);
-                homingBullet.GetComponent<AttackController>().Init("Player",30,homingDamage,homingSpeed,homingAngle,1000);
+                homingBullet.GetComponent<AttackController>().Init("Player",10,homingDamage,homingSpeed,homingAngle,1000);
                 yield return new WaitForSeconds(homingFireRate);
             }
         }
@@ -231,8 +229,9 @@ public class Dragon : EnemyController
         for(int i = 0;i < shotsNumber;i++)
         {
             GameObject bullet = Instantiate(shotsPrefab,myTransform.position,Quaternion.identity);
+            Quaternion randomDirection = Quaternion.Euler(Random.Range(-shotsSpread,shotsSpread),Random.Range(-shotsSpread,shotsSpread),Random.Range(-shotsSpread,shotsSpread));
             bullet.GetComponent<AttackController>().Init("Player",shotsDamage,100,1);
-            bullet.GetComponent<Rigidbody>().linearVelocity = (targetPlayer.transform.position-myTransform.position+ new Vector3(0,0.5f,0)).normalized*shotsSpeed;
+            bullet.GetComponent<Rigidbody>().linearVelocity = randomDirection * ((targetPlayer.transform.position-myTransform.position+ new Vector3(0,0.5f,0)).normalized*shotsSpeed);
             yield return new WaitForSeconds(shotsFireRate);
         }
     }
@@ -254,8 +253,6 @@ public class Dragon : EnemyController
         myTransform.rotation = Quaternion.RotateTowards(myTransform.rotation,
                                                         Quaternion.LookRotation(MoveTargetPosition - myTransform.position),
                                                         ChargeRotation * Time.deltaTime);
-        
-        MoveTargetSphere.position = MoveTargetPosition;
 
         if((myTransform.position - MoveTargetPosition).sqrMagnitude <= SqrMoveUpdateDistance)
         {
