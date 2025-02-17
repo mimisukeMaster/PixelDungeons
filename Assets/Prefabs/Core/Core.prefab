@@ -3473,6 +3473,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2021140416048331867}
     - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: DefeatedGingle
+      value: 
+      objectReference: {fileID: 8300000, guid: 1446f8bd9822e5e4997a3e5a93b4178f, type: 3}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: GameOverCanvas
       value: 
       objectReference: {fileID: 6393387345529411399}
