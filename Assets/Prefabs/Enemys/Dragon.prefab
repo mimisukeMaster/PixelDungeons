@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 4582593091236303654}
   - component: {fileID: 7996918279368633236}
   - component: {fileID: 7490994185145688532}
+  - component: {fileID: 9116893248548594112}
   m_Layer: 7
   m_Name: Dragon
   m_TagString: Enemy
@@ -1118,8 +1119,23 @@ MonoBehaviour:
   dragonState: 0
   normalAltitude: 15
   AltitudeRandomness: 1
-  MoveTargetSphere: {fileID: 0}
   animator: {fileID: 8503330183215317262}
+  homingPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  homingDamage: 10
+  homingSpeed: 20
+  homingAngle: 90
+  homingFireRate: 0.5
+  homingNumber: 8
+  homingInterval: 1
+  HomingSpread: 20
+  shotsPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  shotsDamage: 0
+  shotsSpeed: 20
+  shotsFireRate: 0.2
+  shotsNumber: 30
+  shotsChargeTime: 1
+  isCharging: 0
+  chargeDamage: 30
   ascentionSpeed: 10
   moveSpeed: 7
   moveRange: 30
@@ -1161,6 +1177,33 @@ MonoBehaviour:
   HPBar: {fileID: 4309676382012022799}
   HPText: {fileID: 2963049020038747984}
   DamegedSE: {fileID: 0}
+--- !u!54 &9116893248548594112
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313183180756558614}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4573415420950152346
 GameObject:
   m_ObjectHideFlags: 0
