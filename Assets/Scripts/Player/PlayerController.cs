@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public GameObject GamingCanvas;
     [Tooltip("クリア時のキャンバス")]
     public GameObject ClearCanvas;
+    [Tooltip("ラスボスクリア時のキャンバス")]
+    public GameObject LastBossClearCanvas;
     [Tooltip("ゴールゲート通過SE")]
     public AudioClip GoalGateSE;
     [Tooltip("ラスボスを倒した後のジングル")]
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
+        if (LastBossClearCanvas.activeSelf) LastBossClearCanvas.SetActive(false);
+
     }
 
     private void FixedUpdate()
@@ -103,6 +107,9 @@ public class PlayerController : MonoBehaviour
                              * MoveSpeed * Time.fixedDeltaTime;
         lastMoveDirection = move * MoveSpeed;
         rb.MovePosition(rb.position + move);
+
+        // バグで地面を貫通したときは戻る
+        if (transform.position.y < -10.0f) transform.position = new Vector3(0, 1.0f, 0f);
     }
 
     private void OnEnable() => controls.Enable();
@@ -246,15 +253,17 @@ public class PlayerController : MonoBehaviour
     public void OnCleared()
     {
         audioSource.PlayOneShot(GoalGateSE);
-        ClearCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
 
-        // 最終ステージなら専用ジングルを鳴らす
+        // 最終ステージなら専用ジングル&UI
         if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             audioSource.clip = DefeatedGingle;
             audioSource.Play();
+            LastBossClearCanvas.SetActive(true);
         }
+        else ClearCanvas.SetActive(true);
+
         Time.timeScale = 0;
     }
 }

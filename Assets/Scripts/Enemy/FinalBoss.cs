@@ -13,6 +13,7 @@ public class FinalBoss : EnemyController
     public Coroutine randomShotCoroutine;
     public int randomShotDamage;
     public GameObject randomShotPrefab;
+    public AudioClip ShotSE;
     [Space(10)]
     [Tooltip("デバッグ用:スタート時卵を倒した状態にする")]
     public bool BossInstantKill;
@@ -27,6 +28,7 @@ public class FinalBoss : EnemyController
     public GameObject Dragon;
     private bool isAttackMode;
     private bool isDead = false;
+    private AudioSource audioSource;
 
     protected override void Start() 
     {
@@ -41,6 +43,7 @@ public class FinalBoss : EnemyController
         isAttackMode = true;
         hPController.canBeDamaged = false;
         shield.SetActive(true);
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
 
         if(finalBossChildren.Count == 0)return;
         foreach(FinalBossChild finalBossChild in finalBossChildren)
@@ -111,6 +114,8 @@ public class FinalBoss : EnemyController
                 GameObject bullet = Instantiate(randomShotPrefab,transform.position + Vector3.up * 2,Quaternion.identity);
                 bullet.GetComponent<AttackController>().Init("Player",randomShotDamage,100,1);
                 bullet.GetComponent<Rigidbody>().linearVelocity = randomDirection * ((estimatedPlayerPosition-transform.position).normalized*speed);
+            
+                audioSource.PlayOneShot(ShotSE, 0.5f);
             }
             yield return waitForCoolDown;
         }

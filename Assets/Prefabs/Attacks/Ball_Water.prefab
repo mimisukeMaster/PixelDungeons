@@ -4845,9 +4845,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3d02b733269745042b856cbf0b12a5ff, type: 2}
+    - target: {fileID: 5446192679253101757, guid: 0d331a0ec28ace64ca18a0a44bb169eb, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446192679253101757, guid: 0d331a0ec28ace64ca18a0a44bb169eb, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446192679253101757, guid: 0d331a0ec28ace64ca18a0a44bb169eb, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9007925078282847142, guid: 0d331a0ec28ace64ca18a0a44bb169eb, type: 3}
       propertyPath: m_Name
-      value: BaseBallMagic Variant
+      value: Ball_Water
       objectReference: {fileID: 0}
     - target: {fileID: 9094077744489869901, guid: 0d331a0ec28ace64ca18a0a44bb169eb, type: 3}
       propertyPath: m_LocalPosition.x
