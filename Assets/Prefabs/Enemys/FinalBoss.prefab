@@ -369,6 +369,7 @@ MonoBehaviour:
   hPController: {fileID: 1056807846879872554}
   randomShotDamage: 10
   randomShotPrefab: {fileID: 3678542401583548555, guid: 434af81b428baec4ba7830c41c63978e, type: 3}
+  ShotSE: {fileID: 8300000, guid: e27a199289142a44c8d5cb2f0d727e28, type: 3}
   BossInstantKill: 0
   estimatedPlayerPositionObject: {fileID: 1673443795500433780}
   destroyParticle: {fileID: 2504030894784923776}
