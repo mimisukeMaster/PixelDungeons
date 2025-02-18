@@ -3175,6 +3175,8 @@ MonoBehaviour:
   fireRateText: {fileID: 5932339947256366501}
   speedText: {fileID: 7171532962283148061}
   rangeText: {fileID: 4880984138604434342}
+  healthText: {fileID: 0}
+  moveSpeedText: {fileID: 0}
   materialUI: {fileID: 819665673722440334, guid: c68f466d0f2ecd846a2bef0eca3ab5e3, type: 3}
   CraftableColor: {r: 0.57079923, g: 0.9528302, b: 0.6071348, a: 1}
   materialUIParent: {fileID: 8873123000655187706}
@@ -3958,7 +3960,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 5574397052671701337}
-  descriptionCanvas: {fileID: 5166152009894694350}
+  descriptionCanvasWeapon: {fileID: 0}
+  descriptionCanvasArmor: {fileID: 0}
 --- !u!224 &2459622084965841730 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 874938666588445461, guid: bf2178734ffe7ef499c3fc47443f3c4d, type: 3}
@@ -4133,7 +4136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3037323939809079600, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: Weight
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3304640302947131707, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: m_Layer
