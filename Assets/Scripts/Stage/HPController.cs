@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class HPController : MonoBehaviour
 {   
@@ -33,6 +36,7 @@ public class HPController : MonoBehaviour
     void Start()
     {
         ChangeMaxHP(MaxHP);
+        SceneManager.sceneLoaded += OnSceneLoaded;
         if(gameObject.CompareTag("Player")) audioSource = transform.parent.GetComponentInChildren<AudioSource>();
     }
 
@@ -41,6 +45,11 @@ public class HPController : MonoBehaviour
         MaxHP = hp;
         HP = hp;
         UpdateHPBar();
+    }
+
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        ChangeMaxHP(MaxHP);
     }
 
     public void Damaged(int damage,Vector3 UIPosition)
