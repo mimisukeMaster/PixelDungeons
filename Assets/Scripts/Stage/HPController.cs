@@ -32,11 +32,16 @@ public class HPController : MonoBehaviour
 
     void Start()
     {
-        HP = MaxHP;
-        UpdateHPBar();
+        ChangeMaxHP(MaxHP);
         if(gameObject.CompareTag("Player")) audioSource = transform.parent.GetComponentInChildren<AudioSource>();
     }
 
+    public void ChangeMaxHP(int hp)
+    {
+        MaxHP = hp;
+        HP = hp;
+        UpdateHPBar();
+    }
 
     public void Damaged(int damage,Vector3 UIPosition)
     {
