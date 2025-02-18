@@ -96,12 +96,14 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true;
         rb.isKinematic = false;
         transform.position = new Vector3(0f, 0.5f, 0f);
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(transform.right);
         moveInput = Vector2.zero;
         Cursor.lockState = CursorLockMode.Locked;
         nowSceneIndex = scene.buildIndex;
 
+        if (!GamingCanvas.activeSelf) GameOverCanvas.SetActive(true);
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
+        if (GameOverCanvas.activeSelf) GameOverCanvas.SetActive(false);
         if (LastBossClearCanvas.activeSelf) LastBossClearCanvas.SetActive(false);
 
     }
@@ -116,7 +118,7 @@ public class PlayerController : MonoBehaviour
         if (lastMoveDirection != Vector3.zero && !isSoundWalkSE) StartCoroutine(SoundWalkSE());
 
         // バグで地面を貫通したときは戻る
-        if (transform.position.y < -10.0f) transform.position = new Vector3(0, 1.0f, 0f);
+        if (transform.position.y < -10.0f) transform.position = new Vector3(0, 30.0f, 0f);
     }
     private IEnumerator SoundWalkSE()
     {

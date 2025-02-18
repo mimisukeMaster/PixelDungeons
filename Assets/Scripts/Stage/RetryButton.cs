@@ -15,10 +15,4 @@ public class GameOverUIController : MonoBehaviour
         SceneManager.LoadScene(nowSceneIndex);
         Time.timeScale = 1.0f;
     }
-
-    public void OnTitle()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1.0f;
-    }
 }
