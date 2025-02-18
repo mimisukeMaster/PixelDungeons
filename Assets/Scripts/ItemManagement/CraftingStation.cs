@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using NUnit.Framework.Interfaces;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 //CraftCanvasのCanvas下のContentに付ける
 //Craftingがこれに依存している
@@ -10,6 +11,7 @@ public class CraftingStation : MonoBehaviour
     public InventoryManager inventoryManager;
     public CraftingDescriptionCanvas descriptionCanvasWeapon;
     public CraftingDescriptionCanvas descriptionCanvasArmor;
+    public Scrollbar slider;
 
     CraftingElement.CraftingMaterial[] materials;
     Item resultItem;
@@ -38,6 +40,7 @@ public class CraftingStation : MonoBehaviour
     {
         descriptionCanvasArmor.gameObject.SetActive(false);
         descriptionCanvasWeapon.gameObject.SetActive(false);
+        slider.value = 1;
     }
 
     public bool Craft()

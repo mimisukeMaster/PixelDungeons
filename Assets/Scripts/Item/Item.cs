@@ -11,5 +11,4 @@ public class Item:MonoBehaviour
     public Sprite ItemImage;
     [Tooltip("アイテムの名前")]
     public string ItemName;
-    public string Description;
 }

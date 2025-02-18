@@ -135,10 +135,11 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Damage: 10
-  DropItem: {fileID: 1164410848181273032, guid: 6437ffc018a8550438e0a578dd2cb2be, type: 3}
+  DropItem: {fileID: 6673645443347270499, guid: f8d73abc458491a45b15078131f090fb, type: 3}
   DropProbability: 1
   AttackDistance: 1.5
   BlowInterval: 1.5
+  attackSE: {fileID: 0}
 --- !u!114 &8799816239257199025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +162,7 @@ MonoBehaviour:
   dummy: {fileID: 0}
   HPBar: {fileID: 1948658462459003425}
   HPText: {fileID: 2548273939632544413}
+  DamegedSE: {fileID: 0}
 --- !u!1 &2836023928193740376
 GameObject:
   m_ObjectHideFlags: 0

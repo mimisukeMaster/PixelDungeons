@@ -20,7 +20,6 @@ public class CraftingDescriptionCanvas : MonoBehaviour
     public GameObject materialUI;
     public Color CraftableColor;
     public Transform materialUIParent;
-    private GameObject[] addedElements;
 
     //武器
     public void Init(Item_Weapon item,CraftingElement.CraftingMaterial[] materials)
@@ -28,11 +27,10 @@ public class CraftingDescriptionCanvas : MonoBehaviour
         itemImage.sprite = item.ItemImage;
         itemNameText.text = item.ItemName;
         damageText.text = item.Damage.ToString();
-        fireRateText.text = item.FireRate.ToString();
+        fireRateText.text = (1/item.FireRate).ToString();
         speedText.text = item.Speed.ToString();
         rangeText.text = item.Range.ToString();
 
-        addedElements = new GameObject[materials.Length];
         UpdateNumber(materials);
     }
 
@@ -44,7 +42,6 @@ public class CraftingDescriptionCanvas : MonoBehaviour
         healthText.text = item.MaxHP.ToString();
         moveSpeedText.text = item.playerSpeed.ToString();
 
-        addedElements = new GameObject[materials.Length];
         UpdateNumber(materials);
     }
 
