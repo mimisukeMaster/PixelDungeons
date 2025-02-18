@@ -13,6 +13,7 @@ public class TitleSceneManager : MonoBehaviour
     public AudioClip TitleGingle;
     public AudioClip TitleBGM;
     public AudioClip ButtonSE;
+    public AudioClip StartSE;
     [Header("UI")]
     public GameObject StageSelectUI;
     public GameObject CreditsPanel;
@@ -69,9 +70,10 @@ public class TitleSceneManager : MonoBehaviour
     /// </summary>
     public void OnStart()
     {
-        AudioSource.PlayOneShot(ButtonSE);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioSource.PlayOneShot(StartSE);
+        Invoke (nameof(LoadScene), 0.8f);
     }
+    private void LoadScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     /// <summary>
     /// 設定ボタン
