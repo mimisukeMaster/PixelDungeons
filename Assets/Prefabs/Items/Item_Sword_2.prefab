@@ -88,8 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: 98c93a0e846e4764db338478000e0299, type: 3}
   ItemName: Iron Sword
-  Description: 
-  Damage: 10
+  Damage: 40
   FireRate: 1
   Speed: 1
   Range: 1

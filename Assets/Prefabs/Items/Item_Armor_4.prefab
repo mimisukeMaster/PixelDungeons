@@ -80,6 +80,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: 1705b10f1dcdeb248a8eaf79f2407f78, type: 3}
   ItemName: Mithril Armor
-  Description: "\u305F\u3060\u306E\u670D"
-  MaxHP: 100
-  playerSpeed: 3
+  MaxHP: 3000
+  playerSpeed: 7

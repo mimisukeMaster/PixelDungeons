@@ -80,8 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: c1953c51bd94cac4da912eff54a232fd, type: 3}
   ItemName: Claymore
-  Description: 
-  Damage: 20
+  Damage: 250
   FireRate: 0.3
   Speed: 0
   Range: 0

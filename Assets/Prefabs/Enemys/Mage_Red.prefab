@@ -5267,7 +5267,7 @@ MonoBehaviour:
   WanderInterval: 0
   DetectionInterval: 0.5
   DetectionRadius: 10
-  Damage: 10
+  Damage: 200
   DropItem: {fileID: 0}
   DropProbability: 1
   TeleportDistance: 6

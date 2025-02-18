@@ -80,8 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: 7f27bd985cb43b54d9568788d6f21878, type: 3}
   ItemName: Great Axe
-  Description: 
-  Damage: 20
+  Damage: 500
   FireRate: 0.3
   Speed: 0
   Range: 0

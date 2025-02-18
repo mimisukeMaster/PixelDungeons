@@ -80,8 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: 12ad5b8cf02562d4294c37848cecb740, type: 3}
   ItemName: Homing Test
-  Description: 
-  Damage: 10
+  Damage: 20
   FireRate: 1
   Speed: 20
   Range: 50
@@ -91,7 +90,7 @@ MonoBehaviour:
   WeaponModelPrefab: {fileID: 8448637460716603139, guid: 5d0c73388be108b4b91e3f2e20a659a9, type: 3}
   AttackPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
   SuperAttackPrefab: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
-  IsHoming: 1
+  IsHoming: 0
   HomingAngle: 90
   DetectionDistance: 20
   isBeam: 0

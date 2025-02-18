@@ -367,7 +367,7 @@ MonoBehaviour:
   - {fileID: 8076074767191687393}
   shield: {fileID: 748934639225067097}
   hPController: {fileID: 1056807846879872554}
-  randomShotDamage: 10
+  randomShotDamage: 150
   randomShotPrefab: {fileID: 3678542401583548555, guid: 434af81b428baec4ba7830c41c63978e, type: 3}
   ShotSE: {fileID: 8300000, guid: e27a199289142a44c8d5cb2f0d727e28, type: 3}
   BossInstantKill: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 100
+  MaxHP: 7000
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0

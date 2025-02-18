@@ -80,6 +80,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: e9536b887bb91474f96f7d336cf1641a, type: 3}
   ItemName: Enchanted Mithril Armor
-  Description: "\u79FB\u52D5\u901F\u5EA6\u304C\u3055\u3089\u306B\u4E0A\u304C\u308B"
-  MaxHP: 100
-  playerSpeed: 3
+  MaxHP: 7000
+  playerSpeed: 8
