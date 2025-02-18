@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8212431746788956852
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723920528201763311, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      propertyPath: m_Name
+      value: Item_Rod_1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6051713405099996358, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9148800689603244136}
+  m_SourcePrefab: {fileID: 100100000, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+--- !u!1 &871836528754140975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9070541697500757403, guid: 88b3c20e6363c0c4097ff770f1860777, type: 3}
+  m_PrefabInstance: {fileID: 8212431746788956852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9148800689603244136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871836528754140975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473708d54f3c8724d84e68f4e55a3add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemImage: {fileID: 21300000, guid: 12ad5b8cf02562d4294c37848cecb740, type: 3}
+  ItemName: Homing Test
+  Description: 
+  Damage: 10
+  FireRate: 1
+  Speed: 20
+  Range: 50
+  Penetration: 1
+  attackNumber: 1
+  attackDirectionSpread: 0
+  WeaponModelPrefab: {fileID: 8448637460716603139, guid: 5d0c73388be108b4b91e3f2e20a659a9, type: 3}
+  AttackPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
+  SuperAttackPrefab: {fileID: 6949655046232097759, guid: ddd5744078459194f8fd614252721820, type: 3}
+  IsHoming: 1
+  HomingAngle: 90
+  DetectionDistance: 20
+  isBeam: 0
+  beamLineRenderer: {fileID: 0}
+  beamChargeTime: 0
+  beamEmissionTime: 0
+  beamLength: 0
+  IsBomb: 0
+  BombRadius: 0
+  BombDamage: 0
+  IsRemain: 0
+  AreaChild: {fileID: 0}
+  AreaDuration: 0
+  AreaChildAttackInterval: 0
+  AreaChildDamage: 0

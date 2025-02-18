@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -145, y: 0}
-  m_SizeDelta: {x: -490, y: -50}
+  m_AnchoredPosition: {x: 44.511078, y: 0}
+  m_SizeDelta: {x: -110.9777, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4739228703497829488
 CanvasRenderer:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -302,7 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c197538902feb4eba70ef7b1e4008e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
   Materials:
   - Material: {fileID: 7036775543035616125, guid: 0dbc3a353288db049a06e4354c498881, type: 3}
     number: 2
