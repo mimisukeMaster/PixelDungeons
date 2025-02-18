@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour
 {
     [Tooltip("BGM処理")]
-    public AudioSource AudioSource;
+    public AudioSource audioSource;
     [Tooltip("ステージBGM")]
     public AudioClip StageBGM;
     [Tooltip("ボス出現SE")]
     public AudioClip BossEmergeSE;
+    [Tooltip("ラスボスBGM")]
+    public AudioClip LastBossBGM;
     [Tooltip("敵の種類と出現数を設定")]
     public List<EnemyProperty> Enemies;
     [Tooltip("敵の種類と数を設定")]
@@ -31,17 +33,18 @@ public class SpawnManager : MonoBehaviour
     public static List<GameObject> EnemiesInStage = new List<GameObject>();
 
     private bool bossMode;
+    private bool LastBossDefeated;
     private GameObject goalGate;
 
 
     private void Awake()
     {
-        AudioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
-        AudioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SoundsValue", 1.0f);
         if (StageBGM)
         {
-            AudioSource.clip = StageBGM;
-            AudioSource.PlayDelayed(3.0f);
+            audioSource.clip = StageBGM;
+            audioSource.PlayDelayed(3.0f);
         }
         else Debug.LogWarning("ステージBGM未設定");
         
@@ -69,10 +72,19 @@ public class SpawnManager : MonoBehaviour
                 GameObject boss = Instantiate(Boss, BossSpawnPos, Quaternion.identity);
                 EnemiesInStage.Add(boss);
                 bossMode = true;
-                AudioSource.PlayOneShot(BossEmergeSE);
+                audioSource.PlayOneShot(BossEmergeSE);
             }
             // ボスを倒したらゴールゲート出現
-            else if (goalGate == null) goalGate = Instantiate(GoalGate, BossSpawnPos, Quaternion.identity);
+            else if (goalGate == null && SceneManager.GetActiveScene().buildIndex == 4 && !LastBossDefeated)
+            {
+                audioSource.clip = LastBossBGM;
+                audioSource.Play();
+                // FinalBoss.csでEnemiesInStageにドラゴンが加わる
+            }
+            else
+            {
+                goalGate = Instantiate(GoalGate, BossSpawnPos, Quaternion.identity);
+            }
         }
     }
 
