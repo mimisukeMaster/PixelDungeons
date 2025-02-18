@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 100
+  MaxHP: 1000
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0

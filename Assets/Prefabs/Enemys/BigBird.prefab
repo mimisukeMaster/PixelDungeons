@@ -415,7 +415,7 @@ MonoBehaviour:
   ChasingSpeed: 4
   WanderInterval: 1
   DetectionInterval: 0.5
-  DetectionRadius: 20
+  DetectionRadius: 1000
   Damage: 10
   DropItem: {fileID: 2038873515553743555, guid: 657ff9e6c9d752941a635de42ee2912c, type: 3}
   DropProbability: 1
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 100
+  MaxHP: 3000
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0

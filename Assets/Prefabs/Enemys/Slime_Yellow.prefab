@@ -134,7 +134,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
-  Damage: 10
+  Damage: 200
   DropItem: {fileID: 6673645443347270499, guid: 1573c1ee4fcbb6642ba334a34109a5b3, type: 3}
   DropProbability: 1
   AttackDistance: 1.5

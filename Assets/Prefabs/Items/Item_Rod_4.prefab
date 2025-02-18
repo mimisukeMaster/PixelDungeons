@@ -57,8 +57,12 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
+      propertyPath: Damage
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
       propertyPath: IsBomb
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148800689603244136, guid: 8fa2da52e44a7974ab018c69b4dced76, type: 3}
       propertyPath: Prefab

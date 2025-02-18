@@ -1121,7 +1121,7 @@ MonoBehaviour:
   AltitudeRandomness: 1
   animator: {fileID: 8503330183215317262}
   homingPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
-  homingDamage: 10
+  homingDamage: 150
   homingSpeed: 20
   homingAngle: 90
   homingFireRate: 0.5
@@ -1129,14 +1129,14 @@ MonoBehaviour:
   homingInterval: 1
   HomingSpread: 20
   shotsPrefab: {fileID: 5856601671351188954, guid: 2c738dcdec92c8a44bbb9c2a0a91dc2f, type: 3}
-  shotsDamage: 5
+  shotsDamage: 100
   shotsSpeed: 20
   shotsFireRate: 0.2
   shotsNumber: 30
-  shotsSpread: 5
+  shotsSpread: 10
   shotsChargeTime: 1
   isCharging: 0
-  chargeDamage: 30
+  chargeDamage: 700
   ascentionSpeed: 10
   moveSpeed: 7
   moveRange: 30
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 500
+  MaxHP: 10000
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0

@@ -134,7 +134,7 @@ MonoBehaviour:
   WanderInterval: 1
   DetectionInterval: 0.5
   DetectionRadius: 5
-  Damage: 10
+  Damage: 30
   DropItem: {fileID: 6673645443347270499, guid: f8d73abc458491a45b15078131f090fb, type: 3}
   DropProbability: 1
   AttackDistance: 1.5
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 20
+  MaxHP: 100
   PlayerController: {fileID: 0}
   playerDamageUI: {fileID: 0}
   PlayerInvincibleTime: 0

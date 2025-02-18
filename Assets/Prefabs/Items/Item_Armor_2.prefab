@@ -80,6 +80,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemImage: {fileID: 21300000, guid: 37718f26055abf74b9799b3547b0c57f, type: 3}
   ItemName: Iron Vest
-  Description: "\u305F\u3060\u306E\u670D"
-  MaxHP: 100
-  playerSpeed: 3
+  MaxHP: 300
+  playerSpeed: 5

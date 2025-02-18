@@ -1528,8 +1528,8 @@ MonoBehaviour:
   ChasingSpeed: 4
   WanderInterval: 1
   DetectionInterval: 0.5
-  DetectionRadius: 20
-  Damage: 10
+  DetectionRadius: 1000
+  Damage: 20
   DropItem: {fileID: 2038873515553743555, guid: 657ff9e6c9d752941a635de42ee2912c, type: 3}
   DropProbability: 1
   Eye: {fileID: 4418861329660572704}
