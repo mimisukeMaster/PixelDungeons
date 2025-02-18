@@ -5268,7 +5268,7 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 10
   Damage: 200
-  DropItem: {fileID: 0}
+  DropItem: {fileID: 1164410848181273032, guid: fccadbb433fb60946ab0153a0345ab5a, type: 3}
   DropProbability: 1
   TeleportDistance: 6
   TeleportInterval: 2.5
