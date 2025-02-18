@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
         if (GameOverCanvas.activeSelf) GameOverCanvas.SetActive(false);
         if (LastBossClearCanvas.activeSelf) LastBossClearCanvas.SetActive(false);
-
+        GamingCanvas.SetActive(true);
     }
 
     private void FixedUpdate()

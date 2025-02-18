@@ -315,7 +315,7 @@ MonoBehaviour:
   DetectionInterval: 0.5
   DetectionRadius: 5
   Damage: 300
-  DropItem: {fileID: 6673645443347270499, guid: f16dbb2accafd52469dd832944bf518b, type: 3}
+  DropItem: {fileID: 1164410848181273032, guid: 76b291e37a06b3e489992b45c1dfc2e1, type: 3}
   DropProbability: 1
   BeamInterval: 5
   BeamLength: 20
