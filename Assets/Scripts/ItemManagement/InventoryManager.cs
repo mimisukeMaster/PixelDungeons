@@ -8,9 +8,9 @@ public class InventoryManager : MonoBehaviour
     //インベントリ内にある素材
     public  Dictionary<Item_Material,ItemProperty> materialsInInventory = new Dictionary<Item_Material,ItemProperty>();
     //インベントリ内にある武器
-    public  Dictionary<Item_Weapon,ItemProperty> weaponsInInventory = new Dictionary<Item_Weapon,ItemProperty>();
+    public  Dictionary<Item,ItemProperty> weaponsInInventory = new Dictionary<Item,ItemProperty>();
     //インベントリ内にある消費アイテム
-    public  Dictionary<Item_Consumable,ItemProperty> consumablesInInventory = new Dictionary<Item_Consumable,ItemProperty>();
+    public  Dictionary<Item_Armor,ItemProperty> armorsInInventory = new Dictionary<Item_Armor,ItemProperty>();
     public class ItemProperty
     {
         public Item item;
@@ -54,15 +54,14 @@ public class InventoryManager : MonoBehaviour
     public GameObject MaterialPanel;
     [Tooltip("武器を表示する個別のUIのプレハブ")]
     public GameObject WeaponPanel;
-    [Tooltip("消費アイテムを表示するUIのプレハブ")]
-    public GameObject ConsumablePanel;
-
+    [Tooltip("アーマーを表示するUIのプレハブ")]
+    public GameObject ArmorPanel;
     [Tooltip("素材アイテム欄の親")]
     public Transform MaterialUIContent;
     [Tooltip("武器アイテム欄の親")]
     public Transform WeaponUIContent;
     [Tooltip("消費アイテム欄の親")]
-    public Transform ConsumableUIContent;
+    public Transform ArmorUIContent;
     [Tooltip("初期装備右")]
     public Item_Weapon initialWeaponRight;
     [Tooltip("初期装備左")]
@@ -77,10 +76,14 @@ public class InventoryManager : MonoBehaviour
     public Transform RightEmissionTransform;
     [Tooltip("左手の攻撃発生場所")]
     public Transform LeftEmissionTransform;
+    
 
     [Tooltip("デバッグ用初期アイテム")]
     public Item[] startItems;
     public static bool hasInitializedInventory = false;
+    [Header("体力")]
+    public HPController hPController;
+    public Item_Armor EquippedArmor;
 
     private void Start()
     {
@@ -149,21 +152,21 @@ public class InventoryManager : MonoBehaviour
                 SetContentHeight(WeaponUIContent.GetComponent<RectTransform>(),weaponsInInventory.Count);
             }
         }
-        else if(item is Item_Consumable consumable)
+        else if(item is Item_Armor armor)
         {
-            if(consumablesInInventory.ContainsKey(consumable))//キーがすでにある
+            if(armorsInInventory.ContainsKey(armor))//キーがすでにある
             {
 
-                consumablesInInventory[consumable].AddNumber(number);
+                armorsInInventory[armor].AddNumber(number);
             }
             else//初めて
             {
-                GameObject panel = Instantiate(ConsumablePanel,ConsumableUIContent);
+                GameObject panel = Instantiate(ArmorPanel,ArmorUIContent);
                 //パネル追加
-                InventoryItem inventoryItem = SetPanel(consumable,panel,number);
-                consumablesInInventory.Add(consumable,new ItemProperty((InventoryItem_Consumable)inventoryItem,1,consumable,this));
+                InventoryItem inventoryItem = SetPanel(armor,panel,number);
+                armorsInInventory.Add(armor,new ItemProperty((InventoryItem_Consumable)inventoryItem,1,armor,this));
                 //UIのサイズを調節する
-                SetContentHeight(ConsumableUIContent.GetComponent<RectTransform>(),consumablesInInventory.Count);
+                SetContentHeight(ArmorUIContent.GetComponent<RectTransform>(),armorsInInventory.Count);
             }
         }
     }
@@ -184,15 +187,15 @@ public class InventoryManager : MonoBehaviour
     public void RemoveItem(Item item)
     {
         if(item is Item_Material) materialsInInventory.Remove((Item_Material)item);
-        else if(item is Item_Weapon)weaponsInInventory.Remove((Item_Weapon)item);
-        else if(item is Item_Consumable)consumablesInInventory.Remove((Item_Consumable)item);
+        else if(item is Item)weaponsInInventory.Remove((Item)item);
+        else if(item is Item_Armor)armorsInInventory.Remove((Item_Armor)item);
     }
 
     public int GetItemNumber(Item item)
     {
         if(item is Item_Material) return materialsInInventory[(Item_Material)item].number;
-        else if(item is Item_Weapon)return weaponsInInventory[(Item_Weapon)item].number;
-        else if(item is Item_Consumable)return consumablesInInventory[(Item_Consumable)item].number;
+        else if(item is Item)return weaponsInInventory[(Item)item].number;
+        else if(item is Item_Armor)return armorsInInventory[(Item_Armor)item].number;
         else return 0;
     }
 
@@ -206,7 +209,7 @@ public class InventoryManager : MonoBehaviour
         {
             if(itemProperty.inventoryItem == inventoryItem){return itemProperty;}
         }
-        foreach(ItemProperty itemProperty in consumablesInInventory.Values)
+        foreach(ItemProperty itemProperty in armorsInInventory.Values)
         {
             if(itemProperty.inventoryItem == inventoryItem){return itemProperty;}
         }
@@ -246,13 +249,25 @@ public class InventoryManager : MonoBehaviour
                 Destroy(LeftHand.GetChild(0).gameObject);
             }
             GameObject weaponInstance = Instantiate(weapon.WeaponModelPrefab, LeftHand);
-            if(inventoryItem != null)
+            if(inventoryItem != null && consumeItem)
             {
                 ItemProperty item = SerchItem(inventoryItem);
                 if(item != null)item.SubNumber(1);
             }
             weaponInstance.GetComponent<WeaponController>().Init(weapon, false, LeftEmissionTransform);
         }
+    }
+
+    public void ChangeArmor(Item_Armor armor,InventoryItem inventoryItem,bool consumeItem)
+    {
+        if(EquippedArmor != null)AddItem(EquippedArmor,1);
+        if(inventoryItem != null && consumeItem)
+        {
+            ItemProperty itemProperty = SerchItem(inventoryItem);
+            if(itemProperty != null) itemProperty.SubNumber(1);
+        }
+        EquippedArmor = armor;
+        hPController.ChangeMaxHP(armor.MaxHP);
     }
 
     /// <summary>
@@ -270,8 +285,8 @@ public class InventoryManager : MonoBehaviour
         {
             Item material = materials[i];
             if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material))itemsExists[i] = materialsInInventory[(Item_Material)material].GetRemovable(number[i]);
-            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material))itemsExists[i] = weaponsInInventory[(Item_Weapon)material].GetRemovable(number[i]);
-            else if(material is Item_Consumable &&consumablesInInventory.ContainsKey((Item_Consumable)material))itemsExists[i] = consumablesInInventory[(Item_Consumable)material].GetRemovable(number[i]);
+            else if(material is Item && weaponsInInventory.ContainsKey((Item)material))itemsExists[i] = weaponsInInventory[(Item)material].GetRemovable(number[i]);
+            else if(material is Item_Armor &&armorsInInventory.ContainsKey((Item_Armor)material))itemsExists[i] = armorsInInventory[(Item_Armor)material].GetRemovable(number[i]);
         }
 
         if(itemsExists.Contains(false))
@@ -285,11 +300,11 @@ public class InventoryManager : MonoBehaviour
         {
             Item material = materials[i];
             if(material is Item_Material && materialsInInventory.ContainsKey((Item_Material)material)) materialsInInventory[(Item_Material)material].SubNumber(number[i]);
-            else if(material is Item_Weapon && weaponsInInventory.ContainsKey((Item_Weapon)material)) weaponsInInventory[(Item_Weapon)material].SubNumber(number[i]);
-            else if(material is Item_Consumable && consumablesInInventory.ContainsKey((Item_Consumable)material)) consumablesInInventory[(Item_Consumable)material].SubNumber(number[i]);
+            else if(material is Item && weaponsInInventory.ContainsKey((Item)material)) weaponsInInventory[(Item)material].SubNumber(number[i]);
+            else if(material is Item_Armor && armorsInInventory.ContainsKey((Item_Armor)material)) armorsInInventory[(Item_Armor)material].SubNumber(number[i]);
         }
         
-        AddItem((Item_Weapon)result,resultNumber);
+        AddItem((Item)result,resultNumber);
         Debug.Log("Craft Success");
         return true;
     }
