@@ -29,6 +29,7 @@ public class FinalBoss : EnemyController
     private bool isAttackMode;
     private bool isDead = false;
     private AudioSource audioSource;
+    private bool isShotSE;
 
     protected override void Start() 
     {
@@ -115,10 +116,17 @@ public class FinalBoss : EnemyController
                 bullet.GetComponent<AttackController>().Init("Player",randomShotDamage,100,1);
                 bullet.GetComponent<Rigidbody>().linearVelocity = randomDirection * ((estimatedPlayerPosition-transform.position).normalized*speed);
             
-                audioSource.PlayOneShot(ShotSE, 0.5f);
+                if (!isShotSE) StartCoroutine(PlayShotSE());
             }
             yield return waitForCoolDown;
         }
+    }
+    private IEnumerator PlayShotSE()
+    {
+        isShotSE = true;
+        audioSource.PlayOneShot(ShotSE, 0.8f);
+        yield return new WaitForSeconds(0.5f);
+        isShotSE = false;
     }
 
     public override void OnDied(GameObject gameObject)
