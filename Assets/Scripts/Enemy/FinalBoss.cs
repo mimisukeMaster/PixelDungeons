@@ -143,12 +143,15 @@ public class FinalBoss : EnemyController
         isAttackMode = false;
         hPController.canBeDamaged = false;
         eggMeshRenderer.material = crackMaterial;
-        Destroy(hPController.HPBar.transform.parent.parent.gameObject);//HPバーを消す
+        Destroy(hPController.HPBar.transform.parent.parent.gameObject); // HPバーを消す
         yield return new WaitForSeconds(crackTime);
+
         destroyParticle.Play();
-        Instantiate(Dragon,transform.position + new Vector3(0,2,1),Quaternion.Euler(-90,0,0));
+        GameObject dragon = Instantiate(Dragon,transform.position + new Vector3(0,2,1),Quaternion.Euler(-90,0,0));
+        SpawnManager.EnemiesInStage.Add(dragon);
         Destroy(eggMeshRenderer.gameObject);
-        yield return new WaitForSeconds(5);//卵が壊れるエフェクトが消えるまで待機
+        yield return new WaitForSeconds(5); // 卵が壊れるエフェクトが消えるまで待機
+
         base.OnDied(transform.parent.gameObject);
     }
 }
