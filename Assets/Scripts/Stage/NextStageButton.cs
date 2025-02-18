@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class NextStageButton : MonoBehaviour
 {
     public AudioClip HomeBGM;
+    
     public void NextStagePress()
     {
         // ステージをロード
