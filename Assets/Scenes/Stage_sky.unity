@@ -4251,11 +4251,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[0].count
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[1].count
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
+      propertyPath: Enemies.Array.data[2].count
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[2].enemy
@@ -4263,7 +4267,7 @@ PrefabInstance:
       objectReference: {fileID: 6141053187844308292, guid: 34735ea114e0a894fbe44805d342d3c4, type: 3}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[3].count
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 233476175658443459, guid: 82fa492cfa7b3174e9cf48ee1a6a7593, type: 3}
       propertyPath: Enemies.Array.data[3].enemy
