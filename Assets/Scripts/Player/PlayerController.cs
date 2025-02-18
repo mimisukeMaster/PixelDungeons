@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator SoundWalkSE()
     {
         isSoundWalkSE = true;
-        audioSource.PlayOneShot(StepsSE[nowSceneIndex], 0.5f);
+        audioSource.PlayOneShot(StepsSE[nowSceneIndex], 0.7f);
         yield return new WaitForSeconds(0.3f);
         isSoundWalkSE = false;
     }
