@@ -4176,9 +4176,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1034847495420280730}
     - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: StepsSE.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: LastBossClearCanvas
       value: 
       objectReference: {fileID: 1133690426790194752}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'StepsSE.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 673eeb0b63e487b419570257b762c0b7, type: 3}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'StepsSE.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 673eeb0b63e487b419570257b762c0b7, type: 3}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'StepsSE.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 51961cb456f7e4a4888c3c209da372dd, type: 3}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'StepsSE.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 51961cb456f7e4a4888c3c209da372dd, type: 3}
+    - target: {fileID: 3554490523010719503, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
+      propertyPath: 'StepsSE.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 673eeb0b63e487b419570257b762c0b7, type: 3}
     - target: {fileID: 3609241389091412737, guid: 059c5bd91ab00674992b8f7e940683ac, type: 3}
       propertyPath: WeaponUIContent
       value: 

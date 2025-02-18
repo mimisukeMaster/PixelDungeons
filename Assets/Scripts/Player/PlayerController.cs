@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -36,11 +37,15 @@ public class PlayerController : MonoBehaviour
     public AudioClip GoalGateSE;
     [Tooltip("ラスボスを倒した後のジングル")]
     public AudioClip DefeatedGingle;
+    [Tooltip("足音のSEリスト")]
+    public AudioClip[] StepsSE;
 
     private Rigidbody rb;
     private Vector2 moveInput;
     private bool isGrounded;
     private AudioSource audioSource;
+    private int nowSceneIndex;
+    private bool isSoundWalkSE;
 
     public static ControlActions controls;
     public static bool isGaming;
@@ -94,6 +99,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.identity;
         moveInput = Vector2.zero;
         Cursor.lockState = CursorLockMode.Locked;
+        nowSceneIndex = scene.buildIndex;
 
         if (ClearCanvas.activeSelf) ClearCanvas.SetActive(false);
         if (LastBossClearCanvas.activeSelf) LastBossClearCanvas.SetActive(false);
@@ -107,9 +113,17 @@ public class PlayerController : MonoBehaviour
                              * MoveSpeed * Time.fixedDeltaTime;
         lastMoveDirection = move * MoveSpeed;
         rb.MovePosition(rb.position + move);
+        if (lastMoveDirection != Vector3.zero && !isSoundWalkSE) StartCoroutine(SoundWalkSE());
 
         // バグで地面を貫通したときは戻る
         if (transform.position.y < -10.0f) transform.position = new Vector3(0, 1.0f, 0f);
+    }
+    private IEnumerator SoundWalkSE()
+    {
+        isSoundWalkSE = true;
+        audioSource.PlayOneShot(StepsSE[nowSceneIndex], 0.5f);
+        yield return new WaitForSeconds(0.3f);
+        isSoundWalkSE = false;
     }
 
     private void OnEnable() => controls.Enable();
