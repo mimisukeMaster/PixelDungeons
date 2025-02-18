@@ -84,6 +84,7 @@ public class InventoryManager : MonoBehaviour
     [Header("体力")]
     public HPController hPController;
     public Item_Armor EquippedArmor;
+    public PlayerController playerController;
 
     private void Start()
     {
@@ -187,14 +188,27 @@ public class InventoryManager : MonoBehaviour
     public void RemoveItem(Item item)
     {
         if(item is Item_Material) materialsInInventory.Remove((Item_Material)item);
-        else if(item is Item)weaponsInInventory.Remove((Item)item);
+        else if(item is Item)weaponsInInventory.Remove((Item_Weapon)item);
         else if(item is Item_Armor)armorsInInventory.Remove((Item_Armor)item);
     }
 
     public int GetItemNumber(Item item)
     {
+        if(item is Item_Material)
+        {
+            if(!materialsInInventory.ContainsKey((Item_Material)item))return 0;
+        }
+        else if(item is Item_Weapon)
+        {
+            if(!weaponsInInventory.ContainsKey((Item_Weapon)item))return 0;
+        }
+        else if(item is Item_Armor)
+        {
+            if(!armorsInInventory.ContainsKey((Item_Armor)item)) return 0;
+        }
+        
         if(item is Item_Material) return materialsInInventory[(Item_Material)item].number;
-        else if(item is Item)return weaponsInInventory[(Item)item].number;
+        else if(item is Item)return weaponsInInventory[(Item_Weapon)item].number;
         else if(item is Item_Armor)return armorsInInventory[(Item_Armor)item].number;
         else return 0;
     }
@@ -268,6 +282,7 @@ public class InventoryManager : MonoBehaviour
         }
         EquippedArmor = armor;
         hPController.ChangeMaxHP(armor.MaxHP);
+        playerController.MoveSpeed = armor.playerSpeed;
     }
 
     /// <summary>

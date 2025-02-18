@@ -1,25 +1,43 @@
 using UnityEngine;
 using TMPro;
 using NUnit.Framework.Interfaces;
+using Unity.VisualScripting;
 
 //CraftCanvasのCanvas下のContentに付ける
 //Craftingがこれに依存している
 public class CraftingStation : MonoBehaviour
 {
     public InventoryManager inventoryManager;
-    public CraftingDescriptionCanvas descriptionCanvas;
+    public CraftingDescriptionCanvas descriptionCanvasWeapon;
+    public CraftingDescriptionCanvas descriptionCanvasArmor;
 
     CraftingElement.CraftingMaterial[] materials;
     Item resultItem;
     int resultNumber;
 
-    public void ShowDescription(CraftingElement.CraftingMaterial[] materials,Item_Weapon resultItem,int resultNumber)
+    public void ShowDescription(CraftingElement.CraftingMaterial[] materials,Item resultItem,int resultNumber)
     {
-        descriptionCanvas.gameObject.SetActive(true);
-        descriptionCanvas.Init(resultItem,materials);
+        if(resultItem is Item_Weapon)
+        {
+            descriptionCanvasArmor.gameObject.SetActive(false);
+            descriptionCanvasWeapon.gameObject.SetActive(true);
+            descriptionCanvasWeapon.Init((Item_Weapon)resultItem,materials);
+        }
+        else if(resultItem is Item_Armor)
+        {
+            descriptionCanvasWeapon.gameObject.SetActive(false);
+            descriptionCanvasArmor.gameObject.SetActive(true);
+            descriptionCanvasArmor.Init((Item_Armor)resultItem,materials);
+        }
         this.materials = materials;
         this.resultItem = resultItem;
         this.resultNumber = resultNumber;
+    }
+
+    void OnDisable()
+    {
+        descriptionCanvasArmor.gameObject.SetActive(false);
+        descriptionCanvasWeapon.gameObject.SetActive(false);
     }
 
     public bool Craft()
@@ -32,6 +50,10 @@ public class CraftingStation : MonoBehaviour
             material[i] = materials[i].Material;
             numbers[i] = materials[i].number;
         }
-        return inventoryManager.Craft(material,numbers,resultItem,resultNumber);
+        bool isCraftable = inventoryManager.Craft(material,numbers,resultItem,resultNumber);
+
+        if(resultItem is Item_Weapon)descriptionCanvasWeapon.UpdateNumber(materials);
+        else descriptionCanvasArmor.UpdateNumber(materials);
+        return isCraftable;
     }
 }

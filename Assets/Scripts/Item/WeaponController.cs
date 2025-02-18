@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 //武器の実際の処理を描くところ
 //プレハブに付ける
@@ -11,9 +12,10 @@ public class WeaponController : MonoBehaviour
     public Transform EmitTransform;
     public AudioClip[] AttackSEs;
 
+    private bool isClicking;
+    private float nextAttackTime = 0;
     private bool isRightHand;
     private Animator animator;
-    private float onClickTime;
     private bool isSuperAttack;
     private AudioSource audioSource;
 
@@ -35,6 +37,7 @@ public class WeaponController : MonoBehaviour
             PlayerController.controls.Player.LeftAttack.started += OnClickLeft;
             PlayerController.controls.Player.LeftAttack.canceled += ReleaseClickLeft;
         }
+        SceneManager.sceneLoaded += ResetClick;
     }
 
     //DontDestroyOnLoadのため
@@ -52,6 +55,11 @@ public class WeaponController : MonoBehaviour
         }
     }
 
+    private void ResetClick(Scene scene,LoadSceneMode mode)
+    {
+        isClicking = false;
+    }
+
     private void Start() 
     {
         audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
@@ -60,33 +68,33 @@ public class WeaponController : MonoBehaviour
     // 右クリック押下
     private void OnClickRight(InputAction.CallbackContext context)
     {
-        if (isRightHand && PlayerController.isGaming) 
-        {
-            audioSource.PlayOneShot(AttackSEs[Random.Range(0, 3)]);
-            Attack();
-        }
+        if (isRightHand && PlayerController.isGaming) isClicking = true;
     }
-
+    
     // 右クリック離す
     private void ReleaseClickRight(InputAction.CallbackContext context)
     {
-
+        if(isRightHand)isClicking = false;
     }
 
     // 左クリック押下
-    private void OnClickLeft(InputAction.CallbackContext context) => onClickTime = Time.time;
+    private void OnClickLeft(InputAction.CallbackContext context)
+    {
+        if(!isRightHand && PlayerController.isGaming)isClicking = true;
+    }
 
     // 左クリック離す
     private void ReleaseClickLeft(InputAction.CallbackContext context)
     {
-        if(!isRightHand && PlayerController.isGaming)
+        if(!isRightHand)isClicking = false;
+    }
+
+    void Update()
+    {
+        if(isClicking && Time.time >= nextAttackTime)
         {
-            // 攻撃
-            if (Time.time - onClickTime >= 0.5f) isSuperAttack = true;
-            
-            // ランダムに効果音を鳴らす
-            audioSource.PlayOneShot(AttackSEs[Random.Range(0, 3)]);
-            for (int i = 0; i < weapon.attackNumber; i++) Attack();
+            Attack();
+            nextAttackTime = Time.time + weapon.FireRate;
         }
     }
 
@@ -95,20 +103,22 @@ public class WeaponController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
+        // ランダムに効果音を鳴らす
+        audioSource.PlayOneShot(AttackSEs[Random.Range(0, 3)]);
+
         //攻撃する方向を決める
         Quaternion randomDirection = Quaternion.Euler(Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
                                                         Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread),
                                                         Random.Range(-weapon.attackDirectionSpread,weapon.attackDirectionSpread));
 
         GameObject attack = Instantiate(
-            isSuperAttack ? weapon.SuperAttackPrefab : weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
+            weapon.AttackPrefab, EmitTransform.position, EmitTransform.rotation);
         attack.GetComponent<Rigidbody>().linearVelocity = randomDirection * EmitTransform.forward * weapon.Speed;
 
         // 0チェック
         if (weapon.Speed != 0) attack.GetComponent<AttackController>().Init("Enemy", weapon.Range / weapon.Speed,weapon);
         else attack.GetComponent<AttackController>().Init("Enemy",0.5f, weapon);
 
-        isSuperAttack = false;
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack"+Random.Range(1,3));
     }
 }

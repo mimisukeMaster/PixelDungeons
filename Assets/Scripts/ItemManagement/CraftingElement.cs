@@ -11,7 +11,7 @@ public class CraftingElement : MonoBehaviour
         public int number;
     }
     public CraftingMaterial[] Materials;
-    public Item_Weapon ResultItem;
+    public Item ResultItem;
     public int ResultNumber;
     private CraftingStation craftingStation;
 
